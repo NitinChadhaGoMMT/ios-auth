@@ -13,7 +13,6 @@
 		6E70D01A2328CA51003E22E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E70D0192328CA51003E22E0 /* Assets.xcassets */; };
 		6E70D01D2328CA51003E22E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E70D01B2328CA51003E22E0 /* LaunchScreen.storyboard */; };
 		6E70D0392328CED3003E22E0 /* DependencyFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E70D0362328CED3003E22E0 /* DependencyFramework.framework */; };
-		6E70D03A2328CED3003E22E0 /* Dip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E70D0372328CED3003E22E0 /* Dip.framework */; };
 		6E70D03B2328CED3003E22E0 /* NetworkLayerFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E70D0382328CED3003E22E0 /* NetworkLayerFramework.framework */; };
 		6E70D03F2328CF65003E22E0 /* DependencyFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E70D03C2328CF65003E22E0 /* DependencyFramework.framework */; };
 		6E70D0402328CF65003E22E0 /* Dip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E70D03D2328CF65003E22E0 /* Dip.framework */; };
@@ -74,7 +73,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E70D0392328CED3003E22E0 /* DependencyFramework.framework in Frameworks */,
-				6E70D03A2328CED3003E22E0 /* Dip.framework in Frameworks */,
 				6E70D03B2328CED3003E22E0 /* NetworkLayerFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
