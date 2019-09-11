@@ -1,0 +1,3 @@
+github "AliSoftware/Dip" "7.0.1"
+github "abhijeet-rai/ios-dependency" "v1.0.3"
+github "abhijeet-rai/ios-network" "v1.0.4"
