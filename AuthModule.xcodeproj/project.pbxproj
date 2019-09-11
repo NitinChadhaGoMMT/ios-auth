@@ -49,7 +49,6 @@
 /* Begin PBXFileReference section */
 		6E70CFF52328C70B003E22E0 /* AuthModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AuthModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E70CFF92328C70B003E22E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6E70D0032328C9F7003E22E0 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		6E70D0102328CA50003E22E0 /* AuthApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AuthApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E70D0122328CA50003E22E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6E70D0142328CA50003E22E0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,7 +56,6 @@
 		6E70D0192328CA51003E22E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6E70D01C2328CA51003E22E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6E70D01E2328CA51003E22E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6E70D02B2328CB40003E22E0 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		6E70D0362328CED3003E22E0 /* DependencyFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DependencyFramework.framework; path = AuthModule/Carthage/Build/iOS/DependencyFramework.framework; sourceTree = "<group>"; };
 		6E70D0372328CED3003E22E0 /* Dip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dip.framework; path = AuthModule/Carthage/Build/iOS/Dip.framework; sourceTree = "<group>"; };
 		6E70D0382328CED3003E22E0 /* NetworkLayerFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkLayerFramework.framework; path = AuthModule/Carthage/Build/iOS/NetworkLayerFramework.framework; sourceTree = "<group>"; };
@@ -115,7 +113,6 @@
 			children = (
 				6E70D0002328C9B9003E22E0 /* Auth */,
 				6E70CFF92328C70B003E22E0 /* Info.plist */,
-				6E70D0032328C9F7003E22E0 /* Cartfile */,
 			);
 			path = AuthModule;
 			sourceTree = "<group>";
@@ -144,7 +141,6 @@
 		6E70D0112328CA50003E22E0 /* AuthApp */ = {
 			isa = PBXGroup;
 			children = (
-				6E70D02B2328CB40003E22E0 /* Cartfile */,
 				6E70D0122328CA50003E22E0 /* AppDelegate.swift */,
 				6E70D0142328CA50003E22E0 /* ViewController.swift */,
 				6E70D0162328CA50003E22E0 /* Main.storyboard */,
