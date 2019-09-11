@@ -269,9 +269,9 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/AuthApp/Carthage/Build/iOS/Dip.framework",
-				"$(SRCROOT)/AuthApp/Carthage/Build/iOS/DependencyFramework.framework",
-				"$(SRCROOT)/AuthApp/Carthage/Build/iOS/NetworkLayerFramework.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Dip.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/DependencyFramework.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/NetworkLayerFramework.framework",
 			);
 			outputFileListPaths = (
 			);
