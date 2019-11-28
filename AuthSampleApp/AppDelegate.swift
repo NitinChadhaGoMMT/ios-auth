@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  AuthApp
+//  AuthSampleApp
 //
-//  Created by Nitin Chadha on 11/09/19.
-//  Copyright © 2019 ibibo web Pvt Ltd. All rights reserved.
+//  Created by Nitin Chadha on 21/11/19.
+//  Copyright © 2019 Nitin Chadha. All rights reserved.
 //
 
 import UIKit

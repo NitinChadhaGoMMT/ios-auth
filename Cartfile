@@ -1,4 +1,0 @@
-#Carthage Dependecies
-
-github "AliSoftware/Dip"
-git "git@github.com/abhijeet-rai/ios-network.git" ~> 1.0.4

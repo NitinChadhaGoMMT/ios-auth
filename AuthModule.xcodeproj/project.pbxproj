@@ -7,39 +7,51 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6E70D0132328CA50003E22E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E70D0122328CA50003E22E0 /* AppDelegate.swift */; };
-		6E70D0152328CA50003E22E0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E70D0142328CA50003E22E0 /* ViewController.swift */; };
-		6E70D0182328CA50003E22E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E70D0162328CA50003E22E0 /* Main.storyboard */; };
-		6E70D01A2328CA51003E22E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E70D0192328CA51003E22E0 /* Assets.xcassets */; };
-		6E70D01D2328CA51003E22E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E70D01B2328CA51003E22E0 /* LaunchScreen.storyboard */; };
-		6E70D0392328CED3003E22E0 /* DependencyFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E70D0362328CED3003E22E0 /* DependencyFramework.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		6E70D03B2328CED3003E22E0 /* NetworkLayerFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E70D0382328CED3003E22E0 /* NetworkLayerFramework.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		6E70D03F2328CF65003E22E0 /* DependencyFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E70D03C2328CF65003E22E0 /* DependencyFramework.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		6E70D0402328CF65003E22E0 /* Dip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E70D03D2328CF65003E22E0 /* Dip.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		6E70D0412328CF65003E22E0 /* NetworkLayerFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E70D03E2328CF65003E22E0 /* NetworkLayerFramework.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		6E70D0422328CFAD003E22E0 /* AuthModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E70CFF52328C70B003E22E0 /* AuthModule.framework */; };
-		6E70D0432328CFAD003E22E0 /* AuthModule.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E70CFF52328C70B003E22E0 /* AuthModule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6E70D0482328CFEA003E22E0 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E70D0472328CFEA003E22E0 /* Auth.swift */; };
+		6E0701DE2386BC5D008D79E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0701DD2386BC5D008D79E9 /* AppDelegate.swift */; };
+		6E0701E02386BC5D008D79E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0701DF2386BC5D008D79E9 /* ViewController.swift */; };
+		6E0701E32386BC5D008D79E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E0701E12386BC5D008D79E9 /* Main.storyboard */; };
+		6E0701E52386BC63008D79E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E0701E42386BC63008D79E9 /* Assets.xcassets */; };
+		6E0701E82386BC63008D79E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E0701E62386BC63008D79E9 /* LaunchScreen.storyboard */; };
+		6E0701F82386BC78008D79E9 /* AuthModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E0701F62386BC78008D79E9 /* AuthModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6E0701FB2386BC78008D79E9 /* AuthModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E0701F42386BC78008D79E9 /* AuthModule.framework */; };
+		6E0701FC2386BC78008D79E9 /* AuthModule.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E0701F42386BC78008D79E9 /* AuthModule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6E0702022386BC95008D79E9 /* LoginWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0702012386BC95008D79E9 /* LoginWelcomeViewController.swift */; };
+		6E0702042386BCCE008D79E9 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0702032386BCCE008D79E9 /* AuthRouter.swift */; };
+		6E0702072386BD82008D79E9 /* View_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0702062386BD82008D79E9 /* View_Extensions.swift */; };
+		6E07020A2386BDA7008D79E9 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E0702092386BDA7008D79E9 /* Auth.storyboard */; };
+		6E07020C2386BF84008D79E9 /* LoginWelcomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E07020B2386BF84008D79E9 /* LoginWelcomePresenter.swift */; };
+		6E07020E2386BF97008D79E9 /* LoginWelcomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E07020D2386BF97008D79E9 /* LoginWelcomeInteractor.swift */; };
+		6E0702102386C194008D79E9 /* WhatsAppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E07020F2386C194008D79E9 /* WhatsAppManager.swift */; };
+		6E0702122386C757008D79E9 /* CommonUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0702112386C756008D79E9 /* CommonUIExtensions.swift */; };
+		6E070215238D096A008D79E9 /* SFUIText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E070214238D096A008D79E9 /* SFUIText-Regular.ttf */; };
+		6E070217238D3FA2008D79E9 /* LoginWelcomeHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E070216238D3FA2008D79E9 /* LoginWelcomeHeaderCell.swift */; };
+		6E07021D238D4991008D79E9 /* FireBaseConfigKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E07021A238D48DA008D79E9 /* FireBaseConfigKeys.swift */; };
+		6E07021E238D4AF6008D79E9 /* FirebaseHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E070218238D48AC008D79E9 /* FirebaseHandlerProtocol.swift */; };
+		6E070221238D68CD008D79E9 /* LoginOrTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E07021F238D6861008D79E9 /* LoginOrTableCell.swift */; };
+		6E070224238D6CDA008D79E9 /* LoginNewUserDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E070222238D6B92008D79E9 /* LoginNewUserDetailsCell.swift */; };
+		6E070227238E39EC008D79E9 /* LoginFBSingupTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E070225238E3968008D79E9 /* LoginFBSingupTableCell.swift */; };
+		6E070229238E5786008D79E9 /* LoginSkipNowTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E070228238E5786008D79E9 /* LoginSkipNowTableCell.swift */; };
+		6E07022E238E71C5008D79E9 /* AuthUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E07022A238E5C16008D79E9 /* AuthUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		6E70D0442328CFAD003E22E0 /* PBXContainerItemProxy */ = {
+		6E0701F92386BC78008D79E9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 6E70CFEC2328C70B003E22E0 /* Project object */;
+			containerPortal = 6E0701D22386BC5C008D79E9 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 6E70CFF42328C70B003E22E0;
+			remoteGlobalIDString = 6E0701F32386BC78008D79E9;
 			remoteInfo = AuthModule;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		6E70D0462328CFAD003E22E0 /* Embed Frameworks */ = {
+		6E0702002386BC78008D79E9 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6E70D0432328CFAD003E22E0 /* AuthModule.framework in Embed Frameworks */,
+				6E0701FC2386BC78008D79E9 /* AuthModule.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -47,131 +59,224 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		6E70CFF52328C70B003E22E0 /* AuthModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AuthModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6E70CFF92328C70B003E22E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6E70D0102328CA50003E22E0 /* AuthApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AuthApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		6E70D0122328CA50003E22E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6E70D0142328CA50003E22E0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		6E70D0172328CA50003E22E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		6E70D0192328CA51003E22E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		6E70D01C2328CA51003E22E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		6E70D01E2328CA51003E22E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6E70D0362328CED3003E22E0 /* DependencyFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DependencyFramework.framework; path = AuthModule/Carthage/Build/iOS/DependencyFramework.framework; sourceTree = "<group>"; };
-		6E70D0372328CED3003E22E0 /* Dip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dip.framework; path = AuthModule/Carthage/Build/iOS/Dip.framework; sourceTree = "<group>"; };
-		6E70D0382328CED3003E22E0 /* NetworkLayerFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkLayerFramework.framework; path = AuthModule/Carthage/Build/iOS/NetworkLayerFramework.framework; sourceTree = "<group>"; };
-		6E70D03C2328CF65003E22E0 /* DependencyFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DependencyFramework.framework; path = AuthApp/Carthage/Build/iOS/DependencyFramework.framework; sourceTree = "<group>"; };
-		6E70D03D2328CF65003E22E0 /* Dip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dip.framework; path = AuthApp/Carthage/Build/iOS/Dip.framework; sourceTree = "<group>"; };
-		6E70D03E2328CF65003E22E0 /* NetworkLayerFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkLayerFramework.framework; path = AuthApp/Carthage/Build/iOS/NetworkLayerFramework.framework; sourceTree = "<group>"; };
-		6E70D0472328CFEA003E22E0 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		6E0701DA2386BC5D008D79E9 /* AuthSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AuthSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E0701DD2386BC5D008D79E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6E0701DF2386BC5D008D79E9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6E0701E22386BC5D008D79E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6E0701E42386BC63008D79E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6E0701E72386BC63008D79E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6E0701E92386BC63008D79E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6E0701F42386BC78008D79E9 /* AuthModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AuthModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E0701F62386BC78008D79E9 /* AuthModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthModule.h; sourceTree = "<group>"; };
+		6E0701F72386BC78008D79E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6E0702012386BC95008D79E9 /* LoginWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWelcomeViewController.swift; sourceTree = "<group>"; };
+		6E0702032386BCCE008D79E9 /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
+		6E0702062386BD82008D79E9 /* View_Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View_Extensions.swift; sourceTree = "<group>"; };
+		6E0702092386BDA7008D79E9 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
+		6E07020B2386BF84008D79E9 /* LoginWelcomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWelcomePresenter.swift; sourceTree = "<group>"; };
+		6E07020D2386BF97008D79E9 /* LoginWelcomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWelcomeInteractor.swift; sourceTree = "<group>"; };
+		6E07020F2386C194008D79E9 /* WhatsAppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsAppManager.swift; sourceTree = "<group>"; };
+		6E0702112386C756008D79E9 /* CommonUIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUIExtensions.swift; sourceTree = "<group>"; };
+		6E070214238D096A008D79E9 /* SFUIText-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Regular.ttf"; sourceTree = "<group>"; };
+		6E070216238D3FA2008D79E9 /* LoginWelcomeHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWelcomeHeaderCell.swift; sourceTree = "<group>"; };
+		6E070218238D48AC008D79E9 /* FirebaseHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHandlerProtocol.swift; sourceTree = "<group>"; };
+		6E07021A238D48DA008D79E9 /* FireBaseConfigKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireBaseConfigKeys.swift; sourceTree = "<group>"; };
+		6E07021F238D6861008D79E9 /* LoginOrTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginOrTableCell.swift; sourceTree = "<group>"; };
+		6E070222238D6B92008D79E9 /* LoginNewUserDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNewUserDetailsCell.swift; sourceTree = "<group>"; };
+		6E070225238E3968008D79E9 /* LoginFBSingupTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFBSingupTableCell.swift; sourceTree = "<group>"; };
+		6E070228238E5786008D79E9 /* LoginSkipNowTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSkipNowTableCell.swift; sourceTree = "<group>"; };
+		6E07022A238E5C16008D79E9 /* AuthUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		6E70CFF22328C70B003E22E0 /* Frameworks */ = {
+		6E0701D72386BC5D008D79E9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E70D0392328CED3003E22E0 /* DependencyFramework.framework in Frameworks */,
-				6E70D03B2328CED3003E22E0 /* NetworkLayerFramework.framework in Frameworks */,
+				6E0701FB2386BC78008D79E9 /* AuthModule.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6E70D00D2328CA50003E22E0 /* Frameworks */ = {
+		6E0701F12386BC78008D79E9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E70D0422328CFAD003E22E0 /* AuthModule.framework in Frameworks */,
-				6E70D03F2328CF65003E22E0 /* DependencyFramework.framework in Frameworks */,
-				6E70D0402328CF65003E22E0 /* Dip.framework in Frameworks */,
-				6E70D0412328CF65003E22E0 /* NetworkLayerFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6E70CFEB2328C70B003E22E0 = {
+		6E0701D12386BC5C008D79E9 = {
 			isa = PBXGroup;
 			children = (
-				6E70CFF72328C70B003E22E0 /* AuthModule */,
-				6E70D0112328CA50003E22E0 /* AuthApp */,
-				6E70CFF62328C70B003E22E0 /* Products */,
-				6E70D0052328CA07003E22E0 /* Frameworks */,
+				6E0701DC2386BC5D008D79E9 /* AuthSampleApp */,
+				6E0701F52386BC78008D79E9 /* AuthModule */,
+				6E0701DB2386BC5D008D79E9 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		6E70CFF62328C70B003E22E0 /* Products */ = {
+		6E0701DB2386BC5D008D79E9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6E70CFF52328C70B003E22E0 /* AuthModule.framework */,
-				6E70D0102328CA50003E22E0 /* AuthApp.app */,
+				6E0701DA2386BC5D008D79E9 /* AuthSampleApp.app */,
+				6E0701F42386BC78008D79E9 /* AuthModule.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6E70CFF72328C70B003E22E0 /* AuthModule */ = {
+		6E0701DC2386BC5D008D79E9 /* AuthSampleApp */ = {
 			isa = PBXGroup;
 			children = (
-				6E70D0002328C9B9003E22E0 /* Auth */,
-				6E70CFF92328C70B003E22E0 /* Info.plist */,
+				6E0701DD2386BC5D008D79E9 /* AppDelegate.swift */,
+				6E0701DF2386BC5D008D79E9 /* ViewController.swift */,
+				6E0701E12386BC5D008D79E9 /* Main.storyboard */,
+				6E0701E42386BC63008D79E9 /* Assets.xcassets */,
+				6E0701E62386BC63008D79E9 /* LaunchScreen.storyboard */,
+				6E0701E92386BC63008D79E9 /* Info.plist */,
+			);
+			path = AuthSampleApp;
+			sourceTree = "<group>";
+		};
+		6E0701F52386BC78008D79E9 /* AuthModule */ = {
+			isa = PBXGroup;
+			children = (
+				6E070233238E94CD008D79E9 /* Cells */,
+				6E070232238E94B8008D79E9 /* Interactor */,
+				6E070231238E94A4008D79E9 /* Router */,
+				6E070230238E9499008D79E9 /* Views */,
+				6E07022F238E948C008D79E9 /* Presenter */,
+				6E07021C238D48E7008D79E9 /* Depedency */,
+				6E070213238D0959008D79E9 /* Graphics */,
+				6E0702082386BD9D008D79E9 /* Storyboard */,
+				6E0702052386BD71008D79E9 /* Utils */,
+				6E0701F62386BC78008D79E9 /* AuthModule.h */,
+				6E0701F72386BC78008D79E9 /* Info.plist */,
+				6E07020F2386C194008D79E9 /* WhatsAppManager.swift */,
 			);
 			path = AuthModule;
 			sourceTree = "<group>";
 		};
-		6E70D0002328C9B9003E22E0 /* Auth */ = {
+		6E0702052386BD71008D79E9 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				6E70D0472328CFEA003E22E0 /* Auth.swift */,
+				6E07022A238E5C16008D79E9 /* AuthUtils.swift */,
+				6E0702062386BD82008D79E9 /* View_Extensions.swift */,
+				6E0702112386C756008D79E9 /* CommonUIExtensions.swift */,
 			);
-			path = Auth;
+			path = Utils;
 			sourceTree = "<group>";
 		};
-		6E70D0052328CA07003E22E0 /* Frameworks */ = {
+		6E0702082386BD9D008D79E9 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				6E70D03C2328CF65003E22E0 /* DependencyFramework.framework */,
-				6E70D03D2328CF65003E22E0 /* Dip.framework */,
-				6E70D03E2328CF65003E22E0 /* NetworkLayerFramework.framework */,
-				6E70D0362328CED3003E22E0 /* DependencyFramework.framework */,
-				6E70D0372328CED3003E22E0 /* Dip.framework */,
-				6E70D0382328CED3003E22E0 /* NetworkLayerFramework.framework */,
+				6E0702092386BDA7008D79E9 /* Auth.storyboard */,
 			);
-			name = Frameworks;
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
-		6E70D0112328CA50003E22E0 /* AuthApp */ = {
+		6E070213238D0959008D79E9 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
-				6E70D0122328CA50003E22E0 /* AppDelegate.swift */,
-				6E70D0142328CA50003E22E0 /* ViewController.swift */,
-				6E70D0162328CA50003E22E0 /* Main.storyboard */,
-				6E70D0192328CA51003E22E0 /* Assets.xcassets */,
-				6E70D01B2328CA51003E22E0 /* LaunchScreen.storyboard */,
-				6E70D01E2328CA51003E22E0 /* Info.plist */,
+				6E070214238D096A008D79E9 /* SFUIText-Regular.ttf */,
 			);
-			path = AuthApp;
+			path = Graphics;
+			sourceTree = "<group>";
+		};
+		6E07021C238D48E7008D79E9 /* Depedency */ = {
+			isa = PBXGroup;
+			children = (
+				6E070218238D48AC008D79E9 /* FirebaseHandlerProtocol.swift */,
+				6E07021A238D48DA008D79E9 /* FireBaseConfigKeys.swift */,
+			);
+			path = Depedency;
+			sourceTree = "<group>";
+		};
+		6E07022F238E948C008D79E9 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				6E07020B2386BF84008D79E9 /* LoginWelcomePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		6E070230238E9499008D79E9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6E0702012386BC95008D79E9 /* LoginWelcomeViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6E070231238E94A4008D79E9 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				6E0702032386BCCE008D79E9 /* AuthRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		6E070232238E94B8008D79E9 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				6E07020D2386BF97008D79E9 /* LoginWelcomeInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		6E070233238E94CD008D79E9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				6E07021F238D6861008D79E9 /* LoginOrTableCell.swift */,
+				6E070222238D6B92008D79E9 /* LoginNewUserDetailsCell.swift */,
+				6E070225238E3968008D79E9 /* LoginFBSingupTableCell.swift */,
+				6E070228238E5786008D79E9 /* LoginSkipNowTableCell.swift */,
+				6E070216238D3FA2008D79E9 /* LoginWelcomeHeaderCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		6E70CFF02328C70B003E22E0 /* Headers */ = {
+		6E0701EF2386BC78008D79E9 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E0701F82386BC78008D79E9 /* AuthModule.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		6E70CFF42328C70B003E22E0 /* AuthModule */ = {
+		6E0701D92386BC5D008D79E9 /* AuthSampleApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6E70CFFD2328C70B003E22E0 /* Build configuration list for PBXNativeTarget "AuthModule" */;
+			buildConfigurationList = 6E0701EC2386BC63008D79E9 /* Build configuration list for PBXNativeTarget "AuthSampleApp" */;
 			buildPhases = (
-				6E70CFF02328C70B003E22E0 /* Headers */,
-				6E70CFF12328C70B003E22E0 /* Sources */,
-				6E70CFF22328C70B003E22E0 /* Frameworks */,
-				6E70CFF32328C70B003E22E0 /* Resources */,
+				6E0701D62386BC5D008D79E9 /* Sources */,
+				6E0701D72386BC5D008D79E9 /* Frameworks */,
+				6E0701D82386BC5D008D79E9 /* Resources */,
+				6E0702002386BC78008D79E9 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6E0701FA2386BC78008D79E9 /* PBXTargetDependency */,
+			);
+			name = AuthSampleApp;
+			productName = AuthSampleApp;
+			productReference = 6E0701DA2386BC5D008D79E9 /* AuthSampleApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6E0701F32386BC78008D79E9 /* AuthModule */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6E0701FD2386BC78008D79E9 /* Build configuration list for PBXNativeTarget "AuthModule" */;
+			buildPhases = (
+				6E0701EF2386BC78008D79E9 /* Headers */,
+				6E0701F02386BC78008D79E9 /* Sources */,
+				6E0701F12386BC78008D79E9 /* Frameworks */,
+				6E0701F22386BC78008D79E9 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -179,49 +284,29 @@
 			);
 			name = AuthModule;
 			productName = AuthModule;
-			productReference = 6E70CFF52328C70B003E22E0 /* AuthModule.framework */;
+			productReference = 6E0701F42386BC78008D79E9 /* AuthModule.framework */;
 			productType = "com.apple.product-type.framework";
-		};
-		6E70D00F2328CA50003E22E0 /* AuthApp */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6E70D01F2328CA51003E22E0 /* Build configuration list for PBXNativeTarget "AuthApp" */;
-			buildPhases = (
-				6E70D00C2328CA50003E22E0 /* Sources */,
-				6E70D00D2328CA50003E22E0 /* Frameworks */,
-				6E70D00E2328CA50003E22E0 /* Resources */,
-				6E70D02A2328CAB0003E22E0 /* ShellScript */,
-				6E70D0462328CFAD003E22E0 /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6E70D0452328CFAD003E22E0 /* PBXTargetDependency */,
-			);
-			name = AuthApp;
-			productName = AuthApp;
-			productReference = 6E70D0102328CA50003E22E0 /* AuthApp.app */;
-			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		6E70CFEC2328C70B003E22E0 /* Project object */ = {
+		6E0701D22386BC5C008D79E9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
 				LastUpgradeCheck = 1020;
-				ORGANIZATIONNAME = "ibibo web Pvt Ltd";
+				ORGANIZATIONNAME = "Nitin Chadha";
 				TargetAttributes = {
-					6E70CFF42328C70B003E22E0 = {
+					6E0701D92386BC5D008D79E9 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					6E0701F32386BC78008D79E9 = {
 						CreatedOnToolsVersion = 10.2.1;
 						LastSwiftMigration = 1020;
 					};
-					6E70D00F2328CA50003E22E0 = {
-						CreatedOnToolsVersion = 10.2.1;
-					};
 				};
 			};
-			buildConfigurationList = 6E70CFEF2328C70B003E22E0 /* Build configuration list for PBXProject "AuthModule" */;
+			buildConfigurationList = 6E0701D52386BC5C008D79E9 /* Build configuration list for PBXProject "AuthModule" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -229,101 +314,94 @@
 				en,
 				Base,
 			);
-			mainGroup = 6E70CFEB2328C70B003E22E0;
-			productRefGroup = 6E70CFF62328C70B003E22E0 /* Products */;
+			mainGroup = 6E0701D12386BC5C008D79E9;
+			productRefGroup = 6E0701DB2386BC5D008D79E9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6E70CFF42328C70B003E22E0 /* AuthModule */,
-				6E70D00F2328CA50003E22E0 /* AuthApp */,
+				6E0701D92386BC5D008D79E9 /* AuthSampleApp */,
+				6E0701F32386BC78008D79E9 /* AuthModule */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		6E70CFF32328C70B003E22E0 /* Resources */ = {
+		6E0701D82386BC5D008D79E9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E0701E82386BC63008D79E9 /* LaunchScreen.storyboard in Resources */,
+				6E0701E52386BC63008D79E9 /* Assets.xcassets in Resources */,
+				6E0701E32386BC5D008D79E9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6E70D00E2328CA50003E22E0 /* Resources */ = {
+		6E0701F22386BC78008D79E9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E70D01D2328CA51003E22E0 /* LaunchScreen.storyboard in Resources */,
-				6E70D01A2328CA51003E22E0 /* Assets.xcassets in Resources */,
-				6E70D0182328CA50003E22E0 /* Main.storyboard in Resources */,
+				6E07020A2386BDA7008D79E9 /* Auth.storyboard in Resources */,
+				6E070215238D096A008D79E9 /* SFUIText-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		6E70D02A2328CAB0003E22E0 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Dip.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/DependencyFramework.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/NetworkLayerFramework.framework",
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		6E70CFF12328C70B003E22E0 /* Sources */ = {
+		6E0701D62386BC5D008D79E9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E70D0482328CFEA003E22E0 /* Auth.swift in Sources */,
+				6E0701E02386BC5D008D79E9 /* ViewController.swift in Sources */,
+				6E0701DE2386BC5D008D79E9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6E70D00C2328CA50003E22E0 /* Sources */ = {
+		6E0701F02386BC78008D79E9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E70D0152328CA50003E22E0 /* ViewController.swift in Sources */,
-				6E70D0132328CA50003E22E0 /* AppDelegate.swift in Sources */,
+				6E070224238D6CDA008D79E9 /* LoginNewUserDetailsCell.swift in Sources */,
+				6E07022E238E71C5008D79E9 /* AuthUtils.swift in Sources */,
+				6E07021D238D4991008D79E9 /* FireBaseConfigKeys.swift in Sources */,
+				6E070227238E39EC008D79E9 /* LoginFBSingupTableCell.swift in Sources */,
+				6E070221238D68CD008D79E9 /* LoginOrTableCell.swift in Sources */,
+				6E0702042386BCCE008D79E9 /* AuthRouter.swift in Sources */,
+				6E0702022386BC95008D79E9 /* LoginWelcomeViewController.swift in Sources */,
+				6E07021E238D4AF6008D79E9 /* FirebaseHandlerProtocol.swift in Sources */,
+				6E0702072386BD82008D79E9 /* View_Extensions.swift in Sources */,
+				6E070229238E5786008D79E9 /* LoginSkipNowTableCell.swift in Sources */,
+				6E07020E2386BF97008D79E9 /* LoginWelcomeInteractor.swift in Sources */,
+				6E07020C2386BF84008D79E9 /* LoginWelcomePresenter.swift in Sources */,
+				6E070217238D3FA2008D79E9 /* LoginWelcomeHeaderCell.swift in Sources */,
+				6E0702122386C757008D79E9 /* CommonUIExtensions.swift in Sources */,
+				6E0702102386C194008D79E9 /* WhatsAppManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		6E70D0452328CFAD003E22E0 /* PBXTargetDependency */ = {
+		6E0701FA2386BC78008D79E9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6E70CFF42328C70B003E22E0 /* AuthModule */;
-			targetProxy = 6E70D0442328CFAD003E22E0 /* PBXContainerItemProxy */;
+			target = 6E0701F32386BC78008D79E9 /* AuthModule */;
+			targetProxy = 6E0701F92386BC78008D79E9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		6E70D0162328CA50003E22E0 /* Main.storyboard */ = {
+		6E0701E12386BC5D008D79E9 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				6E70D0172328CA50003E22E0 /* Base */,
+				6E0701E22386BC5D008D79E9 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		6E70D01B2328CA51003E22E0 /* LaunchScreen.storyboard */ = {
+		6E0701E62386BC63008D79E9 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				6E70D01C2328CA51003E22E0 /* Base */,
+				6E0701E72386BC63008D79E9 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -331,7 +409,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		6E70CFFB2328C70B003E22E0 /* Debug */ = {
+		6E0701EA2386BC63008D79E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -365,7 +443,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -390,12 +467,10 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		6E70CFFC2328C70B003E22E0 /* Release */ = {
+		6E0701EB2386BC63008D79E9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -429,7 +504,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -448,29 +522,60 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		6E70CFFE2328C70B003E22E0 /* Debug */ = {
+		6E0701ED2386BC63008D79E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALTERNATE_GROUP = "";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q9B4DS4RM6;
+				INFOPLIST_FILE = AuthSampleApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.goibibo.Goibibo.AuthModule.AuthSampleApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6E0701EE2386BC63008D79E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q9B4DS4RM6;
+				INFOPLIST_FILE = AuthSampleApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.goibibo.Goibibo.AuthModule.AuthSampleApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		6E0701FE2386BC78008D79E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = Q9B4DS4RM6;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/AuthModule/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = AuthModule/Info.plist;
-				INSTALL_GROUP = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -478,34 +583,30 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.goibibo.Goibibo.AuthModule;
+				PRODUCT_BUNDLE_IDENTIFIER = com.goibibo.Goibibo.AuthModule.AuthModule;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = "arm64 armv7 armv7s";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		6E70CFFF2328C70B003E22E0 /* Release */ = {
+		6E0701FF2386BC78008D79E9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALTERNATE_GROUP = "";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = Q9B4DS4RM6;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/AuthModule/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = AuthModule/Info.plist;
-				INSTALL_GROUP = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -513,96 +614,47 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.goibibo.Goibibo.AuthModule;
+				PRODUCT_BUNDLE_IDENTIFIER = com.goibibo.Goibibo.AuthModule.AuthModule;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = "arm64 armv7 armv7s";
-			};
-			name = Release;
-		};
-		6E70D0202328CA51003E22E0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Q9B4DS4RM6;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/AuthModule/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/AuthApp/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = AuthApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.goibibo.Goibibo.AuthApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Debug;
-		};
-		6E70D0212328CA51003E22E0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Q9B4DS4RM6;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/AuthModule/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/AuthApp/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = AuthApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.goibibo.Goibibo.AuthApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6E70CFEF2328C70B003E22E0 /* Build configuration list for PBXProject "AuthModule" */ = {
+		6E0701D52386BC5C008D79E9 /* Build configuration list for PBXProject "AuthModule" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6E70CFFB2328C70B003E22E0 /* Debug */,
-				6E70CFFC2328C70B003E22E0 /* Release */,
+				6E0701EA2386BC63008D79E9 /* Debug */,
+				6E0701EB2386BC63008D79E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6E70CFFD2328C70B003E22E0 /* Build configuration list for PBXNativeTarget "AuthModule" */ = {
+		6E0701EC2386BC63008D79E9 /* Build configuration list for PBXNativeTarget "AuthSampleApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6E70CFFE2328C70B003E22E0 /* Debug */,
-				6E70CFFF2328C70B003E22E0 /* Release */,
+				6E0701ED2386BC63008D79E9 /* Debug */,
+				6E0701EE2386BC63008D79E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6E70D01F2328CA51003E22E0 /* Build configuration list for PBXNativeTarget "AuthApp" */ = {
+		6E0701FD2386BC78008D79E9 /* Build configuration list for PBXNativeTarget "AuthModule" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6E70D0202328CA51003E22E0 /* Debug */,
-				6E70D0212328CA51003E22E0 /* Release */,
+				6E0701FE2386BC78008D79E9 /* Debug */,
+				6E0701FF2386BC78008D79E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 6E70CFEC2328C70B003E22E0 /* Project object */;
+	rootObject = 6E0701D22386BC5C008D79E9 /* Project object */;
 }
