@@ -52,6 +52,13 @@ extension UILabel {
         return self
     }
     
+    @discardableResult func addTapGesture(_ action: Selector, target: AnyObject?) -> UILabel {
+        let tapGesture = UITapGestureRecognizer(target: target, action: action)
+        self.isUserInteractionEnabled = true
+        self.addGestureRecognizer(tapGesture)
+        return self
+    }
+    
     func setTextColor(_ colorType: ColorType, fontType: FontType, andFontSize size:CGFloat) {
         
         if colorType == .gray {
@@ -135,3 +142,15 @@ extension UITextField {
     }
 }
 
+extension Dictionary {
+    func merge(_ dict: Dictionary<Key,Value>) -> Dictionary<Key,Value> {
+        
+        var mutableCopy = self
+        
+        for (key, value) in dict {
+            mutableCopy[key] = value
+        }
+        
+        return mutableCopy
+    }
+}

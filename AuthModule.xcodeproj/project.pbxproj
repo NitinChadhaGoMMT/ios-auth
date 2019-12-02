@@ -32,7 +32,23 @@
 		6E070227238E39EC008D79E9 /* LoginFBSingupTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E070225238E3968008D79E9 /* LoginFBSingupTableCell.swift */; };
 		6E070229238E5786008D79E9 /* LoginSkipNowTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E070228238E5786008D79E9 /* LoginSkipNowTableCell.swift */; };
 		6E07022E238E71C5008D79E9 /* AuthUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E07022A238E5C16008D79E9 /* AuthUtils.swift */; };
+		6E554C04239145C900E043A2 /* AuthAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E554C03239145C900E043A2 /* AuthAlert.swift */; };
+		6EA780232394F29500FA409D /* AuthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA780222394F29500FA409D /* AuthInteractor.swift */; };
+		6EA780252394F4DB00FA409D /* AuthBaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA780242394F4DB00FA409D /* AuthBaseService.swift */; };
+		6EA780272394F53600FA409D /* LoginModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA780262394F53600FA409D /* LoginModels.swift */; };
+		6EA780292394F56D00FA409D /* LoginParsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA780282394F56D00FA409D /* LoginParsers.swift */; };
+		6EA7802B2394F93300FA409D /* LoginConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA7802A2394F93300FA409D /* LoginConstants.swift */; };
+		6EA7802E2394FD4C00FA409D /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA7802D2394FD4C00FA409D /* NetworkConstants.swift */; };
+		6EA780302394FE1E00FA409D /* LoginWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA7802F2394FE1E00FA409D /* LoginWrapper.swift */; };
+		6EA780322395051000FA409D /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA780312395051000FA409D /* KeychainWrapper.swift */; };
+		6EA780362395054C00FA409D /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA780352395054C00FA409D /* KeychainItemAccessibility.swift */; };
+		6EA780382395057400FA409D /* KeychainLoginHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA780372395057400FA409D /* KeychainLoginHandler.swift */; };
+		6EA7803A23950D1400FA409D /* LoginBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA7803923950D1400FA409D /* LoginBaseViewController.swift */; };
+		6EA7803F23951A2500FA409D /* CommonUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EA7803D23951A2500FA409D /* CommonUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6EA7804023951A2500FA409D /* CommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EA7803E23951A2500FA409D /* CommonUtils.m */; };
 		6EEA6AFA239105560030F442 /* NetworkLayerFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EEA6AF9239105560030F442 /* NetworkLayerFramework.framework */; platformFilter = ios; };
+		6EEA6B4323912D0B0030F442 /* AuthDepedencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEA6B4223912D0B0030F442 /* AuthDepedencyInjector.swift */; };
+		6EEA6B452391329B0030F442 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEA6B442391329B0030F442 /* UserDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,7 +103,23 @@
 		6E070225238E3968008D79E9 /* LoginFBSingupTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFBSingupTableCell.swift; sourceTree = "<group>"; };
 		6E070228238E5786008D79E9 /* LoginSkipNowTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSkipNowTableCell.swift; sourceTree = "<group>"; };
 		6E07022A238E5C16008D79E9 /* AuthUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUtils.swift; sourceTree = "<group>"; };
+		6E554C03239145C900E043A2 /* AuthAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAlert.swift; sourceTree = "<group>"; };
+		6EA780222394F29500FA409D /* AuthInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInteractor.swift; sourceTree = "<group>"; };
+		6EA780242394F4DB00FA409D /* AuthBaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthBaseService.swift; sourceTree = "<group>"; };
+		6EA780262394F53600FA409D /* LoginModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModels.swift; sourceTree = "<group>"; };
+		6EA780282394F56D00FA409D /* LoginParsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginParsers.swift; sourceTree = "<group>"; };
+		6EA7802A2394F93300FA409D /* LoginConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginConstants.swift; sourceTree = "<group>"; };
+		6EA7802D2394FD4C00FA409D /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
+		6EA7802F2394FE1E00FA409D /* LoginWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWrapper.swift; sourceTree = "<group>"; };
+		6EA780312395051000FA409D /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		6EA780352395054C00FA409D /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItemAccessibility.swift; sourceTree = "<group>"; };
+		6EA780372395057400FA409D /* KeychainLoginHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainLoginHandler.swift; sourceTree = "<group>"; };
+		6EA7803923950D1400FA409D /* LoginBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBaseViewController.swift; sourceTree = "<group>"; };
+		6EA7803D23951A2500FA409D /* CommonUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonUtils.h; sourceTree = "<group>"; };
+		6EA7803E23951A2500FA409D /* CommonUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommonUtils.m; sourceTree = "<group>"; };
 		6EEA6AF9239105560030F442 /* NetworkLayerFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkLayerFramework.framework; path = Carthage/Build/iOS/NetworkLayerFramework.framework; sourceTree = "<group>"; };
+		6EEA6B4223912D0B0030F442 /* AuthDepedencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDepedencyInjector.swift; sourceTree = "<group>"; };
+		6EEA6B442391329B0030F442 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +177,8 @@
 		6E0701F52386BC78008D79E9 /* AuthModule */ = {
 			isa = PBXGroup;
 			children = (
+				6EA7802C2394FD4100FA409D /* Constants */,
+				6EA780212394F27500FA409D /* Service */,
 				6E070233238E94CD008D79E9 /* Cells */,
 				6E070232238E94B8008D79E9 /* Interactor */,
 				6E070231238E94A4008D79E9 /* Router */,
@@ -157,6 +191,8 @@
 				6E0701F62386BC78008D79E9 /* AuthModule.h */,
 				6E0701F72386BC78008D79E9 /* Info.plist */,
 				6E07020F2386C194008D79E9 /* WhatsAppManager.swift */,
+				6EEA6B4223912D0B0030F442 /* AuthDepedencyInjector.swift */,
+				6EEA6B442391329B0030F442 /* UserDataManager.swift */,
 			);
 			path = AuthModule;
 			sourceTree = "<group>";
@@ -164,9 +200,15 @@
 		6E0702052386BD71008D79E9 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				6EA780352395054C00FA409D /* KeychainItemAccessibility.swift */,
+				6EA780312395051000FA409D /* KeychainWrapper.swift */,
 				6E07022A238E5C16008D79E9 /* AuthUtils.swift */,
 				6E0702062386BD82008D79E9 /* View_Extensions.swift */,
 				6E0702112386C756008D79E9 /* CommonUIExtensions.swift */,
+				6E554C03239145C900E043A2 /* AuthAlert.swift */,
+				6EA780372395057400FA409D /* KeychainLoginHandler.swift */,
+				6EA7803D23951A2500FA409D /* CommonUtils.h */,
+				6EA7803E23951A2500FA409D /* CommonUtils.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -208,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				6E0702012386BC95008D79E9 /* LoginWelcomeViewController.swift */,
+				6EA7803923950D1400FA409D /* LoginBaseViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -240,6 +283,27 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		6EA780212394F27500FA409D /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				6EA780242394F4DB00FA409D /* AuthBaseService.swift */,
+				6EA780222394F29500FA409D /* AuthInteractor.swift */,
+				6EA780262394F53600FA409D /* LoginModels.swift */,
+				6EA780282394F56D00FA409D /* LoginParsers.swift */,
+				6EA7802A2394F93300FA409D /* LoginConstants.swift */,
+				6EA7802F2394FE1E00FA409D /* LoginWrapper.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		6EA7802C2394FD4100FA409D /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				6EA7802D2394FD4C00FA409D /* NetworkConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		6EEA6AF8239105560030F442 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -256,6 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E0701F82386BC78008D79E9 /* AuthModule.h in Headers */,
+				6EA7803F23951A2500FA409D /* CommonUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,7 +380,7 @@
 					};
 					6E0701F32386BC78008D79E9 = {
 						CreatedOnToolsVersion = 10.2.1;
-						LastSwiftMigration = 1020;
+						LastSwiftMigration = 1120;
 					};
 				};
 			};
@@ -395,21 +460,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EA7802E2394FD4C00FA409D /* NetworkConstants.swift in Sources */,
 				6E070224238D6CDA008D79E9 /* LoginNewUserDetailsCell.swift in Sources */,
 				6E07022E238E71C5008D79E9 /* AuthUtils.swift in Sources */,
+				6EA7802B2394F93300FA409D /* LoginConstants.swift in Sources */,
 				6E07021D238D4991008D79E9 /* FireBaseConfigKeys.swift in Sources */,
 				6E070227238E39EC008D79E9 /* LoginFBSingupTableCell.swift in Sources */,
+				6EA780292394F56D00FA409D /* LoginParsers.swift in Sources */,
 				6E070221238D68CD008D79E9 /* LoginOrTableCell.swift in Sources */,
 				6E0702042386BCCE008D79E9 /* AuthRouter.swift in Sources */,
+				6E554C04239145C900E043A2 /* AuthAlert.swift in Sources */,
+				6EA780302394FE1E00FA409D /* LoginWrapper.swift in Sources */,
+				6EA780322395051000FA409D /* KeychainWrapper.swift in Sources */,
+				6EA780232394F29500FA409D /* AuthInteractor.swift in Sources */,
 				6E0702022386BC95008D79E9 /* LoginWelcomeViewController.swift in Sources */,
+				6EA780272394F53600FA409D /* LoginModels.swift in Sources */,
+				6EEA6B4323912D0B0030F442 /* AuthDepedencyInjector.swift in Sources */,
+				6EA7804023951A2500FA409D /* CommonUtils.m in Sources */,
 				6E07021E238D4AF6008D79E9 /* FirebaseHandlerProtocol.swift in Sources */,
 				6E0702072386BD82008D79E9 /* View_Extensions.swift in Sources */,
 				6E070229238E5786008D79E9 /* LoginSkipNowTableCell.swift in Sources */,
 				6E07020E2386BF97008D79E9 /* LoginWelcomeInteractor.swift in Sources */,
+				6EA780382395057400FA409D /* KeychainLoginHandler.swift in Sources */,
+				6EA780252394F4DB00FA409D /* AuthBaseService.swift in Sources */,
 				6E07020C2386BF84008D79E9 /* LoginWelcomePresenter.swift in Sources */,
 				6E070217238D3FA2008D79E9 /* LoginWelcomeHeaderCell.swift in Sources */,
+				6EA780362395054C00FA409D /* KeychainItemAccessibility.swift in Sources */,
 				6E0702122386C757008D79E9 /* CommonUIExtensions.swift in Sources */,
 				6E0702102386C194008D79E9 /* WhatsAppManager.swift in Sources */,
+				6EEA6B452391329B0030F442 /* UserDataManager.swift in Sources */,
+				6EA7803A23950D1400FA409D /* LoginBaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,6 +581,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -555,6 +636,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

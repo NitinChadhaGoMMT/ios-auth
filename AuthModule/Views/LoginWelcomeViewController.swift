@@ -10,19 +10,22 @@ import UIKit
 
 typealias LoginCompletionBlock = (Bool, NSError) -> ()
 
-class LoginWelcomeViewController: UIViewController {
-
-    @IBOutlet weak var constraintTableViewBottomSpace: NSLayoutConstraint!
+class LoginWelcomeViewController: LoginBaseViewController {
+    
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var bottomView: UIView!
-    @IBOutlet weak var haveInviteLabel: UILabel!
-    @IBOutlet weak var enterCodeLabel: UILabel!
     @IBOutlet weak var myTable: UITableView!
+    @IBOutlet weak var enterCodeLabel: UILabel!
+    @IBOutlet weak var haveInviteLabel: UILabel!
+    @IBOutlet weak var constraintTableViewBottomSpace: NSLayoutConstraint!
     
     var presenter: LoginWelcomePresenter!
     
+    var isUserLoggingIn = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter.performInitialConfiguration()
         configureUserInterface()
     }
     
@@ -34,8 +37,34 @@ class LoginWelcomeViewController: UIViewController {
         enterCodeLabel
             .setColor(color: .customBlue)
             .setFont(fontType: .semiBold, size: 15)
+            .addTapGesture(#selector(enterReferralCodeTapped), target: self)
+        
+        resetReferralCode()
     }
     
+    @objc func enterReferralCodeTapped() {
+        let alert = AuthAlert.showReferralCodeAlert(view: self, success: { [weak self] (referralCode) in
+            self?.enterCodeLabel.text = referralCode ?? ""
+            self?.presenter?.validateReferralCode(_referralCode: referralCode!, isBranchFlow: false)
+        }) {
+            
+        }
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func resetReferralCode(){
+        presenter.resetReferralCode()
+        if let referralCode = presenter.referralCode {
+            haveInviteLabel.text = "Referral Code"
+            enterCodeLabel.text = referralCode
+            enterCodeLabel.isUserInteractionEnabled = false
+        } else {
+            haveInviteLabel.text = "Have a referral code?"
+            enterCodeLabel.text = "Enter Code"
+            enterCodeLabel.isUserInteractionEnabled = true
+        }
+        myTable.reloadData()
+    }
 }
 
 extension LoginWelcomeViewController: UITableViewDataSource, UITableViewDelegate {
@@ -48,8 +77,8 @@ extension LoginWelcomeViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cellType = self.presenter?.dataSource[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row] else {
-            //<NITIN>fatalError() //DataSource should not be empty
+        
+        guard let cellType = self.presenter?.dataSource[indexPath.section][indexPath.row] else {
             return UITableViewCell()
         }
         
@@ -83,6 +112,46 @@ extension LoginWelcomeViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func validateReferralCode(_ code: String, completionBlock: @escaping LoginCompletionBlock){
+        ActivityIndicator.show(on: self.view)
+        presenter.validateReferralCode(_referralCode: self.presenter.referralCode, isBranchFlow: true)
+    }
+    
+    func verifyReferralSuccessResponse(response: ReferralVerifyData?) {
+        hideActivityIndicator()
+        resetReferralCode()
+        
+        if isUserLoggingIn {
+            verifyMobileWithNumber(presenter.currentMobileNumber!)
+        }
+        isUserLoggingIn = false
+    }
+    
+    func verifyReferralRequestFailed(response: ErrorData?) {
+        hideActivityIndicator()
+        handleError(response)
+        resetReferralCode()
+    }
+    
+    func verifyMobileNumberRequestFailed(error: ErrorData?) {
+        hideActivityIndicator()
+        handleError(error)
+    }
+    
+    func verifyMobileWithNumber(_ mobileNo:String) {
+        
+        self.view.endEditing(true)
+        
+        if presenter.isFbSignup {
+            //self.requestFBOTPWithMobileNo(mobileNo)
+            return
+        }
+        
+        ActivityIndicator.show(on: self.view)
+        presenter.verifyMobileNumber(number: mobileNo)
+    }
+    
+    func hideActivityIndicator() {
+        ActivityIndicator.hide(on: self.view)
     }
 }
 
@@ -91,16 +160,19 @@ extension LoginWelcomeViewController: LoginNewUserDetailsCellDelegate {
         self.presenter.isFbSignup = false
         
         guard self.presenter.checkMobileValidity(mobileNumber: mobileNumber) else {
-            AuthUtils.showAlert("Please enter valid mobile number")
+            AuthUtils.showAlert(on: self, message: "Please enter valid mobile number")
             return
         }
 
+        isUserLoggingIn = true
+        presenter.currentMobileNumber = mobileNumber
+        
         if let referralCode = presenter.referralCode, let _ = presenter.branchDictionary {
-            validateReferralCode(referralCode) { (success, error) in
-                
+            validateReferralCode(referralCode) { [weak self] (success, error) in
+                self?.verifyMobileWithNumber(mobileNumber)
             }
         } else {
-            
+            verifyMobileWithNumber(mobileNumber)
         }
         
     }

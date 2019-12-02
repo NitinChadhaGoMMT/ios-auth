@@ -19,3 +19,29 @@ class ViewController: UIViewController {
     }
 }
 
+class AuthModuleHelper: AuthModuleUIProtocol {
+    
+    static let shared = AuthModuleHelper()
+    
+    func showAlert(on view: UIViewController, message: String) {
+        let alert = UIAlertController(title: "Auth Module", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        view.present(alert, animated: true, completion: nil)
+    }
+    
+    func showActivityIndicator(on _view: UIView) {
+        let activityView = UIActivityIndicatorView(style: .gray)
+        activityView.center = _view.center
+        _view.addSubview(activityView)
+        activityView.startAnimating()
+    }
+    
+    func hideActivityIndicator(from view: UIView) {
+        
+    }
+    
+    
+}
+
+
+

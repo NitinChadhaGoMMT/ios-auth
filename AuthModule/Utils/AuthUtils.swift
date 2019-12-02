@@ -8,6 +8,26 @@
 
 import UIKit
 
+struct AuthNetworkUtils {
+    
+    static func getServer_C() -> String {
+        return AuthDepedencyInjector.networkDelegate?.getServer_C() ?? AuthNetworkConstants.server_C
+    }
+    
+    static func syncMD() -> String {
+        return "78IUdfh@m^xlpwq)$a0#";
+    }
+    
+    static func getAuthKey() -> String {
+        return AuthDepedencyInjector.networkDelegate?.getAuthKey() ?? AuthNetworkConstants.authKey
+    }
+    
+    static func getUUID() -> String {
+        //<NITIN>
+        return AuthDepedencyInjector.networkDelegate?.getUUID() ?? UIDevice.current.identifierForVendor?.uuidString ?? ""
+    }
+}
+
 struct AuthUtils {
     
     static func isValidPhoneNumber(_ numberText: String?) -> Bool {
@@ -21,7 +41,11 @@ struct AuthUtils {
         return testPredicate.evaluate(with: phoneNumber)
     }
     
-    static func showAlert(_ message: String) {
-        
+    static func showAlert(on view:UIViewController, message: String) {
+        AuthDepedencyInjector.uiDelegate?.showAlert(on: view, message: message)
+    }
+    
+    static func isEmptyString(_ string: String?) -> Bool {
+        return string?.isEmpty ?? true
     }
 }
