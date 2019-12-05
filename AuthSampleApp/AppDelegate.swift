@@ -16,7 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        AuthDepedencyInjector.initializeDepedency(uiDelegate: AuthModuleHelper.shared, networkDelegate: nil)
+        AuthDepedencyInjector.initializeDepedency(uiDelegate: AuthModuleHelper.shared,
+                                                  networkDelegate: nil,
+                                                  firebaseDelegate: nil,
+                                                  firebaseRemoteDelegate: nil,
+                                                  analyticsDelegate: nil)
         return true
     }
 

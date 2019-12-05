@@ -13,6 +13,9 @@ enum LoginCellType {
     
     var height: CGFloat {
         switch self {
+        case .welcomeLogo:
+            return LoginWelcomeHeaderCell.height
+            
         case .newUserDetails:
             return LoginNewUserDetailsCell.height
             
@@ -63,6 +66,7 @@ class LoginWelcomePresenter {
             UserDataManager.shared.clearCookiesAndCache()
         }
         UserDataManager.shared.isWAChecked = false
+        logGAScreenLoadEvents()
     }
     
     func resetReferralCode(){
@@ -107,6 +111,7 @@ class LoginWelcomePresenter {
     func verificationMobileNumberRequestSucceeded(response: MobileVerifiedData?) {
         view.hideActivityIndicator()
         parseMobileVerificationResponse(verificationData: response)
+        AuthAlert.showErrorAlert(view: view, message: "Login Succeeded")
     }
     
     func verificationMobileNumberRequestFailed(error: ErrorData?) {
@@ -114,25 +119,38 @@ class LoginWelcomePresenter {
     }
     
     private func parseMobileVerificationResponse(verificationData: MobileVerifiedData?) {
-        /*
-        if verificationData.isSendOtp {
-            guard let controller = self.storyboard?.instantiateViewController(withIdentifier: "OtpVerificationViewController") as? OtpVerificationViewController else {
-                return
-            }
-            controller.mobileNo = self.currentMobileNumber
-            controller.nonce = verificationData.nonce
-            controller.isFbSignup = self.isFbSignup
-            controller.isNewUser = verificationData.isExistingUser
-            controller.isverifyMethodOtp = self.isverifyMethodOtp
-            controller.referralCode = self.model.referralCode ?? ""
-            controller.loginBlock = self.loginBlock
-            controller.pushcontroller = self.pushcontroller
-            self.navigationController?.pushViewController(controller, animated: true)
+    
+    }
+    
+    private func getCommonGAAttributes() -> [String: Any] {
+        var attributes:Dictionary<String,Any> =  [:]
+        attributes["referredInstall"] = referredInstall
+        var mediumsEnabled = "MOBILE"
+        
+        if WhatsAppManager.shared.isWhatsAppLoginEnabled() {
+            mediumsEnabled.append(contentsOf: "|FACEBOOK|Whatsapp")
+        } else {
+            mediumsEnabled.append(contentsOf: "|FACEBOOK")
         }
-        else {
-            self.performSegue(withIdentifier: "pushSignInScreenSegue", sender:UserSignInState.passwordOTP)
-            //self?.performSegue(withIdentifier: "pushUserSignInScreenSegue", sender: nil)
-        }*/
+        
+        let dict = FireBaseHandler.getDictionaryFor(keyPath: .onboarding)
+        if let status = dict["mc_status3"] as? Bool, status == true {
+            mediumsEnabled.append(contentsOf: "|MCONNECT")
+        }
+        
+        attributes["mediumsEnabled"] = mediumsEnabled
+        return attributes
+    }
+    
+    private func logGAScreenLoadEvents() {
+        SignInGAPManager.logOpenScreenEvent(for: .welcome, otherParams: getCommonGAAttributes())
+    }
+    
+    func logGAClickEvent(_ type:String) {
+        var attributes:Dictionary<String,Any> =  getCommonGAAttributes()
+        attributes["itemSelected"] = "medium_selection"
+        attributes["interactionEvent"] = type
+        SignInGAPManager.logClickEvent(for: .welcome, otherParams: attributes)
     }
     
 }

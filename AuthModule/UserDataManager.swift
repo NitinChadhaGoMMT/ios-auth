@@ -16,6 +16,8 @@ class UserDataManager {
     
     var isWAChecked: Bool = false
     
+    var isLoggedIn = false
+    
     func clearCookiesAndCache() {
         if let storedCookies = HTTPCookieStorage.shared.cookies {
             for cookie in storedCookies {

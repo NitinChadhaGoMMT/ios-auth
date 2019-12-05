@@ -45,9 +45,9 @@ class LoginNewUserDetailsCell: UITableViewCell, UITextFieldDelegate {
         continueButton.layer.cornerRadius = 5.0
         continueButton.layer.masksToBounds = true
         textFieldBottomView.backgroundColor = .customBackgroundColor
-        mobileNumberTextField.placeholder = "Enter Mobile Number"
+        mobileNumberTextField.placeholder = Constants.kMobileNumberPlaceholder
         mobileNumberTextField.delegate = self
-        mobileNumberTextField.showAccessoryViewWithButtonTitle("Dismiss")
+        mobileNumberTextField.showAccessoryViewWithButtonTitle(Constants.kDismiss)
     }
     
     func setAccessbilityForComponents() {

@@ -26,6 +26,34 @@ extension UIColor {
     static let customLightGray = UIColor(red:0.61, green:0.61, blue:0.61, alpha:1.0)
 }
 
+extension UIView {
+    
+    @discardableResult func setBackgroundColor(color: UIColor) -> UIView {
+        self.backgroundColor = color
+        return self
+    }
+    
+    @objc func height() -> CGFloat {
+        return self.frame.size.height;
+    }
+    
+    @objc func makeCircleWithBorderColor(_ borderColor: UIColor?) {
+        makeCornerRadiusWithValue(self.height() / 2, borderColor: borderColor)
+    }
+    
+    @objc func makeCornerRadiusWithValue(_ radius: CGFloat, borderColor: UIColor? = nil) {
+     
+        self.layer.cornerRadius = radius
+        self.layer.masksToBounds = true
+        
+        if borderColor != nil {
+        
+            self.layer.borderColor = borderColor?.cgColor
+            self.layer.borderWidth = 0.5
+        }
+    }
+}
+
 extension UILabel {
     
     @discardableResult func setColor(color: UIColor) -> UILabel {

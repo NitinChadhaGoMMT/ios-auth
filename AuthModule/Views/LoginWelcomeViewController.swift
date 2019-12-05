@@ -29,6 +29,11 @@ class LoginWelcomeViewController: LoginBaseViewController {
         configureUserInterface()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
     func configureUserInterface() {
         haveInviteLabel
             .setColor(color: .customGray)
@@ -39,12 +44,16 @@ class LoginWelcomeViewController: LoginBaseViewController {
             .setFont(fontType: .semiBold, size: 15)
             .addTapGesture(#selector(enterReferralCodeTapped), target: self)
         
+        topView
+            .setBackgroundColor(color: .customBlue)
+        
         resetReferralCode()
     }
     
     @objc func enterReferralCodeTapped() {
+        presenter.logGAClickEvent("enter_referral_code")
         let alert = AuthAlert.showReferralCodeAlert(view: self, success: { [weak self] (referralCode) in
-            self?.enterCodeLabel.text = referralCode ?? ""
+            self?.enterCodeLabel.text = referralCode ?? Constants.kEmptyString
             self?.presenter?.validateReferralCode(_referralCode: referralCode!, isBranchFlow: false)
         }) {
             
@@ -54,13 +63,13 @@ class LoginWelcomeViewController: LoginBaseViewController {
     
     func resetReferralCode(){
         presenter.resetReferralCode()
-        if let referralCode = presenter.referralCode {
-            haveInviteLabel.text = "Referral Code"
-            enterCodeLabel.text = referralCode
+        if let _ = presenter.branchDictionary {
+            haveInviteLabel.text = Constants.kReferralCode
+            enterCodeLabel.text = presenter.referralCode
             enterCodeLabel.isUserInteractionEnabled = false
         } else {
-            haveInviteLabel.text = "Have a referral code?"
-            enterCodeLabel.text = "Enter Code"
+            haveInviteLabel.text = Constants.kInviteReferralText
+            enterCodeLabel.text = Constants.kEnterCode
             enterCodeLabel.isUserInteractionEnabled = true
         }
         myTable.reloadData()
@@ -83,6 +92,10 @@ extension LoginWelcomeViewController: UITableViewDataSource, UITableViewDelegate
         }
         
         switch cellType {
+            
+        case .welcomeLogo:
+            let cell: LoginWelcomeHeaderCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            return cell
             
         case .orLabelCell:
             let cell: LoginOrTableCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
@@ -118,7 +131,7 @@ extension LoginWelcomeViewController: UITableViewDataSource, UITableViewDelegate
     
     func verifyReferralSuccessResponse(response: ReferralVerifyData?) {
         hideActivityIndicator()
-        resetReferralCode()
+        self.enterCodeLabel.text = presenter.referralCode
         
         if isUserLoggingIn {
             verifyMobileWithNumber(presenter.currentMobileNumber!)
@@ -153,14 +166,47 @@ extension LoginWelcomeViewController: UITableViewDataSource, UITableViewDelegate
     func hideActivityIndicator() {
         ActivityIndicator.hide(on: self.view)
     }
+    
+    //MARK - Whatsapp Login
+    func connectWithWhatsapp() {
+        SignInGAPManager.signinOrSignUpEvent(withEventType: .startedSignIn, withMethod: .whatsApp, withVerifyType: nil, withOtherDetails: ["from_page":"Welcome_Page"])
+        self.presenter.logGAClickEvent("whatsapp_button")
+        WhatsAppManager.shared.referralCode = presenter.referralCode
+        WhatsAppManager.shared.delegate = self
+        AuthDepedencyInjector.uiDelegate?.showActivityIndicator(on: self.view, withMessage: "Logging in with Whatsapp..")
+        WhatsAppManager.shared.loginWithWhatsapp(referralCode: presenter.referralCode)
+    }
+    
+    //MARK: FB Login
+    func connectWithFB() {
+        
+        self.presenter.isFbSignup = true
+        SignInGAPManager.signinOrSignUpEvent(withEventType: .startedSignIn, withMethod: .facebook, withVerifyType: nil, withOtherDetails: ["from_page":"Welcome_Page"])
+        self.presenter.logGAClickEvent("facebook_button")
+        //new FB API need to integreate here
+        if let referralCode = self.presenter.referralCode, let _ = self.presenter.branchDictionary  {
+            self.validateReferralCode(referralCode, completionBlock: {[weak self] (success, error) in
+                guard success == true else {
+                    return
+                }
+
+                //self?.signInWithFB(isForceLinkFb: nil, referralCode:self?.model.referralCode)
+            })
+        }
+        else{
+            //signInWithFB(isForceLinkFb: nil, referralCode:self.model.referralCode)
+        }
+    }
 }
 
 extension LoginWelcomeViewController: LoginNewUserDetailsCellDelegate {
     func didSelectedNewUserLogin(with mobileNumber: String) {
+        SignInGAPManager.startTime()
+        self.presenter.logGAClickEvent("mobile_continue")
         self.presenter.isFbSignup = false
         
         guard self.presenter.checkMobileValidity(mobileNumber: mobileNumber) else {
-            AuthUtils.showAlert(on: self, message: "Please enter valid mobile number")
+            AuthUtils.showAlert(on: self, message: Constants.kInvalidNumberMessage)
             return
         }
 
@@ -174,6 +220,16 @@ extension LoginWelcomeViewController: LoginNewUserDetailsCellDelegate {
         } else {
             verifyMobileWithNumber(mobileNumber)
         }
+        
+    }
+}
+
+extension LoginWelcomeViewController: WhatsappHelperDelegate {
+    func loginSuccessful(verifiedData: OtpVerifiedData?, extraKeys: String?) {
+        
+    }
+    
+    func loginFailed(error: Any?) {
         
     }
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import AuthModule
+import SDWebImage
 
 class ViewController: UIViewController {
 
@@ -21,7 +22,13 @@ class ViewController: UIViewController {
 
 class AuthModuleHelper: AuthModuleUIProtocol {
     
+    func showActivityIndicator(on view: UIView, withMessage message: String) {
+        
+    }
+    
     static let shared = AuthModuleHelper()
+    
+    var activityView: UIActivityIndicatorView?
     
     func showAlert(on view: UIViewController, message: String) {
         let alert = UIAlertController(title: "Auth Module", message: message, preferredStyle: .alert)
@@ -30,16 +37,21 @@ class AuthModuleHelper: AuthModuleUIProtocol {
     }
     
     func showActivityIndicator(on _view: UIView) {
-        let activityView = UIActivityIndicatorView(style: .gray)
-        activityView.center = _view.center
-        _view.addSubview(activityView)
-        activityView.startAnimating()
+        activityView = UIActivityIndicatorView(style: .gray)
+        activityView?.center = _view.center
+        _view.addSubview(activityView!)
+        activityView?.startAnimating()
     }
     
     func hideActivityIndicator(from view: UIView) {
-        
+        if activityView != nil {
+            activityView?.removeFromSuperview()
+        }
     }
     
+    func setImage(for imageView: UIImageView, url: URL) {
+        
+    }
     
 }
 

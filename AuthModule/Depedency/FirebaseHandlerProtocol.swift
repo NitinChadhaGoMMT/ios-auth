@@ -50,3 +50,22 @@ public extension FirebaseHandlerProtocol {
     }
 }
 
+@objc public protocol FirebaseRemoteHelperProtocol {
+    
+    @objc static func getRFStringValue(forkey key:String) -> String
+}
+
+
+public extension FirebaseRemoteHelperProtocol {
+    
+    static func getRFStringValue(forkey key:String) -> String {
+        return getRFStringValue(forkey: key)
+    }
+}
+
+public protocol CommonAnalytisProtocol {
+    
+    static func logCategory(event: String, dictionary: Dictionary<String, Any>?)
+    
+}
+

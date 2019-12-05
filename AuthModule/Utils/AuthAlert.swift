@@ -41,7 +41,7 @@ struct AuthAlert {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
         alertController.addAction(action)
-        view.show(alertController, sender: nil)
+        view.present(alertController, animated: true, completion: nil)
     }
     
     

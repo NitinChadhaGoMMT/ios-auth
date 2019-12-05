@@ -34,10 +34,10 @@ class LoginSkipNowTableCell: UITableViewCell {
             .setColor(color: .customGray)
             .setFont(fontType: .regular, size: 10.0)
 
-        let simpleText: NSString = "By Proceeding, you agree to Terms and Conditions."
+        let simpleText: NSString = Constants.kTnCText as NSString
         termsAndConditionLabel.text = simpleText as String
         let mutableString = NSMutableAttributedString(attributedString: termsAndConditionLabel.attributedText!)
-        mutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.customBlue, range: simpleText.range(of: "Terms and Conditions"))
+        mutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.customBlue, range: simpleText.range(of: Constants.kTnC))
         termsAndConditionLabel.attributedText = mutableString
     }
     

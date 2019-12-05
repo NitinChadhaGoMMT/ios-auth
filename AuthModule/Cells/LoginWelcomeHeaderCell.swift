@@ -8,7 +8,7 @@
 
 import UIKit
 
-fileprivate class LoginWelcomeDataModel {
+class LoginWelcomeDataModel {
     var titleSubtitleText: NSAttributedString?
     var bgColor: UIColor = .customBlue
     var logoImage: String?
@@ -96,11 +96,13 @@ fileprivate class LoginWelcomeHeaderViewModel {
         
         itemData?.append(FireBaseHandler.getArrayFor(keyPath: .onboardingWelcomeTutorial, dbPath: .goCoreDatabase))
         
-        if let items = itemData as? [[String:Any]] {
+        if let items1 = itemData, let items = items1.first as? [Any]  {
             dataSource.removeAll()
             
             for item in items {
-                dataSource.append(LoginWelcomeDataModel(dict: item))
+                if let item = item as? [String: Any] {
+                    dataSource.append(LoginWelcomeDataModel(dict: item))
+                }
             }
             
             if branchDict != nil {
@@ -177,6 +179,7 @@ class LoginWelcomeHeaderCell: UITableViewCell, UICollectionViewDelegate,UICollec
     
     var timer: Timer?
     fileprivate var viewModel = LoginWelcomeHeaderViewModel()
+    static let height:CGFloat = 225
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -221,8 +224,15 @@ class LoginWelcomeHeaderCell: UITableViewCell, UICollectionViewDelegate,UICollec
         return viewModel.dataSource.count
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.size.width, height: 225)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LoginWelcomeCollectionCell", for: indexPath) as! LoginWelcomeCollectionCell
+        //cell.isSkipEnabled = self.isSkipEnabled
+        cell.configureCellDetails(data:  viewModel.dataSource[indexPath.row])
+        return cell
     }
     
     override func willMove(toSuperview newSuperview: UIView?) {
@@ -247,6 +257,12 @@ class LoginWelcomeHeaderCell: UITableViewCell, UICollectionViewDelegate,UICollec
         else{
             self.collectionView?.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: true)
         }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let currentIndex = scrollView.contentOffset.x / scrollView.frame.width
+        self.pageControl.currentPage = Int(round(currentIndex))
+        self.pageControl.currentPageIndicatorTintColor = UIColor.white
     }
     
 }

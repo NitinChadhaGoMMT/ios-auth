@@ -291,10 +291,8 @@ open class KeychainWrapper {
     
     @discardableResult open func set(_ value: [String:Any], forKey key: String, withAccessibility accessibility: KeychainItemAccessibility? = nil) -> Bool {
         do {
-            if let postData : Data = try JSONSerialization.data(withJSONObject: value, options: .prettyPrinted){
-                
-                return set(postData, forKey: key, withAccessibility: accessibility)
-            }
+            let postData : Data = try JSONSerialization.data(withJSONObject: value, options: .prettyPrinted)
+            return set(postData, forKey: key, withAccessibility: accessibility)
         }
         catch {
             return false

@@ -1,1 +1,2 @@
 git "git@github.com:goibibo/ios-network.git" "master"
+github "facebook/facebook-ios-sdk"

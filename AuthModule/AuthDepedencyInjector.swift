@@ -12,10 +12,13 @@ public protocol AuthModuleUIProtocol {
 
     func showActivityIndicator(on view: UIView)
     
+    func showActivityIndicator(on view: UIView, withMessage message: String)
+    
     func hideActivityIndicator(from view: UIView)
     
     func showAlert(on view:UIViewController, message: String)
     
+    func setImage(for imageView: UIImageView, url: URL)
 }
 
 public protocol AuthModuleNetworkProtocol {
@@ -35,9 +38,20 @@ public class AuthDepedencyInjector {
     
     internal static var branchReferDictionary: NSDictionary?
     
-    public static func initializeDepedency(uiDelegate: AuthModuleUIProtocol?, networkDelegate: AuthModuleNetworkProtocol?) {
+    internal static var firebaseHandlerDelegate: FirebaseHandlerProtocol.Type?
+    
+    internal static var firebaseRemoteHandlerDelegate: FirebaseRemoteHelperProtocol.Type?
+    
+    internal static var AnalyticsDelegate: CommonAnalytisProtocol.Type?
+    
+    public static func initializeDepedency(uiDelegate: AuthModuleUIProtocol?,
+                                           networkDelegate: AuthModuleNetworkProtocol?,
+                                           firebaseDelegate: FirebaseHandlerProtocol.Type?,
+                                           firebaseRemoteDelegate: FirebaseRemoteHelperProtocol.Type?,
+                                           analyticsDelegate: CommonAnalytisProtocol.Type?) {
         self.uiDelegate = uiDelegate
         self.networkDelegate = networkDelegate
+        self.AnalyticsDelegate = analyticsDelegate
     }
     
     public static func injectReferralDictionary(dictionary: NSDictionary?) {

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -32,17 +30,17 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ohy-7P-GW7">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.33333333333333331" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="dCm-UP-cdW"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="zKN-ao-PGr">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="802"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="758"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LoginWelcomeHeaderCell" rowHeight="180" id="YtJ-aN-d5O" customClass="LoginWelcomeHeaderCell" customModule="AuthModule" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1" width="414" height="180"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="LoginWelcomeHeaderCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="LoginWelcomeHeaderCell" rowHeight="180" id="YtJ-aN-d5O" customClass="LoginWelcomeHeaderCell" customModule="AuthModule" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="180"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YtJ-aN-d5O" id="00s-m3-to6">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="180"/>
@@ -58,7 +56,7 @@
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LoginWelcomeCollectionCell" id="38F-p2-6Mk" customClass="LoginWelcomeCollectionCell" customModule="Goibibo" customModuleProvider="target">
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LoginWelcomeCollectionCell" id="38F-p2-6Mk" customClass="LoginWelcomeCollectionCell" customModule="AuthModule" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="414" height="180"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -185,15 +183,15 @@
                                             <outlet property="pageControl" destination="aTD-Ui-Y5D" id="bXm-Lt-eIL"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LoginNewUserDetailsCell" rowHeight="125" id="OGA-0I-GbP" customClass="LoginNewUserDetailsCell" customModule="Goibibo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="181" width="414" height="125"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LoginNewUserDetailsCell" rowHeight="125" id="OGA-0I-GbP" customClass="LoginNewUserDetailsCell" customModule="AuthModule" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="208" width="414" height="125"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OGA-0I-GbP" id="eyn-2c-nU5">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="125"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4bA-ZG-hIT">
-                                                    <rect key="frame" x="35" y="80" width="305" height="40"/>
+                                                    <rect key="frame" x="35" y="80" width="344" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="1Lb-HH-0OM"/>
                                                     </constraints>
@@ -204,7 +202,7 @@
                                                     </connections>
                                                 </button>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cqp-D0-FYq">
-                                                    <rect key="frame" x="35" y="28" width="305" height="30"/>
+                                                    <rect key="frame" x="35" y="28" width="344" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="qLY-tL-JXk"/>
                                                     </constraints>
@@ -212,7 +210,7 @@
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" returnKeyType="go" enablesReturnKeyAutomatically="YES"/>
                                                 </textField>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5k4-xv-hPS">
-                                                    <rect key="frame" x="35" y="59" width="305" height="1"/>
+                                                    <rect key="frame" x="35" y="59" width="344" height="1"/>
                                                     <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="GRb-aV-8qc"/>
@@ -237,18 +235,18 @@
                                             <outlet property="textFieldBottomView" destination="5k4-xv-hPS" id="NOx-D4-DnY"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LoginOrTableCell" rowHeight="70" id="maY-Ic-ntD" customClass="LoginOrTableCell" customModule="Goibibo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="306" width="414" height="70"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LoginOrTableCell" rowHeight="70" id="maY-Ic-ntD" customClass="LoginOrTableCell" customModule="AuthModule" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="333" width="414" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="maY-Ic-ntD" id="gJJ-c6-FbC">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pLs-Iu-N2f">
-                                                    <rect key="frame" x="0.0" y="15" width="375" height="40"/>
+                                                    <rect key="frame" x="0.0" y="15" width="414" height="40"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mlt-lS-yOz">
-                                                            <rect key="frame" x="120.5" y="19.5" width="50" height="1"/>
+                                                            <rect key="frame" x="140" y="19.5" width="50" height="1"/>
                                                             <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="32S-LS-hMp"/>
@@ -256,7 +254,7 @@
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mQr-me-wGN">
-                                                            <rect key="frame" x="175.5" y="9.5" width="24" height="21"/>
+                                                            <rect key="frame" x="195" y="9.5" width="24" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="24" id="XmD-Rw-sDJ"/>
                                                                 <constraint firstAttribute="height" constant="21" id="aaC-SS-sK6"/>
@@ -266,7 +264,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rcJ-Ei-jgG">
-                                                            <rect key="frame" x="204.5" y="19.5" width="50" height="1"/>
+                                                            <rect key="frame" x="224" y="19.5" width="50" height="1"/>
                                                             <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="50" id="IZT-3h-1pQ"/>
@@ -299,7 +297,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LoginFBSingupTableCell" rowHeight="60" id="4y6-1r-zrk" customClass="LoginFBSingupTableCell" customModule="AuthModule" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="376" width="414" height="60"/>
+                                        <rect key="frame" x="0.0" y="403" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4y6-1r-zrk" id="duU-UV-sVQ">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
@@ -348,18 +346,18 @@
                                             <outlet property="fbIconImageView" destination="ZC3-3B-dzK" id="f2x-lp-QSu"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="WhatsappLoginCell" rowHeight="60" id="xqQ-eA-psr" customClass="WhatsappLoginCell" customModule="Goibibo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="436" width="414" height="60"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="WhatsappLoginCell" rowHeight="60" id="xqQ-eA-psr" customClass="WhatsappLoginCell" customModule="AuthModule" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="463" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xqQ-eA-psr" id="Ao8-Vo-WSq">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="e8k-zc-0HA">
-                                                    <rect key="frame" x="20" y="0.0" width="335" height="40"/>
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="40"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="atY-fm-bGu">
-                                                            <rect key="frame" x="0.0" y="0.0" width="162.5" height="40"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="182" height="40"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RKy-MT-JMx">
                                                                     <rect key="frame" x="8" y="5" width="30" height="30"/>
@@ -369,7 +367,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="AXF-OX-xcL">
-                                                                    <rect key="frame" x="48" y="9.5" width="106.5" height="21"/>
+                                                                    <rect key="frame" x="48" y="9.5" width="126" height="21"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="21" id="A04-Rk-tNV"/>
                                                                     </constraints>
@@ -389,7 +387,7 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ln3-rv-QkQ">
-                                                            <rect key="frame" x="172.5" y="0.0" width="162.5" height="40"/>
+                                                            <rect key="frame" x="192" y="0.0" width="182" height="40"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YcO-qu-hnz">
                                                                     <rect key="frame" x="8" y="5" width="30" height="30"/>
@@ -441,15 +439,15 @@
                                             <outlet property="wpIconImageView" destination="YcO-qu-hnz" id="8xG-4L-FhQ"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LoginSkipNowTableCell" rowHeight="50" id="uZO-G5-8Sd" customClass="LoginSkipNowTableCell" customModule="Goibibo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="496" width="414" height="50"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LoginSkipNowTableCell" rowHeight="50" id="uZO-G5-8Sd" customClass="LoginSkipNowTableCell" customModule="AuthModule" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="523" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uZO-G5-8Sd" id="mkv-MM-QC9">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By proceeding, you agree to Term &amp; Conditions" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RJH-rD-w60">
-                                                    <rect key="frame" x="17" y="2" width="342" height="34"/>
+                                                    <rect key="frame" x="17" y="2" width="381" height="34"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="34" id="E9s-Bg-gKQ"/>
                                                     </constraints>
@@ -468,15 +466,15 @@
                                             <outlet property="termsAndConditionLabel" destination="RJH-rD-w60" id="G8l-AB-tGo"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LoginContinueTableCell" rowHeight="60" id="Vv2-c1-zoq" customClass="LoginContinueTableCell" customModule="Goibibo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="546" width="414" height="60"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LoginContinueTableCell" rowHeight="60" id="Vv2-c1-zoq" customClass="LoginContinueTableCell" customModule="AuthModule" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="573" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vv2-c1-zoq" id="tfh-TK-Ebs">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLq-BQ-jTI">
-                                                    <rect key="frame" x="35" y="10" width="305" height="40"/>
+                                                    <rect key="frame" x="35" y="10" width="344" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="SpO-Bf-jqS"/>
                                                     </constraints>
@@ -497,15 +495,15 @@
                                             <outlet property="continueButton" destination="dLq-BQ-jTI" id="iid-sh-gNO"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LoginPasswordTableCell" rowHeight="90" id="bUr-f0-WVB" customClass="LoginPasswordTableCell" customModule="Goibibo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="606" width="414" height="90"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LoginPasswordTableCell" rowHeight="90" id="bUr-f0-WVB" customClass="LoginPasswordTableCell" customModule="AuthModule" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="633" width="414" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bUr-f0-WVB" id="c2o-yj-QrU">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3I6-A0-oOC">
-                                                    <rect key="frame" x="20" y="6" width="335" height="30"/>
+                                                    <rect key="frame" x="20" y="6" width="374" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="Iav-dj-pMD"/>
                                                     </constraints>
@@ -513,7 +511,7 @@
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="go" secureTextEntry="YES"/>
                                                 </textField>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jdl-lW-Qff">
-                                                    <rect key="frame" x="20" y="37" width="335" height="1"/>
+                                                    <rect key="frame" x="20" y="37" width="374" height="1"/>
                                                     <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="WPF-bR-IrT"/>
@@ -610,7 +608,7 @@
                             <constraint firstAttribute="trailing" secondItem="Ohy-7P-GW7" secondAttribute="trailing" id="RaN-61-3js"/>
                             <constraint firstItem="L8p-th-ttN" firstAttribute="top" secondItem="Snx-9A-TTb" secondAttribute="bottom" id="eJt-2Z-oni"/>
                             <constraint firstItem="Ohy-7P-GW7" firstAttribute="top" secondItem="mHo-Dv-rA8" secondAttribute="top" id="fiw-b4-xM9"/>
-                            <constraint firstItem="zKN-ao-PGr" firstAttribute="top" secondItem="mHo-Dv-rA8" secondAttribute="top" id="juL-K4-zhE"/>
+                            <constraint firstItem="zKN-ao-PGr" firstAttribute="top" secondItem="Vjf-ao-Q7r" secondAttribute="top" id="juL-K4-zhE"/>
                             <constraint firstItem="Ohy-7P-GW7" firstAttribute="leading" secondItem="mHo-Dv-rA8" secondAttribute="leading" id="trp-nf-m6Z"/>
                             <constraint firstItem="Snx-9A-TTb" firstAttribute="top" secondItem="zKN-ao-PGr" secondAttribute="bottom" id="wyc-OM-lAK"/>
                             <constraint firstItem="zKN-ao-PGr" firstAttribute="leading" secondItem="mHo-Dv-rA8" secondAttribute="leading" id="yPL-7l-bRn"/>
