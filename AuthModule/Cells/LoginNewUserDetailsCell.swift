@@ -27,9 +27,8 @@ class LoginNewUserDetailsCell: UITableViewCell, UITextFieldDelegate {
         doInitialConfigurations()
     }
     
-    
     @IBAction func actionWhatsappPressed(_ sender: Any) {
-      //<NITIN>  UserDataManager.sharedInstance().isWAChecked = !UserDataManager.sharedInstance().isWAChecked
+        UserDataManager.shared.isWAChecked.toggle()
     }
     
     @IBAction func actionContinuePressed(_ sender: AnyObject) {
@@ -59,21 +58,7 @@ class LoginNewUserDetailsCell: UITableViewCell, UITextFieldDelegate {
     
     //MARK: TextField Delegate Methods
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        let textEntered = (textField.text! as NSString).replacingCharacters(in: range, with: string)
-        
-        if textEntered.count > 10 {
-            return false
-        }
-        
-        let blockedCharSet = NSMutableCharacterSet.decimalDigit().inverted
-        let invalidRange = textEntered.rangeOfCharacter(from: blockedCharSet)
-        
-        if invalidRange != nil {
-            return false
-        }
-        
-        return true
+        return AuthUtils.isValidTextForMobileField(textField, shouldChangeCharactersIn: range, replacementString: string)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

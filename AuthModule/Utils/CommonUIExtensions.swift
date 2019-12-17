@@ -24,9 +24,16 @@ extension UIColor {
     static let customOrangeColor = UIColor(red:0.95, green:0.40, blue:0.13, alpha:1.0)
     static var goBlue: UIColor = UIColor(red: 0.1333333, green: 0.462745098039216, blue: 0.890196078431373, alpha: 1.0)
     static let customLightGray = UIColor(red:0.61, green:0.61, blue:0.61, alpha:1.0)
+    static var customBlack: UIColor = UIColor(red: 0.07843137254902, green: 0.094117647058824, blue: 0.137254901960784, alpha: 1.0)
 }
 
 extension UIView {
+    
+    func addTapGestureWithAction(_ action: Selector, target: AnyObject?) {   
+        let tapGesture = UITapGestureRecognizer(target: target, action: action)
+        self.isUserInteractionEnabled = true
+        self.addGestureRecognizer(tapGesture)
+    }
     
     @discardableResult func setBackgroundColor(color: UIColor) -> UIView {
         self.backgroundColor = color
@@ -51,6 +58,18 @@ extension UIView {
             self.layer.borderColor = borderColor?.cgColor
             self.layer.borderWidth = 0.5
         }
+    }
+    
+    func drawDottedLine(start p0: CGPoint, end p1: CGPoint) {
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.strokeColor = UIColor.lightGray.cgColor
+        shapeLayer.lineWidth = 1
+        shapeLayer.lineDashPattern = [5, 3]
+        
+        let path = CGMutablePath()
+        path.addLines(between: [p0, p1])
+        shapeLayer.path = path
+        self.layer.addSublayer(shapeLayer)
     }
 }
 
@@ -161,12 +180,16 @@ extension UITextField {
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.setFont(fontType: .regular, size: 14)
         button.layer.cornerRadius = 5.0
-        //<NITIN>button.addTarget(self, action: #selector(UITextField.hideKeyboard), for: .touchUpInside)
+        button.addTarget(self, action: #selector(UITextField.hideKeyboard), for: .touchUpInside)
         
         view.addSubview(button)
         
         self.inputAccessoryView = view;
         self.reloadInputViews()
+    }
+    
+    @objc func hideKeyboard() {
+        self.resignFirstResponder()
     }
 }
 

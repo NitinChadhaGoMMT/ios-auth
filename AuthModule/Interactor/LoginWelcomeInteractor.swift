@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginWelcomeInteractor: NSObject {
+class LoginWelcomeInteractor: BaseInteractor {
 
     weak var presenter: LoginWelcomePresenter!
     

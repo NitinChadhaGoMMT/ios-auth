@@ -8,27 +8,16 @@
 
 import UIKit
 
-
-class SharedCache {
-    
-    static var shared = SharedCache()
-    
-    func getUserDefaltObject(forKey: String) -> Dictionary<AnyHashable, Any>{
-        return [:]
-    }
-    
-}
-
 class FireBaseHandler {
     
-    var FirebaseDelegate = AuthDepedencyInjector.firebaseHandlerDelegate
+    static let FirebaseDelegate = AuthDepedencyInjector.firebaseHandlerDelegate
     
-    static func getStringFor(keyPath: FirebaseConfigKey, dbPath: FirebaseDatabaseKey = .goConfigDatabase) -> String {
-        return ""
+    static func getStringFor(keyPath: FirebaseConfigKey, dbPath: FirebaseDatabaseKey = .goConfigDatabase) -> String? {
+        return FirebaseDelegate?.getStringFor(keyPath: keyPath, dbPath: dbPath)
     }
     
-    static func getBoolFor(keyPath: FirebaseConfigKey, dbPath: FirebaseDatabaseKey = .goConfigDatabase) -> Bool {
-        return false
+    static func getBoolFor(keyPath: FirebaseConfigKey, dbPath: FirebaseDatabaseKey = .goConfigDatabase) -> Bool? {
+        return FirebaseDelegate?.getBoolFor(keyPath: keyPath, dbPath: dbPath)
     }
     
     static func getDictionaryFor(keyPath: FirebaseConfigKey, dbPath: FirebaseDatabaseKey = .goConfigDatabase) -> Dictionary<AnyHashable, Any> {
@@ -114,10 +103,10 @@ class WhatsAppManager {
         let phone = FireBaseHandler.getStringFor(keyPath: .whatsapp_login_phone, dbPath: .goCoreDatabase)
         var text = ""
         if referralCode == nil || referralCode!.count == 0{
-            text = FireBaseHandler.getStringFor(keyPath: .whatsapp_login_text, dbPath: .goCoreDatabase)
+            text = FireBaseHandler.getStringFor(keyPath: .whatsapp_login_text, dbPath: .goCoreDatabase) ?? ""
         }
         else{
-            text = FireBaseHandler.getStringFor(keyPath: .whatsappLoginTextReferral, dbPath: .goCoreDatabase)
+            text = FireBaseHandler.getStringFor(keyPath: .whatsappLoginTextReferral, dbPath: .goCoreDatabase) ?? ""
             if text.contains("<rcode>") {
                 text = text.replacingOccurrences(of: "<rcode>", with: referralCode ?? "")
             }
@@ -138,5 +127,9 @@ class WhatsAppManager {
         if let url = getWhatsappUrl(referralCode: referralCode) {
             UIApplication.shared.openURL(url)
         }
+    }
+    
+    func setWhatsappOptInStatusPostLogin(status: Bool) { //<NITIN>
+        
     }
 }

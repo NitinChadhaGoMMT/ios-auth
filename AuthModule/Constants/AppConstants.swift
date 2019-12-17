@@ -13,7 +13,7 @@ struct Constants {
     //LoginWelcomeViewController
     
     static let kEmptyString = ""
-    static let kDismiss = ""
+    static let kDismiss = "Dismiss"
     
     static let kReferralCode = "Referral Code"
     static let kInviteReferralText = "Have a referral code?"

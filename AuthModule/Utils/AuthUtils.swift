@@ -45,7 +45,51 @@ struct AuthUtils {
         AuthDepedencyInjector.uiDelegate?.showAlert(on: view, message: message)
     }
     
-    static func isEmptyString(_ string: String?) -> Bool {
-        return string?.isEmpty ?? true
+    static func isEmptyString(_ string: Any?) -> Bool {
+        guard let string = string as? String, !string.isEmpty else { return true }
+        return false
+    }
+    
+    static func isValidTextForMobileField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+           
+           let textEntered = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+           
+           if textEntered.count > 10 {
+               return false
+           }
+           
+           let blockedCharSet = NSMutableCharacterSet.decimalDigit().inverted
+           let invalidRange = textEntered.rangeOfCharacter(from: blockedCharSet)
+           
+           if invalidRange != nil {
+               return false
+           }
+           
+           return true
+       }
+    
+    static func isValidString(_ string: String?) -> Bool {
+        
+        guard let string = string, !string.isEmpty else {
+            return false
+        }
+
+        if string.trimmingCharacters(in: .whitespaces).count <= 0 {
+            return false
+        }
+        
+        return true
+    }
+    
+    static func setNormalAmazonSecureCredential(_ credentials: String) {
+        //<NITIN>
+    }
+    
+    static func setChanakyaAmazonSecureCredential(_ credentials: String) {
+        //<NITIN>
+    }
+    
+    static func isMobileNetworkConnected() -> Bool {
+        return true
     }
 }

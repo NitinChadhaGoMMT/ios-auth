@@ -64,8 +64,6 @@ class SignInGAPManager: NSObject {
             IBSVAnalytics?.logCategory(event: getScreenName(for: screenType), dictionary: nil)
         }
         
-        
-        
         //FirebaseAnalyticsHandler.sharedInstance.pushEvent(withName: "openScreen", withAttributes:attributes)
         
         var tempAttributes = details
@@ -332,9 +330,9 @@ class LoginGAPManager: NSObject {
         if let _ = controller as? LoginWelcomeViewController {
             screenName = loginScreenName
         }
-        /*<NITIN>else if let _ = controller as? OtpVerificationViewController {
+        else if let _ = controller as? OtpVerificationViewController {
             screenName = otpScreenName
-        }
+        }/*
         else if let _ = controller as? UserSignupViewController {
             screenName = createAccountOrExistingScreenName
         }

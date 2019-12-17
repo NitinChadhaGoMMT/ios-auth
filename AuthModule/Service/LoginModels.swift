@@ -55,12 +55,12 @@ class OtpVerifiedData:NSObject {
     var userStatus : String?
     var facebookId : String?
     var fbPhone : String?
-    //<NITIN>var userStatusType: UserStatusType = .absent
+    var userStatusType: UserStatusType = .absent
     var isSuccess : Bool = false
     var errorData : ErrorData?
     var newMobile : String?
     
-    //<NITIN>var userData : LoggedInUserData?
+    var userData : LoggedInUserData?
 }
 
 @objcMembers class ErrorData: NSObject {

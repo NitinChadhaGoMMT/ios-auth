@@ -18,6 +18,8 @@ public protocol AuthModuleUIProtocol {
     
     func showAlert(on view:UIViewController, message: String)
     
+    func showToastMessage(on view:UIViewController, message: String)
+    
     func setImage(for imageView: UIImageView, url: URL)
 }
 
@@ -60,12 +62,3 @@ public class AuthDepedencyInjector {
     
 }
 
-public class ActivityIndicator {
-    static func show(on view: UIView) {
-        AuthDepedencyInjector.uiDelegate?.showActivityIndicator(on: view)
-    }
-    
-    static func hide(on view: UIView) {
-        AuthDepedencyInjector.uiDelegate?.hideActivityIndicator(from: view)
-    }
-}

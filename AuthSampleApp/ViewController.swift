@@ -22,6 +22,10 @@ class ViewController: UIViewController {
 
 class AuthModuleHelper: AuthModuleUIProtocol {
     
+    func showToastMessage(on view: UIViewController, message: String) {
+        
+    }
+    
     func showActivityIndicator(on view: UIView, withMessage message: String) {
         
     }

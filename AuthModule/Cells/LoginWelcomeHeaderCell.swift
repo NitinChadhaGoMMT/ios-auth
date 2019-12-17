@@ -122,7 +122,7 @@ fileprivate class LoginWelcomeHeaderViewModel {
     
     func getFilteredCellsFromAuthParams() -> Array<Any> {
         
-        guard let authParams = SharedCache.shared.getUserDefaltObject(forKey: "auth_params") as? Dictionary<String, Any> else {
+        guard let authParams = AuthCache.shared.getUserDefaltObject(forKey: "auth_params") as? Dictionary<String, Any> else {
             return Array<Any>()
         }
         
@@ -230,7 +230,6 @@ class LoginWelcomeHeaderCell: UITableViewCell, UICollectionViewDelegate,UICollec
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LoginWelcomeCollectionCell", for: indexPath) as! LoginWelcomeCollectionCell
-        //cell.isSkipEnabled = self.isSkipEnabled
         cell.configureCellDetails(data:  viewModel.dataSource[indexPath.row])
         return cell
     }
@@ -251,12 +250,8 @@ class LoginWelcomeHeaderCell: UITableViewCell, UICollectionViewDelegate,UICollec
     }
     
     @objc func scrollCollectionViewPage(){
-        if self.pageControl.currentPage + 1 < viewModel.dataSource.count {
-            self.collectionView?.scrollToItem(at: IndexPath(item: self.pageControl.currentPage + 1, section: 0), at: .centeredHorizontally, animated: true)
-        }
-        else{
-            self.collectionView?.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: true)
-        }
+        let nextPage = (self.pageControl.currentPage + 1 < viewModel.dataSource.count) ? self.pageControl.currentPage + 1 : 0
+        self.collectionView?.scrollToItem(at: IndexPath(item: nextPage, section: 0), at: .centeredHorizontally, animated: true)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

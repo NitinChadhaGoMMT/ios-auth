@@ -67,5 +67,7 @@ public protocol CommonAnalytisProtocol {
     
     static func logCategory(event: String, dictionary: Dictionary<String, Any>?)
     
+    
+    
 }
 

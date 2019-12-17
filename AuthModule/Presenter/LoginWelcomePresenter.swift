@@ -34,11 +34,13 @@ enum LoginCellType {
     }
 }
 
-class LoginWelcomePresenter {
+class LoginWelcomePresenter: LoginWelcomeViewToPresenterProtocol {
 
     weak var view: LoginWelcomeViewController!
     
     var interactor: LoginWelcomeInteractor!
+    
+    var router: AuthRouter?
     
     var dataSource: [[LoginCellType]]
     
@@ -57,12 +59,12 @@ class LoginWelcomePresenter {
         }
     }
     
-    func checkMobileValidity(mobileNumber: String?) -> Bool {
+    func isValidPhoneNumber(mobileNumber: String?) -> Bool {
         return AuthUtils.isValidPhoneNumber(mobileNumber)
     }
     
     func performInitialConfiguration() {
-        if FireBaseHandler.getBoolFor(keyPath: .clearCookieOnLogin) {
+        if FireBaseHandler.getBoolFor(keyPath: .clearCookieOnLogin) ?? false {
             UserDataManager.shared.clearCookiesAndCache()
         }
         UserDataManager.shared.isWAChecked = false
@@ -74,6 +76,12 @@ class LoginWelcomePresenter {
         if let codeDict = AuthDepedencyInjector.branchReferDictionary {
             branchDictionary = codeDict
             referralCode = branchDictionary?.object(forKey: "refercode") as? String
+        }
+    }
+    
+    func checkForMobileConnect() {
+        interactor.checkForMobileConnectAPI { (mConnectData) in
+            self.view.setMConnectData(data: mConnectData)
         }
     }
     
@@ -111,7 +119,28 @@ class LoginWelcomePresenter {
     func verificationMobileNumberRequestSucceeded(response: MobileVerifiedData?) {
         view.hideActivityIndicator()
         parseMobileVerificationResponse(verificationData: response)
-        AuthAlert.showErrorAlert(view: view, message: "Login Succeeded")
+        if let response = response {
+            navigateToPostMobileNumberScreen(verifiedData: response)
+        }
+    }
+    
+    func navigateToPostMobileNumberScreen(verifiedData: MobileVerifiedData) {
+        
+        guard let router = router else { return }
+        
+        if verifiedData.isSendOtp || true {
+            let newView = router.navigateToOTPVerificationController(
+                mobileNumber: self.currentMobileNumber ?? "",
+                nonce: verifiedData.nonce,
+                isFbSignup: self.isFbSignup,
+                isNewUser: verifiedData.isExistingUser,
+                isverifyMethodOtp: view.isverifyMethodOtp,
+                referralCode: self.referralCode ?? "")
+            view.navigationController?.pushViewController(newView!, animated: true)
+        } else {
+            let newViewController = router.navigateToPasswordViewController(userState: .passwordOTP, referralCode: referralCode, mobile: currentMobileNumber!, isVerifyOTP: view.isverifyMethodOtp)
+            view.navigationController?.pushViewController(newViewController!, animated: true)
+        }
     }
     
     func verificationMobileNumberRequestFailed(error: ErrorData?) {

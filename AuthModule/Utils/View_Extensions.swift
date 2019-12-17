@@ -12,13 +12,15 @@ protocol ReusableView: class {
     static var reuseIdentifier: String { get }
 }
 
+protocol NibLoadableView: class {
+    static var nibName: String { get }
+}
+
 extension ReusableView where Self: UIView {
     static var reuseIdentifier: String {
         return NSStringFromClass(self).components(separatedBy: ".").last!
     }
 }
-
-extension UITableViewCell: ReusableView { }
 
 extension UIViewController: ReusableView {
     static var reuseIdentifier: String {
@@ -26,16 +28,14 @@ extension UIViewController: ReusableView {
     }
 }
 
-protocol NibLoadableView: class {
-    static var nibName: String { get }
-}
+extension UITableViewCell: ReusableView { }
+
 
 extension NibLoadableView where Self: UIView {
     static var nibName: String {
         return NSStringFromClass(self).components(separatedBy: ".").last!
     }
 }
-
 
 extension UITableView {
     

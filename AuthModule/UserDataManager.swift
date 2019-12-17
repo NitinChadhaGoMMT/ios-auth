@@ -26,4 +26,17 @@ class UserDataManager {
         }
         URLCache.shared.removeAllCachedResponses()
     }
+    
+    func updateLoggedInUser(to dictionary: Dictionary<String, Any>) {
+        //<NITIN>
+    }
+    
+    func accessTokenUpdated() {
+        //<NITIN>
+    }
+    
+    static func updateLoggedInUserGoCash() {
+        
+    }
+    
 }

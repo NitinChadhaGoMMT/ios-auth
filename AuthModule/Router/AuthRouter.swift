@@ -12,8 +12,12 @@ public class AuthRouter {
 
     public static let shared = AuthRouter()
     
+    public var pushController: UIViewController?
+    
+    public var completionBlock: ((Bool, Error?) -> Void)?
+    
     var mainstoryboard: UIStoryboard {
-        return UIStoryboard(name:"Auth",bundle: Bundle(identifier: "com.goibibo.Goibibo.AuthModule.AuthModule"))
+        return UIStoryboard(name:"Auth",bundle: Bundle(identifier: "com.goibibo.AuthModule"))
     }
     
     public func createModule() -> UIViewController? {
@@ -27,10 +31,57 @@ public class AuthRouter {
         
         view.presenter = presenter
         presenter.view = view
+        presenter.router = AuthRouter.shared
         interactor.presenter = presenter
         presenter.interactor = interactor
         
         return view
     }
     
+    public func navigateToPasswordViewController(userState: UserSignInState, referralCode: String?, mobile: String, isVerifyOTP: Bool) -> UIViewController? {
+        
+        guard let view: SignInWithPasswordViewController = mainstoryboard.getViewController() else {
+            return nil
+        }
+        
+        let presenter = SignInWithPasswordPresenter(referralCode: referralCode, mobileNumber: mobile, isVerifyOTP: isVerifyOTP, state: userState)
+        let interactor = SignInWithPasswordInteractor()
+        view.presenter = presenter
+        presenter.view = view
+        presenter.interactor = interactor
+        interactor.presenter = presenter
+        
+        return view
+    }
+    
+    public func navigateToOTPVerificationController(mobileNumber: String, nonce: String?, isFbSignup: Bool, isNewUser: Bool, isverifyMethodOtp: Bool, referralCode: String) -> UIViewController? {
+        guard let view: OtpVerificationViewController = mainstoryboard.getViewController() else {
+            return nil
+        }
+        
+        let presenter = OTPVerificationPresenter(mobileNumber: mobileNumber, nonce: nonce, isFbSignup: isFbSignup, isNewUser: isNewUser, isverifyMethodOtp: isverifyMethodOtp, referralCode: referralCode)
+        let interactor = OTPVerificationInteractor()
+        
+        presenter.view = view
+        view.presenter = presenter
+        presenter.interactor = interactor
+        presenter.router = self
+        interactor.presenter = presenter
+        
+        return view
+    }
+    
+    func navigateToSignUpController(referralCodde: String, otpResponse: OtpVerifiedData?) -> UIViewController? {
+    
+        guard let view: SignupViewController = mainstoryboard.getViewController() else {
+            return nil
+        }
+        
+        let presenter = SignUpPresenter(referralCodde: referralCodde, otpResponse: otpResponse)
+        
+        view.presenter = presenter
+        presenter.view = view
+        
+        return view
+    }
 }

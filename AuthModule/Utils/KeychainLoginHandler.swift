@@ -7,18 +7,18 @@
 //
 
 import UIKit
+import CommonCrypto
 
 class KeychainLoginHandler {
     
     static let shared = KeychainLoginHandler()
 
     func getDeviceId() -> String? {
+        
         return KeychainWrapper.standard.string(forKey: "device_id")
     }
     
     func setDeviceId(){
-        //<NITIN>
         KeychainWrapper.standard.set("Utils.deviceUUID()", forKey: "device_id")
     }
-    
 }
