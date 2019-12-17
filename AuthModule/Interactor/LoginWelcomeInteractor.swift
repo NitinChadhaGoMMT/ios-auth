@@ -8,9 +8,9 @@
 
 import UIKit
 
-class LoginWelcomeInteractor: BaseInteractor {
-
-    weak var presenter: LoginWelcomePresenter!
+class LoginWelcomeInteractor: BaseInteractor, LoginWelcomePresenterToInteractorProtocol {
+    
+    weak var presenter: LoginWelcomeInteractorToPresenterProtocol!
     
     func verifyReferralCode(referralCode:String, isBranchFlow:Bool) {
         AuthService.verifyReferralCode(referralCode: referralCode, isBranchFlow: isBranchFlow, success: { (data) in
@@ -30,6 +30,4 @@ class LoginWelcomeInteractor: BaseInteractor {
             self?.presenter.verifyReferralRequestFailed(response: error)
         }
     }
-    
-    
 }

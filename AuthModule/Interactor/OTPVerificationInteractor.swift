@@ -21,4 +21,14 @@ class OTPVerificationInteractor: BaseInteractor {
             self?.presenter?.failedResponseFromVerifyOTPRequest(error: errorData)
         }
     }
+    
+    func requestToResendOTP(_ mobileNo:String) {
+        
+        AuthService.requestToResendOTPforMobile(mobileNo, success: { [weak self](data) in
+            let response = LoginMobileVerifyParser().parseJSON(data) as? MobileVerifiedData
+            self?.presenter?.successResponseFromResendOTPRequest(data: response)
+        }) { [weak self](error) in
+            self?.presenter?.failedResponseFromResendOTPRequest(error: error)
+        }
+    }
 }

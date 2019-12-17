@@ -31,8 +31,6 @@ class OtpVerificationViewController: LoginBaseViewController {
     var totalTime:Int = 30
     var countDownTimer: Timer?
     
-    var presenter: OTPVerificationPresenter?
-    
     var isContinueEnabled: Bool = false {
         didSet {
             continueLabel.isUserInteractionEnabled = self.isContinueEnabled
@@ -40,6 +38,22 @@ class OtpVerificationViewController: LoginBaseViewController {
             continueLabel.textColor = self.isContinueEnabled ? UIColor.white : UIColor(red: 255, green: 255, blue: 255, alpha: 1.0)
         }
     }
+    
+    var isResendEnabled: Bool = false {
+        didSet {
+            self.resendButton.isEnabled = isResendEnabled
+            self.resendButton.isUserInteractionEnabled = isResendEnabled
+            self.timerLabel.isHidden = isResendEnabled
+            self.resendButtonConstraint.constant = isResendEnabled ?  0 : -20
+            self.resendButton.setTitle( isResendEnabled ? "Resend OTP" : "Resend OTP in", for: .normal)
+            self.resendButton.setTitleColor( isResendEnabled ? UIColor.customBlue : UIColor.gray , for: .normal)
+            UIView.animate(withDuration: 0.2) {
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+    
+    var presenter: OTPVerificationPresenter?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,6 +106,16 @@ class OtpVerificationViewController: LoginBaseViewController {
         }
     }
     
+    fileprivate func prepareOtpTextFiled() {
+        
+        for index in 0 ..< otpTextFieldsOutletCollection.count {
+            otpTextFieldsOutletCollection[index].text = ""
+        }
+        
+        otpTextFieldsOutletCollection[0].becomeFirstResponder()
+    }
+    
+    
     @objc func continueTapped(sender: AnyObject) {
         let otpFromTextFiled = self.getOtpFromTextFields()
         self.presenter?.logGAClickEvent(for: "verify")
@@ -134,21 +158,12 @@ class OtpVerificationViewController: LoginBaseViewController {
             self.countDownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         }
         
-        //UI Updation
-        self.resendButton.isEnabled = false
-        self.resendButton.isUserInteractionEnabled = false
-        self.resendButton.setTitle("Resend OTP in", for: .normal)
-        self.resendButton.setTitleColor(UIColor.gray, for: .normal)
-        self.timerLabel.isHidden = false
-        self.resendButtonConstraint.constant = -20
-        UIView.animate(withDuration: 0.2) {
-            self.view.layoutIfNeeded()
-        }
+        isResendEnabled = false
     }
     
     @objc fileprivate func updateTimer() {
         if totalTime > 1 {
-            totalTime -= 1
+            totalTime.decrement()
             self.timerLabel.text = "\(totalTime) sec"
         } else {
             endTimer()
@@ -158,19 +173,7 @@ class OtpVerificationViewController: LoginBaseViewController {
     fileprivate func endTimer() {
         self.countDownTimer?.invalidate()
         self.countDownTimer = nil
-        self.resendButton.setTitle("Resend OTP", for: .normal)
-        if #available(iOS 11.0, *) {
-            self.resendButton.setTitleColor(UIColor(named:"##2276e3"), for: .normal)
-        } else {
-            self.resendButton.setTitleColor(UIColor.blue, for: .normal)
-        }
-        self.timerLabel.isHidden = true
-        self.resendButton.isEnabled = true
-        self.resendButton.isUserInteractionEnabled = true
-        self.resendButtonConstraint.constant = 0
-        UIView.animate(withDuration: 0.2) {
-            self.view.layoutIfNeeded()
-        }
+        isResendEnabled = true
         
         //<NITIN>if wtsAppShowCount == totalResentCount && (FirebaseRemoteHelper.sharedInstance.getRemoteFunctionBoolValue(forkey: "wtsApp_Otp_Enable")) {
                 //self.enableWhatsAppLogin()
@@ -204,6 +207,43 @@ class OtpVerificationViewController: LoginBaseViewController {
         handleError(error)
         otpTextFieldsOutletCollection[3].becomeFirstResponder()
     }
+    
+    func requestToResendOTPSuccessResponse() {
+        ActivityIndicator.hide(on: self.view)
+        prepareOtpTextFiled()
+    }
+    
+    func requestToResendOTPFailedResponse(error: ErrorData?) {
+        ActivityIndicator.hide(on: self.view)
+        handleError(error)
+    }
+    
+    @IBAction func resendCodeAgain(sender: AnyObject) {
+        presenter?.otpResendCount.increment()
+        self.startTimer()
+        //self.logGAClickEvent(for: "resend_otp")
+        LoginGAPManager.logTappedEvent(with: .resendOTP, forController: self)
+        ActivityIndicator.show(on: self.view)
+
+        if presenter?.isFbSignup == true {
+            //<NITIN>
+            /*AuthInteractor.requestFacebookToResendOTP(presenter?.mobileNumber, success: { [weak self] (data) in
+                self?.hideActivityIndicator()
+                if let response = data as? MobileVerifiedData {
+                    self?.nonce = response.nonce
+                }
+            }) { [weak self](error) in
+                self?.hideActivityIndicator()
+                self?.handleError(error)
+            } */
+        }
+        else{
+            presenter?.requestToResendOTP()
+        }
+    }
+    
+    
+    
 }
 
 extension OtpVerificationViewController: UITextFieldDelegate {

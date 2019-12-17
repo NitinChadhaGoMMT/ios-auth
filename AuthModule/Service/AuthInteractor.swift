@@ -13,6 +13,14 @@ typealias FailureBlock = (ErrorData?) -> Void
 typealias SuccessBlock = (Any?) -> Void
 
 class AuthService: AuthServiceProtocol {
+    
+    static func requestOTPforMobile(_ mobileNumber: String, success: @escaping SuccessBlock, failure: @escaping FailureBlock) {
+        self.requestOTPService(mobileNumber, forceSendOtp: true, isResendOtp: false, success: success, failure: failure)
+    }
+    
+    static func requestToResendOTPforMobile(_ mobileNumber: String, success: @escaping SuccessBlock, failure: @escaping FailureBlock) {
+        self.requestOTPService(mobileNumber, forceSendOtp: true, isResendOtp: true, success: success, failure: failure)
+    }
 
     static func checkAccountExistence(with mobileNumber:String, success: @escaping SuccessBlock, failure: @escaping FailureBlock) {
         self.requestOTPService(mobileNumber, forceSendOtp: false, isResendOtp: false, success: success, failure: failure)

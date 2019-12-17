@@ -68,10 +68,21 @@ extension SignInWithPasswordViewController: UITableViewDataSource {
     
     @objc func continueButtonAction(button: UIButton) {
         if button.tag == SignInWithPasswordPresenter.SignInCellType.requestOTP.rawValue {
-            
+            requestOtp()
         } else {
             signIn(withMobileNo: self.presenter?.mobileNumber, withPassword: self.presenter?.password)
         }
+    }
+    
+    func requestOtp() {
+        self.logGAClickEvent(for: "request_otp")
+        if AuthUtils.isEmptyString(presenter?.mobileNumber) {
+            AuthAlert.showEmptyMobileErrorAlert(view: self)
+            return
+        }
+        
+        self.view.endEditing(true)
+        presenter?.requestOTP()
     }
     
     // MARK: - Sign In and OTP

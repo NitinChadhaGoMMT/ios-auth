@@ -205,3 +205,14 @@ extension Dictionary {
         return mutableCopy
     }
 }
+
+extension Int {
+    
+    mutating func increment() {
+        self += 1
+    }
+    
+    mutating func decrement() {
+        self -= 1
+    }
+}

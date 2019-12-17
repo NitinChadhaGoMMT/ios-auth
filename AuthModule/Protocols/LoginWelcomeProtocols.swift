@@ -8,8 +8,24 @@
 
 import UIKit
 
-class LoginWelcomeProtocols: NSObject {
+protocol InteractorBaseProtocol: class {
+    
+    func checkForMobileConnectAPI(completionBlock: @escaping (MconnectData?) -> ())
+    
+    func verifymConnectDataWithMobileNo(_ mobileNo: String)
+}
 
+protocol LoginBaseProtocol: class {
+    
+    var isverifyMethodOtp: Bool { get set }
+    
+    func showActivityIndicator()
+    
+    func hideActivityIndicator()
+    
+    func push(screen: UIViewController)
+    
+    func  handleError(_ errorData:Any?)
 }
 
 protocol LoginWelcomeViewToPresenterProtocol: class{
@@ -39,21 +55,37 @@ protocol LoginWelcomeViewToPresenterProtocol: class{
     func validateReferralCode(_referralCode: String?, isBranchFlow: Bool)
 }
 
-protocol LoginWelcomePresenterToViewProtocol: class{
+protocol LoginWelcomePresenterToViewProtocol: LoginBaseProtocol {
 
+    func setMConnectData(data: MconnectData?)
+    
+    func resetReferralCode()
+    
+    func verifyReferralRequestFailed(response: ErrorData?)
+    
+    func verifyReferralSuccessResponse(response: ReferralVerifyData?)
 }
 
 protocol LoginWelcomePresenterToRouterProtocol: class {
-    //static func createModule()-> NoticeViewController
-    ///func pushToMovieScreen(navigationConroller:UINavigationController)
+    
+    func navigateToOTPVerificationController(mobileNumber: String, nonce: String?, isFbSignup: Bool, isNewUser: Bool, isverifyMethodOtp: Bool, referralCode: String) -> UIViewController?
+    
+    func navigateToPasswordViewController(userState: UserSignInState, referralCode: String, mobile: String, isVerifyOTP: Bool) -> UIViewController?
 }
 
-protocol LoginWelcomePresenterToInteractorProtocol: class {
-    //var presenter:InteractorToPresenterProtocol? {get set}
-    //func fetchNotice()
+protocol LoginWelcomePresenterToInteractorProtocol: InteractorBaseProtocol {
+    
+    func verifyReferralCode(referralCode:String, isBranchFlow:Bool)
+    
+    func verifyMobileNumber(mobileNumber: String)
+    
 }
 
 protocol LoginWelcomeInteractorToPresenterProtocol: class {
-    //func noticeFetchedSuccess(noticeModelArray:Array<NoticeModel>)
-    //func noticeFetchFailed()
+    
+    func verifyReferralSuccessResponse(response: ReferralVerifyData?)
+    
+    func verifyReferralRequestFailed(response: ErrorData?)
+    
+    func verificationMobileNumberRequestSucceeded(response: MobileVerifiedData?)
 }

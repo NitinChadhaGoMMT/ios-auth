@@ -24,7 +24,7 @@ struct AuthAlert {
         AuthDepedencyInjector.uiDelegate?.showToastMessage(on: view, message: message)
     }
     
-    static func appGenericAlert(on view: UIViewController, message: String) {
+    static func showAppGenericAlert(on view: UIViewController, message: String) {
         AuthDepedencyInjector.uiDelegate?.showAlert(on: view, message: message)
     }
 

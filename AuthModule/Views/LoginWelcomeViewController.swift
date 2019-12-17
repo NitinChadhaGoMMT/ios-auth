@@ -10,7 +10,7 @@ import UIKit
 
 typealias LoginCompletionBlock = (Bool, NSError) -> ()
 
-class LoginWelcomeViewController: LoginBaseViewController {
+class LoginWelcomeViewController: LoginBaseViewController, LoginWelcomePresenterToViewProtocol {
     
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var bottomView: UIView!
@@ -126,12 +126,10 @@ extension LoginWelcomeViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func validateReferralCode(_ code: String, completionBlock: @escaping LoginCompletionBlock){
-        ActivityIndicator.show(on: self.view)
         presenter?.validateReferralCode(_referralCode: self.presenter?.referralCode, isBranchFlow: true)
     }
     
     func verifyReferralSuccessResponse(response: ReferralVerifyData?) {
-        hideActivityIndicator()
         self.enterCodeLabel.text = presenter?.referralCode
         
         if isUserLoggingIn {
@@ -141,13 +139,11 @@ extension LoginWelcomeViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func verifyReferralRequestFailed(response: ErrorData?) {
-        hideActivityIndicator()
         handleError(response)
         resetReferralCode()
     }
     
     func verifyMobileNumberRequestFailed(error: ErrorData?) {
-        hideActivityIndicator()
         handleError(error)
     }
     
@@ -160,12 +156,7 @@ extension LoginWelcomeViewController: UITableViewDataSource, UITableViewDelegate
             return
         }
         
-        ActivityIndicator.show(on: self.view)
         presenter?.verifyMobileNumber(number: mobileNo)
-    }
-    
-    func hideActivityIndicator() {
-        ActivityIndicator.hide(on: self.view)
     }
     
     //MARK - Whatsapp Login

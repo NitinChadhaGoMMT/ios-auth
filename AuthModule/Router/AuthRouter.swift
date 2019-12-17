@@ -38,7 +38,24 @@ public class AuthRouter {
         return view
     }
     
-    public func navigateToPasswordViewController(userState: UserSignInState, referralCode: String?, mobile: String, isVerifyOTP: Bool) -> UIViewController? {
+    func navigateToSignUpController(referralCodde: String, otpResponse: OtpVerifiedData?) -> UIViewController? {
+    
+        guard let view: SignupViewController = mainstoryboard.getViewController() else {
+            return nil
+        }
+        
+        let presenter = SignUpPresenter(referralCodde: referralCodde, otpResponse: otpResponse)
+        
+        view.presenter = presenter
+        presenter.view = view
+        
+        return view
+    }
+}
+
+extension AuthRouter: LoginWelcomePresenterToRouterProtocol {
+    
+    public func navigateToPasswordViewController(userState: UserSignInState, referralCode: String, mobile: String, isVerifyOTP: Bool) -> UIViewController? {
         
         guard let view: SignInWithPasswordViewController = mainstoryboard.getViewController() else {
             return nil
@@ -67,20 +84,6 @@ public class AuthRouter {
         presenter.interactor = interactor
         presenter.router = self
         interactor.presenter = presenter
-        
-        return view
-    }
-    
-    func navigateToSignUpController(referralCodde: String, otpResponse: OtpVerifiedData?) -> UIViewController? {
-    
-        guard let view: SignupViewController = mainstoryboard.getViewController() else {
-            return nil
-        }
-        
-        let presenter = SignUpPresenter(referralCodde: referralCodde, otpResponse: otpResponse)
-        
-        view.presenter = presenter
-        presenter.view = view
         
         return view
     }

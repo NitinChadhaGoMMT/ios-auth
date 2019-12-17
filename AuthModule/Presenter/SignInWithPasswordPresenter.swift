@@ -44,13 +44,13 @@ class SignInWithPasswordPresenter {
     var view: SignInWithPasswordViewController?
     
     var referralCode: String?
-    var mobileNumber: String?
+    var mobileNumber: String
     var isVerifyOTP: Bool
     var state: UserSignInState!
     
     var dataSource: [SignInCellType]!
     
-    init(referralCode: String?, mobileNumber: String?, isVerifyOTP: Bool, state: UserSignInState) {
+    init(referralCode: String?, mobileNumber: String, isVerifyOTP: Bool, state: UserSignInState) {
         self.referralCode = referralCode
         self.mobileNumber = mobileNumber
         self.isVerifyOTP = isVerifyOTP
@@ -83,6 +83,19 @@ class SignInWithPasswordPresenter {
     }
     
     func logInUser(withUsername userName: String, password: String, referralCode: String?) {
+        
+    }
+    
+    func requestOTP() {
+        interactor?.requestOTP(forMobile: mobileNumber)
+    }
+    
+    func requestOTPSuccessResponse(resposne: MobileVerifiedData) {
+        let vc = AuthRouter.shared.navigateToOTPVerificationController(mobileNumber: mobileNumber, nonce: resposne.nonce, isFbSignup: false, isNewUser: false, isverifyMethodOtp: false, referralCode: self.referralCode ?? "")
+        view?.navigationController?.pushViewController(vc!, animated: true)
+    }
+    
+    func requestOTPFailedResponse(error: ErrorData?) {
         
     }
     

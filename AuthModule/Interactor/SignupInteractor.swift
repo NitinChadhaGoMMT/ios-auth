@@ -9,7 +9,8 @@
 import UIKit
 
 class SignupInteractor: BaseInteractor {
-
+    
     weak var presenter: SignUpPresenter?
+    
     
 }

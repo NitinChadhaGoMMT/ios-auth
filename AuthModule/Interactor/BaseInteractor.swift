@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BaseInteractor {
+class BaseInteractor: InteractorBaseProtocol {
 
     func checkForMobileConnectAPI(completionBlock: @escaping (MconnectData?) -> ()){
         

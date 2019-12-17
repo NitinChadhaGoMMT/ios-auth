@@ -8,7 +8,7 @@
     
 import UIKit
     
-class LoginBaseViewController: UIViewController {
+class LoginBaseViewController: UIViewController, LoginBaseProtocol {
         
     var mconnectData: MconnectData?
     lazy var isverifyMethodOtp = true
@@ -55,6 +55,18 @@ class LoginBaseViewController: UIViewController {
     
     func pushController(viewController: UIViewController) {
         self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func showActivityIndicator() {
+        ActivityIndicator.show(on: self.view)
+    }
+    
+    func hideActivityIndicator() {
+        ActivityIndicator.hide(on: self.view)
+    }
+    
+    func push(screen: UIViewController) {
+        self.navigationController?.pushViewController(screen, animated: true)
     }
 }
     

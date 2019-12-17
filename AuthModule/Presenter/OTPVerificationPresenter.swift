@@ -13,7 +13,7 @@ class OTPVerificationPresenter {
     var isNewUser: Bool
     var isFbSignup: Bool
     var referralCode: String
-    var mobileNumber: String?
+    var mobileNumber: String
     var nonce: String?
     var totalResentCount = 0
     var userVerificationData: OtpVerifiedData?
@@ -21,6 +21,8 @@ class OTPVerificationPresenter {
     weak var view: OtpVerificationViewController?
     var interactor: OTPVerificationInteractor?
     weak var router: AuthRouter?
+    
+    var otpResendCount: Int = 0
     
     init(mobileNumber: String,
          nonce: String?,
@@ -48,8 +50,8 @@ class OTPVerificationPresenter {
     
     fileprivate func logGAVerificationEvent() {
         var attributes:Dictionary<String,Any> =  [:]
-        attributes["userType"] = isNewUser ? "new_user":"existing_user"
-        attributes["medium"] = self.isFbSignup ? "facebook" :"mobile"
+        attributes["userType"] = isNewUser ? "new_user": "existing_user"
+        attributes["medium"] = self.isFbSignup ? "facebook" : "mobile"
         attributes["resendTries"] = totalResentCount
         let seconds = Int(SignInGAPManager.getTimeInterval())
         attributes["timeTillVerification"] = seconds
@@ -58,7 +60,11 @@ class OTPVerificationPresenter {
     }
     
     func verifyOTP(withOtp otp:String) {
-        interactor?.verifyOtp(mobileNumber ?? "", withOtp: otp, nonce: nonce ?? "", isFBSignup: isFbSignup, referralCode: referralCode)
+        interactor?.verifyOtp(mobileNumber, withOtp: otp, nonce: nonce ?? "", isFBSignup: isFbSignup, referralCode: referralCode)
+    }
+    
+    func requestToResendOTP() {
+        interactor?.requestToResendOTP(self.mobileNumber)
     }
     
     func successResponseFromVerifyOTPRequest(data: OtpVerifiedData?) {
@@ -85,5 +91,18 @@ class OTPVerificationPresenter {
     
     func failedResponseFromVerifyOTPRequest(error: ErrorData? ) {
         view?.verifyOTPRequestFailedResponse(error: error)
+    }
+    
+    func successResponseFromResendOTPRequest(data: MobileVerifiedData?) {
+        guard let responseData = data else {
+            view?.requestToResendOTPFailedResponse(error: nil)
+            return
+        }
+        nonce = responseData.nonce
+        view?.requestToResendOTPSuccessResponse()
+    }
+    
+    func failedResponseFromResendOTPRequest(error: ErrorData? ) {
+        view?.requestToResendOTPFailedResponse(error: error)
     }
 }
