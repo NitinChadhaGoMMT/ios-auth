@@ -26,13 +26,16 @@ class LoginWelcomeViewController: LoginBaseViewController, LoginWelcomePresenter
         super.viewDidLoad()
         presenter?.performInitialConfiguration()
         configureUserInterface()
-        ActivityIndicator.show(on: self.view)
-        presenter?.checkForMobileConnect()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        KeychainLoginHandler.shared.presentKeyChainLogin(sender: self)
     }
     
     func configureUserInterface() {
@@ -49,6 +52,14 @@ class LoginWelcomeViewController: LoginBaseViewController, LoginWelcomePresenter
             .setBackgroundColor(color: .customBlue)
         
         resetReferralCode()
+    }
+    
+    override func addMconnectView(){
+        if let view: MConnectPoweredByView = Bundle.loadNib() {
+            view.layoutIfNeeded()
+            self.myTable.layoutIfNeeded()
+            self.myTable.tableFooterView = view
+        }
     }
     
     @objc func enterReferralCodeTapped() {
@@ -187,10 +198,6 @@ extension LoginWelcomeViewController: UITableViewDataSource, UITableViewDelegate
         else{
             signInWithFB(isForceLinkFb: nil, referralCode:self.presenter?.referralCode)
         }
-    }
-    
-    func signInWithFB(isForceLinkFb: String?, referralCode: String?) {
-        
     }
 }
 

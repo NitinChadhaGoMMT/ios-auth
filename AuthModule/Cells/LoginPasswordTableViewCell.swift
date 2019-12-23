@@ -19,7 +19,7 @@ class LoginPasswordTableViewCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet weak var textFieldBottomLineView: UIView!
     
     weak var delegate: LoginPasswordCellProtocol?
-    var cellType: SignInWithPasswordPresenter.SignInCellType?
+    var cellType: SignInCellType?
     
     static let height: CGFloat = 90.0
     
@@ -71,7 +71,7 @@ class LoginPasswordTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
     
     //MARK: Public Methods
-    func configureCellWithText(text: String?, placeHolderText: String?, andCellType cellType: SignInWithPasswordPresenter.SignInCellType) {
+    func configureCellWithText(text: String?, placeHolderText: String?, andCellType cellType: SignInCellType) {
         self.cellType = cellType
         passwordTextField.text = text
         passwordTextField.placeholder = placeHolderText

@@ -8,26 +8,6 @@
 
 import UIKit
 
-protocol InteractorBaseProtocol: class {
-    
-    func checkForMobileConnectAPI(completionBlock: @escaping (MconnectData?) -> ())
-    
-    func verifymConnectDataWithMobileNo(_ mobileNo: String)
-}
-
-protocol LoginBaseProtocol: class {
-    
-    var isverifyMethodOtp: Bool { get set }
-    
-    func showActivityIndicator()
-    
-    func hideActivityIndicator()
-    
-    func push(screen: UIViewController)
-    
-    func  handleError(_ errorData:Any?)
-}
-
 protocol LoginWelcomeViewToPresenterProtocol: class{
     
     var dataSource: [[LoginCellType]] { get }
@@ -57,8 +37,6 @@ protocol LoginWelcomeViewToPresenterProtocol: class{
 
 protocol LoginWelcomePresenterToViewProtocol: LoginBaseProtocol {
 
-    func setMConnectData(data: MconnectData?)
-    
     func resetReferralCode()
     
     func verifyReferralRequestFailed(response: ErrorData?)

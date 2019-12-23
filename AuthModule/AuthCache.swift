@@ -7,20 +7,36 @@
 //
 
 import UIKit
+import CoreData
 
 class AuthCache: NSObject {
 
     static let shared = AuthCache()
     
-    var dictionary = [String: Any]()
-    
     var facebookToken: String!
     
     func getUserDefaltObject(forKey key: String) -> Any? {
-        return dictionary[key]
+        return UserDefaults.standard.object(forKey: key)
+    }
+    
+    func getUserDefaltBool(forKey key: String) -> Bool? {
+        return UserDefaults.standard.bool(forKey: key)
     }
     
     func setUserDefaltObject(_ value: Any?, forKey key: String) {
-        dictionary[key] = value
+        UserDefaults.standard.setValue(value, forKeyPath: key)
+    }
+    
+    func setUserDefaltInteger(_ value: Int?, forKey key: String) {
+        UserDefaults.standard.set(value, forKey: key)
+    }
+    
+    func setUserDefaltBool(_ value: Bool, forKey key: String) {
+        UserDefaults.standard.set(value, forKey: key)
+    }
+    
+    func removeDefaultObject(forKey key: String) {
+        UserDefaults.standard.removeObject(forKey: key)
+        UserDefaults.standard.synchronize()
     }
 }

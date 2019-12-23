@@ -69,6 +69,7 @@ class LoginWelcomePresenter: LoginWelcomeViewToPresenterProtocol, LoginWelcomeIn
         }
         UserDataManager.shared.isWAChecked = false
         logGAScreenLoadEvents()
+        checkForMobileConnect()
     }
     
     func resetReferralCode(){
@@ -80,8 +81,12 @@ class LoginWelcomePresenter: LoginWelcomeViewToPresenterProtocol, LoginWelcomeIn
     }
     
     func checkForMobileConnect() {
-        interactor.checkForMobileConnectAPI { (mConnectData) in
-            self.view.setMConnectData(data: mConnectData)
+        view.showActivityIndicator()
+        interactor.checkForMobileConnectAPI { [weak self](mConnectData) in
+            self?.view.hideActivityIndicator()
+            if let data = mConnectData {
+                self?.view.setMConnectData(data: data)
+            }
         }
     }
     

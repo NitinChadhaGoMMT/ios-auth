@@ -14,7 +14,7 @@ class SignInHeaderTableViewCell: UITableViewCell {
     @IBOutlet weak var signInTextLabel: UILabel!
     @IBOutlet weak var signInTextLogoLabel: UILabel!
     @IBOutlet weak var signInLogoImageView: UIImageView!
-    var cellType: SignInWithPasswordPresenter.SignInCellType?
+    var cellType: SignInCellType?
     
     static let height:CGFloat = 170
     

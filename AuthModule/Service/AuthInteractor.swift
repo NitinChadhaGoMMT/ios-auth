@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FBSDKCoreKit
 import NetworkLayerFramework
 
 typealias FailureBlock = (ErrorData?) -> Void
@@ -26,6 +27,22 @@ class AuthService: AuthServiceProtocol {
         self.requestOTPService(mobileNumber, forceSendOtp: false, isResendOtp: false, success: success, failure: failure)
     }
     
+    static func requestFacebookOTPforMobile(_ mobileNumber: String, success: @escaping SuccessBlock, failure: @escaping FailureBlock) {
+        self.verifyFBNumberApiWithMobileNumber(mobileNumber, forceSendOtp: true, isResendOtp: false, success: success, failure: failure)
+    }
+    
+    static func forgotPasswordRequest(withMobile mobileNumber:String, success: @escaping SuccessBlock, failure: @escaping FailureBlock) {
+        
+        var parameters = Dictionary<String, String>()
+        parameters["mobile"] = mobileNumber
+        
+        Session.service.post(LoginConstants.forgotPasswordUrl(), data: appendDefaultParameters(params: parameters), header: nil, encoding: URLEncoding.httpBody, success: { (json) in
+            success(json.dictionaryObject)
+        }, failure: { (json, error) in
+            failure(getErrorDataFrom(error: json?.dictionaryObject ?? error))
+        })
+    }
+    
     static func verifyReferralCode(referralCode:String, isBranchFlow:Bool, success: @escaping SuccessBlock, failure: @escaping FailureBlock) {
         
         var parameters = Dictionary<String, String>()
@@ -42,6 +59,28 @@ class AuthService: AuthServiceProtocol {
             success(json.dictionaryObject)
         }, failure: { (json, error) in
             failure(getErrorDataFrom(error: json?.dictionaryObject ?? error))
+        })
+    }
+    
+    static func newSignInWithFacebook(_ isLinkFB:Bool?, referral:String?, success: @escaping SuccessBlock, failure: @escaping FailureBlock) {
+        var parameters = Dictionary<String, Any>()
+        
+        parameters[LoginConstants.kFBAccessToken] = AccessToken.current?.tokenString
+        if isLinkFB == true {
+            parameters["link_fb"] = "true"
+        }
+        if let referralCode = referral, !referralCode.isEmpty {
+            parameters["referral_code"] = referral
+        }
+        parameters["client_id"] = AuthNetworkUtils.getAuthKey()
+        parameters["did"] = AuthNetworkUtils.getUUID()
+        parameters["device_id"] = AuthNetworkUtils.getUUID()
+        
+        Session.service.post(LoginConstants.fbSignupAccountUrl(), data: appendDefaultParameters(params: parameters), header: nil, encoding: URLEncoding.httpBody, success: { (json) in
+            //success(LoginOTPVerifyParser().parseJSON(json.dictionaryObject) as? OtpVerifiedData)
+            success(json.dictionaryObject)
+        }, failure: { (json, error) in
+            failure(getErrorDataFrom(error: error))
         })
     }
     
@@ -81,10 +120,27 @@ class AuthService: AuthServiceProtocol {
         parameters["device_id"] = AuthNetworkUtils.getUUID()
         
         Session.service.post(LoginConstants.verifyOTPUrl(), data: appendDefaultParameters(params: parameters), header: nil, encoding: URLEncoding.httpBody, success: { (json) in
-            //success(LoginOTPVerifyParser().parseJSON(json.dictionaryObject) as? OtpVerifiedData)
             success(json.dictionaryObject)
         }, failure: { (json, error) in
             failure(getErrorDataFrom(error: json?.dictionaryObject ?? error))
+        })
+    }
+    
+    private static func verifyFBNumberApiWithMobileNumber(_ mobile: String, forceSendOtp: Bool, isResendOtp: Bool, success: @escaping SuccessBlock, failure: @escaping FailureBlock) {
+        
+        var parameters = Dictionary<String, String>()
+
+        parameters["mobile"] = mobile
+        parameters["send_otp"] = forceSendOtp ? "true" : "false"
+        parameters["otp_resend"] = isResendOtp ? "true" : "false"
+        if AuthUtils.isEmptyString(AccessToken.current?.tokenString) == false {
+            parameters[LoginConstants.kFBAccessToken] = AccessToken.current?.tokenString
+        }
+        
+        Session.service.post(LoginConstants.requestOTPUrl(), data: appendDefaultParameters(params: parameters), header: nil, encoding: URLEncoding.httpBody, success: { (json) in
+            success(LoginMobileVerifyParser().parseJSON(json.dictionaryObject) as? MobileVerifiedData)
+        }, failure: { (json, error) in
+            failure(getErrorDataFrom(error: error))
         })
     }
     
@@ -109,22 +165,30 @@ class AuthService: AuthServiceProtocol {
         }
         
         Session.service.post(LoginConstants.verifyOTPUrl(), data: appendDefaultParameters(params: parameters), header: nil, encoding: URLEncoding.httpBody, success: { (json) in
-            //success(LoginOTPVerifyParser().parseJSON(json.dictionaryObject) as? OtpVerifiedData)
             success(json.dictionaryObject)
         }, failure: { (json, error) in
             failure(getErrorDataFrom(error: error))
         })
     }
     
+    static func goServiceLogout(_ type : LogoutType) {
+        var getDic: [String: Any] = AuthDepedencyInjector.networkDelegate?.getFlavourDictionary() ?? [String: Any]()
+        getDic["byuser"] = (type == LogoutType.user ? "true" : "false")
+        getDic["userid"] = UserDataManager.shared.activeUser?.userid
+        Session.service.get(LoginConstants.logoutUser(), header: [:], parameters: getDic, timeoutInterval: .default, success: { (json) in
+            
+        }) { (json, error) in
+            
+        }
+    }
+    
     static func verifyMobileWithMconnect(withMobile mobileNo:String, mconnectData:MconnectData, isFBSignUp:Bool, referralCode:String, success: @escaping SuccessBlock, failure: @escaping FailureBlock) {
         
         var dict: Dictionary<String,String> = ["o":mconnectData.operatorName!,"m": mobileNo,"c":AuthNetworkUtils.getAuthKey()]
         dict["d"] = AuthNetworkUtils.getUUID()
-
-        //<NITIN>
-        if false {
-        //if isFBSignUp == true && AuthUtils.isEmptyString(AccessToken.current?.tokenString) == false {
-            dict["f"] = ""//<NITIN>AccessToken.current?.tokenString ?? ""
+            
+        if isFBSignUp == true && AuthUtils.isEmptyString(AccessToken.current?.tokenString) == false {
+            dict["f"] = AccessToken.current?.tokenString ?? ""
         }
         else{
             if let accessToken = AuthCache.shared.getUserDefaltObject(forKey: "access_token")  as? String {
@@ -161,6 +225,5 @@ class AuthService: AuthServiceProtocol {
         }) { (json, error) in
             
         }
-        
     }
 }

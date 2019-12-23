@@ -35,7 +35,16 @@ extension NibLoadableView where Self: UIView {
     }
 }
 
+extension UIView: NibLoadableView { }
+
 extension UITableViewCell: ReusableView { }
+
+extension Bundle {
+    static func loadNib<T: NibLoadableView>() -> T? {
+        let view = self.main.loadNibNamed(T.nibName, owner: self, options: nil)?.first as? T
+        return view
+    }
+}
 
 extension UITableView {
     
@@ -59,4 +68,31 @@ extension UIStoryboard {
         return self.instantiateViewController(withIdentifier: T.reuseIdentifier) as? T
     }
     
+}
+
+extension UIViewController {
+   @objc func presentWithCurrentContext(vc:UIViewController, animated: Bool = true, completion: (()->Void)? = nil){
+        //<NITIN>
+        /*if #available(iOS 8.0, *) {
+            AppDelegate.sharedIns().baseNavigationVC.providesPresentationContextTransitionStyle = true
+            AppDelegate.sharedIns().baseNavigationVC.definesPresentationContext = true
+            vc.modalPresentationStyle = .overCurrentContext
+        } else {
+            AppDelegate.sharedIns().baseNavigationVC.modalPresentationStyle =  .currentContext
+        }*/
+        self.present(vc, animated: animated, completion: completion)
+    }
+}
+
+
+extension UIView {
+    @objc  func addShadowWithColor(_ color: UIColor, offset: CGSize) {
+        
+        self.layer.shadowColor = color.cgColor
+        self.layer.shadowOpacity = 1.0
+        self.layer.shadowOffset = offset
+        
+        //self.layer.shadowPath = UIBezierPath(rect: self.bounds).CGPath
+       // self.layer.shouldRasterize = true
+    }
 }

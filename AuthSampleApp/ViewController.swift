@@ -14,13 +14,26 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let loginController = AuthRouter.shared.createModule() {
+        if AuthDataProvider.isUserLoggedIn {
+            AuthModuleHelper.shared.showAlert(on: self, message: "UserLoggedInSuccessfully")
+            AuthDataProvider.logoutUser()
+        } else if let loginController = AuthRouter.shared.createModule() {
             self.navigationController?.pushViewController(loginController, animated: true)
         }
     }
 }
 
 class AuthModuleHelper: AuthModuleUIProtocol {
+    
+    func showAlertActionPrompt(withTitle title: String?, msg: String?, confirmTitle: String?, cancelTitle: String?, onCancel: @escaping () -> Void, onConfirm: @escaping () -> Void) -> UIAlertController? {
+        return UIAlertController.init()
+    }
+    
+    
+    func setImage(for imageView: UIImageView, url: URL, placeholder: UIImage?) {
+        
+    }
+    
     
     func showToastMessage(on view: UIViewController, message: String) {
         
@@ -51,10 +64,6 @@ class AuthModuleHelper: AuthModuleUIProtocol {
         if activityView != nil {
             activityView?.removeFromSuperview()
         }
-    }
-    
-    func setImage(for imageView: UIImageView, url: URL) {
-        
     }
     
 }

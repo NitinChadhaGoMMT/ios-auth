@@ -20,7 +20,9 @@ public protocol AuthModuleUIProtocol {
     
     func showToastMessage(on view:UIViewController, message: String)
     
-    func setImage(for imageView: UIImageView, url: URL)
+    func showAlertActionPrompt(withTitle title: String?, msg: String?, confirmTitle: String?, cancelTitle: String?, onCancel: @escaping () -> Void, onConfirm: @escaping () -> Void) -> UIAlertController? 
+    
+    func setImage(for imageView: UIImageView, url: URL, placeholder: UIImage?)
 }
 
 public protocol AuthModuleNetworkProtocol {
@@ -29,7 +31,13 @@ public protocol AuthModuleNetworkProtocol {
     
     func getAuthKey() -> String?
     
-    func getUUID() -> String? 
+    func getUUID() -> String?
+    
+    func getFlavourDictionary() -> [String: Any]?
+    
+    func userLoggedInSuccessfully()
+    
+    func userLoggedOutSuccessfully()
 }
 
 public class AuthDepedencyInjector {

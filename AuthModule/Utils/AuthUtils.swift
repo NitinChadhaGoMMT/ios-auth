@@ -30,6 +30,8 @@ struct AuthNetworkUtils {
 
 struct AuthUtils {
     
+    static let bundle: Bundle = Bundle(identifier: "com.goibibo.AuthModule")!
+    
     static func isValidPhoneNumber(_ numberText: String?) -> Bool {
         
         guard let phoneNumber = numberText else {
@@ -68,6 +70,11 @@ struct AuthUtils {
            return true
        }
     
+    static func setBusinessProfileSelected(_ isEnabled: Bool) {
+        //<NITIN>[[OfflineReviewsFireBase sharedInstance] saveDataBoolforUseronPathWithPath:@"/isBusiness" value:isEnabled completionBlock:^(id ref, id error) {}];
+        AuthCache.shared.setUserDefaltBool(isEnabled, forKey: "isBusinessProfile")
+    }
+    
     static func isValidString(_ string: String?) -> Bool {
         
         guard let string = string, !string.isEmpty else {
@@ -79,6 +86,11 @@ struct AuthUtils {
         }
         
         return true
+    }
+    
+    static func resetCountToLaunch() {
+        //<NITIN>[Utils removeMobileKey];
+        AuthCache.shared.setUserDefaltInteger(0, forKey: "SocialRegisterMobileCountKey")
     }
     
     static func setNormalAmazonSecureCredential(_ credentials: String) {

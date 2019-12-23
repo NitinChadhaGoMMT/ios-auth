@@ -14,6 +14,7 @@ struct AuthNetworkConstants {
     static let kAccessToken = "oauth_token"
     static let kHashKey = "hash"
     static let kFBAccessToken = "fb_access_token"
+    static let kLoginDirectlyViaFacebook = "LoginDirectlyViaFacebook"
     
     //DEFAULT VALUES
     static let authKey = "52bc308d975d2559c3bf7cccf37311"

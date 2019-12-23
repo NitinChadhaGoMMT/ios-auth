@@ -17,7 +17,7 @@ public class AuthRouter {
     public var completionBlock: ((Bool, Error?) -> Void)?
     
     var mainstoryboard: UIStoryboard {
-        return UIStoryboard(name:"Auth",bundle: Bundle(identifier: "com.goibibo.AuthModule"))
+        return UIStoryboard(name:"Auth",bundle: AuthUtils.bundle)
     }
     
     public func createModule() -> UIViewController? {
@@ -50,6 +50,35 @@ public class AuthRouter {
         presenter.view = view
         
         return view
+    }
+    
+    func navigateToForgotPasswordViewController(mobile: String) -> UIViewController? {
+        
+        guard let view: ForgotPasswordViewController = mainstoryboard.getViewController() else {
+            return nil
+        }
+        
+        let presenter = ForgotPasswordPresenter(mobile: mobile)
+        let interactor = ForgotPasswordInteractor()
+        view.presenter = presenter
+        presenter.view = view
+        presenter.router = self
+        presenter.interactor = interactor
+        interactor.presenter = presenter
+        
+        return view
+    }
+
+    func presentKeychainLoginViewController() -> UIViewController? {
+        guard let view: KeyChainLoginViewController = mainstoryboard.getViewController() else {
+           return nil
+        }
+        view.presenter = KeyChainLoginPresenter()
+        return view
+    }
+    
+    func popCurrentViewController(vc: UIViewController) {
+        vc.navigationController?.popViewController(animated: true)
     }
 }
 

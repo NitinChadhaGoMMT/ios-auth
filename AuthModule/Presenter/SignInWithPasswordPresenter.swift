@@ -12,36 +12,36 @@ public enum UserSignInState {
     case passwordForMobile, passwordForEmail, passwordOTP, emailPassword, emailPasswordLink, emailOrMobile
 }
 
-class SignInWithPasswordPresenter {
-
-    enum SignInCellType: Int {
-        case singInText = 0, singInLogo, emailInput, passwordInput, signInButton,signInButtonBlue, signInButtonContinue, orLabelCell, requestOTP, signInFB, tncCell
-        
-        var height: CGFloat {
-            switch self {
-            case .singInText:
-                return SignInHeaderTableViewCell.height
-                
-            case .passwordInput:
-                return LoginPasswordTableViewCell.height
-                
-            case .signInButton, .requestOTP:
-                return LoginContinueTableViewCell.height
-                
-            case .orLabelCell:
-                return LoginOrTableCell.height
-                
-            default:
-                return 44.0
-            }
+enum SignInCellType: Int {
+    case singInText = 0, singInLogo, emailInput, passwordInput, signInButton,signInButtonBlue, signInButtonContinue, orLabelCell, requestOTP, signInFB, tncCell
+    
+    var height: CGFloat {
+        switch self {
+        case .singInText:
+            return SignInHeaderTableViewCell.height
+            
+        case .passwordInput:
+            return LoginPasswordTableViewCell.height
+            
+        case .signInButton, .requestOTP:
+            return LoginContinueTableViewCell.height
+            
+        case .orLabelCell:
+            return LoginOrTableCell.height
+            
+        default:
+            return 44.0
         }
     }
-    
+}
+
+class SignInWithPasswordPresenter: SignInWithPasswordViewToPresenterProtocol, SignInWithPasswordInteractorToPresenterProtocol {
+
     var password: String?
     
-    var interactor: SignInWithPasswordInteractor?
+    var interactor: SignInWithPasswordPresenterToInteractorProtocol?
     
-    var view: SignInWithPasswordViewController?
+    var view: SignInWithPasswordPresenterToViewProtocol?
     
     var referralCode: String?
     var mobileNumber: String
@@ -56,6 +56,16 @@ class SignInWithPasswordPresenter {
         self.isVerifyOTP = isVerifyOTP
         self.state = state
         configureDataSource()
+    }
+    
+    func performInitialConfiguration() {
+        view?.showActivityIndicator()
+        interactor?.checkForMobileConnectAPI(completionBlock: { [weak self](responseData) in
+            self?.view?.hideActivityIndicator()
+            if let data = responseData {
+                self?.view?.setMConnectData(data: data)
+            }
+        })
     }
     
     func configureDataSource() {
@@ -82,8 +92,8 @@ class SignInWithPasswordPresenter {
         }
     }
     
-    func logInUser(withUsername userName: String, password: String, referralCode: String?) {
-        
+    func logInUser() {
+        interactor?.loginUser(forMobile: mobileNumber, password: self.password ?? "", referralCode: referralCode ?? "")
     }
     
     func requestOTP() {
@@ -92,11 +102,23 @@ class SignInWithPasswordPresenter {
     
     func requestOTPSuccessResponse(resposne: MobileVerifiedData) {
         let vc = AuthRouter.shared.navigateToOTPVerificationController(mobileNumber: mobileNumber, nonce: resposne.nonce, isFbSignup: false, isNewUser: false, isverifyMethodOtp: false, referralCode: self.referralCode ?? "")
-        view?.navigationController?.pushViewController(vc!, animated: true)
+        view?.push(screen: vc!)
     }
     
     func requestOTPFailedResponse(error: ErrorData?) {
-        
+        view?.requestOtpFailed(error: error)
     }
     
+    func requestLoginSuccessResponse(resposne: OtpVerifiedData) {
+        view?.userLoggedInRequestSucceeded(data: resposne)
+    }
+    
+    func requestLoginFailedResponse(error: ErrorData?) {
+        view?.userLoggedInRequestFailed(error: error)
+    }
+    
+    func navigateToForgotPasswordScreen() {
+        guard let vc = AuthRouter.shared.navigateToForgotPasswordViewController(mobile: mobileNumber) else { return }
+        view?.push(screen: vc)
+    }
 }

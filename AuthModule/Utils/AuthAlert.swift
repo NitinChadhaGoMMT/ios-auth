@@ -9,16 +9,35 @@
 import UIKit
 
 struct ActivityIndicator {
-    static func show(on view: UIView) {
+    static func show(on view: UIView?, withMessage message: String? = nil) {
+        
+        guard let view = view else { return }
+        
         AuthDepedencyInjector.uiDelegate?.showActivityIndicator(on: view)
     }
     
-    static func hide(on view: UIView) {
+    static func hide(on view: UIView?) {
+        
+        guard let view = view else { return }
+        
         AuthDepedencyInjector.uiDelegate?.hideActivityIndicator(from: view)
     }
 }
 
 struct AuthAlert {
+    
+    static func show(withTitle: String = "Goibibo", message: String) {
+        if var topController = UIApplication.shared.keyWindow?.rootViewController {
+            while let presentedViewController = topController.presentedViewController {
+                topController = presentedViewController
+            }
+            
+            let alertController = UIAlertController(title: "Goibibo", message: message, preferredStyle: .alert)
+            let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            alertController.addAction(action)
+            topController.present(alertController, animated: true, completion: nil)
+        }
+    }
     
     static func showToastMessage(on view: UIViewController, message: String) {
         AuthDepedencyInjector.uiDelegate?.showToastMessage(on: view, message: message)
@@ -55,7 +74,7 @@ struct AuthAlert {
         return alertController
     }
     
-    static func showErrorAlert(view: UIViewController, title: String? = "Goibibo", message: String) {
+    static func showErrorAlert(view: UIViewController, title: String? = "Error!", message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
         alertController.addAction(action)
@@ -88,5 +107,12 @@ struct AuthAlert {
         let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
         alertController.addAction(action)
         view.present(alertController, animated: true, completion: nil)
+    }
+    
+    static func showSucessAlert(withMessage message: String, view: UIViewController, completion: (() -> Void)?) {
+        let alertController = UIAlertController(title: "Success", message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alertController.addAction(action)
+        view.present(alertController, animated: true, completion: completion)
     }
 }

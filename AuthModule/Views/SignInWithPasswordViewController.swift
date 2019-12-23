@@ -8,14 +8,15 @@
 
 import UIKit
 
-class SignInWithPasswordViewController: LoginBaseViewController {
+class SignInWithPasswordViewController: LoginBaseViewController, SignInWithPasswordPresenterToViewProtocol {
 
-    var presenter: SignInWithPasswordPresenter?
+    var presenter: SignInWithPasswordViewToPresenterProtocol?
     
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter?.performInitialConfiguration()
     }
     
     fileprivate func logGAClickEvent(for type:String) {
@@ -67,10 +68,10 @@ extension SignInWithPasswordViewController: UITableViewDataSource {
     }
     
     @objc func continueButtonAction(button: UIButton) {
-        if button.tag == SignInWithPasswordPresenter.SignInCellType.requestOTP.rawValue {
+        if button.tag == SignInCellType.requestOTP.rawValue {
             requestOtp()
         } else {
-            signIn(withMobileNo: self.presenter?.mobileNumber, withPassword: self.presenter?.password)
+            requestForUserLogin()
         }
     }
     
@@ -86,7 +87,7 @@ extension SignInWithPasswordViewController: UITableViewDataSource {
     }
     
     // MARK: - Sign In and OTP
-    func signIn(withMobileNo mobileNo:String?, withPassword password:String?) {
+    func requestForUserLogin() {
         
         self.logGAClickEvent(for: "verify_password")
         
@@ -101,25 +102,19 @@ extension SignInWithPasswordViewController: UITableViewDataSource {
         }
 
         self.view.endEditing(true)
-        /*showActivityIndicator()
-        AuthInteractor.loginWithMobileAndPassword(mobileNo!, referralCode: self.referralCode, withPassword: password!, success: { [weak self] (data) in
-            let otpData = data as? OtpVerifiedData
-            self?.hideActivityIndicator()
-            self?.userVerificationData = otpData
-            if otpData?.userStatusType == .verified || otpData?.userStatusType == .loggedIn {
-                
-                SignInGAPManager.signinOrSignUpEvent(withEventType: .signIn, withMethod: .phone, withVerifyType: .password, withOtherDetails: nil)
-                SignInGAPManager.logGenericEventWithoutScreen(for: "loginSuccessNew", otherParams:["medium":"mobile","verificationChannel":"password"])
-                self?.userSuccessfullyLoggedIn()
-
-            }
-            else {
-                //Error
-            }
-        }) { [weak self] (error) in
-            self?.hideActivityIndicator()
-            self?.handleError(error)
-        }*/
+        presenter?.logInUser()
+    }
+    
+    func userLoggedInRequestFailed(error: ErrorData?) {
+        handleError(error)
+    }
+    
+    func userLoggedInRequestSucceeded(data: OtpVerifiedData?) {
+        AuthAlert.show(message: "LOGGED IN SUCCESSFULLY")
+    }
+    
+    func requestOtpFailed(error: ErrorData?) {
+        handleError(error)
     }
 }
 
@@ -139,6 +134,6 @@ extension SignInWithPasswordViewController: LoginPasswordCellProtocol {
     }
     
     func didSelectForgotPassword() {
-        
+        presenter?.navigateToForgotPasswordScreen()
     }
 }

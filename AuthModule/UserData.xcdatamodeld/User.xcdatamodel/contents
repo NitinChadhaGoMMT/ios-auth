@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="18G103" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
+        <attribute name="address" optional="YES" attributeType="String"/>
+        <attribute name="branchlink" optional="YES" attributeType="String"/>
+        <attribute name="canAddPassword" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="company" optional="YES" attributeType="String"/>
+        <attribute name="companyAddress" optional="YES" attributeType="String"/>
+        <attribute name="companyPhone" optional="YES" attributeType="String"/>
+        <attribute name="dateFlag" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="dob" optional="YES" attributeType="String"/>
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="emailAdmin" optional="YES" attributeType="String"/>
+        <attribute name="emailBusiness" optional="YES" attributeType="String"/>
+        <attribute name="emailState" optional="YES" attributeType="String"/>
+        <attribute name="fbLinked" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="firstname" optional="YES" attributeType="String"/>
+        <attribute name="gstin" optional="YES" attributeType="String"/>
+        <attribute name="hasBusinessProfile" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="hasPassword" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="imageURL" optional="YES" attributeType="String"/>
+        <attribute name="isBusinessVerified" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="isVerified" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="lastname" optional="YES" attributeType="String"/>
+        <attribute name="middlename" optional="YES" attributeType="String"/>
+        <attribute name="mobile" optional="YES" attributeType="String"/>
+        <attribute name="phone" optional="YES" attributeType="String"/>
+        <attribute name="previouslySynced" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="profileIdBusiness" optional="YES" attributeType="String"/>
+        <attribute name="profileIdPersonal" optional="YES" attributeType="String"/>
+        <attribute name="referralCode" optional="YES" attributeType="String"/>
+        <attribute name="rewardsData" optional="YES" attributeType="Binary"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="userid" optional="YES" attributeType="String"/>
+        <attribute name="username" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="User" positionX="-63" positionY="-18" width="128" height="523"/>
+    </elements>
+</model>

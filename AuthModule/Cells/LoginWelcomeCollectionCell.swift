@@ -54,7 +54,7 @@ class LoginWelcomeCollectionCell: UICollectionViewCell {
         
         if let bgimage = data.bgImage {
             if let imageurl = URL(string: bgimage), UIApplication.shared.canOpenURL(imageurl){
-                AuthDepedencyInjector.uiDelegate?.setImage(for: bgImageView, url: imageurl)
+                AuthDepedencyInjector.uiDelegate?.setImage(for: bgImageView, url: imageurl, placeholder: nil)
             }
             else{
                 self.bgImageView.image = UIImage(named: bgimage)
@@ -62,7 +62,7 @@ class LoginWelcomeCollectionCell: UICollectionViewCell {
         }
         if let bgimage = data.logoImage {
             if let imageurl = URL(string: bgimage), UIApplication.shared.canOpenURL(imageurl){
-                AuthDepedencyInjector.uiDelegate?.setImage(for: bgLogoImageView, url: imageurl)
+                AuthDepedencyInjector.uiDelegate?.setImage(for: bgLogoImageView, url: imageurl, placeholder: nil)
             }
             else{
                 self.bgLogoImageView.image = UIImage(named: bgimage)
@@ -80,7 +80,7 @@ class LoginWelcomeCollectionCell: UICollectionViewCell {
                 self.layoutIfNeeded()
                 userImageView.makeCircleWithBorderColor(UIColor.clear)
                 userImageView.image = #imageLiteral(resourceName: "refericon")
-                AuthDepedencyInjector.uiDelegate?.setImage(for: userImageView, url: url)
+                AuthDepedencyInjector.uiDelegate?.setImage(for: userImageView, url: url, placeholder: nil)
             }
             else{
                 userImageView.image = #imageLiteral(resourceName: "refericon")
@@ -95,7 +95,7 @@ class LoginWelcomeCollectionCell: UICollectionViewCell {
         
         if let imagename = data.bgCornerImage {
             if let imageurl = URL(string: imagename), UIApplication.shared.canOpenURL(imageurl){
-                AuthDepedencyInjector.uiDelegate?.setImage(for: bottomImageView, url: imageurl)
+                AuthDepedencyInjector.uiDelegate?.setImage(for: bottomImageView, url: imageurl, placeholder: nil)
             }
             else{
                 bottomImageView.image = UIImage(named: imagename)

@@ -14,7 +14,7 @@ class LoginContinueTableViewCell: UITableViewCell {
     
     @IBOutlet weak var continueButton: UIButton!
     
-    var cellType: SignInWithPasswordPresenter.SignInCellType?
+    var cellType: SignInCellType?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,7 +32,7 @@ class LoginContinueTableViewCell: UITableViewCell {
         self.continueButton.accessibilityLabel = "LoginPassword_SigninButton"
     }
     
-    func configureCell(details: SignInWithPasswordPresenter.SignInCellType?) {
+    func configureCell(details: SignInCellType?) {
         cellType = details
         if cellType == .signInButton || cellType ==  .signInButtonContinue {
             continueButton.backgroundColor = .customOrangeColor
