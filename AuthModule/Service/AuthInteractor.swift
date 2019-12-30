@@ -31,6 +31,10 @@ class AuthService: AuthServiceProtocol {
         self.verifyFBNumberApiWithMobileNumber(mobileNumber, forceSendOtp: true, isResendOtp: false, success: success, failure: failure)
     }
     
+    static func requestFacebookToResendOTP(_ mobileNumber: String, success: @escaping SuccessBlock, failure: @escaping FailureBlock) {
+        self.verifyFBNumberApiWithMobileNumber(mobileNumber, forceSendOtp: true, isResendOtp: true, success: success, failure: failure)
+    }
+    
     static func forgotPasswordRequest(withMobile mobileNumber:String, success: @escaping SuccessBlock, failure: @escaping FailureBlock) {
         
         var parameters = Dictionary<String, String>()
@@ -77,8 +81,7 @@ class AuthService: AuthServiceProtocol {
         parameters["device_id"] = AuthNetworkUtils.getUUID()
         
         Session.service.post(LoginConstants.fbSignupAccountUrl(), data: appendDefaultParameters(params: parameters), header: nil, encoding: URLEncoding.httpBody, success: { (json) in
-            //success(LoginOTPVerifyParser().parseJSON(json.dictionaryObject) as? OtpVerifiedData)
-            success(json.dictionaryObject)
+            success(LoginOTPVerifyParser().parseJSON(json.dictionaryObject) as? OtpVerifiedData)
         }, failure: { (json, error) in
             failure(getErrorDataFrom(error: error))
         })

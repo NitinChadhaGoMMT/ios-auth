@@ -15,8 +15,6 @@ protocol LoginWelcomeViewToPresenterProtocol: class{
     var currentMobileNumber: String? { get set }
     
     var referralCode: String? { get }
-    
-    var isFbSignup: Bool { get set }
 
     var branchDictionary: NSDictionary? { get }
     
@@ -42,6 +40,8 @@ protocol LoginWelcomePresenterToViewProtocol: LoginBaseProtocol {
     func verifyReferralRequestFailed(response: ErrorData?)
     
     func verifyReferralSuccessResponse(response: ReferralVerifyData?)
+    
+    func verifyMobileNumberRequestFailed(error: ErrorData?)
 }
 
 protocol LoginWelcomePresenterToRouterProtocol: class {
@@ -63,7 +63,17 @@ protocol LoginWelcomeInteractorToPresenterProtocol: class {
     
     func verifyReferralSuccessResponse(response: ReferralVerifyData?)
     
-    func verifyReferralRequestFailed(response: ErrorData?)
+    func verifyReferralRequestFailed(error: ErrorData?)
     
     func verificationMobileNumberRequestSucceeded(response: MobileVerifiedData?)
+    
+    func verificationMobileNumberRequestFailed(error: ErrorData?)
+}
+
+extension LoginWelcomeInteractorToPresenterProtocol {
+    
+    func verifyReferralSuccessResponse(response: ReferralVerifyData?) { }
+    
+    func verifyReferralRequestFailed(error: ErrorData?) { }
+    
 }

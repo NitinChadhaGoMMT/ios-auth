@@ -120,6 +120,7 @@ extension LoginWelcomeViewController: UITableViewDataSource, UITableViewDelegate
             
         case .fbloginCell:
             let cell: LoginFBSingupTableCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            cell.delegate = self
             return cell
             
         case .skipNow:
@@ -162,42 +163,17 @@ extension LoginWelcomeViewController: UITableViewDataSource, UITableViewDelegate
         
         self.view.endEditing(true)
         
-        if presenter?.isFbSignup ?? false {
-            //self.requestFBOTPWithMobileNo(mobileNo)
-            return
-        }
-        
-        presenter?.verifyMobileNumber(number: mobileNo)
+        isFbSignup ? self.requestFBOTPWithMobileNo(mobileNo) : presenter?.verifyMobileNumber(number: mobileNo)
     }
     
     //MARK - Whatsapp Login
     func connectWithWhatsapp() {
         SignInGAPManager.signinOrSignUpEvent(withEventType: .startedSignIn, withMethod: .whatsApp, withVerifyType: nil, withOtherDetails: ["from_page":"Welcome_Page"])
         self.presenter?.logGAClickEvent("whatsapp_button")
-        WhatsAppManager.shared.referralCode = presenter?.referralCode
+        WhatsAppManager.shared.referralCode = referralCode
         WhatsAppManager.shared.delegate = self
         AuthDepedencyInjector.uiDelegate?.showActivityIndicator(on: self.view, withMessage: "Logging in with Whatsapp..")
         WhatsAppManager.shared.loginWithWhatsapp(referralCode: presenter?.referralCode)
-    }
-    
-    //MARK: FB Login
-    func connectWithFB() {
-        
-        self.presenter?.isFbSignup = true
-        SignInGAPManager.signinOrSignUpEvent(withEventType: .startedSignIn, withMethod: .facebook, withVerifyType: nil, withOtherDetails: ["from_page":"Welcome_Page"])
-        self.presenter?.logGAClickEvent("facebook_button")
-        //new FB API need to integreate here
-        if let referralCode = self.presenter?.referralCode, let _ = self.presenter?.branchDictionary  {
-            self.validateReferralCode(referralCode, completionBlock: { [weak self] (success, error) in
-                guard success == true else {
-                    return
-                }
-                self?.signInWithFB(isForceLinkFb: nil, referralCode:self?.presenter?.referralCode)
-            })
-        }
-        else{
-            signInWithFB(isForceLinkFb: nil, referralCode:self.presenter?.referralCode)
-        }
     }
 }
 
@@ -205,7 +181,7 @@ extension LoginWelcomeViewController: LoginNewUserDetailsCellDelegate {
     func didSelectedNewUserLogin(with mobileNumber: String) {
         SignInGAPManager.startTime()
         self.presenter?.logGAClickEvent("mobile_continue")
-        self.presenter?.isFbSignup = false
+        self.isFbSignup = false
         
         guard self.presenter?.isValidPhoneNumber(mobileNumber: mobileNumber) ?? false else {
             AuthUtils.showAlert(on: self, message: Constants.kInvalidNumberMessage)
@@ -233,5 +209,27 @@ extension LoginWelcomeViewController: WhatsappHelperDelegate {
     
     func loginFailed(error: Any?) {
         
+    }
+}
+
+extension LoginWelcomeViewController: LoginFBSingupTableCellDelegate {
+    //MARK: FB Login
+    func connectWithFB() {
+        
+        self.isFbSignup = true
+        SignInGAPManager.signinOrSignUpEvent(withEventType: .startedSignIn, withMethod: .facebook, withVerifyType: nil, withOtherDetails: ["from_page":"Welcome_Page"])
+        self.presenter?.logGAClickEvent("facebook_button")
+        
+        if let referralCode = self.presenter?.referralCode, let _ = self.presenter?.branchDictionary  {
+            self.validateReferralCode(referralCode, completionBlock: { [weak self] (success, error) in
+                guard success == true else {
+                    return
+                }
+                self?.signInWithFB(isForceLinkFb: nil, referralCode:self?.presenter?.referralCode)
+            })
+        }
+        else{
+            signInWithFB(isForceLinkFb: nil, referralCode:self.presenter?.referralCode)
+        }
     }
 }

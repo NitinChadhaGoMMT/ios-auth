@@ -221,29 +221,15 @@ class OtpVerificationViewController: LoginBaseViewController {
     @IBAction func resendCodeAgain(sender: AnyObject) {
         presenter?.otpResendCount.increment()
         self.startTimer()
-        //self.logGAClickEvent(for: "resend_otp")
+        self.presenter?.logGAClickEvent(for: "resend_otp")
         LoginGAPManager.logTappedEvent(with: .resendOTP, forController: self)
-        ActivityIndicator.show(on: self.view)
-
-        if presenter?.isFbSignup == true {
-            //<NITIN>
-            /*AuthInteractor.requestFacebookToResendOTP(presenter?.mobileNumber, success: { [weak self] (data) in
-                self?.hideActivityIndicator()
-                if let response = data as? MobileVerifiedData {
-                    self?.nonce = response.nonce
-                }
-            }) { [weak self](error) in
-                self?.hideActivityIndicator()
-                self?.handleError(error)
-            } */
-        }
-        else{
+        
+        if isFbSignup == true {
+            presenter?.requestFacebookToResendOTP()
+        } else{
             presenter?.requestToResendOTP()
         }
     }
-    
-    
-    
 }
 
 extension OtpVerificationViewController: UITextFieldDelegate {

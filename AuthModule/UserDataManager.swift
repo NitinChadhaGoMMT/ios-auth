@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 let kTimeLoggedInFetch = "kTimeLoggedInFetch"
-let  kTimeSyncFetch = "kTimeSyncFetch"
+let kTimeSyncFetch = "kTimeSyncFetch"
 
 class UserDataManager {
 

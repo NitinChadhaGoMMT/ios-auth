@@ -44,7 +44,6 @@ class LoginWelcomePresenter: LoginWelcomeViewToPresenterProtocol, LoginWelcomeIn
     
     var dataSource: [[LoginCellType]]
     
-    var isFbSignup: Bool = false
     var referralCode: String?
     var branchDictionary: NSDictionary?
     var referredInstall = 0
@@ -115,9 +114,9 @@ class LoginWelcomePresenter: LoginWelcomeViewToPresenterProtocol, LoginWelcomeIn
         view.verifyReferralSuccessResponse(response: response)
     }
     
-    func verifyReferralRequestFailed(response: ErrorData?) {
+    func verifyReferralRequestFailed(error: ErrorData?) {
         view.hideActivityIndicator()
-        view.verifyReferralRequestFailed(response: response)
+        view.verifyReferralRequestFailed(response: error)
     }
     
     func verifyMobileNumber(number: String) {
@@ -140,7 +139,7 @@ class LoginWelcomePresenter: LoginWelcomeViewToPresenterProtocol, LoginWelcomeIn
         if verifiedData.isSendOtp {
             let newViewController = router.navigateToOTPVerificationController(mobileNumber: mobileNumber,
                                                                                nonce: verifiedData.nonce,
-                                                                               isFbSignup: self.isFbSignup,
+                                                                               isFbSignup: view?.isFbSignup ?? false,
                                                                                isNewUser: verifiedData.isExistingUser,
                                                                                isverifyMethodOtp: view.isverifyMethodOtp,
                                                                                referralCode: self.referralCode ?? Constants.kEmptyString)
@@ -155,7 +154,7 @@ class LoginWelcomePresenter: LoginWelcomeViewToPresenterProtocol, LoginWelcomeIn
     }
     
     func verificationMobileNumberRequestFailed(error: ErrorData?) {
-        view.verifyReferralRequestFailed(response: error)
+        view.verifyMobileNumberRequestFailed(error: error)
     }
     
     private func parseMobileVerificationResponse(verificationData: MobileVerifiedData?) {

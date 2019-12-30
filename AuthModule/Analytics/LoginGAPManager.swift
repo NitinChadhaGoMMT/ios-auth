@@ -10,6 +10,7 @@ import Foundation
 
 class SignInGAPManager: NSObject {
     
+    static var FirebaseAnalyticsHandler = AuthDepedencyInjector.AnalyticsDelegate
     static var IBSVAnalytics = AuthDepedencyInjector.AnalyticsDelegate
     static var FirebaseAnalytics = AuthDepedencyInjector.firebaseRemoteHandlerDelegate
     
@@ -64,12 +65,12 @@ class SignInGAPManager: NSObject {
             IBSVAnalytics?.logCategory(event: getScreenName(for: screenType), dictionary: nil)
         }
         
-        //FirebaseAnalyticsHandler.sharedInstance.pushEvent(withName: "openScreen", withAttributes:attributes)
+        FirebaseAnalyticsHandler?.pushEvent(withName: "openScreen", withAttributes:attributes)
         
         var tempAttributes = details
         tempAttributes?["Action"] = "screenLoad"
         tempAttributes?["screenName"] = screenName
-        //FirebaseAnalyticsHandler.sharedInstance.pushEvent(withName: openScreenEventName, withAttributes:tempAttributes)
+        FirebaseAnalyticsHandler?.pushEvent(withName: openScreenEventName, withAttributes:tempAttributes)
     }
     
     static func logOpenScreenEventWithExplictEventName(for eventName:String, screenType: SigninScreenType, otherParams details:Dictionary<String,Any>?) {
@@ -84,12 +85,12 @@ class SignInGAPManager: NSObject {
             IBSVAnalytics?.logCategory(event: getScreenName(for: screenType), dictionary: nil)
         }
         
-        //FirebaseAnalyticsHandler.sharedInstance.pushEvent(withName: "openScreen", withAttributes:attributes)
+        FirebaseAnalyticsHandler?.pushEvent(withName: "openScreen", withAttributes:attributes)
         
         var tempAttributes = details
         tempAttributes?["Action"] = "screenLoad"
         tempAttributes?["screenName"] = screenName
-        //FirebaseAnalyticsHandler.sharedInstance.pushEvent(withName: openScreenEventName, withAttributes:tempAttributes)
+        FirebaseAnalyticsHandler?.pushEvent(withName: openScreenEventName, withAttributes:tempAttributes)
     }
     
     static func logClickEvent(for screenType: SigninScreenType, otherParams details:Dictionary<String,Any>?) {
@@ -97,7 +98,7 @@ class SignInGAPManager: NSObject {
         var tempAttributes = details
         tempAttributes?["Action"] = "clickEvent"
         tempAttributes?["screenName"] = screenName
-        //FirebaseAnalyticsHandler.sharedInstance.pushEvent(withName: "Onboarding", withAttributes:tempAttributes)
+        FirebaseAnalyticsHandler?.pushEvent(withName: "Onboarding", withAttributes:tempAttributes)
     }
     
     static func logGenericEvent(for screenType: SigninScreenType, action:String, otherParams details:Dictionary<String,Any>?) {
@@ -105,19 +106,19 @@ class SignInGAPManager: NSObject {
         var tempAttributes = details
         tempAttributes?["Action"] = action
         tempAttributes?["screenName"] = screenName
-        //FirebaseAnalyticsHandler.sharedInstance.pushEvent(withName: "Onboarding", withAttributes:tempAttributes)
+        FirebaseAnalyticsHandler?.pushEvent(withName: "Onboarding", withAttributes:tempAttributes)
     }
     
     static func logGenericEventWithoutScreen(for action:String,otherParams details:Dictionary<String,Any>?) {
         var tempAttributes = details
         tempAttributes?["Action"] = action
-        //FirebaseAnalyticsHandler.sharedInstance.pushEvent(withName: "Onboarding", withAttributes:tempAttributes)
+        FirebaseAnalyticsHandler?.pushEvent(withName: "Onboarding", withAttributes:tempAttributes)
     }
     
     static func logGenericEventWithExplictEventNameWithoutScreen(for eventName:String, action:String, otherParams details:Dictionary<String,Any>?) {
        var tempAttributes = details
         tempAttributes?["Action"] = action
-        //FirebaseAnalyticsHandler.sharedInstance.pushEvent(withName: eventName, withAttributes:tempAttributes)
+        FirebaseAnalyticsHandler?.pushEvent(withName: eventName, withAttributes:tempAttributes)
     }
     
     
@@ -134,7 +135,7 @@ class SignInGAPManager: NSObject {
     }
     
     static func skipButtonTapped(with type: SkipEventType, withOtherDetails details: Dictionary<String,Any>?) {
-        //FirebaseAnalyticsHandler.sharedInstance.pushEvent(withName: type.rawValue, withAttributes:details)
+        FirebaseAnalyticsHandler?.pushEvent(withName: type.rawValue, withAttributes:details)
         IBSVAnalytics?.logCategory(event: type.rawValue, dictionary: details)
     }
     
@@ -157,23 +158,23 @@ class SignInGAPManager: NSObject {
         if details != nil {
             attributes = attributes.merge(details!)
         }
-        //FirebaseAnalyticsHandler.sharedInstance.pushEvent(withName: eventType.rawValue, withAttributes: attributes)
+        FirebaseAnalyticsHandler?.pushEvent(withName: eventType.rawValue, withAttributes: attributes)
         IBSVAnalytics?.logCategory(event: eventType.rawValue, dictionary: attributes)
     }
     
     //    static func signInOrSignUpEvent(_ isExistingUser:Bool, withOtherDetails details: Dictionary<String,Any>?){
     //
     //        if isExistingUser {
-    //            //FirebaseAnalyticsHandler.sharedInstance.pushEvent(withName: "Signed_in", withAttributes:details)
+    //            FirebaseAnalyticsHandler?.pushEvent(withName: "Signed_in", withAttributes:details)
     //        }
     //        else{
-    //            //FirebaseAnalyticsHandler.sharedInstance.pushEvent(withName: "Signed_up", withAttributes:details)
+    //            FirebaseAnalyticsHandler?.pushEvent(withName: "Signed_up", withAttributes:details)
     //        }
     //    }
     
     static func signInTappedEvent(with eventName: String, withOtherDetails details: Dictionary<String,Any>?){
         
-        //FirebaseAnalyticsHandler.sharedInstance.pushEvent(withName: eventName, withAttributes:details)
+        FirebaseAnalyticsHandler?.pushEvent(withName: eventName, withAttributes:details)
         IBSVAnalytics?.logCategory(event: eventName, dictionary: details)
     }
     
@@ -224,6 +225,7 @@ class LoginGAPManager: NSObject {
     
     static let screenNameKey = "screenName"
     static var IBSVAnalytics = AuthDepedencyInjector.AnalyticsDelegate
+    static var FirebaseAnalyticsHandler = AuthDepedencyInjector.AnalyticsDelegate
     
     enum LoginTapType: String {
         
@@ -266,7 +268,7 @@ class LoginGAPManager: NSObject {
         let openScreenEventName = "openScreen"
         let attributes = ["cdCatQuery": "Social", screenNameKey: getCurrentScreenName(for: controller)]
         
-        //FirebaseAnalyticsHandler.sharedInstance.pushEvent(withName: openScreenEventName, withAttributes:attributes)
+        FirebaseAnalyticsHandler?.pushEvent(withName: openScreenEventName, withAttributes:attributes)
     }
     
     static func logTappedEvent(with type: LoginTapType, forController controller:LoginBaseViewController) {
@@ -280,7 +282,7 @@ class LoginGAPManager: NSObject {
         attributes[tapTypeKeyName] = getCurrentScreenName(for: controller)
         attributes[tapValueKeyName] = type.rawValue
         
-        //FirebaseAnalyticsHandler.sharedInstance.pushEvent(withName: tapEventName, withAttributes:attributes)
+        FirebaseAnalyticsHandler?.pushEvent(withName: tapEventName, withAttributes:attributes)
     }
     
     static func skipButtonTapped(with type: SkipTapType, forController controller:LoginBaseViewController) {
@@ -295,7 +297,7 @@ class LoginGAPManager: NSObject {
         attributes[skipTypeKeyName] = type.rawValue
         
         
-        //FirebaseAnalyticsHandler.sharedInstance.pushEvent(withName: tapEventName, withAttributes:attributes)
+        FirebaseAnalyticsHandler?.pushEvent(withName: tapEventName, withAttributes:attributes)
     }
     
     
@@ -313,7 +315,7 @@ class LoginGAPManager: NSObject {
         attributes[existingUserKeyName] = isExistingUser ? "true" : "false"
         attributes[userTypeKeyName] = userType.rawValue
         
-        //FirebaseAnalyticsHandler.sharedInstance.pushEvent(withName: successEventName, withAttributes:attributes)
+        FirebaseAnalyticsHandler?.pushEvent(withName: successEventName, withAttributes:attributes)
         IBSVAnalytics?.logCategory(event: (isExistingUser ? "Signin Success" : "Signup Success"), dictionary: attributes)
     }
     

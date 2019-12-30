@@ -19,6 +19,8 @@ protocol LoginBaseProtocol: class {
     
     var isverifyMethodOtp: Bool { get set }
     
+    var isFbSignup: Bool { get }
+    
     func showActivityIndicator()
     
     func hideActivityIndicator()

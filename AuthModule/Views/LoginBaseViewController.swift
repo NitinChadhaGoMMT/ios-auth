@@ -51,6 +51,7 @@ class LoginBaseViewController: UIViewController, LoginBaseProtocol {
         UserDataManager.updateLoggedInUserGoCash()
         OfflineReviewsFireBase.sharedInstance.signIn()
         RecentSearchManager.shared.performGuestUserToLoggedInUserRecentSearchMigration()*/
+        AuthAlert.show(message: "User LoggedIn Successfully")
     }
     
     func setMConnectData(data: MconnectData) {
@@ -119,6 +120,8 @@ class LoginBaseViewController: UIViewController, LoginBaseProtocol {
         }
         
         func loadMobileEntryScreen(with newMobile:String?){
+            
+            
             //<NITIN>
             /*let storyboard = UIStoryboard(name: "LoginStoryboard", bundle: nil)
             let mobileVC = storyboard.instantiateViewController(withIdentifier: "MobileVerificationViewController") as! MobileVerificationViewController

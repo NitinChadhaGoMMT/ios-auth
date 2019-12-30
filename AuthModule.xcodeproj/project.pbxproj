@@ -41,6 +41,8 @@
 		6E391B6023A12B34006AEC46 /* SignupInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E391B5F23A12B34006AEC46 /* SignupInteractor.swift */; };
 		6E39436323A376FA00AA0A79 /* OTPVerificationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E39436223A376FA00AA0A79 /* OTPVerificationInteractor.swift */; };
 		6E39436523A385DF00AA0A79 /* SignUpHeaderTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E39436423A385DF00AA0A79 /* SignUpHeaderTableCell.swift */; };
+		6E395A5B23B9C61F002D50F1 /* MobileVerificationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E395A5A23B9C61F002D50F1 /* MobileVerificationPresenter.swift */; };
+		6E395A5D23B9CD84002D50F1 /* MobileVerificationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E395A5C23B9CD84002D50F1 /* MobileVerificationProtocols.swift */; };
 		6E4011EB23A3CEF5002C6BFD /* LoginWelcomeProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4011EA23A3CEF5002C6BFD /* LoginWelcomeProtocols.swift */; };
 		6E44B13D23ABEB6A0068EC9A /* UserData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6E44B13B23ABEB690068EC9A /* UserData.xcdatamodeld */; };
 		6E44B13F23ABEDBC0068EC9A /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E44B13E23ABEDBC0068EC9A /* DatabaseHelper.swift */; };
@@ -48,12 +50,16 @@
 		6E4BD07E239F9C5F0022D514 /* AuthCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4BD07D239F9C5F0022D514 /* AuthCache.swift */; };
 		6E4D5B4923B0955100491102 /* SignInWithPasswordProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4D5B4823B0955100491102 /* SignInWithPasswordProtocols.swift */; };
 		6E4D5B4B23B0E89E00491102 /* AuthDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4D5B4A23B0E89E00491102 /* AuthDataProvider.swift */; };
-		6E4D5B5123B0F14000491102 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B4C23B0F14000491102 /* CryptoSwift.framework */; platformFilter = ios; };
-		6E4D5B5723B0F14100491102 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B4F23B0F14000491102 /* FBSDKCoreKit.framework */; platformFilter = ios; };
-		6E4D5B5923B0F14100491102 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B5023B0F14000491102 /* FBSDKLoginKit.framework */; platformFilter = ios; };
 		6E4D5B5D23B0FAFE00491102 /* GoFacebookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4D5B5C23B0FAFE00491102 /* GoFacebookManager.swift */; };
 		6E554C04239145C900E043A2 /* AuthAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E554C03239145C900E043A2 /* AuthAlert.swift */; };
 		6E71C281239550DF00A81BAF /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E71C280239550DF00A81BAF /* AppConstants.swift */; };
+		6E8616BA23B161730012FE33 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B4F23B0F14000491102 /* FBSDKCoreKit.framework */; platformFilter = ios; };
+		6E8616BB23B161730012FE33 /* FBSDKCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B4F23B0F14000491102 /* FBSDKCoreKit.framework */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6E8616BD23B161740012FE33 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B5023B0F14000491102 /* FBSDKLoginKit.framework */; platformFilter = ios; };
+		6E8616BE23B161740012FE33 /* FBSDKLoginKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B5023B0F14000491102 /* FBSDKLoginKit.framework */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6E8616BF23B161760012FE33 /* NetworkLayerFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EEA6AF9239105560030F442 /* NetworkLayerFramework.framework */; platformFilter = ios; };
+		6E8616C023B161760012FE33 /* NetworkLayerFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6EEA6AF9239105560030F442 /* NetworkLayerFramework.framework */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6E8616C223B1D5D50012FE33 /* MobileVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8616C123B1D5D50012FE33 /* MobileVerificationViewController.swift */; };
 		6E872FAA23A9167500910302 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E872FA923A9167500910302 /* ForgotPasswordViewController.swift */; };
 		6E872FAC23A91BBA00910302 /* ForgotPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E872FAB23A91BBA00910302 /* ForgotPasswordPresenter.swift */; };
 		6E872FAE23A91BCE00910302 /* ForgotPasswordInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E872FAD23A91BCE00910302 /* ForgotPasswordInteractor.swift */; };
@@ -87,7 +93,6 @@
 		6EAA395F239A526000872FD2 /* LoginPasswordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAA395E239A526000872FD2 /* LoginPasswordTableViewCell.swift */; };
 		6EAA3961239A5BD200872FD2 /* LoginContinueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAA3960239A5BD200872FD2 /* LoginContinueTableViewCell.swift */; };
 		6EAA3963239A6B2700872FD2 /* LoginOTPVerifyParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAA3962239A6B2700872FD2 /* LoginOTPVerifyParser.swift */; };
-		6EEA6AFA239105560030F442 /* NetworkLayerFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EEA6AF9239105560030F442 /* NetworkLayerFramework.framework */; platformFilter = ios; };
 		6EEA6B4323912D0B0030F442 /* AuthDepedencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEA6B4223912D0B0030F442 /* AuthDepedencyInjector.swift */; };
 		6EEA6B452391329B0030F442 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEA6B442391329B0030F442 /* UserDataManager.swift */; };
 		F51E989187E6764E970CAEDC /* Pods_AuthModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A572CD12B5FB82CFC0D03AB6 /* Pods_AuthModule.framework */; };
@@ -111,6 +116,19 @@
 			dstSubfolderSpec = 10;
 			files = (
 				6E0701FC2386BC78008D79E9 /* AuthModule.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E8616BC23B161730012FE33 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6E8616C023B161760012FE33 /* NetworkLayerFramework.framework in Embed Frameworks */,
+				6E8616BE23B161740012FE33 /* FBSDKLoginKit.framework in Embed Frameworks */,
+				6E8616BB23B161730012FE33 /* FBSDKCoreKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -156,6 +174,8 @@
 		6E391B5F23A12B34006AEC46 /* SignupInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupInteractor.swift; sourceTree = "<group>"; };
 		6E39436223A376FA00AA0A79 /* OTPVerificationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPVerificationInteractor.swift; sourceTree = "<group>"; };
 		6E39436423A385DF00AA0A79 /* SignUpHeaderTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpHeaderTableCell.swift; sourceTree = "<group>"; };
+		6E395A5A23B9C61F002D50F1 /* MobileVerificationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileVerificationPresenter.swift; sourceTree = "<group>"; };
+		6E395A5C23B9CD84002D50F1 /* MobileVerificationProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileVerificationProtocols.swift; sourceTree = "<group>"; };
 		6E4011EA23A3CEF5002C6BFD /* LoginWelcomeProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWelcomeProtocols.swift; sourceTree = "<group>"; };
 		6E44B13C23ABEB690068EC9A /* User.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = User.xcdatamodel; sourceTree = "<group>"; };
 		6E44B13E23ABEDBC0068EC9A /* DatabaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
@@ -171,6 +191,7 @@
 		6E4D5B5C23B0FAFE00491102 /* GoFacebookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoFacebookManager.swift; sourceTree = "<group>"; };
 		6E554C03239145C900E043A2 /* AuthAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAlert.swift; sourceTree = "<group>"; };
 		6E71C280239550DF00A81BAF /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		6E8616C123B1D5D50012FE33 /* MobileVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileVerificationViewController.swift; sourceTree = "<group>"; };
 		6E872FA923A9167500910302 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		6E872FAB23A91BBA00910302 /* ForgotPasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordPresenter.swift; sourceTree = "<group>"; };
 		6E872FAD23A91BCE00910302 /* ForgotPasswordInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordInteractor.swift; sourceTree = "<group>"; };
@@ -226,10 +247,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E4D5B5123B0F14000491102 /* CryptoSwift.framework in Frameworks */,
-				6E4D5B5723B0F14100491102 /* FBSDKCoreKit.framework in Frameworks */,
-				6EEA6AFA239105560030F442 /* NetworkLayerFramework.framework in Frameworks */,
-				6E4D5B5923B0F14100491102 /* FBSDKLoginKit.framework in Frameworks */,
+				6E8616BF23B161760012FE33 /* NetworkLayerFramework.framework in Frameworks */,
+				6E8616BA23B161730012FE33 /* FBSDKCoreKit.framework in Frameworks */,
+				6E8616BD23B161740012FE33 /* FBSDKLoginKit.framework in Frameworks */,
 				F51E989187E6764E970CAEDC /* Pods_AuthModule.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,6 +381,7 @@
 				6E391B5D23A12B1E006AEC46 /* SignUpPresenter.swift */,
 				6E872FAB23A91BBA00910302 /* ForgotPasswordPresenter.swift */,
 				6E872FB923AB7B2100910302 /* KeyChainLoginPresenter.swift */,
+				6E395A5A23B9C61F002D50F1 /* MobileVerificationPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -375,6 +396,7 @@
 				6E391B5B23A12A14006AEC46 /* SignupViewController.swift */,
 				6E872FA923A9167500910302 /* ForgotPasswordViewController.swift */,
 				6E872FB723AB7AEC00910302 /* KeyChainLoginViewController.swift */,
+				6E8616C123B1D5D50012FE33 /* MobileVerificationViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -427,6 +449,7 @@
 				6E4011EA23A3CEF5002C6BFD /* LoginWelcomeProtocols.swift */,
 				6E872FAF23AB648A00910302 /* ForgotPasswordProtocols.swift */,
 				6E4D5B4823B0955100491102 /* SignInWithPasswordProtocols.swift */,
+				6E395A5C23B9CD84002D50F1 /* MobileVerificationProtocols.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -525,6 +548,7 @@
 				6E0701F12386BC78008D79E9 /* Frameworks */,
 				6E0701F22386BC78008D79E9 /* Resources */,
 				6EEA6AFD239105610030F442 /* ShellScript */,
+				6E8616BC23B161730012FE33 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -717,8 +741,10 @@
 				6E872FAA23A9167500910302 /* ForgotPasswordViewController.swift in Sources */,
 				6EA780232394F29500FA409D /* AuthInteractor.swift in Sources */,
 				6E0702022386BC95008D79E9 /* LoginWelcomeViewController.swift in Sources */,
+				6E395A5B23B9C61F002D50F1 /* MobileVerificationPresenter.swift in Sources */,
 				6EA780272394F53600FA409D /* LoginModels.swift in Sources */,
 				6EA4D232239940D3004DFAEA /* SignInWithPasswordViewController.swift in Sources */,
+				6E8616C223B1D5D50012FE33 /* MobileVerificationViewController.swift in Sources */,
 				6EA4D2342399413C004DFAEA /* SignInWithPasswordInteractor.swift in Sources */,
 				6EAA395F239A526000872FD2 /* LoginPasswordTableViewCell.swift in Sources */,
 				6E39436323A376FA00AA0A79 /* OTPVerificationInteractor.swift in Sources */,
@@ -751,6 +777,7 @@
 				6E391B5A23A0CF72006AEC46 /* MconnectDataParser.swift in Sources */,
 				6E4BD07E239F9C5F0022D514 /* AuthCache.swift in Sources */,
 				6E872FAC23A91BBA00910302 /* ForgotPasswordPresenter.swift in Sources */,
+				6E395A5D23B9CD84002D50F1 /* MobileVerificationProtocols.swift in Sources */,
 				6E4BD076239E5CFC0022D514 /* OTPVerificationPresenter.swift in Sources */,
 				6EA780362395054C00FA409D /* KeychainItemAccessibility.swift in Sources */,
 				6E0702122386C757008D79E9 /* CommonUIExtensions.swift in Sources */,

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FBSDKCoreKit
 
 public class AuthRouter {
 
@@ -18,6 +19,10 @@ public class AuthRouter {
     
     var mainstoryboard: UIStoryboard {
         return UIStoryboard(name:"Auth",bundle: AuthUtils.bundle)
+    }
+    
+    private init() {
+        Settings.appID = "151974918280687"
     }
     
     public func createModule() -> UIViewController? {
@@ -68,6 +73,26 @@ public class AuthRouter {
         
         return view
     }
+    
+    func navigateToMobileVerificationController(mobile: String?, isFbSignUp: Bool, referralCode: String) -> UIViewController? {
+        
+        guard let view: MobileVerificationViewController = mainstoryboard.getViewController() else {
+            return nil
+        }
+        
+        view.isFbSignup = isFbSignUp
+        view.referralCode = referralCode
+        
+        let presenter = MobileVerificationPresenter(mobile: mobile)
+        let interactor = LoginWelcomeInteractor()
+        
+        interactor.presenter = presenter
+        presenter.interactor = interactor
+        view.presenter = presenter
+        presenter.view = view
+        
+        return view
+    }
 
     func presentKeychainLoginViewController() -> UIViewController? {
         guard let view: KeyChainLoginViewController = mainstoryboard.getViewController() else {
@@ -105,8 +130,11 @@ extension AuthRouter: LoginWelcomePresenterToRouterProtocol {
             return nil
         }
         
-        let presenter = OTPVerificationPresenter(mobileNumber: mobileNumber, nonce: nonce, isFbSignup: isFbSignup, isNewUser: isNewUser, isverifyMethodOtp: isverifyMethodOtp, referralCode: referralCode)
+        let presenter = OTPVerificationPresenter(mobileNumber: mobileNumber, nonce: nonce, isNewUser: isNewUser, isverifyMethodOtp: isverifyMethodOtp)
         let interactor = OTPVerificationInteractor()
+        
+        view.isFbSignup = isFbSignup
+        view.referralCode = referralCode
         
         presenter.view = view
         view.presenter = presenter

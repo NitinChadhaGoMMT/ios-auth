@@ -59,7 +59,7 @@ class GoFacebookManager {
         
         Profile.enableUpdatesOnAccessTokenChange(true)
         
-        if AccessToken.current != nil {
+        if AccessToken.current == nil {
             loginManager = LoginManager()
             loginManager?.logIn(permissions: self.permissionArray, from: nil, handler: completion)
         }

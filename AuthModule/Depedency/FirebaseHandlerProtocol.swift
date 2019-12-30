@@ -67,8 +67,7 @@ public protocol CommonAnalytisProtocol {
     
     static func logCategory(event: String, dictionary: Dictionary<String, Any>?)
     
-    
-    
+    static func pushEvent(withName name: String, withAttributes attributes: [AnyHashable: Any]?)
     
 }
 

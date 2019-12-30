@@ -51,7 +51,7 @@ class KeyChainLoginViewController: UIViewController {
     @objc func handleTap(){
         var attributes = ["Name":"Keychain","Environment":"IOS","Origin":"Client","Action":"itemTapped"]
         attributes["tappedOutside"] = ""
-        //FirebaseAnalyticsHandler.sharedInstance.pushEvent(withName: "Keychain", withAttributes: attributes)
+        AuthDepedencyInjector.AnalyticsDelegate?.pushEvent(withName: "Keychain", withAttributes: attributes)
         AuthDepedencyInjector.AnalyticsDelegate?.logCategory(event: "Keychain", dictionary: attributes)
         notNowButtonAction(UIButton())
     }

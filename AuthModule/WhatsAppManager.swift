@@ -64,7 +64,7 @@ class WhatsAppManager {
     
     static let shared = WhatsAppManager()
     
-    var referralCode: String?
+    var referralCode: String = ""
     weak var delegate: WhatsappHelperDelegate?
     
     //<NITIN>  CHECK KEYPATH

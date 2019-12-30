@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>FacebookAppID</key>
+	<string>151974918280687</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -22,5 +24,56 @@
 	<array>
 		<string></string>
 	</array>
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+            <key>CFBundleURLIconFile</key>
+            <string></string>
+            <key>CFBundleURLName</key>
+            <string>com.goibibo.Goibibo</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>fb122023101161980</string>
+                <string>fb151974918280687</string>
+                <string>amp9898874ce19a327b0174e5a-0b3b98b2-67be-11e3-977f-009c5fda0a25</string>
+                <string>goibibo</string>
+                <string>gopromo</string>
+                <string>gobranch</string>
+                <string>com.goibibo.paypal</string>
+                <string>com.goibibo.amazonPay</string>
+                <string>com.goibibo.amazonpay</string>
+            </array>
+        </dict>
+        <dict>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+            <key>CFBundleURLName</key>
+            <string>com.optimizely</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>optly2917810624</string>
+            </array>
+        </dict>
+        <dict>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>App-Prefs</string>
+            </array>
+        </dict>
+        <dict>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+            <key>CFBundleURLName</key>
+            <string>io.branch.sdk</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>gobranch</string>
+            </array>
+        </dict>
+    </array>
 </dict>
 </plist>

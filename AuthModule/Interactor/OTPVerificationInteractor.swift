@@ -31,4 +31,15 @@ class OTPVerificationInteractor: BaseInteractor {
             self?.presenter?.failedResponseFromResendOTPRequest(error: error)
         }
     }
+    
+    func requestFacebookToResendOTP(_ mobileNumber: String) {
+        AuthService.requestFacebookToResendOTP(mobileNumber, success: { [weak self] (data) in
+            let response = LoginMobileVerifyParser().parseJSON(data) as? MobileVerifiedData
+            self?.presenter?.requestToResendFBOTPSucceeded(data: response)
+        }) { [weak self](error) in
+            self?.presenter?.requestToResendFBOTPFailed(error: error)
+        }
+    }
+    
+    
 }
