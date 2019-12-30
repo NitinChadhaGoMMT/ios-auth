@@ -115,4 +115,13 @@ struct AuthAlert {
         alertController.addAction(action)
         view.present(alertController, animated: true, completion: completion)
     }
+    
+    static func showSkipLoginAlert(withMessage message: String, onView view: UIViewController, continueAction: ((UIAlertAction) -> Void)?,cancelAction: ((UIAlertAction) -> Void)?) {
+        let alertController = UIAlertController(title: "Are you sure?", message: message, preferredStyle: .alert)
+        let continueAction = UIAlertAction(title: "CONTINUE", style: .default, handler: nil)
+        let cancelAction = UIAlertAction(title: "SKIP", style: .default, handler: cancelAction)
+        alertController.addAction(continueAction)
+        alertController.addAction(cancelAction)
+        view.present(alertController, animated: true, completion: nil)
+    }
 }

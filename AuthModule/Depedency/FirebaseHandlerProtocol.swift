@@ -14,6 +14,8 @@ import UIKit
     
     @objc static func getIntFor(keyPath: FirebaseConfigKey, dbPath:FirebaseDatabaseKey) -> Int
     
+    @objc static func getDoubleFor(keyPath: FirebaseConfigKey, dbPath:FirebaseDatabaseKey) -> Double
+    
     @objc static func getBoolFor(keyPath: FirebaseConfigKey, dbPath:FirebaseDatabaseKey) -> Bool
     
     @objc static func getDictionaryFor(keyPath: FirebaseConfigKey, dbPath:FirebaseDatabaseKey) -> Dictionary<String, Any>

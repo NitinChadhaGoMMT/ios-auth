@@ -20,4 +20,6 @@ struct AuthNetworkConstants {
     static let authKey = "52bc308d975d2559c3bf7cccf37311"
     static let server_C = "https://www.goibibo.com"
     static let nonceSalt = "@2^xlpwq)*8!E5yg0q)_dfgh"
+    static let authSecret = "895eea06cda4e5526980eee042d56a"
+    static let authServer = "https://auth.goibibo.com"
 }

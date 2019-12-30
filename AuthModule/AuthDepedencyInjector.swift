@@ -23,6 +23,8 @@ public protocol AuthModuleUIProtocol {
     func showAlertActionPrompt(withTitle title: String?, msg: String?, confirmTitle: String?, cancelTitle: String?, onCancel: @escaping () -> Void, onConfirm: @escaping () -> Void) -> UIAlertController? 
     
     func setImage(for imageView: UIImageView, url: URL, placeholder: UIImage?)
+    
+    func authLoginCompletion(isUserLoggedIn: Bool, error: Error?)
 }
 
 public protocol AuthModuleNetworkProtocol {
@@ -33,11 +35,17 @@ public protocol AuthModuleNetworkProtocol {
     
     func getUUID() -> String?
     
+    func getAppVersion() -> String?
+    
+    func getAuthSecret() -> String?
+    
     func getFlavourDictionary() -> [String: Any]?
     
     func userLoggedInSuccessfully()
     
     func userLoggedOutSuccessfully()
+    
+    func getServer_Auth() -> String?
 }
 
 public class AuthDepedencyInjector {
@@ -62,6 +70,7 @@ public class AuthDepedencyInjector {
         self.uiDelegate = uiDelegate
         self.networkDelegate = networkDelegate
         self.AnalyticsDelegate = analyticsDelegate
+        self.firebaseHandlerDelegate = firebaseDelegate
     }
     
     public static func injectReferralDictionary(dictionary: NSDictionary?) {

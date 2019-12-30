@@ -10,6 +10,10 @@ import UIKit
 
 struct AuthNetworkUtils {
     
+    static func getServer_Auth() -> String {
+        return AuthDepedencyInjector.networkDelegate?.getServer_Auth() ?? AuthNetworkConstants.authServer
+    }
+    
     static func getServer_C() -> String {
         return AuthDepedencyInjector.networkDelegate?.getServer_C() ?? AuthNetworkConstants.server_C
     }
@@ -22,8 +26,11 @@ struct AuthNetworkUtils {
         return AuthDepedencyInjector.networkDelegate?.getAuthKey() ?? AuthNetworkConstants.authKey
     }
     
+    static func getAuthSecret() -> String {
+        return AuthDepedencyInjector.networkDelegate?.getAuthSecret() ?? AuthNetworkConstants.authSecret
+    }
+    
     static func getUUID() -> String {
-        //<NITIN>
         return AuthDepedencyInjector.networkDelegate?.getUUID() ?? UIDevice.current.identifierForVendor?.uuidString ?? ""
     }
 }

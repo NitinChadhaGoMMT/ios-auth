@@ -1030,7 +1030,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="185"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3fF-YS-FyL">
-                                                <rect key="frame" x="20" y="109" width="374" height="35"/>
+                                                <rect key="frame" x="20" y="109" width="374" height="33"/>
                                                 <string key="text">Enter your 4-Digit OTP.
 We’ve sent an SMS with the OTP to</string>
                                                 <fontDescription key="fontDescription" name="Quicksand-Medium" family="Quicksand" pointSize="14"/>
@@ -1038,7 +1038,7 @@ We’ve sent an SMS with the OTP to</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9738635907" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EMr-oH-jY9">
-                                                <rect key="frame" x="157" y="154" width="100" height="20"/>
+                                                <rect key="frame" x="157" y="152" width="100" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="BKX-fD-7q5"/>
                                                     <constraint firstAttribute="height" constant="20" id="dpP-rU-ASb"/>
@@ -1055,7 +1055,7 @@ We’ve sent an SMS with the OTP to</string>
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ilo-YQ-NBd">
-                                                <rect key="frame" x="264" y="153.5" width="23" height="21"/>
+                                                <rect key="frame" x="264" y="151.5" width="23" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="CVD-La-wrV"/>
                                                     <constraint firstAttribute="width" constant="23" id="VcC-YP-Ouf"/>
@@ -1826,25 +1826,25 @@ We’ve sent an SMS with the OTP to</string>
                                             <constraint firstAttribute="height" constant="80" id="dtt-nQ-uUb"/>
                                         </constraints>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="2" minimumInteritemSpacing="2" id="fub-nK-y8f">
-                                            <size key="itemSize" width="308" height="57"/>
+                                            <size key="itemSize" width="376" height="57"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="KeychainLoginUserCell" id="Maf-ek-UcB" customClass="KeychainLoginUserCell" customModule="AuthModule" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="11.5" width="308" height="57"/>
+                                                <rect key="frame" x="0.0" y="11.5" width="376" height="57"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                    <rect key="frame" x="0.0" y="0.0" width="308" height="57"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="376" height="57"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="54m-ar-KWp">
-                                                            <rect key="frame" x="20" y="6" width="268" height="45"/>
+                                                            <rect key="frame" x="20" y="6" width="336" height="45"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tni-8G-AVt">
-                                                            <rect key="frame" x="100" y="13" width="190" height="31"/>
+                                                            <rect key="frame" x="100" y="13" width="258" height="31"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -1871,6 +1871,7 @@ We’ve sent an SMS with the OTP to</string>
                                                     <constraint firstItem="tni-8G-AVt" firstAttribute="leading" secondItem="Yqg-EP-L7b" secondAttribute="trailing" constant="20" id="rfO-44-th5"/>
                                                     <constraint firstItem="tni-8G-AVt" firstAttribute="centerY" secondItem="Yqg-EP-L7b" secondAttribute="centerY" id="ygn-qU-M5z"/>
                                                 </constraints>
+                                                <size key="customSize" width="376" height="57"/>
                                                 <connections>
                                                     <outlet property="backShadowVieew" destination="54m-ar-KWp" id="3Nr-ub-PcK"/>
                                                     <outlet property="phoneNumberAndNameLabel" destination="tni-8G-AVt" id="1si-0X-uEh"/>
@@ -1878,6 +1879,9 @@ We’ve sent an SMS with the OTP to</string>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
+                                        <connections>
+                                            <outlet property="delegate" destination="neo-7e-hwK" id="eKv-ZZ-Odn"/>
+                                        </connections>
                                     </collectionView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XVM-gC-NPJ">
                                         <rect key="frame" x="164" y="203" width="46" height="30"/>
@@ -1934,12 +1938,12 @@ We’ve sent an SMS with the OTP to</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iXi-jK-dVZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1701" y="2909"/>
+            <point key="canvasLocation" x="1700.0000000000002" y="2908.9285714285711"/>
         </scene>
         <!--Mobile Verification View Controller-->
         <scene sceneID="lxv-VT-a7Q">
             <objects>
-                <viewController storyboardIdentifier="MobileVerificationViewController" id="Id4-MK-tEE" customClass="MobileVerificationViewController" customModule="Goibibo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MobileVerificationViewController" id="Id4-MK-tEE" customClass="MobileVerificationViewController" customModule="AuthModule" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vEf-O8-ukJ"/>
                         <viewControllerLayoutGuide type="bottom" id="hpB-nJ-swH"/>
@@ -2300,6 +2304,53 @@ We’ve sent an SMS with the OTP to</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="et1-eP-trL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2658" y="2908"/>
+        </scene>
+        <!--Temp View Controller-->
+        <scene sceneID="epE-3x-Zfl">
+            <objects>
+                <viewController storyboardIdentifier="TempViewController" id="EtQ-qb-hKv" customClass="TempViewController" customModule="AuthModule" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QBT-2o-tXq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="b4u-uT-vM5">
+                                <rect key="frame" x="20" y="111" width="374" height="697"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O1m-oL-XVf">
+                                <rect key="frame" x="85" y="816" width="243" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="U1b-LL-gb5"/>
+                                </constraints>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logoutAction:" destination="EtQ-qb-hKv" eventType="touchUpInside" id="8dR-9V-tFi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="2V9-Uh-JCs" firstAttribute="trailing" secondItem="b4u-uT-vM5" secondAttribute="trailing" constant="20" id="L89-8x-kvY"/>
+                            <constraint firstItem="2V9-Uh-JCs" firstAttribute="trailing" secondItem="O1m-oL-XVf" secondAttribute="trailing" constant="86" id="PEi-20-inB"/>
+                            <constraint firstItem="b4u-uT-vM5" firstAttribute="leading" secondItem="2V9-Uh-JCs" secondAttribute="leading" constant="20" id="TsS-DW-P87"/>
+                            <constraint firstItem="O1m-oL-XVf" firstAttribute="leading" secondItem="2V9-Uh-JCs" secondAttribute="leading" constant="85" id="VBb-kO-eUW"/>
+                            <constraint firstItem="O1m-oL-XVf" firstAttribute="top" secondItem="b4u-uT-vM5" secondAttribute="bottom" constant="8" id="kBa-2Q-FI9"/>
+                            <constraint firstItem="O1m-oL-XVf" firstAttribute="bottom" secondItem="2V9-Uh-JCs" secondAttribute="bottom" id="kYF-zG-4dp"/>
+                            <constraint firstItem="b4u-uT-vM5" firstAttribute="top" secondItem="2V9-Uh-JCs" secondAttribute="top" constant="67" id="xAE-2S-stP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="2V9-Uh-JCs"/>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="b4u-uT-vM5" id="g2v-BL-qHT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DaR-xK-x9H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3510.144927536232" y="2908.9285714285711"/>
         </scene>
     </scenes>
     <resources>

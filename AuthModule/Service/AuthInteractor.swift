@@ -185,6 +185,86 @@ class AuthService: AuthServiceProtocol {
         }
     }
     
+    static func requestLoginWithRefreshAccessToken(successBlock: (() -> Void)?, errorBlock: (() -> Void)?) {
+        
+        guard AuthCache.shared.getUserDefaltObject(forKey: "refresh_token") != nil || UserDataManager.shared.isLoggedIn else { return }
+        
+        if APIRetryHandler.shared.canRetryAuthApi() {
+            var parameters = [String: Any]()
+            parameters[AuthNetworkConstants.kFlavourKey] = AuthNetworkConstants.kMajorFlavour
+            parameters["versioncode"] = AuthDepedencyInjector.networkDelegate?.getAppVersion()
+            parameters["client_id"] = AuthNetworkUtils.getAuthKey()
+            parameters["grant_type"] = "refresh_token"
+            parameters["refresh_token"] = AuthCache.shared.getUserDefaltObject(forKey: "refresh_token")
+            
+            let authBase64Part = "\(AuthNetworkUtils.getAuthKey()):\(AuthNetworkUtils.getAuthSecret())".toBase64()
+            let auth = "Basic \(authBase64Part)"
+            
+            Session.service.get(LoginConstants.refreshTokenUrl(), header: ["goibibo-authorization": auth], parameters: parameters, timeoutInterval: .default, success: { (data) in
+                
+                if let jsonData = data.dictionaryObject {
+                    
+                    if let errMain = jsonData["error"] as? String, errMain == "invalid_request" {
+                        
+                        if let refresh_token = AuthCache.shared.getUserDefaltObject(forKey: "refresh_token") as? String, let parameterRefreshToken = parameters["refresh_token"] as? String, refresh_token != parameterRefreshToken {
+                            requestLoginWithRefreshAccessToken(successBlock: successBlock, errorBlock: errorBlock)
+                        } else {
+                            AuthAlert.show(message: "Your login session is expired.")
+                            UserDataManager.shared.logout(type: .api)
+                        }
+                        
+                    } else {
+                        
+                        AuthCache.shared.setUserDefaltObject(jsonData["access_token"], forKey: "access_token")
+                        AuthCache.shared.setUserDefaltObject(jsonData["token_type"], forKey: "token_type")
+                        AuthCache.shared.setUserDefaltObject(jsonData["expires_in"], forKey: "expires_in")
+                        AuthCache.shared.setUserDefaltObject(jsonData["refresh_token"], forKey: "refresh_token")
+                        AuthCache.shared.setUserDefaltObject(jsonData["firebase_token"], forKey: "firebase_token")
+                        AuthCache.shared.setUserDefaltObject(jsonData["ipl_firebase_token"], forKey: "ipl_firebase_token")
+                        AuthCache.shared.setUserDefaltObject(NSDate.init(timeInterval: (TimeInterval(jsonData["expires_in"] as! Int)), since: Date()), forKey: "token_expiry")
+                        AuthCache.shared.setUserDefaltObject(jsonData["firebase_token"], forKey: "firebase_token")
+                        UserDataManager.shared.accessTokenUpdated()
+                        UserDataManager.updateLoggedInUserGoCash()
+                        
+                        if(successBlock != nil) {
+                            successBlock!()
+                        }
+                    }
+                }
+                
+            }) { (json, error) in
+                if let error = error as NSError?, error.code == 400 {
+                    let refreshToken = AuthCache.shared.getUserDefaltObject(forKey: "refresh_token") as? String
+                    if let parameterRefreshToken = parameters["refresh_token"] as? String, !parameterRefreshToken.isEmpty ,refreshToken != parameterRefreshToken {
+                        requestLoginWithRefreshAccessToken(successBlock: successBlock, errorBlock: errorBlock)
+                    } else {
+                        if UserDataManager.shared.isLoggedIn {
+                            AuthAlert.show(message: "Your login session is expired.")
+                            UserDataManager.shared.logout(type: .api)
+                            
+                        } else {
+                            if errorBlock != nil {
+                                errorBlock!()
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+            
+            if UserDataManager.shared.isLoggedIn {
+                AuthAlert.show(message: "Your login session is expired.")
+                UserDataManager.shared.logout(type: .api)
+            } else {
+                if errorBlock != nil {
+                    errorBlock!()
+                }
+            }
+            
+        }
+        
+    }
+    
     static func verifyMobileWithMconnect(withMobile mobileNo:String, mconnectData:MconnectData, isFBSignUp:Bool, referralCode:String, success: @escaping SuccessBlock, failure: @escaping FailureBlock) {
         
         var dict: Dictionary<String,String> = ["o":mconnectData.operatorName!,"m": mobileNo,"c":AuthNetworkUtils.getAuthKey()]

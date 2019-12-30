@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NetworkLayerFramework
 
 class LoginWrapper {
 
@@ -108,6 +109,90 @@ class LoginWrapper {
         //<NITIN>
         //ConversionTrackingUtils.conversionTracking(for: kConversionTrackingForLogin)
         //IBSVAnalytics.logConnFinSuccess(LOG_SERVICE_OAUTH_USER_DATA, category: LOG_LOGIN_USER)
+    }
+    
+    
+    static func oAuthDictionaryForced() -> [String :String] {
+        
+        var dictionary = [String: String]()
+        
+        guard let bearerToken:String = AuthCache.shared.getUserDefaltObject(forKey: "access_token") as? String else {
+            return dictionary
+        }
+        
+        if !bearerToken.isEmpty {
+            dictionary = ["bearer_token": bearerToken, "device_id": AuthNetworkUtils.getUUID()]
+        }
+        
+        return dictionary
+    }
+    
+    @objc class func goServiceUserInfoLogin(_ sender: UIViewController?, pop: Bool, finishedVC: UIViewController?, onError: @escaping (Any?) -> Void, onFinished: @escaping (Any?) -> Void) {
+        
+        let getDic = LoginWrapper.oAuthDictionaryForced()
+        let urlPath = LoginConstants.userInfoUrl()
+        
+        
+        //[urlConnect startAsyncConnection:SERVICE_LOGIN_USER_DATA server:SERVER_AUTH postDic:nil getDic:getDic logService:LOG_SERVICE_OAUTH_USER_DATA logCategory:LOG_LOGIN_USER viewController:sender activity:activity autoShowErrorAlerts:YES autoConvertJson:YES onDidntStart:nil errorBlock:nil onUrlResponseError:nil onJsonIssue:nil onSuccessFinish:^(id data) {
+        
+        var bearerToken = AuthCache.shared.getUserDefaltObject(forKey: "access_token") as? String ?? ""
+        
+        Session.service.get(urlPath, header: ["oauth-goibibo": bearerToken], parameters: getDic, timeoutInterval: .default, success: { (response) in
+            
+            guard let jsonData = response.dictionaryObject as? [String: Any] else {
+                //IBSVAnalytics.logConnFinError(LOG_SERVICE_OAUTH_USER_DATA, category: LOG_LOGIN_USER, event: "Invalid Data L1", error: nil)
+                return
+            }
+            
+            if let errMain = jsonData["error"] as? String, let errDesc = jsonData["error_description"] as? String {
+                //IBSVAnalytics.logConnFinError(LOG_SERVICE_OAUTH_USER_DATA, category: LOG_LOGIN_USER, event: "\(errMain) : \(errDesc)", error: nil)
+                AuthAlert.show(message: "\(errMain) : \(errDesc)")
+                return
+            }
+            
+            guard let data = jsonData["data"] as? [String: Any] else {
+                //IBSVAnalytics.logConnFinError(LOG_SERVICE_OAUTH_USER_DATA, category: LOG_LOGIN_USER, event: "Invalid Data L2", error: nil)
+                onError(nil);
+                return
+            }
+            
+            var dic: [String: Any] = data
+            
+            if let dic2 = data["referral_details"] as? Dictionary<String, Any> {
+                if AuthUtils.isEmptyString(dic2["user_code"] as? String) == false {
+                    dic["user_code"] = dic2["user_code"]
+                }
+                
+                if AuthUtils.isEmptyString(dic2["branch_link"] as? String) == false {
+                    dic["branch_link"] = dic2["branch_link"]
+                }
+            }
+            
+            UserDataManager.shared.updateLoggedInUser(to: dic)
+            
+            //<NITIN>
+            //ConversionTrackingUtils.conversionTracking(for: kConversionTrackingForLogin)
+            
+            //IBSVAnalytics.logConnFinished(LOG_SERVICE_OAUTH_USER_DATA, category: LOG_LOGIN_USER)
+            
+            if (pop) {
+                if let controller = finishedVC, let sender = sender {
+                    if sender.navigationController?.viewControllers.contains(controller) == true {
+                        sender.navigationController?.popToViewController(controller, animated: false)
+                    } else {
+                        sender.navigationController?.popToRootViewController(animated: true)
+                    }
+                } else {
+                    //<NITIN>
+                    //AppRouter.navigateToProfileAndStopReactThread()
+                }
+            }
+            onFinished(jsonData)
+            
+        }) { (response, error) in
+            onError(error)
+        }
+        
     }
     
 }

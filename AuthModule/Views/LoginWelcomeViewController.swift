@@ -51,6 +51,7 @@ class LoginWelcomeViewController: LoginBaseViewController, LoginWelcomePresenter
         topView
             .setBackgroundColor(color: .customBlue)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginWelcomeViewController.updateAfterKeychainSuccess), name: NSNotification.Name(rawValue: "ChainUpdate"), object: nil)
         resetReferralCode()
     }
     
@@ -174,6 +175,11 @@ extension LoginWelcomeViewController: UITableViewDataSource, UITableViewDelegate
         WhatsAppManager.shared.delegate = self
         AuthDepedencyInjector.uiDelegate?.showActivityIndicator(on: self.view, withMessage: "Logging in with Whatsapp..")
         WhatsAppManager.shared.loginWithWhatsapp(referralCode: presenter?.referralCode)
+    }
+    
+    @objc func updateAfterKeychainSuccess(){
+        self.userSuccessfullyLoggedIn()
+        self.presenter?.logGAClickEvent("keychain_popup")
     }
 }
 

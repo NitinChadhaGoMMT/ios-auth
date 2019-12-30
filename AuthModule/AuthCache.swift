@@ -27,6 +27,14 @@ class AuthCache: NSObject {
         UserDefaults.standard.setValue(value, forKeyPath: key)
     }
     
+    func setUserDefaltDouble(_ value: Double, forKey key: String) {
+        UserDefaults.standard.setValue(value, forKeyPath: key)
+    }
+    
+    func getUserDefaltDouble(forKey key: String) -> Double? {
+        return UserDefaults.standard.double(forKey: key)
+    }
+    
     func setUserDefaltInteger(_ value: Int?, forKey key: String) {
         UserDefaults.standard.set(value, forKey: key)
     }

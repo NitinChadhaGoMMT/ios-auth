@@ -8,7 +8,7 @@
 
 import UIKit
 
-class KeyChainLoginViewController: UIViewController {
+class KeyChainLoginViewController: LoginBaseViewController {
     
     @IBOutlet weak var subHeadingLabel: UILabel!
     @IBOutlet weak var popUpView: UIView!
@@ -38,6 +38,15 @@ class KeyChainLoginViewController: UIViewController {
         usersDataCollectionView.isPagingEnabled = true
         usersDataCollectionView.delegate = self
         usersDataCollectionView.dataSource = self
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = usersDataCollectionView.frame.size
+        usersDataCollectionView.setCollectionViewLayout(layout, animated: true)
+        
+        usersDataCollectionView.backgroundColor = UIColor(red:0.96, green:0.96, blue:0.98, alpha:1.0)
+        
+        
+        
         popUpView.makeCornerRadiusWithValue(20)
         addTapGesture()
     }
@@ -64,9 +73,22 @@ class KeyChainLoginViewController: UIViewController {
         //<NITIN>FirebaseAnalyticsHandler.sharedInstance.pushEvent(withName: "Keychain", withAttributes: attributes)
         AuthDepedencyInjector.AnalyticsDelegate?.logCategory(event: "Keychain", dictionary: attributes)
     }
+    
+    func getUserId(forIndex index:Int) -> String {
+        guard let dictionary = presenter?.dataSource[index] as? [String:Any] else{
+            return ""
+        }
+        
+        guard let userId = dictionary["userId"] as? String else{
+            return ""
+        }
+        
+        return userId
+        
+    }
 }
 
-extension KeyChainLoginViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension KeyChainLoginViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
     }
@@ -79,5 +101,20 @@ extension KeyChainLoginViewController: UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let modal = KeychainLoginHandler()
+        modal.startLogInFLow(userid:getUserId(forIndex:indexPath.row), sender:self)
+        var attributes = getAttributes()
+        attributes["currentProfileClicked"] = "1"
+        //<NITIN>FirebaseAnalyticsHandler.sharedInstance.pushEvent(withName: "Keychain", withAttributes: attributes)
+        SignInGAPManager.signinOrSignUpEvent(withEventType: .signIn, withMethod: .keyChain, withVerifyType: .keyChain, withOtherDetails: nil)
+        SignInGAPManager.logGenericEventWithoutScreen(for: "loginSuccessNew", otherParams:["medium":"keychain","verificationChannel":"keychain"])
+        //<NITIN>IBSVAnalytics.logCategory(LOG_NOTHING, subCategory: LOG_NOTHING, event:  "Keychain", pageView: nil, withParameters: attributes)
+    }
+    
+    func getAttributes() -> [String:String]{
+        return ["Name":"Keychain","Environment":"IOS","Origin":"Client","Action":"itemTapped"]
     }
 }

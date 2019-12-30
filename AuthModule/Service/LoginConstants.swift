@@ -49,4 +49,12 @@ class LoginConstants {
     static func fbSignupAccountUrl() -> String {
         return kBaseServerURL + apiVersionV5 + "facebook_connect/"
     }
+    
+    static func refreshTokenUrl() -> String {
+        return AuthNetworkUtils.getServer_C() + "/api/oauth/token/"
+    }
+    
+    static func userInfoUrl() -> String {
+        return AuthNetworkUtils.getServer_Auth() + "/v5/api/user/"
+    }
 }

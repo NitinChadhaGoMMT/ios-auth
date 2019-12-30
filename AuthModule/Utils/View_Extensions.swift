@@ -80,6 +80,7 @@ extension UIViewController {
         } else {
             AppDelegate.sharedIns().baseNavigationVC.modalPresentationStyle =  .currentContext
         }*/
+        vc.modalPresentationStyle = .overFullScreen
         self.present(vc, animated: animated, completion: completion)
     }
 }
@@ -94,5 +95,11 @@ extension UIView {
         
         //self.layer.shadowPath = UIBezierPath(rect: self.bounds).CGPath
        // self.layer.shouldRasterize = true
+    }
+}
+
+extension String {
+    func toBase64() -> String {
+        return Data(self.utf8).base64EncodedString()
     }
 }

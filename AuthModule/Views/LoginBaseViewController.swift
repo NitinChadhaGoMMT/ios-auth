@@ -51,7 +51,8 @@ class LoginBaseViewController: UIViewController, LoginBaseProtocol {
         UserDataManager.updateLoggedInUserGoCash()
         OfflineReviewsFireBase.sharedInstance.signIn()
         RecentSearchManager.shared.performGuestUserToLoggedInUserRecentSearchMigration()*/
-        AuthAlert.show(message: "User LoggedIn Successfully")
+        //AuthAlert.show(message: "User LoggedIn Successfully")
+        AuthRouter.shared.goToHomePage(vc: self)
     }
     
     func setMConnectData(data: MconnectData) {
@@ -61,6 +62,12 @@ class LoginBaseViewController: UIViewController, LoginBaseProtocol {
     
     func addMconnectView() {
         //override this method
+    }
+    
+    //<NITIN>
+    func removeBranchReferralData(){
+       //Utils.removeUserDefaltObject(forKey: "branchreferCode")
+        //AppDelegate.sharedIns().sharedCache.removeObject(forKey: "branchreferCode" as AnyObject)
     }
     
     func pushController(viewController: UIViewController) {
@@ -121,6 +128,9 @@ class LoginBaseViewController: UIViewController, LoginBaseProtocol {
         
         func loadMobileEntryScreen(with newMobile:String?){
             
+            if let vc = AuthRouter.shared.navigateToMobileVerificationController(mobile: newMobile, isFbSignUp: isFbSignup, referralCode: referralCode ?? "") {
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
             
             //<NITIN>
             /*let storyboard = UIStoryboard(name: "LoginStoryboard", bundle: nil)

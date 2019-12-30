@@ -211,12 +211,32 @@ class MobileVerificationViewController: LoginBaseViewController, UITextFieldDele
         
         self.view.endEditing(true)
         
-        if AuthUtils.isValidPhoneNumber(mobileNumField.text) {
+        if !AuthUtils.isValidPhoneNumber(mobileNumField.text) {
             AuthAlert.showInvalidMobileAlert(view: self)
             return
         }
         
         self.mconnectData == nil ? self.verifyMobileWithNumber(self.mobileNumField.text!) : self.verifymConnectDataWithMobileNo(self.mobileNumField.text!)
+    }
+    
+    @IBAction func skipNowTapped(sender: AnyObject) {
+        let dict = FireBaseHandler.getDictionaryFor(keyPath: .onboarding)
+        
+        var skipDiscMessage = "Save more on bookings with goCash+ and goCash. Get all your questions answered by the goibibo community. Access your bookings across all devices."
+        
+        if let str = dict["d_s_d_ds"] as? String {
+            skipDiscMessage = str
+        }
+        
+        AuthAlert.showSkipLoginAlert(withMessage: skipDiscMessage, onView: self, continueAction: { (continueAction) in
+            SignInGAPManager.skipButtonTapped(with: .skipDialog , withOtherDetails: ["tap":"dont_skip"])
+        }) { (skipAction) in
+            SignInGAPManager.skipButtonTapped(with: .skipDialog , withOtherDetails: ["tap":"skip"])
+            self.removeBranchReferralData()
+            //<NITIN>Utils.resetSecureAccountCount()
+            AuthRouter.shared.navigateBackToSourceController(isUserLoggedIn: false, navigationController: self.navigationController)
+        }
+        
     }
     
     // MARK: UITextFieldDelegate methods

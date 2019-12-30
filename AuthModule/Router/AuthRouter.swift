@@ -93,6 +93,12 @@ public class AuthRouter {
         
         return view
     }
+    
+    public func goToHomePage(vc: UIViewController) {
+        if let controller:TempViewController = AuthRouter.shared.mainstoryboard.getViewController() {
+            vc.navigationController?.pushViewController(controller, animated: true)
+        }
+    }
 
     func presentKeychainLoginViewController() -> UIViewController? {
         guard let view: KeyChainLoginViewController = mainstoryboard.getViewController() else {
@@ -104,6 +110,30 @@ public class AuthRouter {
     
     func popCurrentViewController(vc: UIViewController) {
         vc.navigationController?.popViewController(animated: true)
+    }
+    
+    func navigateBackToSourceController(isUserLoggedIn success:Bool, navigationController: UINavigationController?) {
+        guard let navigationController = navigationController else { return }
+        
+        if let pushController = pushController {
+            navigationController.isNavigationBarHidden = false
+            if navigationController.viewControllers.contains(pushController) {
+                navigationController.popToViewController(pushController, animated: false)
+            } else {
+                navigationController.popToRootViewController(animated: false)
+            }
+            
+            if let completionBlock = completionBlock {
+                completionBlock(false, nil)
+            }
+        } else {
+            if let completionBlock = completionBlock {
+                completionBlock(false, nil)
+            }
+            
+            AuthDepedencyInjector.uiDelegate?.authLoginCompletion(isUserLoggedIn: false, error: nil)
+        }
+        
     }
 }
 

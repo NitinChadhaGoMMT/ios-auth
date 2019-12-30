@@ -16,31 +16,31 @@ class KeychainLoginUserCell: UICollectionViewCell {
     
     func setData(data:[String:Any]?){
         if let dataValue = data{
-        var name  = ""
-        var secondValue = ""
-        if let nameValue = dataValue["name"] as? String{
-            name = nameValue
-        }
-        if let value = dataValue["email"] as? String{
-            secondValue = value
-        }
-        if let numberValue = dataValue["phone"] as? String{
-            secondValue = numberValue
-        }
-        let userInfoAttributedString = NSMutableAttributedString()
+            var name  = ""
+            var secondValue = ""
+            if let nameValue = dataValue["name"] as? String{
+                name = nameValue
+            }
+            if let value = dataValue["email"] as? String{
+                secondValue = value
+            }
+            if let numberValue = dataValue["phone"] as? String{
+                secondValue = numberValue
+            }
+            let userInfoAttributedString = NSMutableAttributedString()
             userInfoAttributedString.append(NSAttributedString(string: name, attributes: [NSAttributedString.Key.foregroundColor: UIColor.black,
                                                                                           NSAttributedString.Key.font: UIFont.fontWithType(FontType.regular, andSize: 16)]))
             userInfoAttributedString.append(NSAttributedString(string: "\n" + secondValue, attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray,
-                                                                                          NSAttributedString.Key.font: UIFont.fontWithType(FontType.regular, andSize: 13)]))
+                                                                                                        NSAttributedString.Key.font: UIFont.fontWithType(FontType.regular, andSize: 13)]))
             
-        phoneNumberAndNameLabel.attributedText = userInfoAttributedString
-        
-        if let value = dataValue["profilePic"] as? String,value != ""{
-            AuthDepedencyInjector.uiDelegate?.setImage(for: profileImage, url: URL(string:value)!, placeholder: UIImage(named: "icon_personalProfile.png"))
-        }else{
-            profileImage.image = UIImage(named: "icon_personalProfile.png")
-        }
-       
+            phoneNumberAndNameLabel.attributedText = userInfoAttributedString
+            
+            profileImage.image = #imageLiteral(resourceName: "icon_personalProfile")
+            
+            if let value = dataValue["profilePic"] as? String,value != ""{
+                AuthDepedencyInjector.uiDelegate?.setImage(for: profileImage, url: URL(string:value)!, placeholder: #imageLiteral(resourceName: "icon_personalProfile"))
+            }
+            
         }
         profileImage.makeCircleWithBorderColor(UIColor.black)
         
@@ -50,8 +50,5 @@ class KeychainLoginUserCell: UICollectionViewCell {
         backShadowVieew.clipsToBounds = false
         backShadowVieew.addShadowWithColor(UIColor.lightGray, offset: CGSize(width: 0, height: 1))
     }
-    
-    
-    
 }
 

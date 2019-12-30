@@ -12,6 +12,14 @@ class FireBaseHandler {
     
     static let FirebaseDelegate = AuthDepedencyInjector.firebaseHandlerDelegate
     
+    static func getDoubleFor(keyPath: FirebaseConfigKey, dbPath: FirebaseDatabaseKey = .goConfigDatabase) -> Double? {
+        return FirebaseDelegate?.getDoubleFor(keyPath: keyPath, dbPath: dbPath)
+    }
+    
+    static func getIntFor(keyPath: FirebaseConfigKey, dbPath: FirebaseDatabaseKey = .goConfigDatabase) -> Int? {
+        return FirebaseDelegate?.getIntFor(keyPath: keyPath, dbPath: dbPath)
+    }
+    
     static func getStringFor(keyPath: FirebaseConfigKey, dbPath: FirebaseDatabaseKey = .goConfigDatabase) -> String? {
         return FirebaseDelegate?.getStringFor(keyPath: keyPath, dbPath: dbPath)
     }

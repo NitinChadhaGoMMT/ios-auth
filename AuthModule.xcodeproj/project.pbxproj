@@ -43,6 +43,8 @@
 		6E39436523A385DF00AA0A79 /* SignUpHeaderTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E39436423A385DF00AA0A79 /* SignUpHeaderTableCell.swift */; };
 		6E395A5B23B9C61F002D50F1 /* MobileVerificationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E395A5A23B9C61F002D50F1 /* MobileVerificationPresenter.swift */; };
 		6E395A5D23B9CD84002D50F1 /* MobileVerificationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E395A5C23B9CD84002D50F1 /* MobileVerificationProtocols.swift */; };
+		6E395A5F23BA1CF9002D50F1 /* APIRetryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E395A5E23BA1CF9002D50F1 /* APIRetryHandler.swift */; };
+		6E395A6123BA3C9B002D50F1 /* TempViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E395A6023BA3C9B002D50F1 /* TempViewController.swift */; };
 		6E4011EB23A3CEF5002C6BFD /* LoginWelcomeProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4011EA23A3CEF5002C6BFD /* LoginWelcomeProtocols.swift */; };
 		6E44B13D23ABEB6A0068EC9A /* UserData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6E44B13B23ABEB690068EC9A /* UserData.xcdatamodeld */; };
 		6E44B13F23ABEDBC0068EC9A /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E44B13E23ABEDBC0068EC9A /* DatabaseHelper.swift */; };
@@ -176,6 +178,8 @@
 		6E39436423A385DF00AA0A79 /* SignUpHeaderTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpHeaderTableCell.swift; sourceTree = "<group>"; };
 		6E395A5A23B9C61F002D50F1 /* MobileVerificationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileVerificationPresenter.swift; sourceTree = "<group>"; };
 		6E395A5C23B9CD84002D50F1 /* MobileVerificationProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileVerificationProtocols.swift; sourceTree = "<group>"; };
+		6E395A5E23BA1CF9002D50F1 /* APIRetryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRetryHandler.swift; sourceTree = "<group>"; };
+		6E395A6023BA3C9B002D50F1 /* TempViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempViewController.swift; sourceTree = "<group>"; };
 		6E4011EA23A3CEF5002C6BFD /* LoginWelcomeProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWelcomeProtocols.swift; sourceTree = "<group>"; };
 		6E44B13C23ABEB690068EC9A /* User.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = User.xcdatamodel; sourceTree = "<group>"; };
 		6E44B13E23ABEDBC0068EC9A /* DatabaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
@@ -324,6 +328,7 @@
 				6EEA6B442391329B0030F442 /* UserDataManager.swift */,
 				6E4BD07D239F9C5F0022D514 /* AuthCache.swift */,
 				6E44B13B23ABEB690068EC9A /* UserData.xcdatamodeld */,
+				6E395A6023BA3C9B002D50F1 /* TempViewController.swift */,
 			);
 			path = AuthModule;
 			sourceTree = "<group>";
@@ -474,6 +479,7 @@
 				6EAA3962239A6B2700872FD2 /* LoginOTPVerifyParser.swift */,
 				6E050AB5239A86B70006E67A /* LoggedInUserData.swift */,
 				6E391B5923A0CF72006AEC46 /* MconnectDataParser.swift */,
+				6E395A5E23BA1CF9002D50F1 /* APIRetryHandler.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -754,6 +760,7 @@
 				6EEA6B4323912D0B0030F442 /* AuthDepedencyInjector.swift in Sources */,
 				6EA7804023951A2500FA409D /* CommonUtils.m in Sources */,
 				6E07021E238D4AF6008D79E9 /* FirebaseHandlerProtocol.swift in Sources */,
+				6E395A5F23BA1CF9002D50F1 /* APIRetryHandler.swift in Sources */,
 				6E0702072386BD82008D79E9 /* View_Extensions.swift in Sources */,
 				6E070229238E5786008D79E9 /* LoginSkipNowTableCell.swift in Sources */,
 				6E391B5C23A12A14006AEC46 /* SignupViewController.swift in Sources */,
@@ -766,6 +773,7 @@
 				6E391B5E23A12B1E006AEC46 /* SignUpPresenter.swift in Sources */,
 				6E44B13D23ABEB6A0068EC9A /* UserData.xcdatamodeld in Sources */,
 				6EAA3963239A6B2700872FD2 /* LoginOTPVerifyParser.swift in Sources */,
+				6E395A6123BA3C9B002D50F1 /* TempViewController.swift in Sources */,
 				6EAA395D239A38CB00872FD2 /* SignInHeaderTableViewCell.swift in Sources */,
 				6EA780252394F4DB00FA409D /* AuthBaseService.swift in Sources */,
 				6E71C281239550DF00A81BAF /* AppConstants.swift in Sources */,
