@@ -13,8 +13,6 @@ class AuthCache: NSObject {
 
     static let shared = AuthCache()
     
-    var facebookToken: String!
-    
     func getUserDefaltObject(forKey key: String) -> Any? {
         return UserDefaults.standard.object(forKey: key)
     }

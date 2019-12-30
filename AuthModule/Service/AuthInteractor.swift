@@ -161,8 +161,8 @@ class AuthService: AuthServiceProtocol {
             parameters["referral_code"] = referralCode
         }
         
-        if isFBSignup == true && AuthCache.shared.facebookToken.isEmpty == false {
-            parameters[AuthNetworkConstants.kFBAccessToken] = AuthCache.shared.facebookToken
+        if isFBSignup == true && AuthUtils.isEmptyString(AccessToken.current?.tokenString) == false {
+            parameters[AuthNetworkConstants.kFBAccessToken] = AccessToken.current?.tokenString
         } else if let accessToken = AuthCache.shared.getUserDefaltObject(forKey: "access_token")  as? String {
             parameters[AuthNetworkConstants.kAccessToken] = accessToken
         }
