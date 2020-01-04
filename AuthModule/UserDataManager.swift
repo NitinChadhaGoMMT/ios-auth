@@ -53,7 +53,7 @@ class UserDataManager {
         
         if let dbUser = activeUser, let _username = dbUser.username {
             if username?.caseInsensitiveCompare(_username) != .orderedSame {
-                //<NITIN>self.logoutUser()
+                self.logout(type: .api)
                 activeUser = DBHelper.shared.createNewUserEntity()
             }
         } else {
@@ -176,6 +176,7 @@ class UserDataManager {
     }
     
     func logout(type: LogoutType) {
+        print("Logout User")
         KeychainLoginHandler.shared.deleteUser()
         AuthCache.shared.setUserDefaltBool(false, forKey: "is_user_enrolled_for_act_deals")
         AuthUtils.setBusinessProfileSelected(false)

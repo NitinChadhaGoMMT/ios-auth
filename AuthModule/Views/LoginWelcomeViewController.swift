@@ -152,12 +152,12 @@ extension LoginWelcomeViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func verifyReferralRequestFailed(response: ErrorData?) {
-        handleError(response)
+        showError(response)
         resetReferralCode()
     }
     
     func verifyMobileNumberRequestFailed(error: ErrorData?) {
-        handleError(error)
+        showError(error)
     }
     
     func verifyMobileWithNumber(_ mobileNo:String) {

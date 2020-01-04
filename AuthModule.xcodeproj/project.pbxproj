@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		64A0FEAE64C7BC7E999FE812 /* Pods_AuthSampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA1166872461082100011025 /* Pods_AuthSampleApp.framework */; };
 		6E050AB6239A86B70006E67A /* LoggedInUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E050AB5239A86B70006E67A /* LoggedInUserData.swift */; };
 		6E050AB8239A89C50006E67A /* OtpVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E050AB7239A89C50006E67A /* OtpVerificationViewController.swift */; };
 		6E0701DE2386BC5D008D79E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0701DD2386BC5D008D79E9 /* AppDelegate.swift */; };
@@ -56,11 +55,11 @@
 		6E554C04239145C900E043A2 /* AuthAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E554C03239145C900E043A2 /* AuthAlert.swift */; };
 		6E71C281239550DF00A81BAF /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E71C280239550DF00A81BAF /* AppConstants.swift */; };
 		6E8616BA23B161730012FE33 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B4F23B0F14000491102 /* FBSDKCoreKit.framework */; platformFilter = ios; };
-		6E8616BB23B161730012FE33 /* FBSDKCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B4F23B0F14000491102 /* FBSDKCoreKit.framework */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6E8616BB23B161730012FE33 /* FBSDKCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B4F23B0F14000491102 /* FBSDKCoreKit.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6E8616BD23B161740012FE33 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B5023B0F14000491102 /* FBSDKLoginKit.framework */; platformFilter = ios; };
-		6E8616BE23B161740012FE33 /* FBSDKLoginKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B5023B0F14000491102 /* FBSDKLoginKit.framework */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6E8616BE23B161740012FE33 /* FBSDKLoginKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B5023B0F14000491102 /* FBSDKLoginKit.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6E8616BF23B161760012FE33 /* NetworkLayerFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EEA6AF9239105560030F442 /* NetworkLayerFramework.framework */; platformFilter = ios; };
-		6E8616C023B161760012FE33 /* NetworkLayerFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6EEA6AF9239105560030F442 /* NetworkLayerFramework.framework */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6E8616C023B161760012FE33 /* NetworkLayerFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6EEA6AF9239105560030F442 /* NetworkLayerFramework.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6E8616C223B1D5D50012FE33 /* MobileVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8616C123B1D5D50012FE33 /* MobileVerificationViewController.swift */; };
 		6E872FAA23A9167500910302 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E872FA923A9167500910302 /* ForgotPasswordViewController.swift */; };
 		6E872FAC23A91BBA00910302 /* ForgotPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E872FAB23A91BBA00910302 /* ForgotPasswordPresenter.swift */; };
@@ -97,7 +96,6 @@
 		6EAA3963239A6B2700872FD2 /* LoginOTPVerifyParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAA3962239A6B2700872FD2 /* LoginOTPVerifyParser.swift */; };
 		6EEA6B4323912D0B0030F442 /* AuthDepedencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEA6B4223912D0B0030F442 /* AuthDepedencyInjector.swift */; };
 		6EEA6B452391329B0030F442 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEA6B442391329B0030F442 /* UserDataManager.swift */; };
-		F51E989187E6764E970CAEDC /* Pods_AuthModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A572CD12B5FB82CFC0D03AB6 /* Pods_AuthModule.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,7 +122,7 @@
 		};
 		6E8616BC23B161730012FE33 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
@@ -169,6 +167,9 @@
 		6E070225238E3968008D79E9 /* LoginFBSingupTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFBSingupTableCell.swift; sourceTree = "<group>"; };
 		6E070228238E5786008D79E9 /* LoginSkipNowTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSkipNowTableCell.swift; sourceTree = "<group>"; };
 		6E07022A238E5C16008D79E9 /* AuthUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUtils.swift; sourceTree = "<group>"; };
+		6E359EFB23BB585000DE25DF /* UserConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfirmationViewController.swift; sourceTree = "<group>"; };
+		6E359EFD23BB58E600DE25DF /* UserConfirmationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfirmationPresenter.swift; sourceTree = "<group>"; };
+		6E38880223BDC62E006C63DE /* UserConfirmationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfirmationInteractor.swift; sourceTree = "<group>"; };
 		6E391B5723A0CDB1006AEC46 /* BaseInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInteractor.swift; sourceTree = "<group>"; };
 		6E391B5923A0CF72006AEC46 /* MconnectDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MconnectDataParser.swift; sourceTree = "<group>"; };
 		6E391B5B23A12A14006AEC46 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -243,7 +244,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E0701FB2386BC78008D79E9 /* AuthModule.framework in Frameworks */,
-				64A0FEAE64C7BC7E999FE812 /* Pods_AuthSampleApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,7 +254,6 @@
 				6E8616BF23B161760012FE33 /* NetworkLayerFramework.framework in Frameworks */,
 				6E8616BA23B161730012FE33 /* FBSDKCoreKit.framework in Frameworks */,
 				6E8616BD23B161740012FE33 /* FBSDKLoginKit.framework in Frameworks */,
-				F51E989187E6764E970CAEDC /* Pods_AuthModule.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,6 +386,7 @@
 				6E872FAB23A91BBA00910302 /* ForgotPasswordPresenter.swift */,
 				6E872FB923AB7B2100910302 /* KeyChainLoginPresenter.swift */,
 				6E395A5A23B9C61F002D50F1 /* MobileVerificationPresenter.swift */,
+				6E359EFD23BB58E600DE25DF /* UserConfirmationPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -402,6 +402,7 @@
 				6E872FA923A9167500910302 /* ForgotPasswordViewController.swift */,
 				6E872FB723AB7AEC00910302 /* KeyChainLoginViewController.swift */,
 				6E8616C123B1D5D50012FE33 /* MobileVerificationViewController.swift */,
+				6E359EFB23BB585000DE25DF /* UserConfirmationViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -423,6 +424,7 @@
 				6E391B5F23A12B34006AEC46 /* SignupInteractor.swift */,
 				6E39436223A376FA00AA0A79 /* OTPVerificationInteractor.swift */,
 				6E872FAD23A91BCE00910302 /* ForgotPasswordInteractor.swift */,
+				6E38880223BDC62E006C63DE /* UserConfirmationInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -957,7 +959,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.goibibo.Goibibo.AuthModule.AuthSampleApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.goibibo.Goibibo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -977,7 +979,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.goibibo.Goibibo.AuthModule.AuthSampleApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.goibibo.Goibibo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

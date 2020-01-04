@@ -10,6 +10,8 @@ import UIKit
 
 @objc public protocol FirebaseHandlerProtocol {
     
+    @objc static func getRemoteFunctionBoolValue(forKey: String) -> Bool 
+    
     @objc static func getStringFor(keyPath: FirebaseConfigKey, dbPath:FirebaseDatabaseKey) -> String
     
     @objc static func getIntFor(keyPath: FirebaseConfigKey, dbPath:FirebaseDatabaseKey) -> Int

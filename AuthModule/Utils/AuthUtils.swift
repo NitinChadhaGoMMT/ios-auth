@@ -10,6 +10,10 @@ import UIKit
 
 struct AuthNetworkUtils {
     
+    static func getAmigoServer() -> String {
+        return AuthDepedencyInjector.networkDelegate?.getAmigoServer() ?? AuthNetworkConstants.amigoServer
+    }
+    
     static func getServer_Auth() -> String {
         return AuthDepedencyInjector.networkDelegate?.getServer_Auth() ?? AuthNetworkConstants.authServer
     }
@@ -32,6 +36,10 @@ struct AuthNetworkUtils {
     
     static func getUUID() -> String {
         return AuthDepedencyInjector.networkDelegate?.getUUID() ?? UIDevice.current.identifierForVendor?.uuidString ?? ""
+    }
+    
+    static func getAmigoBasic() -> String {
+        return AuthDepedencyInjector.networkDelegate?.getAmigoBasic() ?? AuthNetworkConstants.amigoBasic
     }
 }
 
@@ -57,6 +65,26 @@ struct AuthUtils {
     static func isEmptyString(_ string: Any?) -> Bool {
         guard let string = string as? String, !string.isEmpty else { return true }
         return false
+    }
+    
+    static func getAttributedString(for string: String?, attributes: [AnyHashable : Any]?, withDefaultString defaultString: String?) -> NSAttributedString {
+        
+        guard let string = string, !string.isEmpty else { return NSAttributedString(string: Constants.kEmptyString) }
+
+        var attribString = NSAttributedString(string: string, attributes: attributes as? [NSAttributedString.Key : Any])
+        if string.hasPrefix("<") {
+            do {
+                if let data = string.data(using: .unicode) {
+                    attribString = try NSAttributedString(data: data, options: [ :
+                       //<NITIN> NSAttributedString.DocumentAttributeKey : NSAttributedString.DocumentType.html
+                        
+                    ], documentAttributes: nil)
+                }
+            } catch {
+            }
+        }
+
+        return attribString
     }
     
     static func isValidTextForMobileField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -111,4 +139,31 @@ struct AuthUtils {
     static func isMobileNetworkConnected() -> Bool {
         return true
     }
+    
+    static func grantPermissionForContact() {
+        AuthCache.shared.setUserDefaltBool(true, forKey: "PermissionForContact")
+    }
+    
+    static func setPrivacyBookingContactEnabledSuccess(_ isEnabled: Int) {
+        AuthCache.shared.setUserDefaltInteger(isEnabled, forKey: "kPrivacyBookingContactSuccess")
+    }
+
+    
+    static func setPrivacyBookingContactEnabled(_ isEnabled: Int) {
+        AuthCache.shared.setUserDefaltInteger(isEnabled, forKey: "kPrivacyBookingContact")
+    }
+    
+    static func isDummyMobEmail(_ mailText: String?) -> Bool {
+        
+        guard let emailId = mailText else {
+            return false
+        }
+        
+        return emailId.contains("dummymobemail.com")
+    }
+    
+    static func removeBranchReferCode() {
+        AuthDepedencyInjector.uiDelegate?.removeBranchReferCode()
+    }
+    
 }

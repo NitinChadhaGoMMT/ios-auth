@@ -204,7 +204,7 @@ class OtpVerificationViewController: LoginBaseViewController {
     
     func verifyOTPRequestFailedResponse(error: ErrorData?) {
         ActivityIndicator.hide(on: self.view)
-        handleError(error)
+        showError(error)
         otpTextFieldsOutletCollection[3].becomeFirstResponder()
     }
     
@@ -215,7 +215,7 @@ class OtpVerificationViewController: LoginBaseViewController {
     
     func requestToResendOTPFailedResponse(error: ErrorData?) {
         ActivityIndicator.hide(on: self.view)
-        handleError(error)
+        showError(error)
     }
     
     @IBAction func resendCodeAgain(sender: AnyObject) {

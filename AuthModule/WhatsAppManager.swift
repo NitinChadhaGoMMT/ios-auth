@@ -25,6 +25,11 @@ class FireBaseHandler {
     }
     
     static func getBoolFor(keyPath: FirebaseConfigKey, dbPath: FirebaseDatabaseKey = .goConfigDatabase) -> Bool? {
+        
+        if keyPath == .KeychainLogInEnabled {
+            return true
+        }
+        
         return FirebaseDelegate?.getBoolFor(keyPath: keyPath, dbPath: dbPath)
     }
     

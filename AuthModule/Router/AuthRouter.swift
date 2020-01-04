@@ -49,10 +49,14 @@ public class AuthRouter {
             return nil
         }
         
-        let presenter = SignUpPresenter(referralCodde: referralCodde, otpResponse: otpResponse)
+        let presenter = SignUpPresenter(referralCode: referralCodde, otpResponse: otpResponse)
+        let interactor = SignupInteractor()
         
         view.presenter = presenter
         presenter.view = view
+        
+        interactor.presenter = presenter
+        presenter.interactor = interactor
         
         return view
     }
@@ -133,6 +137,44 @@ public class AuthRouter {
             
             AuthDepedencyInjector.uiDelegate?.authLoginCompletion(isUserLoggedIn: false, error: nil)
         }
+    }
+    
+    func signupSuccessNavigationHandling(cta:CTAItem?, navigationController: UINavigationController?) {
+        
+        guard let navigationController = navigationController else { return }
+    
+        if let pushController = pushController {
+            navigationController.isNavigationBarHidden = false
+            if navigationController.viewControllers.contains(pushController) {
+                navigationController.popToViewController(pushController, animated: false)
+            } else {
+                navigationController.popToRootViewController(animated: false)
+            }
+            
+            if let loginBlock = completionBlock {
+                loginBlock(true, nil)
+            }
+//
+            return
+        }
+        
+        if let isSyncScreenEnable = FireBaseHandler.getBoolFor(keyPath: .onboardingSyncScreenShown, dbPath: .goCoreDatabase), isSyncScreenEnable == true {
+            openConfirmationVC()
+        } else {
+            if let tag = cta?.tagId {
+                //<NITIN>
+                //OptionsVC.sharedInstance().removeAllStack()
+                //let notifManager = NotificationManager()
+                let gd = cta?.goData ?? [:]
+                let dict: [String : Any] = ["gd":gd,"tg":tag]
+                //notifManager.processNotification(dict, isDashBoard: false)
+            } else {
+                //<NITIN>AppRouter.navigateToEarn(goDataModel: nil, animated: false, completionBlock: nil)
+            }
+        }
+    }
+    
+    func openConfirmationVC() {
         
     }
 }

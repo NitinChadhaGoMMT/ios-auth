@@ -106,7 +106,7 @@ extension SignInWithPasswordViewController: UITableViewDataSource {
     }
     
     func userLoggedInRequestFailed(error: ErrorData?) {
-        handleError(error)
+        showError(error)
     }
     
     func userLoggedInRequestSucceeded(data: OtpVerifiedData?) {
@@ -115,7 +115,7 @@ extension SignInWithPasswordViewController: UITableViewDataSource {
     }
     
     func requestOtpFailed(error: ErrorData?) {
-        handleError(error)
+        showError(error)
     }
 }
 

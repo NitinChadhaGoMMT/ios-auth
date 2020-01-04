@@ -113,6 +113,6 @@ class OTPVerificationPresenter {
     
     func requestToResendFBOTPFailed(error: ErrorData?) {
         view?.hideActivityIndicator()
-        view?.handleError(error)
+        view?.showError(error)
     }
 }

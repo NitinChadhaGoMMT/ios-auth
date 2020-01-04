@@ -19,7 +19,7 @@ class LoginBaseViewController: UIViewController, LoginBaseProtocol {
     @IBOutlet weak var constraintTableViewBottomSpace: NSLayoutConstraint!
     
         // MARK: Error handling
-    func  handleError(_ errorData:Any?) {
+    func  showError(_ errorData:Any?) {
             
         guard let errorObject = errorData as? ErrorData else {
             return
@@ -55,6 +55,25 @@ class LoginBaseViewController: UIViewController, LoginBaseProtocol {
         AuthRouter.shared.goToHomePage(vc: self)
     }
     
+    func signUpSuccessfully() {
+        //<NITIN> UserTraitManager.shared.updateData(forAttributes: ["isNewUser":true])
+    }
+    
+    func userSuccessfullyLoggedInDirect() {
+        
+        self.logInSuccessfully()
+        AuthRouter.shared.navigateBackToSourceController(isUserLoggedIn: true, navigationController: self.navigationController)
+    }
+    
+    func logInSuccessfully(){
+        //<NITIN>
+        UserDataManager.shared.didUserLoginInCurrentSession = true
+        //FireBaseHandler.sharedInstance.getUsersLocalNotificationData()
+        UserDataManager.updateLoggedInUserGoCash()
+        //OfflineReviewsFireBase.sharedInstance.signIn()
+        //RecentSearchManager.shared.performGuestUserToLoggedInUserRecentSearchMigration()
+    }
+    
     func setMConnectData(data: MconnectData) {
         self.mconnectData = data
         addMconnectView()
@@ -67,7 +86,7 @@ class LoginBaseViewController: UIViewController, LoginBaseProtocol {
     //<NITIN>
     func removeBranchReferralData(){
        //Utils.removeUserDefaltObject(forKey: "branchreferCode")
-        //AppDelegate.sharedIns().sharedCache.removeObject(forKey: "branchreferCode" as AnyObject)
+        AuthUtils.removeBranchReferCode()
     }
     
     func pushController(viewController: UIViewController) {
@@ -97,7 +116,7 @@ class LoginBaseViewController: UIViewController, LoginBaseProtocol {
                 }
             }
         }) { [weak self] (error) in
-            self?.handleError(error)
+            self?.showError(error)
         }
     }
     
@@ -131,19 +150,6 @@ class LoginBaseViewController: UIViewController, LoginBaseProtocol {
             if let vc = AuthRouter.shared.navigateToMobileVerificationController(mobile: newMobile, isFbSignUp: isFbSignup, referralCode: referralCode ?? "") {
                 self.navigationController?.pushViewController(vc, animated: true)
             }
-            
-            //<NITIN>
-            /*let storyboard = UIStoryboard(name: "LoginStoryboard", bundle: nil)
-            let mobileVC = storyboard.instantiateViewController(withIdentifier: "MobileVerificationViewController") as! MobileVerificationViewController
-            mobileVC.isFbSignup = true
-            mobileVC.referralCode = self.referralCode
-            
-            if let mobileNumber = newMobile {
-                mobileVC.mobileNo = mobileNumber
-            }
-            
-            mobileVC.pushcontroller = self.pushcontroller
-            self.navigationController?.pushViewController(mobileVC, animated: true);*/
         }
         
         func loginToFaceBookApiCall() {
@@ -198,12 +204,12 @@ class LoginBaseViewController: UIViewController, LoginBaseProtocol {
                     }
                 }
                 else{
-                    self?.handleError(nil)
+                    self?.showError(nil)
                 }
             }) { [weak self] (error) in
                 
                 ActivityIndicator.hide(on: self?.view)
-                self?.handleError(error)
+                self?.showError(error)
             }
         }
         
@@ -219,7 +225,7 @@ class LoginBaseViewController: UIViewController, LoginBaseProtocol {
                 loginToFaceBookApiCall()
             }
             else if let _ = error {
-                self?.handleError(error)
+                self?.showError(error)
             }
             })
     }

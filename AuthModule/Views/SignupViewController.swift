@@ -15,46 +15,55 @@ class SignupViewController: LoginBaseViewController {
     
     var presenter: SignUpPresenter?
     
+    var isContinueButtonEnable: Bool = false {
+        didSet {
+            continueButton.isUserInteractionEnabled = isContinueButtonEnable
+            continueButton.backgroundColor = isContinueButtonEnable ? UIColor.customOrangeColor : UIColor.customLightGray
+            continueButton.titleLabel?.textColor = isContinueButtonEnable ? UIColor.white : UIColor(red: 255, green: 255, blue: 255, alpha: 1.0)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        continueButton.setTitleColor(.white, for: .normal)
+        isContinueButtonEnable = false
+    }
+    
+    @IBAction func continueTapped(_ sender: Any) {
+        if presenter?.isValidName ?? false {
+            presenter?.requestSignUp()
+        } else {
+            AuthAlert.showInvalidNameErrorAlert(view: self)
+        }
     }
 }
 
 extension SignupViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter?.dataSource.count ?? 0
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cellType = self.presenter?.dataSource[indexPath.row] else {
-            return UITableViewCell()
-        }
-        
-        if cellType == .firstName {
-            let cell: SignUpTextInputViewCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-            cell.delegate = self
+        if indexPath.row == 0 {
+            let cell: SignUpHeaderTableCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             return cell
         } else {
-            let cell: SignUpHeaderTableCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            let cell: SignUpTextInputViewCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            cell.delegate = self
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        guard let cellType = self.presenter?.dataSource[indexPath.row] else {
-            return 44.0
-        }
-        
-        return cellType.height
+        return indexPath.row == 0 ? SignUpHeaderTableCell.height : SignUpTextInputViewCell.height
     }
 }
 
 extension SignupViewController: SignUpTextInputViewCellDelegate {
     
     func didChangeText(text: String) {
-        
+        presenter?.fullName = text
+        isContinueButtonEnable = !text.isEmpty
     }
     
     func didDismissKeyBoard() {

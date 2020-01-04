@@ -70,7 +70,7 @@ class KeyChainLoginViewController: LoginBaseViewController {
         self.dismiss(animated: true, completion: nil)
         var attributes = ["Name":"Keychain","Environment":"IOS","Origin":"Client","Action":"itemTapped"]
         attributes["currentProfileClicked"] = "0"
-        //<NITIN>FirebaseAnalyticsHandler.sharedInstance.pushEvent(withName: "Keychain", withAttributes: attributes)
+        AuthDepedencyInjector.AnalyticsDelegate?.pushEvent(withName: "Keychain", withAttributes: attributes)
         AuthDepedencyInjector.AnalyticsDelegate?.logCategory(event: "Keychain", dictionary: attributes)
     }
     
@@ -108,10 +108,10 @@ extension KeyChainLoginViewController: UICollectionViewDelegate, UICollectionVie
         modal.startLogInFLow(userid:getUserId(forIndex:indexPath.row), sender:self)
         var attributes = getAttributes()
         attributes["currentProfileClicked"] = "1"
-        //<NITIN>FirebaseAnalyticsHandler.sharedInstance.pushEvent(withName: "Keychain", withAttributes: attributes)
+        AuthDepedencyInjector.AnalyticsDelegate?.pushEvent(withName: "Keychain", withAttributes: attributes)
         SignInGAPManager.signinOrSignUpEvent(withEventType: .signIn, withMethod: .keyChain, withVerifyType: .keyChain, withOtherDetails: nil)
         SignInGAPManager.logGenericEventWithoutScreen(for: "loginSuccessNew", otherParams:["medium":"keychain","verificationChannel":"keychain"])
-        //<NITIN>IBSVAnalytics.logCategory(LOG_NOTHING, subCategory: LOG_NOTHING, event:  "Keychain", pageView: nil, withParameters: attributes)
+        AuthDepedencyInjector.AnalyticsDelegate?.logCategory(event: "Keychain", dictionary: attributes)
     }
     
     func getAttributes() -> [String:String]{

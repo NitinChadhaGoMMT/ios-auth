@@ -32,7 +32,22 @@ class TempViewController: UIViewController {
     
     @IBAction func logoutAction(_ sender: Any) {
         UserDataManager.shared.logout(type: .user)
-        AuthAlert.show(message: "USER LOGGED OUT \nRESTART THE APPLICATION")
+        
+        let alertController = UIAlertController(title: "Auth", message: "User logged out successfully", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "OK", style: .default) { (abc) in
+            if let vc = AuthRouter.shared.createModule() {
+            
+                if self.navigationController!.viewControllers.count > 1 {
+                    self.navigationController?.popToRootViewController(animated: true)
+                } else  {
+                    self.navigationController?.present(vc, animated: true, completion: nil)
+                }
+            }
+            
+        }
+        alertController.addAction(action)
+        
+        present(alertController, animated: true, completion: nil)
     }
-    
 }

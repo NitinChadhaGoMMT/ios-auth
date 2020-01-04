@@ -29,5 +29,5 @@ protocol LoginBaseProtocol: class {
     
     func push(screen: UIViewController)
     
-    func handleError(_ errorData:Any?)
+    func showError(_ errorData:Any?)
 }

@@ -236,12 +236,12 @@ class AuthService: AuthServiceProtocol {
                 if let error = error as NSError?, error.code == 400 {
                     let refreshToken = AuthCache.shared.getUserDefaltObject(forKey: "refresh_token") as? String
                     if let parameterRefreshToken = parameters["refresh_token"] as? String, !parameterRefreshToken.isEmpty ,refreshToken != parameterRefreshToken {
+                        
                         requestLoginWithRefreshAccessToken(successBlock: successBlock, errorBlock: errorBlock)
                     } else {
                         if UserDataManager.shared.isLoggedIn {
                             AuthAlert.show(message: "Your login session is expired.")
                             UserDataManager.shared.logout(type: .api)
-                            
                         } else {
                             if errorBlock != nil {
                                 errorBlock!()
@@ -260,9 +260,25 @@ class AuthService: AuthServiceProtocol {
                     errorBlock!()
                 }
             }
-            
+        }
+    }
+    
+    static func getReverseProfiles(_ mobile:String, success: @escaping SuccessBlock, failure: @escaping FailureBlock) {
+        
+        var urlStr = LoginConstants.amigoReverseProfileUrl()
+        urlStr = urlStr + mobile + "?count=3?flavour=ios"
+        
+        var headers = Dictionary<String, String>()
+        headers["Authorization"] = AuthNetworkConstants.amigoBasic
+        if let token = AuthCache.shared.getUserDefaltObject(forKey: "access_token") as? String {
+            headers["oauth_token"] = token
         }
         
+        Session.service.get(urlStr, header: headers, success: { (json) in
+            success(LoginReverseSyncContactProfiles().parseJSON(json.dictionaryObject) as? ReverseProfileData)
+        }, failure: { (json, error) in
+            failure(getErrorDataFrom(error: error))
+        })
     }
     
     static func verifyMobileWithMconnect(withMobile mobileNo:String, mconnectData:MconnectData, isFBSignUp:Bool, referralCode:String, success: @escaping SuccessBlock, failure: @escaping FailureBlock) {

@@ -124,4 +124,8 @@ struct AuthAlert {
         alertController.addAction(cancelAction)
         view.present(alertController, animated: true, completion: nil)
     }
+    
+    static func showIBSVAlert(withTitle title: String, msg: String, confirmTitle: String?, cancelTitle: String?, onCancel: () -> Void, onConfirm: () -> Void) {
+        AuthDepedencyInjector.uiDelegate?.showIBSVAlert(withTitle: title, msg: msg, confirmTitle: confirmTitle, cancelTitle: cancelTitle, onCancel: onCancel, onConfirm: onConfirm)
+    }
 }

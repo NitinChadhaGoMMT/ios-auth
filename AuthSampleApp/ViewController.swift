@@ -11,9 +11,18 @@ import AuthModule
 import SDWebImage
 
 class ViewController: UIViewController {
-
+    @IBOutlet weak var navigateToAuthModule: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        if AuthDataProvider.isUserLoggedIn {
+            AuthRouter.shared.goToHomePage(vc: self)
+        } else if let loginController = AuthRouter.shared.createModule() {
+            self.navigationController?.pushViewController(loginController, animated: true)
+        }
+    }
+    
+    @IBAction func navigateToAuth(_ sender: Any) {
         if AuthDataProvider.isUserLoggedIn {
             AuthRouter.shared.goToHomePage(vc: self)
         } else if let loginController = AuthRouter.shared.createModule() {
@@ -24,17 +33,26 @@ class ViewController: UIViewController {
 
 class AuthModuleHelper: AuthModuleUIProtocol {
     
-    func authLoginCompletion(isUserLoggedIn: Bool, error: Error?) {
+    func removeBranchReferCode() {
         
     }
     
+    func showIBSVAlert(withTitle title: String?, msg: String?, confirmTitle: String?, cancelTitle: String?, onCancel: () -> Void, onConfirm: () -> Void) {
+        
+    }
+    
+    func authLoginCompletion(isUserLoggedIn: Bool, error: Error?) {
+        
+    }
     
     func showAlertActionPrompt(withTitle title: String?, msg: String?, confirmTitle: String?, cancelTitle: String?, onCancel: @escaping () -> Void, onConfirm: @escaping () -> Void) -> UIAlertController? {
         return UIAlertController.init()
     }
     
-    
-    func setImage(for imageView: UIImageView, url: URL, placeholder: UIImage?) {
+    func setImage(for imageView: UIImageView, url: URL?, placeholder: UIImage?) {
+        
+        guard let url = url else { return }
+        
         imageView.image = placeholder
         imageView.sd_setImage(with: url) { (image, error, type, url) in
             imageView.image = image

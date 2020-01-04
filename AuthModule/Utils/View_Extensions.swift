@@ -72,14 +72,6 @@ extension UIStoryboard {
 
 extension UIViewController {
    @objc func presentWithCurrentContext(vc:UIViewController, animated: Bool = true, completion: (()->Void)? = nil){
-        //<NITIN>
-        /*if #available(iOS 8.0, *) {
-            AppDelegate.sharedIns().baseNavigationVC.providesPresentationContextTransitionStyle = true
-            AppDelegate.sharedIns().baseNavigationVC.definesPresentationContext = true
-            vc.modalPresentationStyle = .overCurrentContext
-        } else {
-            AppDelegate.sharedIns().baseNavigationVC.modalPresentationStyle =  .currentContext
-        }*/
         vc.modalPresentationStyle = .overFullScreen
         self.present(vc, animated: animated, completion: completion)
     }

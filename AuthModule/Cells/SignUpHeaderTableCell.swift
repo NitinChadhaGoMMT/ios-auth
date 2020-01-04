@@ -41,6 +41,7 @@ class SignUpTextInputViewCell: UITableViewCell {
     override public func awakeFromNib() {
         super.awakeFromNib()
         inputTextFiled.showAccessoryViewWithButtonTitle("Dismiss")
+        inputTextFiled.delegate = self
         inputTextFiled.returnKeyType = .default
         inputTextFiled.autocapitalizationType = .none
         inputTextFiled.autocorrectionType = .no
@@ -56,7 +57,7 @@ class SignUpTextInputViewCell: UITableViewCell {
     }
 }
 
-extension SignUpTextInputViewCell: UITextViewDelegate {
+extension SignUpTextInputViewCell: UITextFieldDelegate {
     //MARK: Textfield delegate methods
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         

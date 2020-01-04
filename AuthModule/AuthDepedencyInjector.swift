@@ -20,11 +20,15 @@ public protocol AuthModuleUIProtocol {
     
     func showToastMessage(on view:UIViewController, message: String)
     
-    func showAlertActionPrompt(withTitle title: String?, msg: String?, confirmTitle: String?, cancelTitle: String?, onCancel: @escaping () -> Void, onConfirm: @escaping () -> Void) -> UIAlertController? 
+    func showAlertActionPrompt(withTitle title: String?, msg: String?, confirmTitle: String?, cancelTitle: String?, onCancel: @escaping () -> Void, onConfirm: @escaping () -> Void) -> UIAlertController?
     
-    func setImage(for imageView: UIImageView, url: URL, placeholder: UIImage?)
+    func setImage(for imageView: UIImageView, url: URL?, placeholder: UIImage?)
     
     func authLoginCompletion(isUserLoggedIn: Bool, error: Error?)
+    
+    func removeBranchReferCode()
+    
+    func showIBSVAlert(withTitle title: String?, msg: String?, confirmTitle: String?, cancelTitle: String?, onCancel: () -> Void, onConfirm: () -> Void)
 }
 
 public protocol AuthModuleNetworkProtocol {
@@ -46,6 +50,10 @@ public protocol AuthModuleNetworkProtocol {
     func userLoggedOutSuccessfully()
     
     func getServer_Auth() -> String?
+    
+    func getAmigoServer() -> String?
+    
+    func getAmigoBasic() -> String?
 }
 
 public class AuthDepedencyInjector {

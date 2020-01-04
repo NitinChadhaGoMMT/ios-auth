@@ -37,7 +37,7 @@ class MobileVerificationPresenter: LoginWelcomeInteractorToPresenterProtocol {
     
     func verificationMobileNumberRequestFailed(error: ErrorData?) {
         view?.hideActivityIndicator()
-        view?.handleError(error)
+        view?.showError(error)
     }
     
     func verificationMobileNumberRequestSucceeded(response: MobileVerifiedData?) {
