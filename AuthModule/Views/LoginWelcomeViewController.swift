@@ -128,6 +128,11 @@ extension LoginWelcomeViewController: UITableViewDataSource, UITableViewDelegate
             let cell: LoginSkipNowTableCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             return cell
             
+        case .whatsappCell:
+            let cell: WhatsappLoginCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            cell.delegate = self
+            return cell
+            
         default:
             return UITableViewCell()
         }
@@ -167,16 +172,6 @@ extension LoginWelcomeViewController: UITableViewDataSource, UITableViewDelegate
         isFbSignup ? self.requestFBOTPWithMobileNo(mobileNo) : presenter?.verifyMobileNumber(number: mobileNo)
     }
     
-    //MARK - Whatsapp Login
-    func connectWithWhatsapp() {
-        SignInGAPManager.signinOrSignUpEvent(withEventType: .startedSignIn, withMethod: .whatsApp, withVerifyType: nil, withOtherDetails: ["from_page":"Welcome_Page"])
-        self.presenter?.logGAClickEvent("whatsapp_button")
-        WhatsAppManager.shared.referralCode = referralCode
-        WhatsAppManager.shared.delegate = self
-        AuthDepedencyInjector.uiDelegate?.showActivityIndicator(on: self.view, withMessage: "Logging in with Whatsapp..")
-        WhatsAppManager.shared.loginWithWhatsapp(referralCode: presenter?.referralCode)
-    }
-    
     @objc func updateAfterKeychainSuccess(){
         self.userSuccessfullyLoggedIn()
         self.presenter?.logGAClickEvent("keychain_popup")
@@ -208,17 +203,17 @@ extension LoginWelcomeViewController: LoginNewUserDetailsCellDelegate {
     }
 }
 
-extension LoginWelcomeViewController: WhatsappHelperDelegate {
-    func loginSuccessful(verifiedData: OtpVerifiedData?, extraKeys: String?) {
-        
+extension LoginWelcomeViewController: WhatsappHelperDelegate, WhatsappLoginCellDelegate, LoginFBSingupTableCellDelegate {
+    
+    func connectWithWhatsapp() {
+        SignInGAPManager.signinOrSignUpEvent(withEventType: .startedSignIn, withMethod: .whatsApp, withVerifyType: nil, withOtherDetails: ["from_page":"Welcome_Page"])
+        self.presenter?.logGAClickEvent("whatsapp_button")
+        WhatsAppManager.shared.referralCode = referralCode
+        WhatsAppManager.shared.delegate = self
+        AuthDepedencyInjector.uiDelegate?.showActivityIndicator(on: self.view, withMessage: "Logging in with Whatsapp..")
+        WhatsAppManager.shared.loginWithWhatsapp(referralCode: presenter?.referralCode)
     }
     
-    func loginFailed(error: Any?) {
-        
-    }
-}
-
-extension LoginWelcomeViewController: LoginFBSingupTableCellDelegate {
     //MARK: FB Login
     func connectWithFB() {
         
@@ -237,5 +232,13 @@ extension LoginWelcomeViewController: LoginFBSingupTableCellDelegate {
         else{
             signInWithFB(isForceLinkFb: nil, referralCode:self.presenter?.referralCode)
         }
+    }
+    
+    func loginSuccessful(verifiedData: OtpVerifiedData?, extraKeys: String?) {
+        
+    }
+    
+    func loginFailed(error: Any?) {
+        
     }
 }

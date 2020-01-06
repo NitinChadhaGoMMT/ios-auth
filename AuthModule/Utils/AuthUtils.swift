@@ -166,4 +166,23 @@ struct AuthUtils {
         AuthDepedencyInjector.uiDelegate?.removeBranchReferCode()
     }
     
+    static func checkForDummyEmail(_ inputString: String?) -> String? {
+        
+        guard let inputString = inputString else { return nil }
+        
+        if inputString.contains("@dummymobemail.com") || inputString.contains("@dummyfbemail.com") {
+            return nil
+        } else {
+            return inputString
+        }
+    }
+    
+    static func isLoginDirectlyViaFacebook() -> Bool {
+        return AuthCache.shared.getUserDefaltBool(forKey: AuthNetworkConstants.kLoginDirectlyViaFacebook) ?? false
+    }
+    
+    static func showBusinessProfile() -> Bool {
+        return AuthDepedencyInjector.firebaseRemoteHandlerDelegate?.getRemoteFunctionBoolValueWithForkey(forKey: "bp_enabled") ?? false
+    }
+    
 }

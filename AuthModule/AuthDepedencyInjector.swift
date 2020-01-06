@@ -22,13 +22,19 @@ public protocol AuthModuleUIProtocol {
     
     func showAlertActionPrompt(withTitle title: String?, msg: String?, confirmTitle: String?, cancelTitle: String?, onCancel: @escaping () -> Void, onConfirm: @escaping () -> Void) -> UIAlertController?
     
-    func setImage(for imageView: UIImageView, url: URL?, placeholder: UIImage?)
+    func setImage(for imageView: UIImageView, url: URL?, placeholder: UIImage?, completionBlock: (() -> Void)?)
     
     func authLoginCompletion(isUserLoggedIn: Bool, error: Error?)
     
     func removeBranchReferCode()
     
     func showIBSVAlert(withTitle title: String?, msg: String?, confirmTitle: String?, cancelTitle: String?, onCancel: () -> Void, onConfirm: () -> Void)
+}
+
+extension AuthModuleUIProtocol {
+    func setImage(for imageView: UIImageView, url: URL?, placeholder: UIImage?) {
+        self.setImage(for: imageView, url: url, placeholder: placeholder, completionBlock: nil)
+    }
 }
 
 public protocol AuthModuleNetworkProtocol {

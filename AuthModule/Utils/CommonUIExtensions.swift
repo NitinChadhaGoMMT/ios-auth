@@ -112,6 +112,8 @@ extension UILabel {
             self.textColor = UIColor(red:0.35, green:0.35, blue:0.35, alpha:1.0)
         } else if colorType == .blue {
             self.textColor = UIColor(red:0.18, green:0.41, blue:0.70, alpha:1.0)
+        } else if colorType == .white {
+            self.textColor = .white
         }
         
         

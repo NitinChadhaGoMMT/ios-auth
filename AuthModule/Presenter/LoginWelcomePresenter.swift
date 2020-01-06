@@ -28,8 +28,8 @@ enum LoginCellType {
         case .skipNow:
             return LoginSkipNowTableCell.height
             
-        default:
-            return 44
+        case .whatsappCell:
+            return WhatsappLoginCell.height
         }
     }
 }

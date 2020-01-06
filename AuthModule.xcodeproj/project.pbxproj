@@ -33,6 +33,8 @@
 		6E070227238E39EC008D79E9 /* LoginFBSingupTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E070225238E3968008D79E9 /* LoginFBSingupTableCell.swift */; };
 		6E070229238E5786008D79E9 /* LoginSkipNowTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E070228238E5786008D79E9 /* LoginSkipNowTableCell.swift */; };
 		6E07022E238E71C5008D79E9 /* AuthUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E07022A238E5C16008D79E9 /* AuthUtils.swift */; };
+		6E38880523C13340006C63DE /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E38880423C13340006C63DE /* EditProfileViewController.swift */; };
+		6E38880723C133AD006C63DE /* EditProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E38880623C133AD006C63DE /* EditProfilePresenter.swift */; };
 		6E391B5823A0CDB1006AEC46 /* BaseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E391B5723A0CDB1006AEC46 /* BaseInteractor.swift */; };
 		6E391B5A23A0CF72006AEC46 /* MconnectDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E391B5923A0CF72006AEC46 /* MconnectDataParser.swift */; };
 		6E391B5C23A12A14006AEC46 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E391B5B23A12A14006AEC46 /* SignupViewController.swift */; };
@@ -94,6 +96,9 @@
 		6EAA395F239A526000872FD2 /* LoginPasswordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAA395E239A526000872FD2 /* LoginPasswordTableViewCell.swift */; };
 		6EAA3961239A5BD200872FD2 /* LoginContinueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAA3960239A5BD200872FD2 /* LoginContinueTableViewCell.swift */; };
 		6EAA3963239A6B2700872FD2 /* LoginOTPVerifyParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAA3962239A6B2700872FD2 /* LoginOTPVerifyParser.swift */; };
+		6EC29E7423C31C1900C1515A /* WhatsappLoginCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC29E7323C31C1900C1515A /* WhatsappLoginCell.swift */; };
+		6EE3207423C30B7D00E6B810 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE3207223C30B7D00E6B810 /* ProfileHeaderView.swift */; };
+		6EE3207523C30B7D00E6B810 /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EE3207323C30B7D00E6B810 /* ProfileHeaderView.xib */; };
 		6EEA6B4323912D0B0030F442 /* AuthDepedencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEA6B4223912D0B0030F442 /* AuthDepedencyInjector.swift */; };
 		6EEA6B452391329B0030F442 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEA6B442391329B0030F442 /* UserDataManager.swift */; };
 /* End PBXBuildFile section */
@@ -170,6 +175,8 @@
 		6E359EFB23BB585000DE25DF /* UserConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfirmationViewController.swift; sourceTree = "<group>"; };
 		6E359EFD23BB58E600DE25DF /* UserConfirmationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfirmationPresenter.swift; sourceTree = "<group>"; };
 		6E38880223BDC62E006C63DE /* UserConfirmationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfirmationInteractor.swift; sourceTree = "<group>"; };
+		6E38880423C13340006C63DE /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		6E38880623C133AD006C63DE /* EditProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfilePresenter.swift; sourceTree = "<group>"; };
 		6E391B5723A0CDB1006AEC46 /* BaseInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInteractor.swift; sourceTree = "<group>"; };
 		6E391B5923A0CF72006AEC46 /* MconnectDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MconnectDataParser.swift; sourceTree = "<group>"; };
 		6E391B5B23A12A14006AEC46 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -229,6 +236,9 @@
 		6EAA395E239A526000872FD2 /* LoginPasswordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPasswordTableViewCell.swift; sourceTree = "<group>"; };
 		6EAA3960239A5BD200872FD2 /* LoginContinueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContinueTableViewCell.swift; sourceTree = "<group>"; };
 		6EAA3962239A6B2700872FD2 /* LoginOTPVerifyParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginOTPVerifyParser.swift; sourceTree = "<group>"; };
+		6EC29E7323C31C1900C1515A /* WhatsappLoginCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsappLoginCell.swift; sourceTree = "<group>"; };
+		6EE3207223C30B7D00E6B810 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		6EE3207323C30B7D00E6B810 /* ProfileHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
 		6EEA6AF9239105560030F442 /* NetworkLayerFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkLayerFramework.framework; path = Carthage/Build/iOS/NetworkLayerFramework.framework; sourceTree = "<group>"; };
 		6EEA6B4223912D0B0030F442 /* AuthDepedencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDepedencyInjector.swift; sourceTree = "<group>"; };
 		6EEA6B442391329B0030F442 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
@@ -387,6 +397,7 @@
 				6E872FB923AB7B2100910302 /* KeyChainLoginPresenter.swift */,
 				6E395A5A23B9C61F002D50F1 /* MobileVerificationPresenter.swift */,
 				6E359EFD23BB58E600DE25DF /* UserConfirmationPresenter.swift */,
+				6E38880623C133AD006C63DE /* EditProfilePresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -403,6 +414,7 @@
 				6E872FB723AB7AEC00910302 /* KeyChainLoginViewController.swift */,
 				6E8616C123B1D5D50012FE33 /* MobileVerificationViewController.swift */,
 				6E359EFB23BB585000DE25DF /* UserConfirmationViewController.swift */,
+				6E38880423C13340006C63DE /* EditProfileViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -432,6 +444,8 @@
 		6E070233238E94CD008D79E9 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				6EE3207223C30B7D00E6B810 /* ProfileHeaderView.swift */,
+				6EE3207323C30B7D00E6B810 /* ProfileHeaderView.xib */,
 				6E872FB323AB748800910302 /* MConnectPoweredByView.swift */,
 				6E872FB423AB748800910302 /* MConnectPoweredByView.xib */,
 				6E07021F238D6861008D79E9 /* LoginOrTableCell.swift */,
@@ -445,6 +459,7 @@
 				6EAA3960239A5BD200872FD2 /* LoginContinueTableViewCell.swift */,
 				6E39436423A385DF00AA0A79 /* SignUpHeaderTableCell.swift */,
 				6E872FBB23AB95DC00910302 /* KeychainLoginUserCell.swift */,
+				6EC29E7323C31C1900C1515A /* WhatsappLoginCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -623,6 +638,7 @@
 				6E07020A2386BDA7008D79E9 /* Auth.storyboard in Resources */,
 				6E070215238D096A008D79E9 /* SFUIText-Regular.ttf in Resources */,
 				6E872FB623AB748800910302 /* MConnectPoweredByView.xib in Resources */,
+				6EE3207523C30B7D00E6B810 /* ProfileHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -732,6 +748,7 @@
 				6E4011EB23A3CEF5002C6BFD /* LoginWelcomeProtocols.swift in Sources */,
 				6E07022E238E71C5008D79E9 /* AuthUtils.swift in Sources */,
 				6E391B6023A12B34006AEC46 /* SignupInteractor.swift in Sources */,
+				6E38880523C13340006C63DE /* EditProfileViewController.swift in Sources */,
 				6EA7802B2394F93300FA409D /* LoginConstants.swift in Sources */,
 				6E07021D238D4991008D79E9 /* FireBaseConfigKeys.swift in Sources */,
 				6E44B13F23ABEDBC0068EC9A /* DatabaseHelper.swift in Sources */,
@@ -746,6 +763,7 @@
 				6E554C04239145C900E043A2 /* AuthAlert.swift in Sources */,
 				6EA780302394FE1E00FA409D /* LoginWrapper.swift in Sources */,
 				6EA780322395051000FA409D /* KeychainWrapper.swift in Sources */,
+				6EC29E7423C31C1900C1515A /* WhatsappLoginCell.swift in Sources */,
 				6E872FAA23A9167500910302 /* ForgotPasswordViewController.swift in Sources */,
 				6EA780232394F29500FA409D /* AuthInteractor.swift in Sources */,
 				6E0702022386BC95008D79E9 /* LoginWelcomeViewController.swift in Sources */,
@@ -756,6 +774,7 @@
 				6EA4D2342399413C004DFAEA /* SignInWithPasswordInteractor.swift in Sources */,
 				6EAA395F239A526000872FD2 /* LoginPasswordTableViewCell.swift in Sources */,
 				6E39436323A376FA00AA0A79 /* OTPVerificationInteractor.swift in Sources */,
+				6EE3207423C30B7D00E6B810 /* ProfileHeaderView.swift in Sources */,
 				6E872FBC23AB95DC00910302 /* KeychainLoginUserCell.swift in Sources */,
 				6E4D5B5D23B0FAFE00491102 /* GoFacebookManager.swift in Sources */,
 				6E39436523A385DF00AA0A79 /* SignUpHeaderTableCell.swift in Sources */,
@@ -785,6 +804,7 @@
 				6E07020C2386BF84008D79E9 /* LoginWelcomePresenter.swift in Sources */,
 				6E070217238D3FA2008D79E9 /* LoginWelcomeHeaderCell.swift in Sources */,
 				6E391B5A23A0CF72006AEC46 /* MconnectDataParser.swift in Sources */,
+				6E38880723C133AD006C63DE /* EditProfilePresenter.swift in Sources */,
 				6E4BD07E239F9C5F0022D514 /* AuthCache.swift in Sources */,
 				6E872FAC23A91BBA00910302 /* ForgotPasswordPresenter.swift in Sources */,
 				6E395A5D23B9CD84002D50F1 /* MobileVerificationProtocols.swift in Sources */,
@@ -962,7 +982,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.goibibo.Goibibo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -982,7 +1002,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.goibibo.Goibibo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

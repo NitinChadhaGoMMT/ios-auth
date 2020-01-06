@@ -11,6 +11,9 @@
         <array key="HelveticaNeue.ttc">
             <string>HelveticaNeue</string>
         </array>
+        <array key="HelveticaNeueLights.ttc">
+            <string>HelveticaNeue-Light</string>
+        </array>
         <array key="Quicksand-Bold.ttf">
             <string>Quicksand-Bold</string>
         </array>
@@ -1033,7 +1036,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="185"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3fF-YS-FyL">
-                                                <rect key="frame" x="20" y="109" width="374" height="35"/>
+                                                <rect key="frame" x="20" y="109" width="374" height="33"/>
                                                 <string key="text">Enter your 4-Digit OTP.
 We’ve sent an SMS with the OTP to</string>
                                                 <fontDescription key="fontDescription" name="Quicksand-Medium" family="Quicksand" pointSize="14"/>
@@ -1041,7 +1044,7 @@ We’ve sent an SMS with the OTP to</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9738635907" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EMr-oH-jY9">
-                                                <rect key="frame" x="157" y="154" width="100" height="20"/>
+                                                <rect key="frame" x="157" y="152" width="100" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="BKX-fD-7q5"/>
                                                     <constraint firstAttribute="height" constant="20" id="dpP-rU-ASb"/>
@@ -1058,7 +1061,7 @@ We’ve sent an SMS with the OTP to</string>
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ilo-YQ-NBd">
-                                                <rect key="frame" x="264" y="153.5" width="23" height="21"/>
+                                                <rect key="frame" x="264" y="151.5" width="23" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="CVD-La-wrV"/>
                                                     <constraint firstAttribute="width" constant="23" id="VcC-YP-Ouf"/>
@@ -2358,7 +2361,7 @@ We’ve sent an SMS with the OTP to</string>
         <!--User Confirmation View Controller-->
         <scene sceneID="l0K-G0-jgW">
             <objects>
-                <viewController storyboardIdentifier="UserConfirmationViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="V7H-gC-J5m" customClass="UserConfirmationViewController" customModule="Goibibo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserConfirmationViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="V7H-gC-J5m" customClass="UserConfirmationViewController" customModule="AuthModule" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="B81-b4-92Y"/>
                         <viewControllerLayoutGuide type="bottom" id="eB0-pD-KQw"/>
@@ -2390,7 +2393,7 @@ We’ve sent an SMS with the OTP to</string>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hap-mh-XUZ">
-                                                        <rect key="frame" x="20" y="51" width="374" height="17.5"/>
+                                                        <rect key="frame" x="20" y="51" width="374" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="Quicksand-Medium" family="Quicksand" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -2431,14 +2434,14 @@ We’ve sent an SMS with the OTP to</string>
                                                 </constraints>
                                             </view>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="goContactsIntro" translatesAutoresizingMaskIntoConstraints="NO" id="cSk-ck-Fy7">
-                                                <rect key="frame" x="130.5" y="82.5" width="153" height="188"/>
+                                                <rect key="frame" x="130.5" y="81.5" width="153" height="188"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="188" id="9vw-gA-ACw"/>
                                                     <constraint firstAttribute="width" constant="153" id="UQA-J7-Ujh"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sync &amp; Earn Rs.25 goCash+" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pup-07-UtZ">
-                                                <rect key="frame" x="20" y="298.5" width="374" height="23"/>
+                                                <rect key="frame" x="20" y="297.5" width="374" height="23"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="23" id="UAb-Ga-osL"/>
@@ -2448,19 +2451,19 @@ We’ve sent an SMS with the OTP to</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="everytime a contact books with goibibo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PbO-mW-Drw">
-                                                <rect key="frame" x="20" y="329.5" width="374" height="17.5"/>
+                                                <rect key="frame" x="20" y="328.5" width="374" height="16.5"/>
                                                 <fontDescription key="fontDescription" name="Quicksand-Medium" family="Quicksand" pointSize="14"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discover contacts" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bot-YC-vtJ">
-                                                <rect key="frame" x="20" y="361" width="374" height="17"/>
+                                                <rect key="frame" x="20" y="359" width="374" height="16.5"/>
                                                 <fontDescription key="fontDescription" name="SFUIText-Bold" family="SF UI Text" pointSize="14"/>
                                                 <color key="textColor" red="0.3921568627" green="0.47843137250000001" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="highlightedColor" red="0.3921568627" green="0.47843137250000001" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                             </label>
                                             <view autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0GA-YG-gBF">
-                                                <rect key="frame" x="30" y="451" width="354" height="83"/>
+                                                <rect key="frame" x="30" y="448" width="354" height="83"/>
                                                 <subviews>
                                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="NMG-Z5-kkj">
                                                         <rect key="frame" x="158.5" y="23" width="37" height="37"/>
@@ -2553,19 +2556,19 @@ We’ve sent an SMS with the OTP to</string>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="who have visited any city you search for" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y9C-Us-wWF">
-                                                <rect key="frame" x="20" y="380" width="374" height="14.5"/>
+                                                <rect key="frame" x="20" y="377.5" width="374" height="14.5"/>
                                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="12"/>
                                                 <color key="textColor" red="0.3921568627" green="0.47843137250000001" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get answers" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PPp-tC-Jqs">
-                                                <rect key="frame" x="20" y="404.5" width="374" height="17"/>
+                                                <rect key="frame" x="20" y="402" width="374" height="16.5"/>
                                                 <fontDescription key="fontDescription" name="SFUIText-Bold" family="SF UI Text" pointSize="14"/>
                                                 <color key="textColor" red="0.3921568627" green="0.47843137250000001" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to all your questions, by people you know and trust" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vuF-te-0qM">
-                                                <rect key="frame" x="20" y="423.5" width="374" height="14.5"/>
+                                                <rect key="frame" x="20" y="420.5" width="374" height="14.5"/>
                                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="12"/>
                                                 <color key="textColor" red="0.3921568627" green="0.47843137250000001" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -2672,6 +2675,216 @@ We’ve sent an SMS with the OTP to</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OSs-lR-p4e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4477" y="2909"/>
+        </scene>
+        <!--Edit Profile View Controller-->
+        <scene sceneID="jUd-Jp-8wg">
+            <objects>
+                <viewController storyboardIdentifier="EditProfileViewController" id="9OJ-FI-Gmy" customClass="EditProfileViewController" customModule="AuthModule" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Csc-9H-80P"/>
+                        <viewControllerLayoutGuide type="bottom" id="vQk-qa-AjR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6Da-0m-cka">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="vhr-Pe-ATL">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <color key="backgroundColor" red="0.92549019610000005" green="0.92549019610000005" blue="0.92549019610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="EditProfileTableViewCellIdentifier" id="8FC-57-XrY" customClass="EditProfileTableViewCell" customModule="Goibibo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8FC-57-XrY" id="Q9a-GL-naT">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ES4-4V-Dfq">
+                                                    <rect key="frame" x="27" y="11.5" width="367" height="21"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ES4-4V-Dfq" firstAttribute="leading" secondItem="Q9a-GL-naT" secondAttribute="leading" constant="27" id="3Rk-jb-NUT"/>
+                                                <constraint firstItem="ES4-4V-Dfq" firstAttribute="centerY" secondItem="Q9a-GL-naT" secondAttribute="centerY" id="571-p1-htc"/>
+                                                <constraint firstAttribute="trailing" secondItem="ES4-4V-Dfq" secondAttribute="trailing" constant="20" id="O2Z-3a-FYe"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="profileTextField" destination="ES4-4V-Dfq" id="oXm-uO-31K"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="pt7-hb-wzI">
+                                        <rect key="frame" x="0.0" y="72" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pt7-hb-wzI" id="CbU-Jz-2Td">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ChangePasswordCellIdentifier" id="M57-lt-g9F">
+                                        <rect key="frame" x="0.0" y="116" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M57-lt-g9F" id="DQN-yU-uQ5">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Aq-Rz-dTZ">
+                                                    <rect key="frame" x="14" y="22" width="0.0" height="0.0"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                                                    <color key="textColor" red="0.18039215689999999" green="0.41176470590000003" blue="0.70196078429999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="3Aq-Rz-dTZ" firstAttribute="leading" secondItem="DQN-yU-uQ5" secondAttribute="leading" constant="14" id="QWH-we-7m2"/>
+                                                <constraint firstItem="3Aq-Rz-dTZ" firstAttribute="centerY" secondItem="DQN-yU-uQ5" secondAttribute="centerY" id="Scv-Bu-r8h"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LinkedAccountCellIdentifier" id="F4u-57-Nx6">
+                                        <rect key="frame" x="0.0" y="160" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F4u-57-Nx6" id="Mti-h7-cbY">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1il-4h-Yje">
+                                                    <rect key="frame" x="14" y="15" width="55.5" height="14.5"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
+                                                    <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" tag="311" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9PK-AZ-8n3">
+                                                    <rect key="frame" x="304" y="7" width="94" height="31"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
+                                                    <state key="normal" title="Unlink Facebook">
+                                                        <color key="titleColor" red="0.1843137255" green="0.40784313729999999" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="1il-4h-Yje" firstAttribute="top" secondItem="Mti-h7-cbY" secondAttribute="top" constant="15" id="2Ka-AN-9il"/>
+                                                <constraint firstAttribute="trailing" secondItem="9PK-AZ-8n3" secondAttribute="trailing" constant="16" id="EKH-FO-7mX"/>
+                                                <constraint firstItem="1il-4h-Yje" firstAttribute="leading" secondItem="Mti-h7-cbY" secondAttribute="leading" constant="14" id="JNf-pT-rHI"/>
+                                                <constraint firstItem="9PK-AZ-8n3" firstAttribute="top" secondItem="Mti-h7-cbY" secondAttribute="top" constant="7" id="dZz-r2-izK"/>
+                                                <constraint firstAttribute="bottom" secondItem="9PK-AZ-8n3" secondAttribute="bottom" constant="6" id="kjq-zK-0cd"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PrivacyCellIdentifier" rowHeight="95" id="bCs-Ag-Maz">
+                                        <rect key="frame" x="0.0" y="204" width="414" height="95"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bCs-Ag-Maz" id="NYd-Nn-Taz">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="95"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Goibibo values your privacy:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DY8-OE-y06">
+                                                    <rect key="frame" x="15" y="17" width="157.5" height="16.5"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VrF-QT-vOD">
+                                                    <rect key="frame" x="15" y="36.5" width="384" height="42.5"/>
+                                                    <string key="text">We will not post anything to your wall or feed without your permission. You can disconnect your Facebook at any time.
+</string>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
+                                                    <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="VrF-QT-vOD" secondAttribute="trailing" constant="15" id="2WV-YX-NEt"/>
+                                                <constraint firstAttribute="bottom" secondItem="VrF-QT-vOD" secondAttribute="bottom" constant="16" id="93I-Fp-jLu"/>
+                                                <constraint firstItem="DY8-OE-y06" firstAttribute="leading" secondItem="NYd-Nn-Taz" secondAttribute="leading" constant="15" id="KyP-GW-QXq"/>
+                                                <constraint firstItem="VrF-QT-vOD" firstAttribute="top" secondItem="DY8-OE-y06" secondAttribute="bottom" constant="3" id="NRj-rm-adh"/>
+                                                <constraint firstItem="DY8-OE-y06" firstAttribute="top" secondItem="NYd-Nn-Taz" secondAttribute="top" constant="17" id="ef3-Hz-HtE"/>
+                                                <constraint firstItem="VrF-QT-vOD" firstAttribute="leading" secondItem="DY8-OE-y06" secondAttribute="leading" id="w9B-2f-xIN"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="9OJ-FI-Gmy" id="WgE-iN-LST"/>
+                                    <outlet property="delegate" destination="9OJ-FI-Gmy" id="hDm-tq-pac"/>
+                                </connections>
+                            </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SZf-LE-7lc">
+                                <rect key="frame" x="0.0" y="44" width="414" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="JEk-6a-Cgq"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gBY-da-b9q">
+                                <rect key="frame" x="2" y="44" width="79" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="GNi-nX-cDW"/>
+                                    <constraint firstAttribute="width" constant="79" id="p7M-w6-mW7"/>
+                                </constraints>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="didCancelButtonTap:" destination="9OJ-FI-Gmy" eventType="touchUpInside" id="DYG-Bp-g5n"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L3M-Zh-hC3">
+                                <rect key="frame" x="352" y="44" width="60" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="bGf-Hz-jCN"/>
+                                    <constraint firstAttribute="height" constant="35" id="g9d-za-7v3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="didSaveButtonTap:" destination="9OJ-FI-Gmy" eventType="touchUpInside" id="KdD-RU-ilM"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="SZf-LE-7lc" firstAttribute="top" secondItem="6Da-0m-cka" secondAttribute="topMargin" id="3zW-It-BXo"/>
+                            <constraint firstItem="vhr-Pe-ATL" firstAttribute="top" secondItem="6Da-0m-cka" secondAttribute="top" id="YNE-6X-sOz"/>
+                            <constraint firstAttribute="trailing" secondItem="SZf-LE-7lc" secondAttribute="trailing" id="Z4I-sI-1v5"/>
+                            <constraint firstAttribute="trailing" secondItem="L3M-Zh-hC3" secondAttribute="trailing" constant="2" id="aSb-7M-Zvz"/>
+                            <constraint firstItem="vQk-qa-AjR" firstAttribute="top" secondItem="vhr-Pe-ATL" secondAttribute="bottom" id="afM-t7-pX5"/>
+                            <constraint firstItem="L3M-Zh-hC3" firstAttribute="top" secondItem="Csc-9H-80P" secondAttribute="bottom" id="cwY-K3-WNg"/>
+                            <constraint firstAttribute="trailing" secondItem="vhr-Pe-ATL" secondAttribute="trailing" id="kb4-Pt-q6a"/>
+                            <constraint firstItem="SZf-LE-7lc" firstAttribute="top" secondItem="6Da-0m-cka" secondAttribute="topMargin" id="mVQ-p0-8RS"/>
+                            <constraint firstItem="SZf-LE-7lc" firstAttribute="leading" secondItem="6Da-0m-cka" secondAttribute="leading" id="qSc-mS-y6V"/>
+                            <constraint firstItem="gBY-da-b9q" firstAttribute="top" secondItem="Csc-9H-80P" secondAttribute="bottom" id="uHY-fb-L5E"/>
+                            <constraint firstItem="gBY-da-b9q" firstAttribute="leading" secondItem="6Da-0m-cka" secondAttribute="leading" constant="2" id="uxP-bV-xp4"/>
+                            <constraint firstItem="vhr-Pe-ATL" firstAttribute="leading" secondItem="6Da-0m-cka" secondAttribute="leading" id="zi9-a3-vRZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="285-r4-OBZ"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="mVQ-p0-8RS"/>
+                            </mask>
+                        </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="EcW-jv-46Z" appends="YES" id="Rrx-2c-XIO"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="navBar" destination="SZf-LE-7lc" id="GCf-2n-FWi"/>
+                        <outlet property="profileTableView" destination="vhr-Pe-ATL" id="cup-J0-tp4"/>
+                        <outlet property="saveButton" destination="L3M-Zh-hC3" id="oUt-br-Nwp"/>
+                        <outlet property="tableViewBottomConstraint" destination="afM-t7-pX5" id="e3T-O4-lUy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="37h-be-vgl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer cancelsTouchesInView="NO" id="EcW-jv-46Z">
+                    <connections>
+                        <action selector="didBackGroundViewTap:" destination="9OJ-FI-Gmy" id="Kmz-9r-2hB"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1700" y="3635"/>
         </scene>
     </scenes>
     <resources>

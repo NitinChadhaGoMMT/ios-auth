@@ -33,6 +33,19 @@ class ViewController: UIViewController {
 
 class AuthModuleHelper: AuthModuleUIProtocol {
     
+    func setImage(for imageView: UIImageView, url: URL?, placeholder: UIImage?, completionBlock: (() -> Void)?) {
+        guard let url = url else { return }
+        
+        imageView.image = placeholder
+        imageView.sd_setImage(with: url) { (image, error, type, url) in
+            imageView.image = image
+            if let completionBlock = completionBlock {
+                completionBlock()
+            }
+        }
+    }
+    
+    
     func removeBranchReferCode() {
         
     }
