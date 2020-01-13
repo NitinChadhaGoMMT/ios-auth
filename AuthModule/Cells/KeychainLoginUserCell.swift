@@ -35,10 +35,10 @@ class KeychainLoginUserCell: UICollectionViewCell {
             
             phoneNumberAndNameLabel.attributedText = userInfoAttributedString
             
-            profileImage.image = #imageLiteral(resourceName: "icon_personalProfile")
+            profileImage.image = .defaultUserIcon
             
             if let value = dataValue["profilePic"] as? String,value != ""{
-                AuthDepedencyInjector.uiDelegate?.setImage(for: profileImage, url: URL(string:value)!, placeholder: #imageLiteral(resourceName: "icon_personalProfile"))
+                ImageHelper.setImage(for: profileImage, url: URL(string:value)!, placeholder: .defaultUserIcon)
             }
             
         }

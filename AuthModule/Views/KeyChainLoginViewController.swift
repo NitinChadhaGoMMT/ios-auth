@@ -17,7 +17,7 @@ class KeyChainLoginViewController: LoginBaseViewController {
     @IBOutlet weak var usersDataCollectionView: UICollectionView!
     @IBOutlet weak var notNowButton: UIButton!
     
-    var presenter: KeyChainLoginPresenter?
+    var presenter: KeyChainLoginViewToPresenterProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,14 +25,14 @@ class KeyChainLoginViewController: LoginBaseViewController {
     }
     
     func configureUserInterface() {
-        headingLabel.setTextColor(ColorType.black, fontType: FontType.bold, andFontSize: 16)
-        subHeadingLabel.setTextColor(ColorType.lightGray, fontType: FontType.regular, andFontSize: 12)
+        headingLabel.setTextColor(.black, fontType: FontType.bold, andFontSize: 16)
+        subHeadingLabel.setTextColor(UIColor.customLightGrayColor(), fontType: FontType.regular, andFontSize: 12)
         headingLabel.text = "Single Tap Sign-In"
         subHeadingLabel.text = "Tap your Goibibo account below to sign in"
         notNowButton.setTitle("Login with different account", for: UIControl.State.normal)
         notNowButton.accessibilityIdentifier = "notNowButton"
         notNowButton.accessibilityLabel = "notNowButton"
-        notNowButton.titleLabel?.setTextColor(ColorType.blue, fontType: FontType.regular, andFontSize: 15)
+        notNowButton.titleLabel?.setTextColor(UIColor.customBlueColor(), fontType: FontType.regular, andFontSize: 15)
         notNowButton.alpha = 0.8
         
         usersDataCollectionView.isPagingEnabled = true

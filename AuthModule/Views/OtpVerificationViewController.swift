@@ -53,7 +53,7 @@ class OtpVerificationViewController: LoginBaseViewController {
         }
     }
     
-    var presenter: OTPVerificationPresenter?
+    var presenter: OTPVerificationViewToPresenterProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,9 +63,9 @@ class OtpVerificationViewController: LoginBaseViewController {
     
     func configureUserInterface() {
         
-        editIconButton.setBackgroundImage(#imageLiteral(resourceName: "otp_edit"), for: .normal)
-        whatsAppIconButton.setImage(#imageLiteral(resourceName: "otp_wts_app"), for: .normal)
-        mobileLogoImageView.image = #imageLiteral(resourceName: "otp_image")
+        editIconButton.setBackgroundImage(.editPen, for: .normal)
+        whatsAppIconButton.setImage(.whatsappRound, for: .normal)
+        mobileLogoImageView.image = .otpHeader
         
         otpTextFieldsOutletCollection.forEach {
             $0.layer.cornerRadius = 27
@@ -95,6 +95,10 @@ class OtpVerificationViewController: LoginBaseViewController {
         //if wtsAppShowCount == totalResentCount && (FirebaseRemoteHelper.sharedInstance.getRemoteFunctionBoolValue(forkey: "wtsApp_Otp_Enable")) {
         //            self.enableWhatsAppLogin()
         //}
+        
+        if presenter?.shouldShowWhatsappLogin() ?? false {
+            enableWhatsAppLogin()
+        }
         
         if let customFont = UIFont(name: "Quicksand-Bold", size: 18){
             UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font : customFont]
@@ -149,7 +153,18 @@ class OtpVerificationViewController: LoginBaseViewController {
     }
     
     @IBAction func editNumberAction(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        if let navStack = self.navigationController?.viewControllers.reversed() {
+            for vc in navStack{
+                if vc is MobileVerificationViewController {
+                    _ = self.navigationController?.popToViewController(vc, animated: true)
+                    break
+                }
+                else if vc is LoginWelcomeViewController {
+                    _ = self.navigationController?.popToViewController(vc, animated: true)
+                    break
+                }
+            }
+        }
     }
     
     @objc fileprivate func startTimer() {
@@ -175,9 +190,9 @@ class OtpVerificationViewController: LoginBaseViewController {
         self.countDownTimer = nil
         isResendEnabled = true
         
-        //<NITIN>if wtsAppShowCount == totalResentCount && (FirebaseRemoteHelper.sharedInstance.getRemoteFunctionBoolValue(forkey: "wtsApp_Otp_Enable")) {
-                //self.enableWhatsAppLogin()
-//        }
+        if presenter?.shouldShowWhatsappLogin() ?? false {
+            self.enableWhatsAppLogin()
+        }
     }
 
     fileprivate enum Direction { case left, right }
@@ -195,40 +210,51 @@ class OtpVerificationViewController: LoginBaseViewController {
                 (_ = otpTextFieldsOutletCollection[(index + 1)].becomeFirstResponder())
         }
     }
-    
-    func verifyOTPRequestSuccessResponse(message: String?) {
-        ActivityIndicator.hide(on: self.view)
-        guard let message = message, !message.isEmpty else { return }
-        AuthAlert.showToastMessage(on: self, message: message)
-    }
-    
-    func verifyOTPRequestFailedResponse(error: ErrorData?) {
-        ActivityIndicator.hide(on: self.view)
-        showError(error)
-        otpTextFieldsOutletCollection[3].becomeFirstResponder()
-    }
-    
-    func requestToResendOTPSuccessResponse() {
-        ActivityIndicator.hide(on: self.view)
-        prepareOtpTextFiled()
-    }
-    
-    func requestToResendOTPFailedResponse(error: ErrorData?) {
-        ActivityIndicator.hide(on: self.view)
-        showError(error)
-    }
-    
+
     @IBAction func resendCodeAgain(sender: AnyObject) {
         presenter?.otpResendCount.increment()
         self.startTimer()
         self.presenter?.logGAClickEvent(for: "resend_otp")
         LoginGAPManager.logTappedEvent(with: .resendOTP, forController: self)
         
-        if isFbSignup == true {
+        if presenter?.isFbSignup == true {
             presenter?.requestFacebookToResendOTP()
         } else{
             presenter?.requestToResendOTP()
         }
+    }
+    
+    @IBAction func whatsAppLogin(sender:AnyObject) {
+        presenter?.logGAClickEvent(for: "login_with_whatsapp")
+        SignInGAPManager.signinOrSignUpEvent(withEventType: .startedSignIn, withMethod: .whatsApp, withVerifyType: nil, withOtherDetails: ["from_page":"whatsAppBtnClickInOTPScreen"])
+        WhatsappHelper.shared.referralCode = presenter?.referralCode ?? ""
+        WhatsappHelper.shared.delegate = self
+        ActivityIndicator.show(on: self.view, withMessage: "Logging in with Whatsapp..")
+        WhatsAppManager.shared.loginWithWhatsapp(referralCode: nil)
+    }
+}
+
+extension OtpVerificationViewController: WhatsappHelperDelegate {
+    
+    func loginSuccessful(verifiedData: OtpVerifiedData?, extraKeys:String?) {
+        presenter?.isWhatsAppLogin = true
+        ActivityIndicator.hide(on: self.view)
+        WhatsappHelper.shared.delegate = nil
+        if let verifiedData = verifiedData, verifiedData.isExistingUser == false {
+            presenter?.userVerificationData = verifiedData
+            presenter?.navigateToSignUpScreen(extraKeys: extraKeys)
+        }
+        else{
+            SignInGAPManager.signinOrSignUpEvent(withEventType: .signIn, withMethod: .whatsApp, withVerifyType: .whatsapp, withOtherDetails: nil)
+            SignInGAPManager.logGenericEventWithoutScreen(for: "loginSuccessNew", otherParams:["medium":"whatsapp","verificationChannel":"whatsapp"])
+            userSuccessfullyLoggedIn()
+        }
+    }
+    
+    func loginFailed(error: Any?) {
+        WhatsappHelper.shared.delegate = nil
+        ActivityIndicator.hide(on: self.view)
+        showError(error)
     }
 }
 
@@ -255,5 +281,30 @@ extension OtpVerificationViewController: UITextFieldDelegate {
         }
         
         return false
+    }
+}
+
+extension OtpVerificationViewController: OTPVerificationPresenterToViewProtocol {
+    
+    func verifyOTPRequestSuccessResponse(message: String?) {
+        ActivityIndicator.hide(on: self.view)
+        guard let message = message, !message.isEmpty else { return }
+        AuthAlert.showToastMessage(on: self, message: message)
+    }
+    
+    func verifyOTPRequestFailedResponse(error: ErrorData?) {
+        ActivityIndicator.hide(on: self.view)
+        showError(error)
+        otpTextFieldsOutletCollection[3].becomeFirstResponder()
+    }
+    
+    func requestToResendOTPSuccessResponse() {
+        ActivityIndicator.hide(on: self.view)
+        prepareOtpTextFiled()
+    }
+    
+    func requestToResendOTPFailedResponse(error: ErrorData?) {
+        ActivityIndicator.hide(on: self.view)
+        showError(error)
     }
 }

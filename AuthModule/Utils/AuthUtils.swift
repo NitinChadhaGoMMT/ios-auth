@@ -8,41 +8,6 @@
 
 import UIKit
 
-struct AuthNetworkUtils {
-    
-    static func getAmigoServer() -> String {
-        return AuthDepedencyInjector.networkDelegate?.getAmigoServer() ?? AuthNetworkConstants.amigoServer
-    }
-    
-    static func getServer_Auth() -> String {
-        return AuthDepedencyInjector.networkDelegate?.getServer_Auth() ?? AuthNetworkConstants.authServer
-    }
-    
-    static func getServer_C() -> String {
-        return AuthDepedencyInjector.networkDelegate?.getServer_C() ?? AuthNetworkConstants.server_C
-    }
-    
-    static func syncMD() -> String {
-        return "78IUdfh@m^xlpwq)$a0#";
-    }
-    
-    static func getAuthKey() -> String {
-        return AuthDepedencyInjector.networkDelegate?.getAuthKey() ?? AuthNetworkConstants.authKey
-    }
-    
-    static func getAuthSecret() -> String {
-        return AuthDepedencyInjector.networkDelegate?.getAuthSecret() ?? AuthNetworkConstants.authSecret
-    }
-    
-    static func getUUID() -> String {
-        return AuthDepedencyInjector.networkDelegate?.getUUID() ?? UIDevice.current.identifierForVendor?.uuidString ?? ""
-    }
-    
-    static func getAmigoBasic() -> String {
-        return AuthDepedencyInjector.networkDelegate?.getAmigoBasic() ?? AuthNetworkConstants.amigoBasic
-    }
-}
-
 struct AuthUtils {
     
     static let bundle: Bundle = Bundle(identifier: "com.goibibo.AuthModule")!
@@ -56,6 +21,19 @@ struct AuthUtils {
         let phonrNumberRegex: String = "^[56789]\\d{9}$"
         let testPredicate: NSPredicate = NSPredicate(format: "SELF MATCHES %@", phonrNumberRegex)
         return testPredicate.evaluate(with: phoneNumber)
+    }
+    
+    static func isValidName(_ name: String?) -> Bool {
+        
+        guard let name = name, !name.isEmpty else {
+            return false
+        }
+        
+        let set = NSCharacterSet(charactersIn: "ABCDEFGHIJKLMONPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ").inverted
+        if name.rangeOfCharacter(from: set) != nil {
+            return false
+        }
+        return true
     }
     
     static func showAlert(on view:UIViewController, message: String) {
@@ -164,6 +142,7 @@ struct AuthUtils {
     
     static func removeBranchReferCode() {
         AuthDepedencyInjector.uiDelegate?.removeBranchReferCode()
+        AuthDepedencyInjector.branchReferDictionary = nil
     }
     
     static func checkForDummyEmail(_ inputString: String?) -> String? {
@@ -178,11 +157,14 @@ struct AuthUtils {
     }
     
     static func isLoginDirectlyViaFacebook() -> Bool {
-        return AuthCache.shared.getUserDefaltBool(forKey: AuthNetworkConstants.kLoginDirectlyViaFacebook) ?? false
+        return AuthCache.shared.getUserDefaltBool(forKey: NetworkConstants.kLoginDirectlyViaFacebook) ?? false
     }
     
     static func showBusinessProfile() -> Bool {
         return AuthDepedencyInjector.firebaseRemoteHandlerDelegate?.getRemoteFunctionBoolValueWithForkey(forKey: "bp_enabled") ?? false
     }
     
+    static func removeMobileKey() {
+        //<NITIN>
+    }
 }

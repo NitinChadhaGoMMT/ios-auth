@@ -71,7 +71,7 @@ class GoFacebookManager {
     }
     
     func handleError(_ error: Error?) {
-        AuthCache.shared.setUserDefaltBool(false, forKey: AuthNetworkConstants.kLoginDirectlyViaFacebook)
+        AuthCache.shared.setUserDefaltBool(false, forKey: NetworkConstants.kLoginDirectlyViaFacebook)
         AuthAlert.show(withTitle: "Unknown Error", message: "Error. Please try again later.")
     }
     

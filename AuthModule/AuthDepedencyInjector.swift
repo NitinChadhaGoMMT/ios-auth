@@ -20,7 +20,7 @@ public protocol AuthModuleUIProtocol {
     
     func showToastMessage(on view:UIViewController, message: String)
     
-    func showAlertActionPrompt(withTitle title: String?, msg: String?, confirmTitle: String?, cancelTitle: String?, onCancel: @escaping () -> Void, onConfirm: @escaping () -> Void) -> UIAlertController?
+    func showToastMessage(on view:UIViewController, message: String, duration: CGFloat, position: String)
     
     func setImage(for imageView: UIImageView, url: URL?, placeholder: UIImage?, completionBlock: (() -> Void)?)
     
@@ -28,7 +28,7 @@ public protocol AuthModuleUIProtocol {
     
     func removeBranchReferCode()
     
-    func showIBSVAlert(withTitle title: String?, msg: String?, confirmTitle: String?, cancelTitle: String?, onCancel: () -> Void, onConfirm: () -> Void)
+    func showIBSVAlert(withTitle title: String?, msg: String?, confirmTitle: String?, cancelTitle: String?, onCancel:  @escaping () -> Void, onConfirm:  @escaping () -> Void)
 }
 
 extension AuthModuleUIProtocol {

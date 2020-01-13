@@ -50,7 +50,7 @@ class LoginPasswordTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
     
     func addRightViewInTextField(){
-        eyeImageView = UIImageView(image: #imageLiteral(resourceName: "eyeSlashed"))
+        eyeImageView = UIImageView(image: .passwordHiddenIcon)
         if let size = eyeImageView.image?.size {
             eyeImageView.frame = CGRect(x: 0.0, y: 0.0, width: size.width + 20.0, height: size.height)
         }
@@ -67,7 +67,7 @@ class LoginPasswordTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     @objc func showHidePassword(){
         passwordTextField.isSecureTextEntry.toggle()
-        eyeImageView.image = passwordTextField.isSecureTextEntry ? #imageLiteral(resourceName: "eyeSlashed") : #imageLiteral(resourceName: "view1")
+        eyeImageView.image = passwordTextField.isSecureTextEntry ? .passwordHiddenIcon : .passwordShownIcon
     }
     
     //MARK: Public Methods

@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct AuthNetworkConstants {
+struct NetworkConstants {
     static let kMajorFlavour = "ios"
     static let kFlavourKey = "flavour"
     static let kAccessToken = "oauth_token"

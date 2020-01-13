@@ -8,15 +8,15 @@
 
 import UIKit
 
-protocol LoginWelcomeViewToPresenterProtocol: class{
+protocol LoginWelcomeViewToPresenterProtocol: PresenterBaseProtocol {
     
     var dataSource: [[LoginCellType]] { get }
     
     var currentMobileNumber: String? { get set }
-    
-    var referralCode: String? { get }
 
     var branchDictionary: NSDictionary? { get }
+    
+    var showReferralStatus: Bool { get }
     
     func isValidPhoneNumber(mobileNumber: String?) -> Bool
     
@@ -26,29 +26,58 @@ protocol LoginWelcomeViewToPresenterProtocol: class{
     
     func verifyMobileNumber(number: String)
     
+    func signInWithFB()
+    
+    func requestFBOTPWithMobileNo(_ mobileNo: String)
+    
     func logGAClickEvent(_ type:String)
     
     func resetReferralCode()
     
     func validateReferralCode(_referralCode: String?, isBranchFlow: Bool)
+    
+    func navigateToPostMobileNumberScreen(verifiedData: MobileVerifiedData)
+    
+    func navigateToSignUpScreen()
+    
+    func navigateToTermsAndConditions()
+    
+    func navigateToPrivacyPolicy()
+    
+    func navigateToUserAgreement()
 }
 
 protocol LoginWelcomePresenterToViewProtocol: LoginBaseProtocol {
 
-    func resetReferralCode()
-    
     func verifyReferralRequestFailed(response: ErrorData?)
     
-    func verifyReferralSuccessResponse(response: ReferralVerifyData?)
+    func verifyReferralSuccessResponse(response: ReferralVerifyData)
     
     func verifyMobileNumberRequestFailed(error: ErrorData?)
+
 }
 
 protocol LoginWelcomePresenterToRouterProtocol: class {
     
-    func navigateToOTPVerificationController(mobileNumber: String, nonce: String?, isFbSignup: Bool, isNewUser: Bool, isverifyMethodOtp: Bool, referralCode: String) -> UIViewController?
+    func navigateToOTPVerificationController(mobile: String, data: PresenterCommonData, nonce: String?, isNewUser: Bool) -> UIViewController? 
     
-    func navigateToPasswordViewController(userState: UserSignInState, referralCode: String, mobile: String, isVerifyOTP: Bool) -> UIViewController?
+    func navigateToPasswordViewController(userState: UserSignInState, mobile: String, data: PresenterCommonData) -> UIViewController? 
+    
+    func navigateToSignUpController(data: PresenterCommonData, extraKeys: String?) -> UIViewController?
+    
+    func navigateToTermsAndConditions() -> UIViewController?
+    
+    func navigateToPrivacyPolicy() -> UIViewController?
+    
+    func navigateToUserAgreement() -> UIViewController?
+}
+
+extension LoginWelcomePresenterToRouterProtocol {
+    
+    func navigateToSignUpController(data: PresenterCommonData) -> UIViewController? {
+        self.navigateToSignUpController(data: data, extraKeys: nil)
+    }
+    
 }
 
 protocol LoginWelcomePresenterToInteractorProtocol: InteractorBaseProtocol {

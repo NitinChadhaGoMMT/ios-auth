@@ -8,6 +8,20 @@
 
 import UIKit
 
+protocol PresenterBaseProtocol: class {
+    
+    var isFbSignup: Bool { get set }
+    
+    var isWhatsAppLogin: Bool { get set }
+    
+    var isverifyMethodOtp:Bool { get set }
+    
+    var referralCode: String? { get set }
+    
+    var userVerificationData: OtpVerifiedData? { get set }
+    
+}
+
 protocol InteractorBaseProtocol: class {
     
     func checkForMobileConnectAPI(completionBlock: @escaping (MconnectData?) -> ())
@@ -17,9 +31,9 @@ protocol InteractorBaseProtocol: class {
 
 protocol LoginBaseProtocol: class {
     
-    var isverifyMethodOtp: Bool { get set }
+    var mconnectData: MconnectData? { get }
     
-    var isFbSignup: Bool { get }
+    func verifymConnectDataWithMobileNo(_ mobileNo: String, isFbSignup: Bool, referralCode: String)
     
     func showActivityIndicator()
     
@@ -29,5 +43,15 @@ protocol LoginBaseProtocol: class {
     
     func push(screen: UIViewController)
     
+    func present(screen: UIViewController)
+    
+    func dismiss()
+    
     func showError(_ errorData:Any?)
+    
+    func userSuccessfullyLoggedIn()
+    
+    func logInSuccessfully()
+    
+    func signUpSuccessfully()
 }

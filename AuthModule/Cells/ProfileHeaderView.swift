@@ -170,14 +170,14 @@ class ProfileHeaderView: UIView {
     func setProfilePicWithURL(_ photo:URL?) {
         changePhotoButtonTitleText()
         if let profileDisplayPicURL = photo , !profileDisplayPicURL.absoluteString.isEmpty{
-            AuthDepedencyInjector.uiDelegate?.setImage(for: self.profilePic, url: profileDisplayPicURL, placeholder: UIImage(named: "dummyProfilePic.png.png"))
-            AuthDepedencyInjector.uiDelegate?.setImage(for: self.blurredProfileView, url: profileDisplayPicURL, placeholder: UIImage(named: "dummyProfilePic.png.png"), completionBlock: {
+            ImageHelper.setImage(for: self.profilePic, url: profileDisplayPicURL, placeholder: UIImage(named: "dummyProfilePic.png.png"))
+            ImageHelper.setImage(for: self.blurredProfileView, url: profileDisplayPicURL, placeholder: UIImage(named: "dummyProfilePic.png.png"), completionBlock: {
                 self.applyBlurEffect()
             })
         }
         else {
-            profilePic.image = UIImage(named: "dummyProfilePic")
-            blurredProfileView.image = UIImage(named: "dummyProfilePic.png")
+            profilePic.image = .dummyProfilePic
+            blurredProfileView.image = .dummyProfilePic
             self.applyBlurEffect()
         }
     }
@@ -185,12 +185,12 @@ class ProfileHeaderView: UIView {
     func setProfilePicWithURLWithoutBlur(_ photo:URL?) {
         changePhotoButtonTitleText()
         if let profileDisplayPicURL = photo , !profileDisplayPicURL.absoluteString.isEmpty{
-            AuthDepedencyInjector.uiDelegate?.setImage(for: self.profilePic, url: profileDisplayPicURL, placeholder: UIImage(named: "dummyProfilePic.png.png"))
-            AuthDepedencyInjector.uiDelegate?.setImage(for: self.blurredProfileView, url: profileDisplayPicURL, placeholder: UIImage(named: "dummyProfilePic.png"))
+            ImageHelper.setImage(for: self.profilePic, url: profileDisplayPicURL, placeholder: .dummyProfilePic)
+            ImageHelper.setImage(for: self.blurredProfileView, url: profileDisplayPicURL, placeholder: .dummyProfilePic)
         }
         else {
-            profilePic.image = UIImage(named: "dummyProfilePic")
-            blurredProfileView.image = UIImage(named: "dummyProfilePic.png")
+            profilePic.image = .dummyProfilePic
+            blurredProfileView.image = .dummyProfilePic
         }
     }
     

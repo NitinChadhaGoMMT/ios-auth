@@ -110,7 +110,6 @@ extension SignInWithPasswordViewController: UITableViewDataSource {
     }
     
     func userLoggedInRequestSucceeded(data: OtpVerifiedData?) {
-        //AuthAlert.show(message: "LOGGED IN SUCCESSFULLY")
         userSuccessfullyLoggedIn()
     }
     

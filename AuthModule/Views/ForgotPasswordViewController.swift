@@ -29,8 +29,8 @@ class ForgotPasswordViewController: LoginBaseViewController, ForgotPasswordPrese
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Forgot Password"
-        backButton.setBackgroundImage(#imageLiteral(resourceName: "backArrowNew"), for: .normal)
-        titleImage.image = #imageLiteral(resourceName: "goibiboCopy")
+        backButton.setBackgroundImage(.backButton, for: .normal)
+        titleImage.image = .giLogo
         self.sendResetLinkButton.layer.cornerRadius = 5;
         self.sendResetLinkButton.layer.masksToBounds = true
         tableVC.tfEmailID.text = presenter?.mobile

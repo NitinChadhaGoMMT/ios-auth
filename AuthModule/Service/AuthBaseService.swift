@@ -25,8 +25,8 @@ extension AuthServiceProtocol {
             parameters = parameters.merge(params!)
         }
         
-        parameters[AuthNetworkConstants.kFlavourKey] = AuthNetworkConstants.kMajorFlavour
-        parameters[AuthNetworkConstants.kHashKey] = LoginWrapper.hashAuthString(for: parameters) as Any?
+        parameters[NetworkConstants.kFlavourKey] = NetworkConstants.kMajorFlavour
+        parameters[NetworkConstants.kHashKey] = LoginWrapper.hashAuthString(for: parameters) as Any?
         return parameters
     }
     

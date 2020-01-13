@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MobileVerificationViewController: LoginBaseViewController, UITextFieldDelegate {
+class MobileVerificationViewController: LoginBaseViewController, MobileVerificationPresenterToViewProtocol, UITextFieldDelegate {
     
     let circleText = "ⓘ"
     
@@ -35,13 +35,13 @@ class MobileVerificationViewController: LoginBaseViewController, UITextFieldDele
     
     var socialGraphtermsAndConditionLink: String?
     var mobileNo: String?
-    var presenter: MobileVerificationPresenter!
+    var presenter: MobileVerificationViewToPresenterProtocol?
     
     override func viewDidLoad() {
         self.title = "Verify Your Mobile Number"
         super.viewDidLoad()
         self.configureUserInterface()
-        presenter.checkForMobileConnect()
+        presenter?.checkForMobileConnect()
         SignInGAPManager.logOpenScreenEvent(for: .verifyPhone, otherParams: nil)
     }
     
@@ -71,9 +71,9 @@ class MobileVerificationViewController: LoginBaseViewController, UITextFieldDele
         self.textLabel1.text = "Save Big with goCash"
         self.textLabel2.text = "Sync Bookings on your phone"
         self.textLabel3.text = "Easy One-Touch Login"
-        self.image1.image = #imageLiteral(resourceName: "goCash_login")
-        self.image2.image = #imageLiteral(resourceName: "icQna")
-        self.image3.image = #imageLiteral(resourceName: "icHand")
+        self.image1.image = .goCash
+        self.image2.image = .questions
+        self.image3.image = .clickIcon
         
         var infoText = "Earn goCash+ and use for bookings. \nNo usage limits"
         
@@ -81,7 +81,7 @@ class MobileVerificationViewController: LoginBaseViewController, UITextFieldDele
             infoText = "Claim your reward of Rs 2000 goCash and use for bookings."
         }
         
-        let gocashText : NSMutableAttributedString = NSMutableAttributedString(string: infoText, attributes: [NSAttributedString.Key.foregroundColor: UIColor.customLightGray, NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Medium", size: 12)!])
+        let gocashText : NSMutableAttributedString = NSMutableAttributedString(string: infoText, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Medium", size: 12)!])
         
         let gocashIcon = NSMutableAttributedString(string:"\(circleText)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.customBlue, NSAttributedString.Key.font: UIFont(name: "HelveticaNeue", size: 12)!])
         
@@ -90,7 +90,7 @@ class MobileVerificationViewController: LoginBaseViewController, UITextFieldDele
         continueLabel.backgroundColor = UIColor.customBlue
         continueLabel.addTapGestureWithAction(#selector(continueTapped), target: self)
         
-        let attributedText : NSMutableAttributedString = NSMutableAttributedString(string:"We will send you a verification code on this number. By proceeding, you agree to ", attributes: [NSAttributedString.Key.foregroundColor: UIColor.customLightGray, NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Medium", size: 12)!])
+        let attributedText : NSMutableAttributedString = NSMutableAttributedString(string:"We will send you a verification code on this number. By proceeding, you agree to ", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Medium", size: 12)!])
         
         let tncStr = NSMutableAttributedString(string:"Terms & Conditions", attributes: [NSAttributedString.Key.foregroundColor: UIColor.customBlue, NSAttributedString.Key.font: UIFont(name: "HelveticaNeue", size: 12)!])
         attributedText.append(tncStr)
@@ -112,8 +112,9 @@ class MobileVerificationViewController: LoginBaseViewController, UITextFieldDele
     override func addMconnectView() {
         self.mconnectContainerViewHeight.constant = 60
         self.view.layoutIfNeeded()
-        let view = Bundle.main.loadNibNamed("MConnectPoweredByView", owner: self, options: nil)?.first as? MConnectPoweredByView
-        self.mconnectContainerView.addSubview(view!)
+        if let view = AuthUtils.bundle.loadNibNamed("MConnectPoweredByView", owner: self, options: nil)?.first as? MConnectPoweredByView {
+            self.mconnectContainerView.addSubview(view)
+        }
     }
     
     override func handleMConnectFailure(mobileNo: String) {
@@ -127,12 +128,12 @@ class MobileVerificationViewController: LoginBaseViewController, UITextFieldDele
                     self.performSegue(withIdentifier: "numberToOtpSegue", sender: verificationData)
                 }
                 else {
-                    presenter.navigateToPasswordScreen(verifiedData: verificationData)
+                    presenter?.navigateToPasswordScreen(verifiedData: verificationData)
                 }
             }
             else if let otpVerifiedData = data.otpVerifiedData, otpVerifiedData.isSuccess == true {
-                self.userVerificationData = otpVerifiedData
-                self.isverifyMethodOtp = true
+                self.presenter?.userVerificationData = otpVerifiedData
+                self.presenter?.isverifyMethodOtp = true
                 if  otpVerifiedData.userStatusType == .loggedIn || otpVerifiedData.userStatusType == .verified{
                     SignInGAPManager.signinOrSignUpEvent(withEventType: .signIn, withMethod: .phone, withVerifyType: .mconnect, withOtherDetails: nil)
                     self.userSuccessfullyLoggedIn()
@@ -156,12 +157,12 @@ class MobileVerificationViewController: LoginBaseViewController, UITextFieldDele
         
         self.mobileNo = mobileNo
         
-        if isFbSignup == true {
-            requestFBOTPWithMobileNo(mobileNo)
+        if presenter?.isFbSignup == true {
+            presenter?.requestFBOTPWithMobileNo(mobileNo)
             return
         }
         
-        presenter.verifyMobileNumber(number: mobileNo)
+        presenter?.verifyMobileNumber(number: mobileNo)
     }
     
     //MARK: Button actions
@@ -216,7 +217,7 @@ class MobileVerificationViewController: LoginBaseViewController, UITextFieldDele
             return
         }
         
-        self.mconnectData == nil ? self.verifyMobileWithNumber(self.mobileNumField.text!) : self.verifymConnectDataWithMobileNo(self.mobileNumField.text!)
+        self.mconnectData == nil ? self.verifyMobileWithNumber(self.mobileNumField.text!) : self.verifymConnectDataWithMobileNo(self.mobileNumField.text!, isFbSignup: presenter?.isFbSignup ?? false, referralCode: presenter?.referralCode ?? "")
     }
     
     @IBAction func skipNowTapped(sender: AnyObject) {

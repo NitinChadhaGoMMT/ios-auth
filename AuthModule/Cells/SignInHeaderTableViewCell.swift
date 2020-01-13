@@ -19,8 +19,8 @@ class SignInHeaderTableViewCell: UITableViewCell {
     static let height:CGFloat = 170
     
     override func awakeFromNib() {
-        signInLogoImageView.image = #imageLiteral(resourceName: "passwordImage")
-        backbtn.setImage(#imageLiteral(resourceName: "backArrowNew"), for: .normal)
+        signInLogoImageView.image = .passwordHeader
+        backbtn.setImage(.backButton, for: .normal)
     }
     
 }

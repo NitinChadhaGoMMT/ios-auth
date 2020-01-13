@@ -27,13 +27,10 @@ class LoginSkipNowTableCell: UITableViewCell {
     }
     
     func doInitialConfigurations() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(tncPressed))
-        termsAndConditionLabel.addGestureRecognizer(tap)
-        
         termsAndConditionLabel
             .setColor(color: .customGray)
-            .setFont(fontType: .regular, size: 10.0)
-
+            .setFont(fontType: UIFont.fontsWith(fontType: .sfProRegular, size: 10.0))
+        
         let simpleText: NSString = Constants.kTnCText as NSString
         termsAndConditionLabel.text = simpleText as String
         let mutableString = NSMutableAttributedString(attributedString: termsAndConditionLabel.attributedText!)
@@ -41,11 +38,7 @@ class LoginSkipNowTableCell: UITableViewCell {
         termsAndConditionLabel.attributedText = mutableString
     }
     
-    @IBAction func actionSkipNowPressed(_ sender: UIButton) {
-        delegate?.didSelectSkipNow()
-    }
-    
-    @objc func tncPressed() {
+    @IBAction func termsAndConditionAction(_ sender: Any) {
         delegate?.didSelectShowTermsAndConditions()
     }
 }

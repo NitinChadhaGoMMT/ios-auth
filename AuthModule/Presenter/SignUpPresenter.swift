@@ -9,6 +9,12 @@
 
 import UIKit
 
+fileprivate enum Referral: Int {
+    case none = 0
+    case referred = 1
+    case user = 2
+}
+
 class CTAItem: NSObject {
     var tagId: Int?
     var goData: [String:Any]?
@@ -21,19 +27,20 @@ class CTAItem: NSObject {
     }
 }
 
-class SignUpPresenter {
+class SignUpPresenter: BasePresenter, SignUpViewToPresenterProtocol, SignUpInteractorToPresenterProtocol {
     
-    weak var view: SignupViewController?
+    weak var view: SignUpPresenterToViewProtocol?
     
-    var interactor: SignupInteractor?
+    var interactor: SignUpPresenterToInteractorProtocol?
     
     var fullName: String?
     var mobileKey: String?
     var existingFbId: String?
-    var referralCode: String?
     var isWhatsappLogin: Bool = false
     var extraKeys:String?
     var earnedGoCash = 0
+    
+    fileprivate var referralType: Referral = .none
     
     var isValidName: Bool {
         guard let fullName = fullName, !fullName.isEmpty else {
@@ -42,19 +49,27 @@ class SignUpPresenter {
         return true
     }
     
-    init(referralCode: String, otpResponse: OtpVerifiedData?) {
-        self.mobileKey = otpResponse?.mobileKey
-        self.existingFbId = otpResponse?.facebookId
-        self.referralCode = referralCode
+    init(data: PresenterCommonData, _extraKeys: String? = nil) {
+        super.init(dataModel: data)
+        self.extraKeys = _extraKeys
+        self.mobileKey = userVerificationData?.mobileKey
+        self.existingFbId = userVerificationData?.facebookId
+        logGAScreenLoadEvent()
     }
     
     func requestSignUp() {
         
+        self.logGAClickEvent(for: "continue_button")
+        
         guard let fullName = fullName, !fullName.isEmpty  else { return }
         
         view?.showActivityIndicator()
-        interactor?.requestToSignUp("Nitin Chadha", mobileKey: mobileKey ?? Constants.kEmptyString, referalCode: referralCode ?? "", isWhatsAppFlow: isWhatsappLogin, extraKey: extraKeys)
-        
+        interactor?.requestToSignUp(fullName, mobileKey: mobileKey ?? Constants.kEmptyString, referalCode: referralCode ?? "", isWhatsAppFlow: isWhatsappLogin, extraKey: extraKeys)
+    }
+    
+    func setReferralCode(code: String?) {
+        referralCode = code
+        referralType = .user
     }
     
     func signUpRequestSuccess(otpVerifiedData: OtpVerifiedData?) {
@@ -78,28 +93,24 @@ class SignUpPresenter {
         handleSuccessData(otpVerifiedData)
     }
     
+    func showReferralCodeInputView() {
+        if let new_vc = AuthRouter.shared.presentReferralCodeAlert(delegate: self) {
+            view?.present(screen: new_vc)
+        }
+    }
+    
     func signUpRequestFailed(error: ErrorData?) {
         view?.hideActivityIndicator()
         
         if let errorObject = error, errorObject.referalErrorMsg != nil {
             AuthAlert.showIBSVAlert(withTitle:"", msg: errorObject.referalErrorMsg ?? "", confirmTitle: "Continue", cancelTitle: nil, onCancel: {
-            }, onConfirm: {
-                referralCode = ""
-                requestSignUp()
+            }, onConfirm: { [weak self] in
+                self?.referralCode = ""
+                self?.requestSignUp()
             })
         } else {
             view?.showError(error)
         }
-    }
-    
-    fileprivate func logUserSignUpEvent() {
-        var attributes:Dictionary<String,Any> =  [:]
-        attributes["medium"] = isWhatsappLogin ? "whatsapp" : "mobile"
-        attributes["verificationChannel"] = ( view?.isverifyMethodOtp ?? false ) ? "otp" :"mconnect"
-        attributes["referredInstall"] = ( referralCode == "" ? "0" : "1" )
-        
-        SignInGAPManager.logGenericEventWithoutScreen(for: "signUpSuccessNew", otherParams: attributes)
-        SignInGAPManager.logGenericEventWithExplictEventNameWithoutScreen(for: "Onboarding_Signup_Success", action: "signUpSuccessNew", otherParams: attributes)
     }
     
     func handleSuccessData(_ data: OtpVerifiedData?) {
@@ -110,6 +121,47 @@ class SignUpPresenter {
         earnedGoCash = data?.userData?.referralBonus?.goCashEarned ?? 0
         referralCode = data?.userData?.referralBonus?.code
         AuthUtils.removeBranchReferCode()
-        AuthRouter.shared.signupSuccessNavigationHandling(cta: nil, navigationController: view?.navigationController)
+        //<NITIN>AuthRouter.shared.signupSuccessNavigationHandling(cta: nil, navigationController: view?.navigationController)
+    }
+}
+
+//MARK: Analytics
+extension SignUpPresenter {
+    
+    fileprivate func logGAScreenLoadEvent() {
+        var attributes:Dictionary<String,Any> =  [:]
+        if FireBaseHandler.getBoolFor(keyPath: .showFb, dbPath: .goAuthDatabase) ?? false {
+            attributes["linkFacebookEnabled"] = "1"
+        } else {
+            attributes["linkFacebookEnabled"] = "0"
+        }
+        attributes["skipEnabled"] = "0"
+        attributes["medium"] = isWhatsappLogin ? "whatsapp" : "mobile"
+        attributes["verificationChannel"] = isverifyMethodOtp ? "otp" :"mconnect"
+        attributes["userDetailsAvailable"] = "FULLNAME"
+        attributes["referredInstall"] = "\(referralType.rawValue)"
+
+        SignInGAPManager.logOpenScreenEvent(for: .createAccount, otherParams: attributes)
+        SignInGAPManager.logOpenScreenEventWithExplictEventName(for: "Onboarding_Signup_Start", screenType: .createAccount, otherParams:attributes)
+    }
+    
+    fileprivate func logGAClickEvent(for type:String) {
+        var attributes:Dictionary<String,Any> =  [:]
+        attributes["itemSelected"] = "enter_details"
+        attributes["interactionEvent"] = type
+        attributes["linkFacebookEnabled"] = "0"
+        attributes["skipEnabled"] = "0"
+        attributes["medium"] = isWhatsappLogin ? "whatsapp" : "mobile"
+        attributes["verificationChannel"] = isverifyMethodOtp ? "otp" :"mconnect"
+        attributes["userDetailsAvailable"] = "FullName"
+        attributes["referredInstall"] = "\(referralType.rawValue)"
+        SignInGAPManager.logClickEvent(for: .createAccount, otherParams: attributes)
+    }
+}
+
+extension SignUpPresenter: ReferralCodeProtocol {
+    func applyReferralCode(code: String) {
+        setReferralCode(code: code)
+        view?.refreshReferralCodeView()
     }
 }

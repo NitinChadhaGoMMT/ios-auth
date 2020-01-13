@@ -22,8 +22,8 @@ class LoginOrTableCell: UITableViewCell {
     }
     
     func doInitialConfigurations() {
-        leftView.backgroundColor = .customBackgroundColor
-        rightView.backgroundColor = .customBackgroundColor
+        leftView.backgroundColor = UIColor.backgroundColor()
+        rightView.backgroundColor = UIColor.backgroundColor()
         self.drawDottedLine(start: CGPoint(x: leftView.bounds.minX, y: leftView.bounds.minY), end: CGPoint(x: leftView.bounds.maxX, y: leftView.bounds.minY), view: leftView)
         self.drawDottedLine(start: CGPoint(x: rightView.bounds.minX, y: rightView.bounds.minY), end: CGPoint(x: rightView.bounds.maxX, y: rightView.bounds.minY), view: rightView)
     }

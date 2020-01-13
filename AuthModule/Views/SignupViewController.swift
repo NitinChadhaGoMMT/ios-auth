@@ -8,32 +8,53 @@
 
 import UIKit
 
-class SignupViewController: LoginBaseViewController {
+class SignupViewController: LoginBaseViewController, SignUpPresenterToViewProtocol {
 
-    @IBOutlet weak var continueButton: UIButton!
     var imagePickerVC: UIImagePickerController?
     
-    var presenter: SignUpPresenter?
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var referralStatus: UILabel!
+    @IBOutlet weak var successReferralImg: UIImageView!
+    @IBOutlet weak var referralButton: UIButton!
+    @IBOutlet weak var loginReferralImageView: UIImageView!
     
-    var isContinueButtonEnable: Bool = false {
-        didSet {
-            continueButton.isUserInteractionEnabled = isContinueButtonEnable
-            continueButton.backgroundColor = isContinueButtonEnable ? UIColor.customOrangeColor : UIColor.customLightGray
-            continueButton.titleLabel?.textColor = isContinueButtonEnable ? UIColor.white : UIColor(red: 255, green: 255, blue: 255, alpha: 1.0)
-        }
-    }
+    var presenter: SignUpViewToPresenterProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        isContinueButtonEnable = false
+        configureUserInterface()
     }
     
-    @IBAction func continueTapped(_ sender: Any) {
-        if presenter?.isValidName ?? false {
-            presenter?.requestSignUp()
+    func configureUserInterface() {
+        
+        loginReferralImageView
+            .setImage(_image: .giftIcon)
+            .setCornerRadius(radius: 15.0)
+        
+        successReferralImg
+            .setImage(_image: .tickIcon)
+
+        AuthAnimation.flipView(view: loginReferralImageView, recursive: true)
+        refreshReferralCodeView()
+    }
+    
+    func refreshReferralCodeView() {
+        
+        if AuthUtils.isEmptyString(presenter?.referralCode) {
+            self.referralStatus.text = FireBaseHandler.getStringFor(keyPath: .referralHeader, dbPath: .goAuthDatabase) ?? "Use a Referral Code and earn Rs. 200 goCash+"
+            self.successReferralImg.isHidden = true
+            self.referralButton.setTitle(Constants.kClickHere, for: .normal)
+            self.referralButton.isUserInteractionEnabled = true
         } else {
-            AuthAlert.showInvalidNameErrorAlert(view: self)
+            self.referralStatus.text =  FireBaseHandler.getStringFor(keyPath: .referralSuccessHeader, dbPath: .goAuthDatabase) ?? "Referral Code applied! You earned Rs.200 goCash+"
+            self.successReferralImg.isHidden = false
+            self.referralButton.setTitle(presenter?.referralCode, for: .normal)
+            self.referralButton.isUserInteractionEnabled = false
         }
+    }
+    
+    @IBAction func referralTapped(_ sender: Any) {
+        presenter?.showReferralCodeInputView()
     }
 }
 
@@ -63,11 +84,18 @@ extension SignupViewController: SignUpTextInputViewCellDelegate {
     
     func didChangeText(text: String) {
         presenter?.fullName = text
-        isContinueButtonEnable = !text.isEmpty
     }
     
     func didDismissKeyBoard() {
         
     }
     
+    func didContinueTapped() {
+      if presenter?.isValidName ?? false {
+          presenter?.requestSignUp()
+      } else {
+          AuthAlert.showInvalidNameErrorAlert(view: self)
+      }
+    }
 }
+

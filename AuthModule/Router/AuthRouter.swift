@@ -25,6 +25,30 @@ public class AuthRouter {
         Settings.appID = "151974918280687"
     }
     
+    public func initiateLoginModule() -> UIViewController? {
+        
+        if let dictionary = AuthDepedencyInjector.branchReferDictionary, let referralCode = dictionary.object(forKey: "refercode") as? String {
+            guard let view: ReferralCodeValidationViewController = mainstoryboard.getViewController() else {
+                return nil
+            }
+            
+            let presenter = ReferralCodeValidationPresenter(data: PresenterCommonData())
+            let interactor = ReferralCodeInteractor()
+            
+            view.presenter = presenter
+            presenter.view = view
+            presenter.interactor = interactor
+            interactor.presenter = presenter
+            
+            return view
+        } else {
+            guard let view: OnboardingWelcomeContainer = mainstoryboard.getViewController() else {
+                return nil
+            }
+            return view
+        }
+    }
+    
     public func createModule() -> UIViewController? {
         
         guard let view: LoginWelcomeViewController = mainstoryboard.getViewController() else {
@@ -37,24 +61,6 @@ public class AuthRouter {
         view.presenter = presenter
         presenter.view = view
         presenter.router = AuthRouter.shared
-        interactor.presenter = presenter
-        presenter.interactor = interactor
-        
-        return view
-    }
-    
-    func navigateToSignUpController(referralCodde: String, otpResponse: OtpVerifiedData?) -> UIViewController? {
-    
-        guard let view: SignupViewController = mainstoryboard.getViewController() else {
-            return nil
-        }
-        
-        let presenter = SignUpPresenter(referralCode: referralCodde, otpResponse: otpResponse)
-        let interactor = SignupInteractor()
-        
-        view.presenter = presenter
-        presenter.view = view
-        
         interactor.presenter = presenter
         presenter.interactor = interactor
         
@@ -78,16 +84,13 @@ public class AuthRouter {
         return view
     }
     
-    func navigateToMobileVerificationController(mobile: String?, isFbSignUp: Bool, referralCode: String) -> UIViewController? {
+    func navigateToMobileVerificationController(mobile: String?, data: PresenterCommonData) -> UIViewController? {
         
         guard let view: MobileVerificationViewController = mainstoryboard.getViewController() else {
             return nil
         }
         
-        view.isFbSignup = isFbSignUp
-        view.referralCode = referralCode
-        
-        let presenter = MobileVerificationPresenter(mobile: mobile)
+        let presenter = MobileVerificationPresenter(mobile: mobile, data: data)
         let interactor = LoginWelcomeInteractor()
         
         interactor.presenter = presenter
@@ -161,33 +164,41 @@ public class AuthRouter {
         if let isSyncScreenEnable = FireBaseHandler.getBoolFor(keyPath: .onboardingSyncScreenShown, dbPath: .goCoreDatabase), isSyncScreenEnable == true {
             openConfirmationVC()
         } else {
-            if let tag = cta?.tagId {
-                //<NITIN>
-                //OptionsVC.sharedInstance().removeAllStack()
-                //let notifManager = NotificationManager()
-                let gd = cta?.goData ?? [:]
-                let dict: [String : Any] = ["gd":gd,"tg":tag]
-                //notifManager.processNotification(dict, isDashBoard: false)
-            } else {
-                //<NITIN>AppRouter.navigateToEarn(goDataModel: nil, animated: false, completionBlock: nil)
-            }
+            //<NITIN>AppRouter.navigateToEarn(goDataModel: nil, animated: false, completionBlock: nil)
         }
     }
     
     func openConfirmationVC() {
         
     }
+    
+    func presentReferralCodeAlert(delegate: ReferralCodeProtocol) -> UIViewController? {
+        
+        guard let view: ReferralCodeViewController = mainstoryboard.getViewController() else {
+            return nil
+        }
+        
+        let presenter = ReferralCodePresenter(_delegate: delegate)
+        let interactor = ReferralCodeInteractor()
+        
+        view.presenter = presenter
+        presenter.view = view
+        presenter.interactor = interactor
+        interactor.presenter = presenter
+        
+        return view
+    }
 }
 
 extension AuthRouter: LoginWelcomePresenterToRouterProtocol {
     
-    public func navigateToPasswordViewController(userState: UserSignInState, referralCode: String, mobile: String, isVerifyOTP: Bool) -> UIViewController? {
+    func navigateToPasswordViewController(userState: UserSignInState, mobile: String, data: PresenterCommonData) -> UIViewController? {
         
         guard let view: SignInWithPasswordViewController = mainstoryboard.getViewController() else {
             return nil
         }
         
-        let presenter = SignInWithPasswordPresenter(referralCode: referralCode, mobileNumber: mobile, isVerifyOTP: isVerifyOTP, state: userState)
+        let presenter = SignInWithPasswordPresenter(mobileNumber: mobile, state: userState, data: data)
         let interactor = SignInWithPasswordInteractor()
         view.presenter = presenter
         presenter.view = view
@@ -197,16 +208,14 @@ extension AuthRouter: LoginWelcomePresenterToRouterProtocol {
         return view
     }
     
-    public func navigateToOTPVerificationController(mobileNumber: String, nonce: String?, isFbSignup: Bool, isNewUser: Bool, isverifyMethodOtp: Bool, referralCode: String) -> UIViewController? {
+    func navigateToOTPVerificationController(mobile: String, data: PresenterCommonData, nonce: String?, isNewUser: Bool) -> UIViewController? {
+    
         guard let view: OtpVerificationViewController = mainstoryboard.getViewController() else {
             return nil
         }
         
-        let presenter = OTPVerificationPresenter(mobileNumber: mobileNumber, nonce: nonce, isNewUser: isNewUser, isverifyMethodOtp: isverifyMethodOtp)
+        let presenter = OTPVerificationPresenter(mobileNumber: mobile, nonce: nonce, isNewUser: isNewUser, data: data)
         let interactor = OTPVerificationInteractor()
-        
-        view.isFbSignup = isFbSignup
-        view.referralCode = referralCode
         
         presenter.view = view
         view.presenter = presenter
@@ -215,5 +224,54 @@ extension AuthRouter: LoginWelcomePresenterToRouterProtocol {
         interactor.presenter = presenter
         
         return view
+    }
+    
+    func navigateToSignUpController(data: PresenterCommonData, extraKeys: String?) -> UIViewController? {
+    
+        guard let view: SignupViewController = mainstoryboard.getViewController() else {
+            return nil
+        }
+        
+        let presenter = SignUpPresenter(data: data, _extraKeys: extraKeys)
+        let interactor = SignupInteractor()
+        
+        view.presenter = presenter
+        presenter.view = view
+        
+        interactor.presenter = presenter
+        presenter.interactor = interactor
+        
+        return view
+    }
+    
+    func navigateToTermsAndConditions() -> UIViewController? {
+        
+        if let view: WebViewController = mainstoryboard.getViewController() {
+            view.titleString = "Terms and Conditions"
+            view.urlString = "https://www.goibibo.com/info/terms-and-conditions/"
+            return view
+        }
+
+        return nil
+    }
+    
+    func navigateToPrivacyPolicy() -> UIViewController? {
+        
+        if let view: WebViewController = mainstoryboard.getViewController() {
+            view.titleString = "Privacy Policy"
+            view.urlString = "https://www.goibibo.com/info/privacy-policy"
+            return view
+        }
+        return nil
+    }
+    
+    func navigateToUserAgreement() -> UIViewController? {
+        
+        if let view: WebViewController = mainstoryboard.getViewController() {
+            view.titleString = "User Agreement"
+            view.urlString = "https://www.goibibo.com/info/user-agreement/"
+            return view
+        }
+        return nil
     }
 }

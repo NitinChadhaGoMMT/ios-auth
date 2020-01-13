@@ -17,8 +17,8 @@ class BaseInteractor: InteractorBaseProtocol {
             parameters = parameters.merge(params!)
         }
         
-        parameters[AuthNetworkConstants.kFlavourKey] = AuthNetworkConstants.kMajorFlavour
-        parameters[AuthNetworkConstants.kHashKey] = LoginWrapper.hashAuthString(for: parameters) as Any?
+        parameters[NetworkConstants.kFlavourKey] = NetworkConstants.kMajorFlavour
+        parameters[NetworkConstants.kHashKey] = LoginWrapper.hashAuthString(for: parameters) as Any?
         return parameters
     }
     
@@ -85,7 +85,7 @@ class BaseInteractor: InteractorBaseProtocol {
     func checkForMobileConnectAPI(completionBlock: @escaping (MconnectData?) -> ()){
         
         let dict = FireBaseHandler.getDictionaryFor(keyPath: .onboarding)
-        var mcStatus = false
+        var mcStatus = true //<NITIN>
         if let status = dict["mc_status3"] as? Bool {
            mcStatus = status
         }

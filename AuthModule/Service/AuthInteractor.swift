@@ -89,7 +89,7 @@ class AuthService: AuthServiceProtocol {
     
     static func validateForMconnect(success: @escaping SuccessBlock, failure: @escaping FailureBlock) {
         Session.service.post(LoginConstants.mConnectGetDeviceDetailsUrl(), data: appendDefaultParameters(params: nil), header: nil, encoding: URLEncoding.httpBody, success: { (json) in
-            success(json.dictionaryObject)
+            success(MconnectDataParser().parseJSON(json.dictionaryObject))
         }, failure: { (json, error) in
             failure(getErrorDataFrom(error: error))
         })
@@ -162,9 +162,9 @@ class AuthService: AuthServiceProtocol {
         }
         
         if isFBSignup == true && AuthUtils.isEmptyString(AccessToken.current?.tokenString) == false {
-            parameters[AuthNetworkConstants.kFBAccessToken] = AccessToken.current?.tokenString
+            parameters[NetworkConstants.kFBAccessToken] = AccessToken.current?.tokenString
         } else if let accessToken = AuthCache.shared.getUserDefaltObject(forKey: "access_token")  as? String {
-            parameters[AuthNetworkConstants.kAccessToken] = accessToken
+            parameters[NetworkConstants.kAccessToken] = accessToken
         }
         
         Session.service.post(LoginConstants.verifyOTPUrl(), data: appendDefaultParameters(params: parameters), header: nil, encoding: URLEncoding.httpBody, success: { (json) in
@@ -191,7 +191,7 @@ class AuthService: AuthServiceProtocol {
         
         if APIRetryHandler.shared.canRetryAuthApi() {
             var parameters = [String: Any]()
-            parameters[AuthNetworkConstants.kFlavourKey] = AuthNetworkConstants.kMajorFlavour
+            parameters[NetworkConstants.kFlavourKey] = NetworkConstants.kMajorFlavour
             parameters["versioncode"] = AuthDepedencyInjector.networkDelegate?.getAppVersion()
             parameters["client_id"] = AuthNetworkUtils.getAuthKey()
             parameters["grant_type"] = "refresh_token"
@@ -269,13 +269,31 @@ class AuthService: AuthServiceProtocol {
         urlStr = urlStr + mobile + "?count=3?flavour=ios"
         
         var headers = Dictionary<String, String>()
-        headers["Authorization"] = AuthNetworkConstants.amigoBasic
+        headers["Authorization"] = NetworkConstants.amigoBasic
         if let token = AuthCache.shared.getUserDefaltObject(forKey: "access_token") as? String {
             headers["oauth_token"] = token
         }
         
         Session.service.get(urlStr, header: headers, success: { (json) in
             success(LoginReverseSyncContactProfiles().parseJSON(json.dictionaryObject) as? ReverseProfileData)
+        }, failure: { (json, error) in
+            failure(getErrorDataFrom(error: error))
+        })
+    }
+    
+    static func requestToLoginWithWhatsApp(_ whatsAppToken:String, referralCode:String?, extraKey: String?, success: @escaping SuccessBlock, failure: @escaping FailureBlock) {
+        var parameters = Dictionary<String, Any>()
+        parameters["whatsapp_access_token"] = whatsAppToken
+        parameters["flavour"] = "ios"
+        parameters["client_id"] = AuthNetworkUtils.getAuthKey()
+        parameters["did"] = AuthNetworkUtils.getUUID()
+        parameters["extra_keys"] = extraKey
+        if let rcode =  referralCode {
+            parameters["referral_code"] = rcode
+        }
+        
+        Session.service.post(LoginConstants.whatsappLoginURL(), data: appendDefaultParameters(params: parameters), header: nil, encoding: URLEncoding.httpBody, success: { (json) in
+            success(LoginOTPVerifyParser().parseJSON(json.dictionaryObject) as? OtpVerifiedData)
         }, failure: { (json, error) in
             failure(getErrorDataFrom(error: error))
         })
@@ -302,27 +320,29 @@ class AuthService: AuthServiceProtocol {
              dict["xdata"] = xData
         }
         
-        //<NITIN>
-        //let writer = SBJsonWriter()
-        //let strToRsa = writer.string(with: dict)
-
-        //let encryptedKey = RSA.encryptString(strToRsa, publicKey:mconnectData.mConnectPublicKey)
-        var encryptedKey: String?
-        encryptedKey = ""
+        var strToRsa = ""
+        if let theJSONData = try? JSONSerialization.data(withJSONObject: dict, options: []) {
+            strToRsa = String(data: theJSONData, encoding: .ascii) ?? ""
+            print("JSON string = \(strToRsa)")
+        }
+        
+        let encryptedKey = RSA.encryptString(strToRsa, publicKey: mconnectData.mConnectPublicKey)
+        
         let plainData = encryptedKey!.data(using: .utf8)
         let base64String = plainData?.base64EncodedString()
         let state = "&state=" + base64String!
         let loginHint = "&login_hint=" + "MSISDN:91" + mobileNo
-        let strToHash = mobileNo + "|" + AuthNetworkConstants.nonceSalt
+        let strToHash = mobileNo + "|" + NetworkConstants.nonceSalt
         let hashedStr = "&nonce=" + CommonUtils.md5Hash(strToHash)
         
         var urlStr = mconnectData.authUrl!
         urlStr += state + loginHint + hashedStr
         
         Session.service.get(urlStr, success: { (json) in
-            
+            success(MconnectVerifiedDataParser().parseJSON(json.dictionaryObject))
         }) { (json, error) in
-            
+            failure(nil)
         }
     }
+
 }

@@ -9,9 +9,9 @@
 import UIKit
 import NetworkLayerFramework
 
-class SignupInteractor: BaseInteractor {
+class SignupInteractor: BaseInteractor, SignUpPresenterToInteractorProtocol {
     
-    weak var presenter: SignUpPresenter?
+    weak var presenter: SignUpInteractorToPresenterProtocol?
     
     func requestToSignUp(_ fullName:String, mobileKey:String, referalCode:String, isWhatsAppFlow:Bool, extraKey:String?) {
         var params = Dictionary<String, Any>()

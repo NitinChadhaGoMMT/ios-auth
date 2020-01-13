@@ -17,7 +17,7 @@ class MConnectPoweredByView: UIView {
         super.awakeFromNib()
         titleLabel.setTextColor(.darkGray, fontType: .medium, andFontSize: 15)
         titleLabel.text = "Powered by Mobile Connect"
-        iconImage.image = #imageLiteral(resourceName: "mconnect")
+        iconImage.image = .mConnectIcon
     }
     
 }

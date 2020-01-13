@@ -9,32 +9,23 @@
 import UIKit
 
 enum LoginCellType {
-    case welcomeLogo, newUserDetails, skipNow, orLabelCell, fbloginCell, whatsappCell
+    case welcomeLogo, newUserDetails, whatsappCell
     
     var height: CGFloat {
         switch self {
         case .welcomeLogo:
-            return LoginWelcomeHeaderCell.height
+            return LoginWelcomeTableCell.height
             
         case .newUserDetails:
             return LoginNewUserDetailsCell.height
             
-        case .orLabelCell:
-            return LoginOrTableCell.height
-            
-        case .fbloginCell:
-            return LoginFBSingupTableCell.height
-            
-        case .skipNow:
-            return LoginSkipNowTableCell.height
-            
         case .whatsappCell:
-            return WhatsappLoginCell.height
+            return SocialAccountLoginCell.height
         }
     }
 }
 
-class LoginWelcomePresenter: LoginWelcomeViewToPresenterProtocol, LoginWelcomeInteractorToPresenterProtocol {
+class LoginWelcomePresenter: BasePresenter, LoginWelcomeViewToPresenterProtocol, LoginWelcomeInteractorToPresenterProtocol {
 
     weak var view: LoginWelcomePresenterToViewProtocol!
     
@@ -44,17 +35,19 @@ class LoginWelcomePresenter: LoginWelcomeViewToPresenterProtocol, LoginWelcomeIn
     
     var dataSource: [[LoginCellType]]
     
-    var referralCode: String?
     var branchDictionary: NSDictionary?
     var referredInstall = 0
+    var showReferralStatus = false
     var editedReferralCode: String?
     var currentMobileNumber: String?
+    var extraKeys: String?
     
-    init() {
-        if WhatsAppManager.shared.isWhatsAppLoginEnabled() {
-            dataSource =  [[.welcomeLogo], [.newUserDetails,.orLabelCell, .whatsappCell], [.skipNow]]
-        } else {
-            dataSource = [[.welcomeLogo], [.newUserDetails,.orLabelCell,.fbloginCell], [.skipNow]]
+    override init() {
+        dataSource = [[.welcomeLogo], [.newUserDetails, .whatsappCell]]
+        super.init()
+        if let codeDict = AuthDepedencyInjector.branchReferDictionary {
+            branchDictionary = codeDict
+            commonData.referralCode = branchDictionary?.object(forKey: "refercode") as? String
         }
     }
     
@@ -73,16 +66,10 @@ class LoginWelcomePresenter: LoginWelcomeViewToPresenterProtocol, LoginWelcomeIn
     
     func resetReferralCode(){
         branchDictionary = nil
-        if let codeDict = AuthDepedencyInjector.branchReferDictionary {
-            branchDictionary = codeDict
-            referralCode = branchDictionary?.object(forKey: "refercode") as? String
-        }
     }
     
     func checkForMobileConnect() {
-        view.showActivityIndicator()
         interactor.checkForMobileConnectAPI { [weak self](mConnectData) in
-            self?.view.hideActivityIndicator()
             if let data = mConnectData {
                 self?.view.setMConnectData(data: data)
             }
@@ -104,29 +91,36 @@ class LoginWelcomePresenter: LoginWelcomeViewToPresenterProtocol, LoginWelcomeIn
         
         view.hideActivityIndicator()
         
-        guard let response = response else {
-            resetReferralCode()
-            view.resetReferralCode()
+        guard let response = response, response.isSuccess == true else {
+            showReferralStatus = false
+            referralCode = nil
+            view.verifyReferralRequestFailed(response: nil)
             return
         }
         
-        referralCode = self.editedReferralCode
+        showReferralStatus = true
         view.verifyReferralSuccessResponse(response: response)
     }
     
     func verifyReferralRequestFailed(error: ErrorData?) {
+        showReferralStatus = false
+        referralCode = nil
         view.hideActivityIndicator()
         view.verifyReferralRequestFailed(response: error)
     }
     
     func verifyMobileNumber(number: String) {
         view.showActivityIndicator()
-        interactor.verifyMobileNumber(mobileNumber: number)
+        if isFbSignup {
+            requestFBOTPWithMobileNo(number)
+        } else {
+            interactor.verifyMobileNumber(mobileNumber: number)
+        }
     }
     
     func verificationMobileNumberRequestSucceeded(response: MobileVerifiedData?) {
         view.hideActivityIndicator()
-        parseMobileVerificationResponse(verificationData: response)
+        
         if let response = response {
             navigateToPostMobileNumberScreen(verifiedData: response)
         }
@@ -137,28 +131,42 @@ class LoginWelcomePresenter: LoginWelcomeViewToPresenterProtocol, LoginWelcomeIn
         guard let router = router, let mobileNumber = currentMobileNumber else { return }
         
         if verifiedData.isSendOtp {
-            let newViewController = router.navigateToOTPVerificationController(mobileNumber: mobileNumber,
-                                                                               nonce: verifiedData.nonce,
-                                                                               isFbSignup: view?.isFbSignup ?? false,
-                                                                               isNewUser: verifiedData.isExistingUser,
-                                                                               isverifyMethodOtp: view.isverifyMethodOtp,
-                                                                               referralCode: self.referralCode ?? Constants.kEmptyString)
-            view.push(screen: newViewController!)
+            if let new_vc = router.navigateToOTPVerificationController(mobile: mobileNumber, data: commonData, nonce: verifiedData.nonce, isNewUser: verifiedData.isExistingUser) {
+                view.push(screen: new_vc)
+            }
         } else {
-            let newViewController = router.navigateToPasswordViewController(userState: .passwordOTP,
-                                                                            referralCode: referralCode ?? Constants.kEmptyString,
-                                                                            mobile: mobileNumber,
-                                                                            isVerifyOTP: view.isverifyMethodOtp)
-            view.push(screen: newViewController!)
+            if let new_vc = router.navigateToPasswordViewController(userState: .passwordOTP, mobile: mobileNumber, data: commonData) {
+                view.push(screen: new_vc)
+            }
+        }
+    }
+    
+    func navigateToSignUpScreen() {
+        if let new_vc = router?.navigateToSignUpController(data: commonData) {
+            view.push(screen: new_vc)
+        }
+    }
+    
+    func navigateToTermsAndConditions() {
+        if let new_vc = router?.navigateToTermsAndConditions() {
+            view.push(screen: new_vc)
+        }
+    }
+    
+    func navigateToPrivacyPolicy() {
+        if let new_vc = router?.navigateToPrivacyPolicy() {
+            view.push(screen: new_vc)
+        }
+    }
+    
+    func navigateToUserAgreement() {
+        if let new_vc = router?.navigateToUserAgreement() {
+            view.push(screen: new_vc)
         }
     }
     
     func verificationMobileNumberRequestFailed(error: ErrorData?) {
         view.verifyMobileNumberRequestFailed(error: error)
-    }
-    
-    private func parseMobileVerificationResponse(verificationData: MobileVerifiedData?) {
-    
     }
     
     private func getCommonGAAttributes() -> [String: Any] {
@@ -191,5 +199,4 @@ class LoginWelcomePresenter: LoginWelcomeViewToPresenterProtocol, LoginWelcomeIn
         attributes["interactionEvent"] = type
         SignInGAPManager.logClickEvent(for: .welcome, otherParams: attributes)
     }
-    
 }

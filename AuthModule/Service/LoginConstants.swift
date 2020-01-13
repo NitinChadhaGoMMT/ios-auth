@@ -65,4 +65,8 @@ class LoginConstants {
     static func createAccountUrl() -> String {
         return AuthNetworkUtils.getServer_Auth() + "/authapi/" + apiVersionV6 + "mobile/register/"
     }
+    
+    static func whatsappLoginURL() -> String {
+        return "https://auth.goibibo.com/v1/authapi/verify_login_token/"
+    }
 }

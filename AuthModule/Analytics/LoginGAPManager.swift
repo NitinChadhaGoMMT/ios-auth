@@ -334,11 +334,11 @@ class LoginGAPManager: NSObject {
         }
         else if let _ = controller as? OtpVerificationViewController {
             screenName = otpScreenName
-        }/*
-        else if let _ = controller as? UserSignupViewController {
+        }
+        else if let _ = controller as? SignupViewController {
             screenName = createAccountOrExistingScreenName
         }
-        else if let _ = controller as? UserConfirmationViewController {
+        /*<NITIN>else if let _ = controller as? UserConfirmationViewController {
             screenName = userConfirm
         }*/
         return screenName

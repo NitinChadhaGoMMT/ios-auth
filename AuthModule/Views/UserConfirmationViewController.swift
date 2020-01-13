@@ -124,19 +124,19 @@ class UserConfirmationViewController: LoginBaseViewController {
             let username1:String = firstItem!.fname ??  ""
             var username2 = ""
             
-            AuthDepedencyInjector.uiDelegate?.setImage(for: contactsImageView1, url: URL(string: firstItem?.imgURL ?? ""), placeholder: nil)
+            ImageHelper.setImage(for: contactsImageView1, url: URL(string: firstItem?.imgURL ?? ""), placeholder: nil)
             
             if (profileData.profileItems?.count)! >= 3 {
                 let secondItem = profileData.profileItems![1]
                 let thirdItem = profileData.profileItems![2]
                 username2 = secondItem.fname ?? ""
-                AuthDepedencyInjector.uiDelegate?.setImage(for: contactsImageView2, url: URL(string: secondItem.imgURL ?? ""), placeholder: nil)
-                AuthDepedencyInjector.uiDelegate?.setImage(for: contactsImageView3, url: URL(string: thirdItem.imgURL ?? ""), placeholder: nil)
+                ImageHelper.setImage(for: contactsImageView2, url: URL(string: secondItem.imgURL ?? ""), placeholder: nil)
+                ImageHelper.setImage(for: contactsImageView3, url: URL(string: thirdItem.imgURL ?? ""), placeholder: nil)
             }
             else if (profileData.profileItems?.count)! == 2 {
                 let secondItem = profileData.profileItems![1]
                 username2 = secondItem.fname ?? ""
-                AuthDepedencyInjector.uiDelegate?.setImage(for: contactsImageView2, url: URL(string: secondItem.imgURL ?? ""), placeholder: nil)
+                ImageHelper.setImage(for: contactsImageView2, url: URL(string: secondItem.imgURL ?? ""), placeholder: nil)
                 contactsImageView3.isHidden = true
             }
             else{

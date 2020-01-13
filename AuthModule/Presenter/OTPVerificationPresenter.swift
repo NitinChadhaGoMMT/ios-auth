@@ -8,15 +8,16 @@
 
 import UIKit
 
-class OTPVerificationPresenter {
+class OTPVerificationPresenter: BasePresenter, OTPVerificationViewToPresenterProtocol, OTPVerificationInteractorToPresenterProtocol {
     
     var isNewUser: Bool
     var mobileNumber: String
     var nonce: String?
-    var totalResentCount = 0
-    var userVerificationData: OtpVerifiedData?
+
+    //<NITIN>
+    fileprivate var whatsAppShowCount = FireBaseHandler.getIntFor(keyPath: .wtsAppShowCount, dbPath: .goAuthDatabase) ?? 1
     
-    weak var view: OtpVerificationViewController?
+    weak var view: OTPVerificationPresenterToViewProtocol?
     var interactor: OTPVerificationInteractor?
     weak var router: AuthRouter?
     
@@ -25,27 +26,32 @@ class OTPVerificationPresenter {
     init(mobileNumber: String,
          nonce: String?,
          isNewUser: Bool,
-         isverifyMethodOtp: Bool) {
+         data: PresenterCommonData) {
         self.mobileNumber = mobileNumber
         self.isNewUser = isNewUser
         self.nonce = nonce
-        SignInGAPManager.logOpenScreenEvent(for: .enterOTP, otherParams: ["userType":isNewUser ? "new_user": "existing_user", "medium": (view?.isFbSignup ?? false) ? "facebook" :"mobile"])
+        super.init(dataModel: data)
+        SignInGAPManager.logOpenScreenEvent(for: .enterOTP, otherParams: ["userType":isNewUser ? "new_user": "existing_user", "medium": isFbSignup ? "facebook" :"mobile"])
+    }
+    
+    func shouldShowWhatsappLogin() -> Bool {
+        return otpResendCount >= whatsAppShowCount && FireBaseHandler.getRemoteFunctionBoolValue(forKey: "wtsApp_Otp_Enable")
     }
     
     func logGAClickEvent(for type:String) {
         var attributes:Dictionary<String,Any> =  [:]
         attributes["interactionEvent"] = type
         attributes["userType"] = isNewUser ? "new_user":"existing_user"
-        attributes["medium"] = (view?.isFbSignup ?? false) ? "facebook" :"mobile"
-        attributes["resendTries"] = totalResentCount
+        attributes["medium"] = isFbSignup ? "facebook" :"mobile"
+        attributes["resendTries"] = otpResendCount
         SignInGAPManager.logClickEvent(for: .enterOTP, otherParams: attributes)
     }
     
     fileprivate func logGAVerificationEvent() {
         var attributes:Dictionary<String,Any> =  [:]
         attributes["userType"] = isNewUser ? "new_user": "existing_user"
-        attributes["medium"] = (view?.isFbSignup ?? false) ? "facebook" : "mobile"
-        attributes["resendTries"] = totalResentCount
+        attributes["medium"] = isFbSignup ? "facebook" : "mobile"
+        attributes["resendTries"] = otpResendCount
         let seconds = Int(SignInGAPManager.getTimeInterval())
         attributes["timeTillVerification"] = seconds
         
@@ -53,7 +59,7 @@ class OTPVerificationPresenter {
     }
     
     func verifyOTP(withOtp otp:String) {
-        interactor?.verifyOtp(mobileNumber, withOtp: otp, nonce: nonce ?? "", isFBSignup: view?.isFbSignup ?? false, referralCode: view?.referralCode ?? "")
+        interactor?.verifyOtp(mobileNumber, withOtp: otp, nonce: nonce ?? "", isFBSignup: isFbSignup, referralCode: referralCode ?? "")
     }
     
     func requestToResendOTP() {
@@ -66,9 +72,9 @@ class OTPVerificationPresenter {
         if userVerificationData?.userStatusType == .loggedIn || userVerificationData?.userStatusType == .verified {
             view?.verifyOTPRequestSuccessResponse(message: userVerificationData?.message)
             if userVerificationData?.isExistingUser == false {
-                SignInGAPManager.signinOrSignUpEvent(withEventType: .signUp, withMethod: (view?.isFbSignup ?? false) ? .facebook : .phone, withVerifyType: .otp, withOtherDetails: ["referral_code": view?.referralCode ?? ""])
+                SignInGAPManager.signinOrSignUpEvent(withEventType: .signUp, withMethod: isFbSignup ? .facebook : .phone, withVerifyType: .otp, withOtherDetails: ["referral_code": referralCode ?? ""])
             } else if userVerificationData?.isExistingUser == true {
-                if (view?.isFbSignup ?? false) == true {
+                if isFbSignup == true {
                     SignInGAPManager.signinOrSignUpEvent(withEventType: .signIn, withMethod: .facebook, withVerifyType: .otp, withOtherDetails: nil)
                 } else {
                     SignInGAPManager.signinOrSignUpEvent(withEventType: .signIn, withMethod: .phone, withVerifyType: .otp, withOtherDetails: nil)
@@ -77,8 +83,13 @@ class OTPVerificationPresenter {
             }
             view?.userSuccessfullyLoggedIn()
         } else {
-            let signupView = router?.navigateToSignUpController(referralCodde: view?.referralCode ?? "", otpResponse: data)
-            self.view?.navigationController?.pushViewController(signupView!, animated: true)
+            navigateToSignUpScreen(extraKeys: nil)
+        }
+    }
+    
+    func navigateToSignUpScreen(extraKeys: String?) {
+        if let new_vc = router?.navigateToSignUpController(data: commonData) {
+            self.view?.push(screen: new_vc)
         }
     }
     

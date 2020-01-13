@@ -8,6 +8,16 @@
 
 import UIKit
 
-class MobileVerificationProtocols: NSObject {
-
+protocol MobileVerificationViewToPresenterProtocol: PresenterBaseProtocol {
+    
+    func checkForMobileConnect()
+    
+    func verifyMobileNumber(number: String)
+    
+    func requestFBOTPWithMobileNo(_ mobileNo: String)
+    
+    func navigateToPasswordScreen(verifiedData: MobileVerifiedData?)
+    
 }
+
+protocol MobileVerificationPresenterToViewProtocol: LoginBaseProtocol { }

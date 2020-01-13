@@ -10,7 +10,7 @@ import UIKit
 
 class OTPVerificationInteractor: BaseInteractor {
     
-    weak var presenter: OTPVerificationPresenter?
+    weak var presenter: OTPVerificationInteractorToPresenterProtocol?
     
     func verifyOtp(_ mobileNo:String, withOtp otp:String, nonce:String, isFBSignup:Bool, referralCode:String) {
         

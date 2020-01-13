@@ -13,14 +13,9 @@ typealias LoginCompletionBlock = (Bool, NSError) -> ()
 class LoginWelcomeViewController: LoginBaseViewController, LoginWelcomePresenterToViewProtocol {
     
     @IBOutlet weak var topView: UIView!
-    @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var myTable: UITableView!
-    @IBOutlet weak var enterCodeLabel: UILabel!
-    @IBOutlet weak var haveInviteLabel: UILabel!
     
     var presenter: LoginWelcomeViewToPresenterProtocol?
-    
-    var isUserLoggingIn = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,23 +34,15 @@ class LoginWelcomeViewController: LoginBaseViewController, LoginWelcomePresenter
     }
     
     func configureUserInterface() {
-        haveInviteLabel
-            .setColor(color: .customGray)
-            .setFont(fontType: .regular, size: 14)
-        
-        enterCodeLabel
-            .setColor(color: .customBlue)
-            .setFont(fontType: .semiBold, size: 15)
-            .addTapGesture(#selector(enterReferralCodeTapped), target: self)
-        
         topView
             .setBackgroundColor(color: .customBlue)
         
         NotificationCenter.default.addObserver(self, selector: #selector(LoginWelcomeViewController.updateAfterKeychainSuccess), name: NSNotification.Name(rawValue: "ChainUpdate"), object: nil)
-        resetReferralCode()
+        validateReferralCode()
     }
     
     override func addMconnectView(){
+        
         if let view: MConnectPoweredByView = Bundle.loadNib() {
             view.layoutIfNeeded()
             self.myTable.layoutIfNeeded()
@@ -63,29 +50,51 @@ class LoginWelcomeViewController: LoginBaseViewController, LoginWelcomePresenter
         }
     }
     
-    @objc func enterReferralCodeTapped() {
-        presenter?.logGAClickEvent("enter_referral_code")
-        let alert = AuthAlert.showReferralCodeAlert(view: self, success: { [weak self] (referralCode) in
-            self?.enterCodeLabel.text = referralCode ?? Constants.kEmptyString
-            self?.presenter?.validateReferralCode(_referralCode: referralCode!, isBranchFlow: false)
-        }) {
-            
+    func validateReferralCode() {
+        if let referralCode = presenter?.referralCode, !referralCode.isEmpty {
+            presenter?.validateReferralCode(_referralCode: referralCode, isBranchFlow: true)
         }
-        self.present(alert, animated: true, completion: nil)
     }
     
-    func resetReferralCode(){
-        presenter?.resetReferralCode()
-        if let _ = presenter?.branchDictionary {
-            haveInviteLabel.text = Constants.kReferralCode
-            enterCodeLabel.text = presenter?.referralCode
-            enterCodeLabel.isUserInteractionEnabled = false
-        } else {
-            haveInviteLabel.text = Constants.kInviteReferralText
-            enterCodeLabel.text = Constants.kEnterCode
-            enterCodeLabel.isUserInteractionEnabled = true
+    override func handleMConnectSuccessData(_ responseData: Any?, mobileNo: String) {
+        if let data = responseData as? MconnectVerifiedData {
+            presenter?.currentMobileNumber = mobileNo
+            if let verificationData = data.mobileVerifiedData, verificationData.isSuccess == true {
+                presenter?.navigateToPostMobileNumberScreen(verifiedData: verificationData)
+            }
+            else if let otpVerifiedData = data.otpVerifiedData, otpVerifiedData.isSuccess == true {
+                presenter?.isverifyMethodOtp = true
+                presenter?.userVerificationData = otpVerifiedData
+                if otpVerifiedData.userStatusType == .loggedIn || otpVerifiedData.userStatusType == .verified {
+                    SignInGAPManager.signinOrSignUpEvent(withEventType: .signIn, withMethod: .phone, withVerifyType: .mconnect, withOtherDetails: nil)
+                    SignInGAPManager.logGenericEventWithoutScreen(for: "loginSuccessNew", otherParams:["medium":"mobile","verificationChannel":"mconnect"])
+                    self.userSuccessfullyLoggedIn()
+                } else {
+                    presenter?.navigateToSignUpScreen()
+                }
+            } else {
+                self.verifyMobileWithNumber(mobileNo)
+            }
+        } else{
+            self.verifyMobileWithNumber(mobileNo)
         }
-        myTable.reloadData()
+    }
+    
+    override func handleMConnectFailure(mobileNo: String) {
+        self.verifyMobileWithNumber(mobileNo)
+    }
+    
+    @IBAction func clickedPrivacyPolicy(_ sender: Any) {
+        presenter?.navigateToPrivacyPolicy()
+    }
+    
+    @IBAction func clickedUserAgreement(_ sender: Any) {
+        presenter?.navigateToUserAgreement()
+    }
+    
+    @IBAction func clickedTC(_ sender: Any) {
+        presenter?.navigateToTermsAndConditions()
+        
     }
 }
 
@@ -107,34 +116,25 @@ extension LoginWelcomeViewController: UITableViewDataSource, UITableViewDelegate
         switch cellType {
             
         case .welcomeLogo:
-            let cell: LoginWelcomeHeaderCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-            return cell
-            
-        case .orLabelCell:
-            let cell: LoginOrTableCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            let cell: LoginWelcomeTableCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             return cell
             
         case .newUserDetails:
             let cell: LoginNewUserDetailsCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             cell.delegate = self
-            return cell
-            
-        case .fbloginCell:
-            let cell: LoginFBSingupTableCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-            cell.delegate = self
-            return cell
-            
-        case .skipNow:
-            let cell: LoginSkipNowTableCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            if presenter?.showReferralStatus ?? false {
+                let name = presenter?.branchDictionary?.object(forKey: "fname") as? String ?? "Nitin Chadha"
+                cell.configureReferralView(with: name)
+            } else {
+                cell.configureGenericReferralView()
+            }
             return cell
             
         case .whatsappCell:
-            let cell: WhatsappLoginCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-            cell.delegate = self
+            let cell: SocialAccountLoginCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            cell.whatsAppButton.addTarget(self, action: #selector(connectWithWhatsapp), for: .touchUpInside)
+            cell.faceBookButton.addTarget(self, action: #selector(connectWithFB), for: .touchUpInside)
             return cell
-            
-        default:
-            return UITableViewCell()
         }
     }
     
@@ -143,33 +143,23 @@ extension LoginWelcomeViewController: UITableViewDataSource, UITableViewDelegate
         return cellType.height
     }
     
-    func validateReferralCode(_ code: String, completionBlock: @escaping LoginCompletionBlock){
-        presenter?.validateReferralCode(_referralCode: self.presenter?.referralCode, isBranchFlow: true)
-    }
-    
-    func verifyReferralSuccessResponse(response: ReferralVerifyData?) {
-        self.enterCodeLabel.text = presenter?.referralCode
-        
-        if isUserLoggingIn {
-            verifyMobileWithNumber(presenter?.currentMobileNumber ?? "")
-        }
-        isUserLoggingIn = false
+    func verifyReferralSuccessResponse(response: ReferralVerifyData) {
+        myTable.reloadData()
+        AuthAlert.showToastMessage(on: self, message: "Referral Code applied!")
     }
     
     func verifyReferralRequestFailed(response: ErrorData?) {
-        showError(response)
-        resetReferralCode()
+        AuthAlert.showToastMessage(on: self, message: "Invalid Code. Add this later on.")
     }
     
     func verifyMobileNumberRequestFailed(error: ErrorData?) {
+        hideActivityIndicator()
         showError(error)
     }
     
     func verifyMobileWithNumber(_ mobileNo:String) {
-        
         self.view.endEditing(true)
-        
-        isFbSignup ? self.requestFBOTPWithMobileNo(mobileNo) : presenter?.verifyMobileNumber(number: mobileNo)
+        presenter?.verifyMobileNumber(number: mobileNo)
     }
     
     @objc func updateAfterKeychainSuccess(){
@@ -179,66 +169,71 @@ extension LoginWelcomeViewController: UITableViewDataSource, UITableViewDelegate
 }
 
 extension LoginWelcomeViewController: LoginNewUserDetailsCellDelegate {
-    func didSelectedNewUserLogin(with mobileNumber: String) {
+    func continueButtonAction(with mobileNumber: String) {
         SignInGAPManager.startTime()
         self.presenter?.logGAClickEvent("mobile_continue")
-        self.isFbSignup = false
+        self.presenter?.isFbSignup = false
         
         guard self.presenter?.isValidPhoneNumber(mobileNumber: mobileNumber) ?? false else {
             AuthUtils.showAlert(on: self, message: Constants.kInvalidNumberMessage)
             return
         }
 
-        isUserLoggingIn = true
         presenter?.currentMobileNumber = mobileNumber
         
-        if let referralCode = presenter?.referralCode, let _ = presenter?.branchDictionary {
-            validateReferralCode(referralCode) { [weak self] (success, error) in
-                self?.verifyMobileWithNumber(mobileNumber)
-            }
+        if self.mconnectData != nil {
+            self.verifymConnectDataWithMobileNo(mobileNumber, isFbSignup: presenter?.isFbSignup ?? false, referralCode: presenter?.referralCode ?? "")
         } else {
-            verifyMobileWithNumber(mobileNumber)
+            self.verifyMobileWithNumber(mobileNumber)
         }
-        
     }
+    
 }
 
-extension LoginWelcomeViewController: WhatsappHelperDelegate, WhatsappLoginCellDelegate, LoginFBSingupTableCellDelegate {
+extension LoginWelcomeViewController: WhatsappHelperDelegate {
     
-    func connectWithWhatsapp() {
+    @objc func connectWithWhatsapp() {
+        SignInGAPManager.logOpenScreenEventWithExplictEventName(for: "Onboarding_SocialAccounts_Click", screenType: .welcome, otherParams:[:])
         SignInGAPManager.signinOrSignUpEvent(withEventType: .startedSignIn, withMethod: .whatsApp, withVerifyType: nil, withOtherDetails: ["from_page":"Welcome_Page"])
         self.presenter?.logGAClickEvent("whatsapp_button")
-        WhatsAppManager.shared.referralCode = referralCode
+        WhatsAppManager.shared.referralCode = presenter?.referralCode ?? ""
         WhatsAppManager.shared.delegate = self
         AuthDepedencyInjector.uiDelegate?.showActivityIndicator(on: self.view, withMessage: "Logging in with Whatsapp..")
         WhatsAppManager.shared.loginWithWhatsapp(referralCode: presenter?.referralCode)
     }
     
     //MARK: FB Login
-    func connectWithFB() {
+    @objc func connectWithFB() {
         
-        self.isFbSignup = true
+        presenter?.isFbSignup = true
+        
+        SignInGAPManager.logOpenScreenEventWithExplictEventName(for: "Onboarding_SocialAccounts_Click", screenType: .welcome, otherParams:[:])
+        
         SignInGAPManager.signinOrSignUpEvent(withEventType: .startedSignIn, withMethod: .facebook, withVerifyType: nil, withOtherDetails: ["from_page":"Welcome_Page"])
-        self.presenter?.logGAClickEvent("facebook_button")
-        
-        if let referralCode = self.presenter?.referralCode, let _ = self.presenter?.branchDictionary  {
-            self.validateReferralCode(referralCode, completionBlock: { [weak self] (success, error) in
-                guard success == true else {
-                    return
-                }
-                self?.signInWithFB(isForceLinkFb: nil, referralCode:self?.presenter?.referralCode)
-            })
-        }
-        else{
-            signInWithFB(isForceLinkFb: nil, referralCode:self.presenter?.referralCode)
-        }
+        presenter?.logGAClickEvent("facebook_button")
+        presenter?.signInWithFB()
     }
     
     func loginSuccessful(verifiedData: OtpVerifiedData?, extraKeys: String?) {
+        hideActivityIndicator()
+        WhatsappHelper.shared.delegate = nil
+        presenter?.isWhatsAppLogin = true
         
+        if let verifiedData = verifiedData, verifiedData.isExistingUser == false {
+            presenter?.userVerificationData = verifiedData
+            presenter?.navigateToSignUpScreen()
+            self.performSegue(withIdentifier: "pushUserSignupScreenSegue", sender: extraKeys)
+        }
+        else{
+            SignInGAPManager.signinOrSignUpEvent(withEventType: .signIn, withMethod: .whatsApp, withVerifyType: .whatsapp, withOtherDetails: nil)
+            SignInGAPManager.logGenericEventWithoutScreen(for: "loginSuccessNew", otherParams:["medium":"whatsapp","verificationChannel":"whatsapp"])
+            userSuccessfullyLoggedIn()
+        }
     }
     
     func loginFailed(error: Any?) {
-        
+        hideActivityIndicator()
+        showError(error)
+        WhatsappHelper.shared.delegate = nil
     }
 }

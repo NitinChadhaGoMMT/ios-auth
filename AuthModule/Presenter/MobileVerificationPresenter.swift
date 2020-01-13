@@ -8,16 +8,17 @@
 
 import UIKit
 
-class MobileVerificationPresenter: LoginWelcomeInteractorToPresenterProtocol {
+class MobileVerificationPresenter: BasePresenter, MobileVerificationViewToPresenterProtocol, LoginWelcomeInteractorToPresenterProtocol {
     
-    var view: MobileVerificationViewController?
-    var interactor: LoginWelcomeInteractor?
+    var view: MobileVerificationPresenterToViewProtocol?
+    var interactor: LoginWelcomePresenterToInteractorProtocol?
     var router: LoginWelcomePresenterToRouterProtocol?
     
     var currentMobileNumber: String?
     
-    init(mobile: String?) {
+    init(mobile: String?, data: PresenterCommonData) {
         currentMobileNumber = mobile
+        super.init(dataModel: data)
     }
     
     func checkForMobileConnect() {
@@ -48,6 +49,25 @@ class MobileVerificationPresenter: LoginWelcomeInteractorToPresenterProtocol {
         }
     }
     
+    
+    func requestFBOTPWithMobileNo(_ mobileNo: String){
+        
+        //<NITIN>self.view.endEditing(true)
+        
+        AuthService.requestFacebookOTPforMobile(mobileNo, success: { [weak self] (data) in
+            
+            guard let strongSelf = self else { return }
+            
+            if let response = data as? MobileVerifiedData {
+                if let vc = AuthRouter.shared.navigateToOTPVerificationController(mobile: mobileNo, data: strongSelf.commonData, nonce: response.nonce, isNewUser: false) {
+                    self?.view?.push(screen: vc)
+                }
+            }
+        }) { [weak self] (error) in
+            self?.view?.showError(error)
+        }
+    }
+    
     func navigateToPostMobileNumberScreen(verifiedData: MobileVerifiedData) {
         
         verifiedData.isSendOtp ? navigateToOTPScreen(verifiedData: verifiedData) : navigateToPasswordScreen(verifiedData: verifiedData)
@@ -59,22 +79,15 @@ class MobileVerificationPresenter: LoginWelcomeInteractorToPresenterProtocol {
     }
     
     func navigateToPasswordScreen(verifiedData: MobileVerifiedData?) {
-        let newViewController = router?.navigateToPasswordViewController(userState: .passwordForMobile,
-                                                                         referralCode: view?.referralCode ?? Constants.kEmptyString,
-                                                                        mobile: currentMobileNumber!,
-                                                                        isVerifyOTP: view?.isverifyMethodOtp ?? false)
-        view?.push(screen: newViewController!)
+        if let new_vc = router?.navigateToPasswordViewController(userState: .passwordForMobile, mobile: currentMobileNumber!, data: commonData) {
+            view?.push(screen: new_vc)
+        }
     }
     
     func navigateToOTPScreen(verifiedData: MobileVerifiedData) {
-        
-        let newViewController = router?.navigateToOTPVerificationController(mobileNumber: currentMobileNumber ?? Constants.kEmptyString,
-                                                                           nonce: verifiedData.nonce,
-                                                                           isFbSignup: view?.isFbSignup ?? false,
-                                                                           isNewUser: verifiedData.isExistingUser,
-                                                                           isverifyMethodOtp: view?.isverifyMethodOtp ?? false,
-                                                                           referralCode: view?.referralCode ?? Constants.kEmptyString)
-        view?.push(screen: newViewController!)
+        if let new_vc = router?.navigateToOTPVerificationController(mobile: currentMobileNumber!, data: commonData, nonce: verifiedData.nonce, isNewUser: verifiedData.isExistingUser) {
+            view?.push(screen: new_vc)
+        }
     }
 
 }

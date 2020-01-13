@@ -35,7 +35,7 @@ enum SignInCellType: Int {
     }
 }
 
-class SignInWithPasswordPresenter: SignInWithPasswordViewToPresenterProtocol, SignInWithPasswordInteractorToPresenterProtocol {
+class SignInWithPasswordPresenter: BasePresenter, SignInWithPasswordViewToPresenterProtocol, SignInWithPasswordInteractorToPresenterProtocol {
 
     var password: String?
     
@@ -43,18 +43,15 @@ class SignInWithPasswordPresenter: SignInWithPasswordViewToPresenterProtocol, Si
     
     var view: SignInWithPasswordPresenterToViewProtocol?
     
-    var referralCode: String?
     var mobileNumber: String
-    var isVerifyOTP: Bool
     var state: UserSignInState!
     
     var dataSource: [SignInCellType]!
     
-    init(referralCode: String?, mobileNumber: String, isVerifyOTP: Bool, state: UserSignInState) {
-        self.referralCode = referralCode
+    init(mobileNumber: String, state: UserSignInState, data: PresenterCommonData) {
         self.mobileNumber = mobileNumber
-        self.isVerifyOTP = isVerifyOTP
         self.state = state
+        super.init(dataModel: data)
         configureDataSource()
     }
     
@@ -101,8 +98,9 @@ class SignInWithPasswordPresenter: SignInWithPasswordViewToPresenterProtocol, Si
     }
     
     func requestOTPSuccessResponse(resposne: MobileVerifiedData) {
-        let vc = AuthRouter.shared.navigateToOTPVerificationController(mobileNumber: mobileNumber, nonce: resposne.nonce, isFbSignup: false, isNewUser: false, isverifyMethodOtp: false, referralCode: self.referralCode ?? "")
-        view?.push(screen: vc!)
+        if let vc = AuthRouter.shared.navigateToOTPVerificationController(mobile: mobileNumber, data: commonData, nonce: resposne.nonce, isNewUser: false) {
+            view?.push(screen: vc)
+        }
     }
     
     func requestOTPFailedResponse(error: ErrorData?) {

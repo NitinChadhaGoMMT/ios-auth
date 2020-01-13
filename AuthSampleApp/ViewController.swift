@@ -17,7 +17,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         if AuthDataProvider.isUserLoggedIn {
             AuthRouter.shared.goToHomePage(vc: self)
-        } else if let loginController = AuthRouter.shared.createModule() {
+        } else if let loginController = AuthRouter.shared.initiateLoginModule() {
             self.navigationController?.pushViewController(loginController, animated: true)
         }
     }
@@ -32,6 +32,12 @@ class ViewController: UIViewController {
 }
 
 class AuthModuleHelper: AuthModuleUIProtocol {
+    
+    
+    func showToastMessage(on view: UIViewController, message: String, duration: CGFloat, position: String) {
+        print("MESSAGE : \(message)")
+    }
+    
     
     func setImage(for imageView: UIImageView, url: URL?, placeholder: UIImage?, completionBlock: (() -> Void)?) {
         guard let url = url else { return }
@@ -50,16 +56,12 @@ class AuthModuleHelper: AuthModuleUIProtocol {
         
     }
     
-    func showIBSVAlert(withTitle title: String?, msg: String?, confirmTitle: String?, cancelTitle: String?, onCancel: () -> Void, onConfirm: () -> Void) {
+    func showIBSVAlert(withTitle title: String?, msg: String?, confirmTitle: String?, cancelTitle: String?, onCancel: @escaping () -> Void, onConfirm: @escaping () -> Void) {
         
     }
     
     func authLoginCompletion(isUserLoggedIn: Bool, error: Error?) {
         
-    }
-    
-    func showAlertActionPrompt(withTitle title: String?, msg: String?, confirmTitle: String?, cancelTitle: String?, onCancel: @escaping () -> Void, onConfirm: @escaping () -> Void) -> UIAlertController? {
-        return UIAlertController.init()
     }
     
     func setImage(for imageView: UIImageView, url: URL?, placeholder: UIImage?) {
@@ -74,7 +76,7 @@ class AuthModuleHelper: AuthModuleUIProtocol {
     
     
     func showToastMessage(on view: UIViewController, message: String) {
-        
+        showAlert(on: view, message: message)
     }
     
     func showActivityIndicator(on view: UIView, withMessage message: String) {

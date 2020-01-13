@@ -35,15 +35,15 @@ class LoginContinueTableViewCell: UITableViewCell {
     func configureCell(details: SignInCellType?) {
         cellType = details
         if cellType == .signInButton || cellType ==  .signInButtonContinue {
-            continueButton.backgroundColor = .customOrangeColor
+            continueButton.backgroundColor = UIColor.customOrangeColor()
             continueButton.setTitle("CONTINUE", for: .normal)
         }
         else if cellType == .signInButtonBlue{
-            continueButton.backgroundColor = .customBlue
+            continueButton.backgroundColor = UIColor.customBlueColor()
             continueButton.setTitle("CONTINUE", for: .normal)
         }
         else if cellType == .requestOTP{
-            continueButton.backgroundColor = .customBlue
+            continueButton.backgroundColor = UIColor.customBlueColor()
             continueButton.setTitle("REQUEST OTP", for: .normal)
         }
     }

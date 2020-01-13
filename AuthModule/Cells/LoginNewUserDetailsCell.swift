@@ -9,44 +9,97 @@
 import UIKit
 
 protocol LoginNewUserDetailsCellDelegate : class {
-    func didSelectedNewUserLogin(with mobileNumber: String)
+    func continueButtonAction(with mobileNumber: String)
 }
 
 class LoginNewUserDetailsCell: UITableViewCell, UITextFieldDelegate {
-    
+
+    @IBOutlet weak var continueButtonTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var mobileNumberTextField: UITextField!
-    @IBOutlet weak var textFieldBottomView: UIView!
-    
+    @IBOutlet weak var referralView: UIView!
+    @IBOutlet weak var refreeStatusLabel: UILabel!
+    @IBOutlet weak var refreeStatusLabelTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var loginReferralImageView: UIImageView!
     weak var delegate: LoginNewUserDetailsCellDelegate?
+    @IBOutlet weak var countryFlagImageView: UIImageView!
     
-    static let height:CGFloat = 125
+    static let height: CGFloat = 220.0
+    
+    var isContinueButtonEnabled: Bool = false {
+        didSet {
+            continueButton.isUserInteractionEnabled = isContinueButtonEnabled
+            continueButton.backgroundColor = isContinueButtonEnabled ? .goOrange : .goLightGrey
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         doInitialConfigurations()
     }
-    
-    @IBAction func actionWhatsappPressed(_ sender: Any) {
-        UserDataManager.shared.isWAChecked.toggle()
+
+    @IBAction func actionContinuePressed(_ sender: AnyObject) {
+        delegate?.continueButtonAction(with: mobileNumberTextField.text!)
     }
     
-    @IBAction func actionContinuePressed(_ sender: AnyObject) {
-        delegate?.didSelectedNewUserLogin(with: mobileNumberTextField.text!)
+    override func prepareForReuse() {
+        AuthAnimation.flipView(view: self.loginReferralImageView)
     }
     
     func doInitialConfigurations() {
         self.setAccessbilityForComponents()
-        continueButton.setTitleColor(.white, for: .normal)
-        continueButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        continueButton.setTextColor(.white, fontType: .medium, andFontSize: 16.0)
+        continueButton.setFont(font: UIFont.fontsWith(fontType: .sfProRegular, size: 15.0))
         continueButton.setTitle("Continue", for: .normal)
-        continueButton.backgroundColor = .customOrangeColor
-        continueButton.layer.cornerRadius = 5.0
-        continueButton.layer.masksToBounds = true
-        textFieldBottomView.backgroundColor = .customBackgroundColor
-        mobileNumberTextField.placeholder = Constants.kMobileNumberPlaceholder
+        continueButton.titleLabel?.textColor = .white
+        continueButton.makeCornerRadiusWithValue(5.0, borderColor: nil)
+        mobileNumberTextField.placeholder = "Enter Mobile Number"
         mobileNumberTextField.delegate = self
-        mobileNumberTextField.showAccessoryViewWithButtonTitle(Constants.kDismiss)
+        mobileNumberTextField.font = .title2
+        mobileNumberTextField.showAccessoryViewWithButtonTitle("Dismiss")
+        mobileNumberTextField.layer.cornerRadius = 25.0
+        mobileNumberTextField.layer.masksToBounds = true
+        mobileNumberTextField.leftViewMode = .always
+        mobileNumberTextField.leftView = UIView(frame: CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: 84, height: 15))
+        self.referralView.isHidden = true
+        self.continueButtonTopConstraint.constant = 15
+        
+        if AuthDepedencyInjector.firebaseRemoteHandlerDelegate?.getRemoteFunctionBoolValueWithForkey(forKey: "autoFocusMobileInput") ?? false {
+            self.mobileNumberTextField.becomeFirstResponder()
+        }
+        
+        countryFlagImageView.image = .indianFlag
+        loginReferralImageView.image = .giftIcon
+             
+        isContinueButtonEnabled = false
+        AuthAnimation.flipView(view: self.loginReferralImageView)
+    }
+    
+    func configureReferralView(with name:String) {
+        self.referralView.isHidden = false
+        self.continueButtonTopConstraint.constant = 65
+        
+        refreeStatusLabel
+            .setFont(fontType: .caption2)
+            .setColor(color: .iconGrey)
+        
+        var status = FireBaseHandler.getStringFor(keyPath: .loginReferralStatus, dbPath: .goAuthDatabase) ?? "Wow! Looks like {{name}} has referred you.\n You earned <b>Rs.150 goCash+.<b>"
+        status = status.replacingOccurrences(of: "{{name}}", with: name)
+        self.refreeStatusLabel.attributedText = status.convertHTMLTagsIntoString()
+    }
+    
+    func configureGenericReferralView() {
+        self.referralView.isHidden = false
+        self.refreeStatusLabelTopConstraint.constant = 10
+        
+        refreeStatusLabel
+            .setColor(color: .iconGrey)
+            .setFont(fontType: .tiny)
+        
+        self.refreeStatusLabel.numberOfLines = 1
+        self.continueButtonTopConstraint.constant = 65
+        let status = FireBaseHandler.getStringFor(keyPath: .loginGenericReferralStatus, dbPath: .goAuthDatabase) ?? "Sign-up and earn <b>Rs.100 goCash+<b> instantly."
+        self.refreeStatusLabel.attributedText = status.convertHTMLTagsIntoString()
     }
     
     func setAccessbilityForComponents() {
@@ -58,11 +111,17 @@ class LoginNewUserDetailsCell: UITableViewCell, UITextFieldDelegate {
     
     //MARK: TextField Delegate Methods
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        return AuthUtils.isValidTextForMobileField(textField, shouldChangeCharactersIn: range, replacementString: string)
+        let textEntered = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+        if AuthUtils.isValidTextForMobileField(textField, shouldChangeCharactersIn: range, replacementString: string) {
+            isContinueButtonEnabled = (textEntered.count == 10)
+            return true
+        }
+        return false
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        delegate?.didSelectedNewUserLogin(with: textField.text!)
+        delegate?.continueButtonAction(with: textField.text!)
         return true
     }
 }
+

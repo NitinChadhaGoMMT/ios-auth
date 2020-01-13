@@ -41,6 +41,10 @@ import Foundation
 @objc public enum FirebaseConfigKey: Int {
     case callNumberError
     
+    //Auth:- Login Screen
+    case loginReferralStatus
+    case loginGenericReferralStatus
+    
     //Auth: - Sync Contacts Screen Titles
     case syncGoContactsNewUser
     case syncGoContactsPreviouslySynced
@@ -55,6 +59,8 @@ import Foundation
     case signUpHeader
     case signUpHeaderNewUI
     case signUpNameTitle
+    case referralHeader
+    case referralSuccessHeader
     // Auth:- Refer & Earn Screen
     
     case reOffer
@@ -526,6 +532,11 @@ import Foundation
     //Add KeyPath for firebase key
     public func description() -> String {
         switch self {
+            
+        //Auth:- Login Screen
+        case .loginReferralStatus: return "loginScreen.referralStatus"
+        case .loginGenericReferralStatus: return "loginScreen.genericReferralStatus"
+            
         case .callNumberError : return "core.callNumberError"
         case .isGIAClose : return "gia.closeGIA"
         case .isGIAIPL : return  "gia.isIPL"
@@ -544,6 +555,8 @@ import Foundation
         case .signUpHeader: return "signUpProfileScreen.signUpHeader"
         case .signUpHeaderNewUI: return "signUpProfileScreen.signUpHeaderNewUI"
         case .signUpNameTitle:return "signUpProfileScreen.signUpNameTitle"
+        case .referralHeader: return "signUpProfileScreen.referralHeader"
+        case .referralSuccessHeader: return "signUpProfileScreen.referralSuccessHeader"
 
         //Auth:- Refer & Earn Screen
         case .reOffer: return "reScreen.offer"
@@ -1006,6 +1019,11 @@ import Foundation
     //Default Value for Key
     public func defaultValue() -> Any {
         switch self {
+            
+        //Auth:- Login Screen        
+        case .loginReferralStatus: return "Wow! Looks like {{name}} has referred you.\n You earned <b>Rs.150 goCash+.<b>"
+        case .loginGenericReferralStatus: return "Sign-up and earn <b>Rs.100 goCash+<b> instantly."
+            
         case .callNumberError : return "This feature is not supported by this device"
         case .isGIAClose : return false
         case .isGIAIPL : return false
@@ -1030,6 +1048,8 @@ import Foundation
         case .signUpHeader: return "Welcome! \n Complete your profile"
         case .signUpHeaderNewUI: return "One last thing.."
         case .signUpNameTitle:return "What do we call you?"
+        case .referralHeader: return "Use a Referral Code and earn Rs. 200 goCash+"
+        case .referralSuccessHeader: return "Referral Code applied! You earned Rs.200 goCash+"
             
         //Ipl
         case .iplBurnConfig: return [:]

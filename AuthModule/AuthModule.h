@@ -15,6 +15,7 @@ FOUNDATION_EXPORT double AuthModuleVersionNumber;
 FOUNDATION_EXPORT const unsigned char AuthModuleVersionString[];
 
 #import <AuthModule/CommonUtils.h>
+#import <AuthModule/RSA.h>
 
 // In this header, you should import all the public headers of your framework using statements like #import <AuthModule/PublicHeader.h>
 

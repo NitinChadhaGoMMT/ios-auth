@@ -8,10 +8,11 @@
 
 import UIKit
 
-class KeyChainLoginPresenter {
-
+class KeyChainLoginPresenter: KeyChainLoginViewToPresenterProtocol {
+    
+    var dataSource: Array<Any> = Array(KeychainLoginHandler.shared.getAllUsersInfo().values)
+    
     weak var view: KeyChainLoginViewController?
-    var dataSource = Array(KeychainLoginHandler.shared.getAllUsersInfo().values)
     
     init() {
         sortDataArray()
