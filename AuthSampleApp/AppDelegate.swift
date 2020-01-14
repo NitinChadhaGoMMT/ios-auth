@@ -14,14 +14,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         AuthDepedencyInjector.initializeDepedency(uiDelegate: AuthModuleHelper.shared,
                                                   networkDelegate: nil,
                                                   firebaseDelegate: nil,
                                                   firebaseRemoteDelegate: nil,
                                                   analyticsDelegate: nil)
-        AuthDepedencyInjector.injectReferralDictionary(dictionary: ["refercode":"ABC", "fname":"Nitin"])
+        //AuthDepedencyInjector.injectReferralDictionary(dictionary: ["refercode":"DHIN786", "fname":"Nitin"])
         return true
     }
 

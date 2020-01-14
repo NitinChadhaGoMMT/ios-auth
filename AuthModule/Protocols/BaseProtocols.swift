@@ -31,6 +31,8 @@ protocol InteractorBaseProtocol: class {
 
 protocol LoginBaseProtocol: class {
     
+    var baseNavigationController: UINavigationController? { get }
+    
     var mconnectData: MconnectData? { get }
     
     func verifymConnectDataWithMobileNo(_ mobileNo: String, isFbSignup: Bool, referralCode: String)

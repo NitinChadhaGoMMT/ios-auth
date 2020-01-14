@@ -47,7 +47,6 @@ class ReferralCodeValidationInteractorTest: BaseInteractorTests, ReferralCodePre
     let invalidResponse = "{\"success\" : \"false\"}"
     let failureResponse = "{\"success\": 0, \"error\": {\"field_errors\": {\"referral_code\": This referral code is invalid.}}}"
     
-    
     override func setUp() {
         interactor = ReferralCodeInteractor()
         super.setUp()
@@ -68,4 +67,3 @@ class ReferralCodeValidationInteractorTest: BaseInteractorTests, ReferralCodePre
         XCTAssertTrue(response!.isSuccess, "Referral code should be succeeded")
     }
 }
-

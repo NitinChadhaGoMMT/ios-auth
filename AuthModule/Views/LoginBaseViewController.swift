@@ -11,6 +11,10 @@ import UIKit
     class LoginBaseViewController: UIViewController, LoginBaseProtocol {
         
     var mconnectData: MconnectData?
+        
+    var baseNavigationController: UINavigationController? {
+        return self.navigationController
+    }
     
     @IBOutlet weak var constraintTableViewBottomSpace: NSLayoutConstraint!
     

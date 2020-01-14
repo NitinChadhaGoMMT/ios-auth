@@ -43,13 +43,13 @@ class LoginWelcomePresenterTests: XCTestCase {
         AuthDepedencyInjector.injectReferralDictionary(dictionary: nil)
         presenter = LoginWelcomePresenter()
         XCTAssertNil(presenter.referralFirstName, "Referral name should be nil")
-        AuthDepedencyInjector.injectReferralDictionary(dictionary: ["refercode":"DHIN786", "fname":"Nitin"])
+        AuthDepedencyInjector.injectReferralDictionary(dictionary: branchMockDictionary)
         presenter = LoginWelcomePresenter()
         XCTAssertNotNil(presenter.commonData.referralCode, "ReferralCode should not be nil")
-        XCTAssertEqual(presenter.commonData.referralCode, "DHIN786", "ReferCode should be equal")
+        XCTAssertEqual(presenter.commonData.referralCode, referCode, "ReferCode should be equal")
         XCTAssertNotEqual(presenter.commonData.referralCode, "", "ReferCode should not be equal")
         XCTAssertNotNil(presenter.referralFirstName, "Referral name should not be nil")
-        XCTAssertEqual(presenter.commonData.referralCode, "DHIN786", "Refer name should be equal")
+        XCTAssertEqual(presenter.commonData.referralCode, referCode, "Refer name should be equal")
     }
     
     func testVerifyMobileNumber() {

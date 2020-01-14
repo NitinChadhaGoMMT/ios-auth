@@ -143,7 +143,7 @@ public class AuthRouter {
         }
     }
     
-    func signupSuccessNavigationHandling(cta:CTAItem?, navigationController: UINavigationController?) {
+    func signupSuccessNavigationHandling(navigationController: UINavigationController?) {
         
         guard let navigationController = navigationController else { return }
     
@@ -158,8 +158,11 @@ public class AuthRouter {
             if let loginBlock = completionBlock {
                 loginBlock(true, nil)
             }
-//
             return
+        }
+        
+        if let controller:TempViewController = AuthRouter.shared.mainstoryboard.getViewController() {
+            navigationController.pushViewController(controller, animated: true)
         }
         
         if let isSyncScreenEnable = FireBaseHandler.getBoolFor(keyPath: .onboardingSyncScreenShown, dbPath: .goCoreDatabase), isSyncScreenEnable == true {
@@ -168,6 +171,7 @@ public class AuthRouter {
             //<NITIN>AppRouter.navigateToEarn(goDataModel: nil, animated: false, completionBlock: nil)
         }
     }
+    
     
     func openConfirmationVC() {
         
