@@ -8,18 +8,14 @@
 
 import UIKit
 
-let minimumWaitingTime: Double = 5
+fileprivate let minimumWaitingTime: Double = 5
 
 class ReferralCodeValidationPresenter: BasePresenter, ReferralCodeValidationViewToPresenterProtocol {
 
     var screenTimer: DispatchTime?
     
-    var interactor: ReferralCodeInteractor?
+    var interactor: ReferralCodePresenterToInteractorProtocol?
     weak var view: ReferralCodeValidationPresenterToViewProtocol?
-    
-    init(data: PresenterCommonData) {
-        super.init(dataModel: data)
-    }
     
     func startTimer() {
         screenTimer = DispatchTime.now()
@@ -30,7 +26,7 @@ class ReferralCodeValidationPresenter: BasePresenter, ReferralCodeValidationView
         startTimer()
         
         if let codeDictionary = AuthDepedencyInjector.branchReferDictionary {
-            if let _referralCode = codeDictionary.object(forKey: "refercode") as? String {
+            if let _referralCode = codeDictionary.object(forKey: Keys.referCode) as? String {
                 self.referralCode = _referralCode
                 interactor?.verifyReferralCode(referralCode: _referralCode)
             }

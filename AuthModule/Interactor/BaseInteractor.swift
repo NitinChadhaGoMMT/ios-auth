@@ -85,7 +85,7 @@ class BaseInteractor: InteractorBaseProtocol {
     func checkForMobileConnectAPI(completionBlock: @escaping (MconnectData?) -> ()){
         
         let dict = FireBaseHandler.getDictionaryFor(keyPath: .onboarding)
-        var mcStatus = true //<NITIN>
+        var mcStatus = false
         if let status = dict["mc_status3"] as? Bool {
            mcStatus = status
         }

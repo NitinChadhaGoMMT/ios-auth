@@ -8,6 +8,26 @@
 
 import UIKit
 
+extension NSNotification {
+    static let chainUpdate = NSNotification.Name(rawValue: "ChainUpdate")
+}
+
+extension String {
+    //ReferralCodeValidation
+    static let kInvalidCodeMsg = "Invalid Code. Add this later on."
+    static let kValidCodeMsg = "Referral Code applied!"
+}
+
+struct Keys {
+    static let referCode = "refercode"
+    
+    //Network Keys
+    static let referralCode = "referral_code"
+    static let clientId = "client_id"
+    static let did = "did"
+    static let deviceId = "device_id"
+}
+
 struct Constants {
     
     static let kEmptyString = ""

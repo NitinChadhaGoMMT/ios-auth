@@ -16,15 +16,15 @@ class ReferralCodeInteractor: BaseInteractor, ReferralCodePresenterToInteractorP
     func verifyReferralCode(referralCode:String) {
         
         var parameters = Dictionary<String, String>()
-        parameters["referral_code"] = referralCode
-        parameters["client_id"] = AuthNetworkUtils.getAuthKey()
-        parameters["did"] = AuthNetworkUtils.getUUID()
-        parameters["device_id"] = AuthNetworkUtils.getUUID()
-        parameters["device_id"] = "true"
+        parameters[Keys.referralCode] = referralCode
+        parameters[Keys.clientId] = AuthNetworkUtils.getAuthKey()
+        parameters[Keys.did] = AuthNetworkUtils.getUUID()
+        parameters[Keys.deviceId] = AuthNetworkUtils.getUUID()
+        parameters[Keys.deviceId] = "true"
         
-        Session.service.post(LoginConstants.verifyReferralCodeUrl(), data: appendDefaultParameters(params: parameters), header: nil, encoding: URLEncoding.httpBody, success: { [weak self] (json) in
+        Session.service.post(URLBuilder.verifyReferralCodeUrl, data: appendDefaultParameters(params: parameters), header: nil, encoding: URLEncoding.httpBody, success: { [weak self] (json) in
             
-            if let response = LoginVerifyReferralParser().parseJSON(json.dictionaryObject) as? ReferralVerifyData {
+            if let response: ReferralVerifyData = self?.parseResponse(dictionary: json.dictionaryObject) {
                 self?.presenter?.verifyReferralSuccessResponse(response: response)
             } else {
                 self?.presenter?.verifyReferralRequestFailed(error: nil)
@@ -33,6 +33,10 @@ class ReferralCodeInteractor: BaseInteractor, ReferralCodePresenterToInteractorP
         }, failure: { [weak self] (json, error) in
             self?.presenter?.verifyReferralRequestFailed(error: self?.getErrorDataFrom(error: json?.dictionaryObject ?? error))
         })
+    }
+    
+    func parseResponse(dictionary: [String: Any]?) -> ReferralVerifyData? {
+        return LoginVerifyReferralParser().parseJSON(dictionary) as? ReferralVerifyData
     }
 }
 

@@ -25,20 +25,20 @@ enum LoginCellType {
     }
 }
 
-class LoginWelcomePresenter: BasePresenter, LoginWelcomeViewToPresenterProtocol, LoginWelcomeInteractorToPresenterProtocol {
 
-    weak var view: LoginWelcomePresenterToViewProtocol!
+class LoginWelcomePresenter: BasePresenter, LoginWelcomeViewToPresenterProtocol {
+
+    weak var view: LoginWelcomePresenterToViewProtocol?
     
-    var interactor: LoginWelcomePresenterToInteractorProtocol!
+    var interactor: LoginWelcomePresenterToInteractorProtocol?
     
     var router: LoginWelcomePresenterToRouterProtocol?
     
     var dataSource: [[LoginCellType]]
     
-    var branchDictionary: NSDictionary?
+    var referralFirstName: String?
     var referredInstall = 0
     var showReferralStatus = false
-    var editedReferralCode: String?
     var currentMobileNumber: String?
     var extraKeys: String?
     
@@ -46,8 +46,8 @@ class LoginWelcomePresenter: BasePresenter, LoginWelcomeViewToPresenterProtocol,
         dataSource = [[.welcomeLogo], [.newUserDetails, .whatsappCell]]
         super.init()
         if let codeDict = AuthDepedencyInjector.branchReferDictionary {
-            branchDictionary = codeDict
-            commonData.referralCode = branchDictionary?.object(forKey: "refercode") as? String
+            referralFirstName = codeDict.object(forKey: "fname") as? String
+            commonData.referralCode = codeDict.object(forKey: "refercode") as? String
         }
     }
     
@@ -64,111 +64,84 @@ class LoginWelcomePresenter: BasePresenter, LoginWelcomeViewToPresenterProtocol,
         checkForMobileConnect()
     }
     
-    func resetReferralCode(){
-        branchDictionary = nil
-    }
-    
     func checkForMobileConnect() {
-        interactor.checkForMobileConnectAPI { [weak self](mConnectData) in
+        interactor?.checkForMobileConnectAPI { [weak self](mConnectData) in
             if let data = mConnectData {
-                self?.view.setMConnectData(data: data)
+                self?.view?.setMConnectData(data: data)
             }
         }
     }
     
-    func validateReferralCode(_referralCode: String?, isBranchFlow: Bool) {
-        
-        guard let referralCode = _referralCode else {
-            view.hideActivityIndicator()
-            return
-        }
-        
-        self.editedReferralCode = referralCode
-        interactor.verifyReferralCode(referralCode: referralCode, isBranchFlow: isBranchFlow)
-    }
-    
-    func verifyReferralSuccessResponse(response: ReferralVerifyData?) {
-        
-        view.hideActivityIndicator()
-        
-        guard let response = response, response.isSuccess == true else {
-            showReferralStatus = false
-            referralCode = nil
-            view.verifyReferralRequestFailed(response: nil)
-            return
-        }
-        
-        showReferralStatus = true
-        view.verifyReferralSuccessResponse(response: response)
-    }
-    
-    func verifyReferralRequestFailed(error: ErrorData?) {
-        showReferralStatus = false
-        referralCode = nil
-        view.hideActivityIndicator()
-        view.verifyReferralRequestFailed(response: error)
-    }
-    
     func verifyMobileNumber(number: String) {
-        view.showActivityIndicator()
+        view?.showActivityIndicator()
         if isFbSignup {
             requestFBOTPWithMobileNo(number)
         } else {
-            interactor.verifyMobileNumber(mobileNumber: number)
+            interactor?.verifyMobileNumber(mobileNumber: number)
         }
     }
+}
+
+//MARK: interactor?. DELEGATE METHODS
+extension LoginWelcomePresenter: LoginWelcomeInteractorToPresenterProtocol {
     
     func verificationMobileNumberRequestSucceeded(response: MobileVerifiedData?) {
-        view.hideActivityIndicator()
+        view?.hideActivityIndicator()
         
         if let response = response {
             navigateToPostMobileNumberScreen(verifiedData: response)
         }
     }
     
+    func verificationMobileNumberRequestFailed(error: ErrorData?) {
+        view?.verifyMobileNumberRequestFailed(error: error)
+    }
+}
+
+//MARK: NAVIGATION RELATED METHODS
+extension LoginWelcomePresenter {
     func navigateToPostMobileNumberScreen(verifiedData: MobileVerifiedData) {
         
         guard let router = router, let mobileNumber = currentMobileNumber else { return }
         
         if verifiedData.isSendOtp {
             if let new_vc = router.navigateToOTPVerificationController(mobile: mobileNumber, data: commonData, nonce: verifiedData.nonce, isNewUser: verifiedData.isExistingUser) {
-                view.push(screen: new_vc)
+                view?.push(screen: new_vc)
             }
         } else {
             if let new_vc = router.navigateToPasswordViewController(userState: .passwordOTP, mobile: mobileNumber, data: commonData) {
-                view.push(screen: new_vc)
+                view?.push(screen: new_vc)
             }
         }
     }
     
     func navigateToSignUpScreen() {
         if let new_vc = router?.navigateToSignUpController(data: commonData) {
-            view.push(screen: new_vc)
+            view?.push(screen: new_vc)
         }
     }
     
     func navigateToTermsAndConditions() {
         if let new_vc = router?.navigateToTermsAndConditions() {
-            view.push(screen: new_vc)
+            view?.push(screen: new_vc)
         }
     }
     
     func navigateToPrivacyPolicy() {
         if let new_vc = router?.navigateToPrivacyPolicy() {
-            view.push(screen: new_vc)
+            view?.push(screen: new_vc)
         }
     }
     
     func navigateToUserAgreement() {
         if let new_vc = router?.navigateToUserAgreement() {
-            view.push(screen: new_vc)
+            view?.push(screen: new_vc)
         }
     }
-    
-    func verificationMobileNumberRequestFailed(error: ErrorData?) {
-        view.verifyMobileNumberRequestFailed(error: error)
-    }
-    
+}
+
+//MARK: GA RELATED METHODS
+extension LoginWelcomePresenter {
     private func getCommonGAAttributes() -> [String: Any] {
         var attributes:Dictionary<String,Any> =  [:]
         attributes["referredInstall"] = referredInstall

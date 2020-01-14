@@ -76,6 +76,7 @@ class AuthModuleHelper: AuthModuleUIProtocol {
     
     
     func showToastMessage(on view: UIViewController, message: String) {
+        print("message : \(message)")
         showAlert(on: view, message: message)
     }
     

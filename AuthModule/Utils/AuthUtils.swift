@@ -25,7 +25,7 @@ struct AuthUtils {
     
     static func isValidName(_ name: String?) -> Bool {
         
-        guard let name = name, !name.isEmpty else {
+        guard let name = name?.trimmingCharacters(in: .whitespaces), !name.isEmpty else {
             return false
         }
         
@@ -41,8 +41,8 @@ struct AuthUtils {
     }
     
     static func isEmptyString(_ string: Any?) -> Bool {
-        guard let string = string as? String, !string.isEmpty else { return true }
-        return false
+        guard let string = string as? String else { return true }
+        return string.trimmingCharacters(in: .whitespaces).isEmpty
     }
     
     static func getAttributedString(for string: String?, attributes: [AnyHashable : Any]?, withDefaultString defaultString: String?) -> NSAttributedString {

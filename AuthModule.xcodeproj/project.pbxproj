@@ -23,7 +23,6 @@
 		6E07020E2386BF97008D79E9 /* LoginWelcomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E07020D2386BF97008D79E9 /* LoginWelcomeInteractor.swift */; };
 		6E0702102386C194008D79E9 /* WhatsAppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E07020F2386C194008D79E9 /* WhatsAppManager.swift */; };
 		6E0702122386C757008D79E9 /* CommonUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0702112386C756008D79E9 /* CommonUIExtensions.swift */; };
-		6E070215238D096A008D79E9 /* SFUIText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E070214238D096A008D79E9 /* SFUIText-Regular.ttf */; };
 		6E070217238D3FA2008D79E9 /* LoginWelcomeHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E070216238D3FA2008D79E9 /* LoginWelcomeHeaderCell.swift */; };
 		6E07021D238D4991008D79E9 /* FireBaseConfigKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E07021A238D48DA008D79E9 /* FireBaseConfigKeys.swift */; };
 		6E07021E238D4AF6008D79E9 /* FirebaseHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E070218238D48AC008D79E9 /* FirebaseHandlerProtocol.swift */; };
@@ -86,6 +85,18 @@
 		6E6D5D8323CC8F7500839094 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E0701E42386BC63008D79E9 /* Assets.xcassets */; };
 		6E6D5D8623CD109800839094 /* SF-UI-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6E6D5D8423CD109800839094 /* SF-UI-Text-Regular.otf */; };
 		6E6D5D8723CD109800839094 /* SF-UI-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6E6D5D8523CD109800839094 /* SF-UI-Text-Semibold.otf */; };
+		6E6D5D8F23CD92A700839094 /* AuthModuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6D5D8E23CD92A700839094 /* AuthModuleTests.swift */; };
+		6E6D5D9A23CDCE2300839094 /* LoginWelcomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6D5D9923CDCE2300839094 /* LoginWelcomeTests.swift */; };
+		6E6D5D9C23CDCECE00839094 /* ReferralCodeValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6D5D9B23CDCECE00839094 /* ReferralCodeValidationTests.swift */; };
+		6E6D5D9E23CDCF0A00839094 /* BaseInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6D5D9D23CDCF0A00839094 /* BaseInteractorTests.swift */; };
+		6E6D5DA023CDEF0600839094 /* SignInWithPasswordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6D5D9F23CDEF0600839094 /* SignInWithPasswordTests.swift */; };
+		6E6D5DA223CDF26900839094 /* AuthUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6D5DA123CDF26900839094 /* AuthUtilsTests.swift */; };
+		6E6D5DA623CE02FE00839094 /* CocoaSecurity.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E6D5DA423CE02FE00839094 /* CocoaSecurity.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6E6D5DA723CE02FE00839094 /* CocoaSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6D5DA523CE02FE00839094 /* CocoaSecurity.m */; };
+		6E6D5DAB23CE031F00839094 /* Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E6D5DA923CE031F00839094 /* Base64.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6E6D5DAC23CE031F00839094 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6D5DAA23CE031F00839094 /* Base64.m */; };
+		6E6D5DAF23CE045400839094 /* NSUserDefaults+SecureAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E6D5DAD23CE045400839094 /* NSUserDefaults+SecureAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6E6D5DB023CE045400839094 /* NSUserDefaults+SecureAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6D5DAE23CE045400839094 /* NSUserDefaults+SecureAdditions.m */; };
 		6E71C281239550DF00A81BAF /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E71C280239550DF00A81BAF /* AppConstants.swift */; };
 		6E8616BA23B161730012FE33 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B4F23B0F14000491102 /* FBSDKCoreKit.framework */; platformFilter = ios; };
 		6E8616BD23B161740012FE33 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B5023B0F14000491102 /* FBSDKLoginKit.framework */; platformFilter = ios; };
@@ -139,6 +150,13 @@
 			remoteGlobalIDString = 6E0701F32386BC78008D79E9;
 			remoteInfo = AuthModule;
 		};
+		6E6D5D9123CD92A700839094 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6E0701D22386BC5C008D79E9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6E0701D92386BC5D008D79E9;
+			remoteInfo = AuthSampleApp;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -181,7 +199,6 @@
 		6E07020D2386BF97008D79E9 /* LoginWelcomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWelcomeInteractor.swift; sourceTree = "<group>"; };
 		6E07020F2386C194008D79E9 /* WhatsAppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsAppManager.swift; sourceTree = "<group>"; };
 		6E0702112386C756008D79E9 /* CommonUIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUIExtensions.swift; sourceTree = "<group>"; };
-		6E070214238D096A008D79E9 /* SFUIText-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Regular.ttf"; sourceTree = "<group>"; };
 		6E070216238D3FA2008D79E9 /* LoginWelcomeHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWelcomeHeaderCell.swift; sourceTree = "<group>"; };
 		6E070218238D48AC008D79E9 /* FirebaseHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHandlerProtocol.swift; sourceTree = "<group>"; };
 		6E07021A238D48DA008D79E9 /* FireBaseConfigKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireBaseConfigKeys.swift; sourceTree = "<group>"; };
@@ -248,6 +265,20 @@
 		6E6D5D7E23CC6EEE00839094 /* ReferralCodeValidationProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferralCodeValidationProtocols.swift; sourceTree = "<group>"; };
 		6E6D5D8423CD109800839094 /* SF-UI-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Regular.otf"; sourceTree = "<group>"; };
 		6E6D5D8523CD109800839094 /* SF-UI-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Semibold.otf"; sourceTree = "<group>"; };
+		6E6D5D8C23CD92A600839094 /* AuthModuleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AuthModuleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E6D5D8E23CD92A700839094 /* AuthModuleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModuleTests.swift; sourceTree = "<group>"; };
+		6E6D5D9023CD92A700839094 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6E6D5D9923CDCE2300839094 /* LoginWelcomeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWelcomeTests.swift; sourceTree = "<group>"; };
+		6E6D5D9B23CDCECE00839094 /* ReferralCodeValidationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReferralCodeValidationTests.swift; sourceTree = "<group>"; };
+		6E6D5D9D23CDCF0A00839094 /* BaseInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInteractorTests.swift; sourceTree = "<group>"; };
+		6E6D5D9F23CDEF0600839094 /* SignInWithPasswordTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithPasswordTests.swift; sourceTree = "<group>"; };
+		6E6D5DA123CDF26900839094 /* AuthUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUtilsTests.swift; sourceTree = "<group>"; };
+		6E6D5DA423CE02FE00839094 /* CocoaSecurity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaSecurity.h; sourceTree = "<group>"; };
+		6E6D5DA523CE02FE00839094 /* CocoaSecurity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaSecurity.m; sourceTree = "<group>"; };
+		6E6D5DA923CE031F00839094 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
+		6E6D5DAA23CE031F00839094 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
+		6E6D5DAD23CE045400839094 /* NSUserDefaults+SecureAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+SecureAdditions.h"; sourceTree = "<group>"; };
+		6E6D5DAE23CE045400839094 /* NSUserDefaults+SecureAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+SecureAdditions.m"; sourceTree = "<group>"; };
 		6E71C280239550DF00A81BAF /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		6E8616C123B1D5D50012FE33 /* MobileVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileVerificationViewController.swift; sourceTree = "<group>"; };
 		6E872FA923A9167500910302 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
@@ -313,6 +344,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6E6D5D8923CD92A600839094 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -332,6 +370,7 @@
 			children = (
 				6E0701DC2386BC5D008D79E9 /* AuthSampleApp */,
 				6E0701F52386BC78008D79E9 /* AuthModule */,
+				6E6D5D8D23CD92A700839094 /* AuthModuleTests */,
 				6E0701DB2386BC5D008D79E9 /* Products */,
 				6EEA6AF8239105560030F442 /* Frameworks */,
 				6B9944F8CCD1BEDF0F8B7769 /* Pods */,
@@ -343,6 +382,7 @@
 			children = (
 				6E0701DA2386BC5D008D79E9 /* AuthSampleApp.app */,
 				6E0701F42386BC78008D79E9 /* AuthModule.framework */,
+				6E6D5D8C23CD92A600839094 /* AuthModuleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -350,19 +390,12 @@
 		6E0701DC2386BC5D008D79E9 /* AuthSampleApp */ = {
 			isa = PBXGroup;
 			children = (
-				6E6D5D8423CD109800839094 /* SF-UI-Text-Regular.otf */,
-				6E6D5D8523CD109800839094 /* SF-UI-Text-Semibold.otf */,
-				6E1C68C923C74C6800AECA04 /* SFUIText-Bold.otf */,
-				6E1C68C623C74AEA00AECA04 /* SFUIText-Medium.ttf */,
-				6E1C68C523C74AE900AECA04 /* SFUIText-Regular.ttf */,
-				6E1C68BE23C7409400AECA04 /* Quicksand-Bold.ttf */,
-				6E1C68BC23C7409300AECA04 /* Quicksand-Medium.ttf */,
-				6E1C68BD23C7409300AECA04 /* Quicksand-Regular.ttf */,
 				6E0701DD2386BC5D008D79E9 /* AppDelegate.swift */,
 				6E0701DF2386BC5D008D79E9 /* ViewController.swift */,
 				6E0701E12386BC5D008D79E9 /* Main.storyboard */,
 				6E0701E62386BC63008D79E9 /* LaunchScreen.storyboard */,
 				6E0701E92386BC63008D79E9 /* Info.plist */,
+				6E6D5D9623CDA54A00839094 /* Resources */,
 			);
 			path = AuthSampleApp;
 			sourceTree = "<group>";
@@ -382,6 +415,7 @@
 				6E07021C238D48E7008D79E9 /* Depedency */,
 				6E070213238D0959008D79E9 /* Graphics */,
 				6E0702082386BD9D008D79E9 /* Storyboard */,
+				6E1C68AE23C7187200AECA04 /* ThirdParty */,
 				6E0702052386BD71008D79E9 /* Utils */,
 				6E6D5D8023CC8BC800839094 /* Resources */,
 				6E395A6023BA3C9B002D50F1 /* TempViewController.swift */,
@@ -396,22 +430,14 @@
 		6E0702052386BD71008D79E9 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				6E1C68C223C7437000AECA04 /* Styles */,
-				6E1C68AE23C7187200AECA04 /* ThirdParty */,
 				6E1C68AD23C7186400AECA04 /* Helper */,
 				6E1C68AC23C7185C00AECA04 /* Extensions */,
 				6E4BD07D239F9C5F0022D514 /* AuthCache.swift */,
 				6E07022A238E5C16008D79E9 /* AuthUtils.swift */,
 				6E1C68AF23C718C100AECA04 /* AuthNetworkUtils.swift */,
 				6EEA6B442391329B0030F442 /* UserDataManager.swift */,
-				6E07020F2386C194008D79E9 /* WhatsAppManager.swift */,
-				6E0702112386C756008D79E9 /* CommonUIExtensions.swift */,
-				6E554C03239145C900E043A2 /* AuthAlert.swift */,
 				6E44B13E23ABEDBC0068EC9A /* DatabaseHelper.swift */,
 				6E4D5B4A23B0E89E00491102 /* AuthDataProvider.swift */,
-				6E4D5B5C23B0FAFE00491102 /* GoFacebookManager.swift */,
-				6E54C0C823C34C7900D2133F /* WhatsappHelper.swift */,
-				6E54C0D023C45B4700D2133F /* ImageHelper.swift */,
 				6E1C68B123C718F000AECA04 /* FireBaseHandler.swift */,
 			);
 			path = Utils;
@@ -428,7 +454,8 @@
 		6E070213238D0959008D79E9 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
-				6E070214238D096A008D79E9 /* SFUIText-Regular.ttf */,
+				6E1C68B323C7315900AECA04 /* Colors_Ext.swift */,
+				6E1C68C323C7438200AECA04 /* UIFont_Ext.swift */,
 			);
 			path = Graphics;
 			sourceTree = "<group>";
@@ -531,6 +558,7 @@
 		6E1C68AC23C7185C00AECA04 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				6E0702112386C756008D79E9 /* CommonUIExtensions.swift */,
 				6E0702062386BD82008D79E9 /* View_Extensions.swift */,
 			);
 			path = Extensions;
@@ -539,6 +567,11 @@
 		6E1C68AD23C7186400AECA04 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				6E07020F2386C194008D79E9 /* WhatsAppManager.swift */,
+				6E554C03239145C900E043A2 /* AuthAlert.swift */,
+				6E4D5B5C23B0FAFE00491102 /* GoFacebookManager.swift */,
+				6E54C0C823C34C7900D2133F /* WhatsappHelper.swift */,
+				6E54C0D023C45B4700D2133F /* ImageHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -546,6 +579,7 @@
 		6E1C68AE23C7187200AECA04 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				6E6D5DA323CE02F300839094 /* CocoaSecurity */,
 				6EA780372395057400FA409D /* KeychainLoginHandler.swift */,
 				6EA780312395051000FA409D /* KeychainWrapper.swift */,
 				6EA780352395054C00FA409D /* KeychainItemAccessibility.swift */,
@@ -555,15 +589,6 @@
 				6E54C0CB23C354F500D2133F /* RSA.m */,
 			);
 			path = ThirdParty;
-			sourceTree = "<group>";
-		};
-		6E1C68C223C7437000AECA04 /* Styles */ = {
-			isa = PBXGroup;
-			children = (
-				6E1C68B323C7315900AECA04 /* Colors_Ext.swift */,
-				6E1C68C323C7438200AECA04 /* UIFont_Ext.swift */,
-			);
-			path = Styles;
 			sourceTree = "<group>";
 		};
 		6E4011E923A3CEDA002C6BFD /* Protocols */ = {
@@ -589,6 +614,48 @@
 				6E0701E42386BC63008D79E9 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		6E6D5D8D23CD92A700839094 /* AuthModuleTests */ = {
+			isa = PBXGroup;
+			children = (
+				6E6D5D9023CD92A700839094 /* Info.plist */,
+				6E6D5D8E23CD92A700839094 /* AuthModuleTests.swift */,
+				6E6D5D9B23CDCECE00839094 /* ReferralCodeValidationTests.swift */,
+				6E6D5D9923CDCE2300839094 /* LoginWelcomeTests.swift */,
+				6E6D5D9D23CDCF0A00839094 /* BaseInteractorTests.swift */,
+				6E6D5D9F23CDEF0600839094 /* SignInWithPasswordTests.swift */,
+				6E6D5DA123CDF26900839094 /* AuthUtilsTests.swift */,
+			);
+			path = AuthModuleTests;
+			sourceTree = "<group>";
+		};
+		6E6D5D9623CDA54A00839094 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6E6D5D8423CD109800839094 /* SF-UI-Text-Regular.otf */,
+				6E6D5D8523CD109800839094 /* SF-UI-Text-Semibold.otf */,
+				6E1C68C923C74C6800AECA04 /* SFUIText-Bold.otf */,
+				6E1C68C623C74AEA00AECA04 /* SFUIText-Medium.ttf */,
+				6E1C68C523C74AE900AECA04 /* SFUIText-Regular.ttf */,
+				6E1C68BE23C7409400AECA04 /* Quicksand-Bold.ttf */,
+				6E1C68BC23C7409300AECA04 /* Quicksand-Medium.ttf */,
+				6E1C68BD23C7409300AECA04 /* Quicksand-Regular.ttf */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		6E6D5DA323CE02F300839094 /* CocoaSecurity */ = {
+			isa = PBXGroup;
+			children = (
+				6E6D5DAD23CE045400839094 /* NSUserDefaults+SecureAdditions.h */,
+				6E6D5DAE23CE045400839094 /* NSUserDefaults+SecureAdditions.m */,
+				6E6D5DA423CE02FE00839094 /* CocoaSecurity.h */,
+				6E6D5DA523CE02FE00839094 /* CocoaSecurity.m */,
+				6E6D5DA923CE031F00839094 /* Base64.h */,
+				6E6D5DAA23CE031F00839094 /* Base64.m */,
+			);
+			path = CocoaSecurity;
 			sourceTree = "<group>";
 		};
 		6EA4D22C239900FD004DFAEA /* Analytics */ = {
@@ -648,7 +715,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E54C0CC23C354F600D2133F /* RSA.h in Headers */,
+				6E6D5DAB23CE031F00839094 /* Base64.h in Headers */,
 				6E0701F82386BC78008D79E9 /* AuthModule.h in Headers */,
+				6E6D5DA623CE02FE00839094 /* CocoaSecurity.h in Headers */,
+				6E6D5DAF23CE045400839094 /* NSUserDefaults+SecureAdditions.h in Headers */,
 				6EA7803F23951A2500FA409D /* CommonUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -697,13 +767,31 @@
 			productReference = 6E0701F42386BC78008D79E9 /* AuthModule.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		6E6D5D8B23CD92A600839094 /* AuthModuleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6E6D5D9323CD92A700839094 /* Build configuration list for PBXNativeTarget "AuthModuleTests" */;
+			buildPhases = (
+				6E6D5D8823CD92A600839094 /* Sources */,
+				6E6D5D8923CD92A600839094 /* Frameworks */,
+				6E6D5D8A23CD92A600839094 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6E6D5D9223CD92A700839094 /* PBXTargetDependency */,
+			);
+			name = AuthModuleTests;
+			productName = AuthModuleTests;
+			productReference = 6E6D5D8C23CD92A600839094 /* AuthModuleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		6E0701D22386BC5C008D79E9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1020;
+				LastSwiftUpdateCheck = 1120;
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Nitin Chadha";
 				TargetAttributes = {
@@ -713,6 +801,10 @@
 					6E0701F32386BC78008D79E9 = {
 						CreatedOnToolsVersion = 10.2.1;
 						LastSwiftMigration = 1120;
+					};
+					6E6D5D8B23CD92A600839094 = {
+						CreatedOnToolsVersion = 11.2.1;
+						TestTargetID = 6E0701D92386BC5D008D79E9;
 					};
 				};
 			};
@@ -731,6 +823,7 @@
 			targets = (
 				6E0701D92386BC5D008D79E9 /* AuthSampleApp */,
 				6E0701F32386BC78008D79E9 /* AuthModule */,
+				6E6D5D8B23CD92A600839094 /* AuthModuleTests */,
 			);
 		};
 /* End PBXProject section */
@@ -758,10 +851,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E07020A2386BDA7008D79E9 /* Auth.storyboard in Resources */,
-				6E070215238D096A008D79E9 /* SFUIText-Regular.ttf in Resources */,
 				6E872FB623AB748800910302 /* MConnectPoweredByView.xib in Resources */,
 				6E6D5D8323CC8F7500839094 /* Assets.xcassets in Resources */,
 				6EE3207523C30B7D00E6B810 /* ProfileHeaderView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E6D5D8A23CD92A600839094 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -879,6 +978,7 @@
 				6E07021D238D4991008D79E9 /* FireBaseConfigKeys.swift in Sources */,
 				6E1C68B223C718F000AECA04 /* FireBaseHandler.swift in Sources */,
 				6E44B13F23ABEDBC0068EC9A /* DatabaseHelper.swift in Sources */,
+				6E6D5DB023CE045400839094 /* NSUserDefaults+SecureAdditions.m in Sources */,
 				6E6D5D7F23CC6EEE00839094 /* ReferralCodeValidationProtocols.swift in Sources */,
 				6EA780292394F56D00FA409D /* LoginParsers.swift in Sources */,
 				6E872FB823AB7AEC00910302 /* KeyChainLoginViewController.swift in Sources */,
@@ -902,6 +1002,7 @@
 				6EA780272394F53600FA409D /* LoginModels.swift in Sources */,
 				6EA4D232239940D3004DFAEA /* SignInWithPasswordViewController.swift in Sources */,
 				6E1C68CC23C8C25800AECA04 /* ReferralCodeViewController.swift in Sources */,
+				6E6D5DA723CE02FE00839094 /* CocoaSecurity.m in Sources */,
 				6E54C0D723C5CD4100D2133F /* LoginWelcomePresenter_Fb.swift in Sources */,
 				6E8616C223B1D5D50012FE33 /* MobileVerificationViewController.swift in Sources */,
 				6EA4D2342399413C004DFAEA /* SignInWithPasswordInteractor.swift in Sources */,
@@ -928,6 +1029,7 @@
 				6EA780382395057400FA409D /* KeychainLoginHandler.swift in Sources */,
 				6E391B5E23A12B1E006AEC46 /* SignUpPresenter.swift in Sources */,
 				6E44B13D23ABEB6A0068EC9A /* UserData.xcdatamodeld in Sources */,
+				6E6D5DAC23CE031F00839094 /* Base64.m in Sources */,
 				6EAA3963239A6B2700872FD2 /* LoginOTPVerifyParser.swift in Sources */,
 				6E1C68B423C7315900AECA04 /* Colors_Ext.swift in Sources */,
 				6E54C0CD23C354F600D2133F /* RSA.m in Sources */,
@@ -961,6 +1063,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6E6D5D8823CD92A600839094 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E6D5DA023CDEF0600839094 /* SignInWithPasswordTests.swift in Sources */,
+				6E6D5D9C23CDCECE00839094 /* ReferralCodeValidationTests.swift in Sources */,
+				6E6D5D9E23CDCF0A00839094 /* BaseInteractorTests.swift in Sources */,
+				6E6D5D9A23CDCE2300839094 /* LoginWelcomeTests.swift in Sources */,
+				6E6D5D8F23CD92A700839094 /* AuthModuleTests.swift in Sources */,
+				6E6D5DA223CDF26900839094 /* AuthUtilsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -968,6 +1083,11 @@
 			isa = PBXTargetDependency;
 			target = 6E0701F32386BC78008D79E9 /* AuthModule */;
 			targetProxy = 6E0701F92386BC78008D79E9 /* PBXContainerItemProxy */;
+		};
+		6E6D5D9223CD92A700839094 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6E0701D92386BC5D008D79E9 /* AuthSampleApp */;
+			targetProxy = 6E6D5D9123CD92A700839094 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1224,6 +1344,48 @@
 			};
 			name = Release;
 		};
+		6E6D5D9423CD92A700839094 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q9B4DS4RM6;
+				INFOPLIST_FILE = AuthModuleTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.goibibo.Goibibo.AuthModuleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AuthSampleApp.app/AuthSampleApp";
+			};
+			name = Debug;
+		};
+		6E6D5D9523CD92A700839094 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q9B4DS4RM6;
+				INFOPLIST_FILE = AuthModuleTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.goibibo.Goibibo.AuthModuleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AuthSampleApp.app/AuthSampleApp";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1250,6 +1412,15 @@
 			buildConfigurations = (
 				6E0701FE2386BC78008D79E9 /* Debug */,
 				6E0701FF2386BC78008D79E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6E6D5D9323CD92A700839094 /* Build configuration list for PBXNativeTarget "AuthModuleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E6D5D9423CD92A700839094 /* Debug */,
+				6E6D5D9523CD92A700839094 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

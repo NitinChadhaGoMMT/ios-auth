@@ -27,12 +27,12 @@ public class AuthRouter {
     
     public func initiateLoginModule() -> UIViewController? {
         
-        if let dictionary = AuthDepedencyInjector.branchReferDictionary, let referralCode = dictionary.object(forKey: "refercode") as? String {
+        if let dictionary = AuthDepedencyInjector.branchReferDictionary, let _ = dictionary.object(forKey: "refercode") as? String {
             guard let view: ReferralCodeValidationViewController = mainstoryboard.getViewController() else {
                 return nil
             }
             
-            let presenter = ReferralCodeValidationPresenter(data: PresenterCommonData())
+            let presenter = ReferralCodeValidationPresenter()
             let interactor = ReferralCodeInteractor()
             
             view.presenter = presenter
@@ -42,6 +42,7 @@ public class AuthRouter {
             
             return view
         } else {
+            
             guard let view: OnboardingWelcomeContainer = mainstoryboard.getViewController() else {
                 return nil
             }

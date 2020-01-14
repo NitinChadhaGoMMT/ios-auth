@@ -91,11 +91,6 @@ class OtpVerificationViewController: LoginBaseViewController {
         UINavigationBar.appearance().barTintColor = UIColor.white
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
         
-        //<NITIN>
-        //if wtsAppShowCount == totalResentCount && (FirebaseRemoteHelper.sharedInstance.getRemoteFunctionBoolValue(forkey: "wtsApp_Otp_Enable")) {
-        //            self.enableWhatsAppLogin()
-        //}
-        
         if presenter?.shouldShowWhatsappLogin() ?? false {
             enableWhatsAppLogin()
         }

@@ -326,7 +326,6 @@ class LoginGAPManager: NSObject {
         let loginScreenName = "Welcome"
         let otpScreenName = "Enter_OTP"
         let createAccountOrExistingScreenName = "Create_Account"
-        let userConfirm = "I_want_goCash_Plus_Page"
         var screenName = ""
         
         if let _ = controller as? LoginWelcomeViewController {
@@ -338,9 +337,6 @@ class LoginGAPManager: NSObject {
         else if let _ = controller as? SignupViewController {
             screenName = createAccountOrExistingScreenName
         }
-        /*<NITIN>else if let _ = controller as? UserConfirmationViewController {
-            screenName = userConfirm
-        }*/
         return screenName
     }
     

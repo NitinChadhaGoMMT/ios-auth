@@ -35,11 +35,6 @@ import UIKit
         }
     }
     
-    func getSavedReferralCode() -> NSDictionary? {
-        //<NITIN>
-        return nil
-    }
-    
     func userSuccessfullyLoggedIn(){
         UserDataManager.shared.didUserLoginInCurrentSession = true
         /*<NITIN>

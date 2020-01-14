@@ -16,7 +16,6 @@ FOUNDATION_EXPORT const unsigned char AuthModuleVersionString[];
 
 #import <AuthModule/CommonUtils.h>
 #import <AuthModule/RSA.h>
-
-// In this header, you should import all the public headers of your framework using statements like #import <AuthModule/PublicHeader.h>
-
-
+#import <AuthModule/CocoaSecurity.h>
+#import <AuthModule/Base64.h>
+#import <AuthModule/NSUserDefaults+SecureAdditions.h>

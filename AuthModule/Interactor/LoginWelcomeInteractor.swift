@@ -12,22 +12,24 @@ class LoginWelcomeInteractor: BaseInteractor, LoginWelcomePresenterToInteractorP
     
     weak var presenter: LoginWelcomeInteractorToPresenterProtocol?
     
-    func verifyReferralCode(referralCode:String, isBranchFlow:Bool) {
-        AuthService.verifyReferralCode(referralCode: referralCode, isBranchFlow: isBranchFlow, success: { (data) in
-            let response = LoginVerifyReferralParser().parseJSON(data) as? ReferralVerifyData
-            self.presenter?.verifyReferralSuccessResponse(response: response)
-            
-        }) { [weak self] (errorData) in
-            self?.presenter?.verifyReferralRequestFailed(error: errorData)
+    func verifyMobileNumber(mobileNumber: String) {
+        AuthService.checkAccountExistence(with: mobileNumber, success: { [weak self] (data) in
+            let response = self?.parseResponse(data: data)
+            self?.successResponse(response: response)
+        }) { [weak self] error in
+            self?.failResponse(error: error)
         }
     }
     
-    func verifyMobileNumber(mobileNumber: String) {
-        AuthService.checkAccountExistence(with: mobileNumber, success: { [weak self] (data) in
-            let response = LoginMobileVerifyParser().parseJSON(data) as? MobileVerifiedData
-            self?.presenter?.verificationMobileNumberRequestSucceeded(response: response)
-        }) { [weak self] error in
-            self?.presenter?.verificationMobileNumberRequestFailed(error: error)
-        }
+    func successResponse(response: MobileVerifiedData?) {
+        presenter?.verificationMobileNumberRequestSucceeded(response: response)
+    }
+    
+    func failResponse(error: ErrorData?) {
+        presenter?.verificationMobileNumberRequestFailed(error: error)
+    }
+    
+    func parseResponse(data: Any?) -> MobileVerifiedData? {
+        return LoginMobileVerifyParser().parseJSON(data) as? MobileVerifiedData
     }
 }

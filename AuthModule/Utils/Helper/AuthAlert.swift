@@ -104,33 +104,6 @@ struct AuthAlert {
     static func showAppGenericAlert(on view: UIViewController, message: String) {
         AuthDepedencyInjector.uiDelegate?.showAlert(on: view, message: message)
     }
-
-    static func showReferralCodeAlert(view: UIViewController, success: @escaping (String?) -> Void, cancel: @escaping () -> Void) -> UIAlertController {
-        let alertController = UIAlertController(title: "Referral Code", message: "Please input your code:", preferredStyle: .alert)
-        
-        let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
-            
-            guard let field = alertController.textFields?.first, field.text?.isEmpty == false else {
-                AuthUtils.showAlert(on: view, message: "Referral code is empty")
-                return
-            }
-            success(field.text)
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
-            cancel()
-        }
-        
-        alertController.addTextField { (textField) in
-            textField.placeholder = "Referral Code"
-            textField.keyboardType = .asciiCapable;
-            textField.autocapitalizationType = .allCharacters
-        }
-        
-        alertController.addAction(confirmAction)
-        alertController.addAction(cancelAction)
-        return alertController
-    }
     
     static func showErrorAlert(view: UIViewController, title: String? = "Error!", message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)

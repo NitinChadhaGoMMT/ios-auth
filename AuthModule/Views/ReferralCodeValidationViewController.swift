@@ -45,11 +45,11 @@ class ReferralCodeValidationViewController: LoginBaseViewController, ReferralCod
     }
     
     func referralCodeFailure() {
-        AuthAlert.showToastMessage(on: self, message: "Invalid Code. Add this later on.", duration: 4.0, position: "bottom")
+        AuthAlert.showToastMessage(on: self, message: .kInvalidCodeMsg, duration: 4.0, position: "bottom")
     }
     
     func referralCodeSuccess() {
-        AuthAlert.showToastMessage(on: self, message: "Referral Code applied!", duration: 4.0, position: "bottom")
+        AuthAlert.showToastMessage(on: self, message: .kValidCodeMsg, duration: 4.0, position: "bottom")
     }
 }
 

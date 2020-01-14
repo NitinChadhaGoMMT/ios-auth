@@ -77,7 +77,7 @@ class MobileVerificationViewController: LoginBaseViewController, MobileVerificat
         
         var infoText = "Earn goCash+ and use for bookings. \nNo usage limits"
         
-        if let _ = getSavedReferralCode() {
+        if !AuthUtils.isEmptyString(presenter?.referralCode) {
             infoText = "Claim your reward of Rs 2000 goCash and use for bookings."
         }
         

@@ -14,7 +14,7 @@ protocol LoginWelcomeViewToPresenterProtocol: PresenterBaseProtocol {
     
     var currentMobileNumber: String? { get set }
 
-    var branchDictionary: NSDictionary? { get }
+    var referralFirstName: String? { get }
     
     var showReferralStatus: Bool { get }
     
@@ -32,10 +32,6 @@ protocol LoginWelcomeViewToPresenterProtocol: PresenterBaseProtocol {
     
     func logGAClickEvent(_ type:String)
     
-    func resetReferralCode()
-    
-    func validateReferralCode(_referralCode: String?, isBranchFlow: Bool)
-    
     func navigateToPostMobileNumberScreen(verifiedData: MobileVerifiedData)
     
     func navigateToSignUpScreen()
@@ -49,10 +45,6 @@ protocol LoginWelcomeViewToPresenterProtocol: PresenterBaseProtocol {
 
 protocol LoginWelcomePresenterToViewProtocol: LoginBaseProtocol {
 
-    func verifyReferralRequestFailed(response: ErrorData?)
-    
-    func verifyReferralSuccessResponse(response: ReferralVerifyData)
-    
     func verifyMobileNumberRequestFailed(error: ErrorData?)
 
 }
@@ -82,27 +74,14 @@ extension LoginWelcomePresenterToRouterProtocol {
 
 protocol LoginWelcomePresenterToInteractorProtocol: InteractorBaseProtocol {
     
-    func verifyReferralCode(referralCode:String, isBranchFlow:Bool)
-    
     func verifyMobileNumber(mobileNumber: String)
     
 }
 
 protocol LoginWelcomeInteractorToPresenterProtocol: class {
     
-    func verifyReferralSuccessResponse(response: ReferralVerifyData?)
-    
-    func verifyReferralRequestFailed(error: ErrorData?)
-    
     func verificationMobileNumberRequestSucceeded(response: MobileVerifiedData?)
     
     func verificationMobileNumberRequestFailed(error: ErrorData?)
 }
 
-extension LoginWelcomeInteractorToPresenterProtocol {
-    
-    func verifyReferralSuccessResponse(response: ReferralVerifyData?) { }
-    
-    func verifyReferralRequestFailed(error: ErrorData?) { }
-    
-}

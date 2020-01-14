@@ -31,14 +31,14 @@ class LoginWelcomeViewController: LoginBaseViewController, LoginWelcomePresenter
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         KeychainLoginHandler.shared.presentKeyChainLogin(sender: self)
+        validateReferralCode()
     }
     
     func configureUserInterface() {
         topView
             .setBackgroundColor(color: .customBlue)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(LoginWelcomeViewController.updateAfterKeychainSuccess), name: NSNotification.Name(rawValue: "ChainUpdate"), object: nil)
-        validateReferralCode()
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginWelcomeViewController.updateAfterKeychainSuccess), name: NSNotification.chainUpdate, object: nil)
     }
     
     override func addMconnectView(){
@@ -52,7 +52,8 @@ class LoginWelcomeViewController: LoginBaseViewController, LoginWelcomePresenter
     
     func validateReferralCode() {
         if let referralCode = presenter?.referralCode, !referralCode.isEmpty {
-            presenter?.validateReferralCode(_referralCode: referralCode, isBranchFlow: true)
+            myTable.reloadData()
+            AuthAlert.showToastMessage(on: self, message: .kValidCodeMsg)
         }
     }
     
@@ -123,8 +124,7 @@ extension LoginWelcomeViewController: UITableViewDataSource, UITableViewDelegate
             let cell: LoginNewUserDetailsCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             cell.delegate = self
             if presenter?.showReferralStatus ?? false {
-                let name = presenter?.branchDictionary?.object(forKey: "fname") as? String ?? "Nitin Chadha"
-                cell.configureReferralView(with: name)
+                cell.configureReferralView(with: presenter?.referralFirstName ?? "")
             } else {
                 cell.configureGenericReferralView()
             }
@@ -141,15 +141,6 @@ extension LoginWelcomeViewController: UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         guard let cellType = self.presenter?.dataSource[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row] else { return 44.0 }
         return cellType.height
-    }
-    
-    func verifyReferralSuccessResponse(response: ReferralVerifyData) {
-        myTable.reloadData()
-        AuthAlert.showToastMessage(on: self, message: "Referral Code applied!")
-    }
-    
-    func verifyReferralRequestFailed(response: ErrorData?) {
-        AuthAlert.showToastMessage(on: self, message: "Invalid Code. Add this later on.")
     }
     
     func verifyMobileNumberRequestFailed(error: ErrorData?) {

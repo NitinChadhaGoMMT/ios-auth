@@ -15,10 +15,9 @@ class WhatsAppManager {
     var referralCode: String = ""
     weak var delegate: WhatsappHelperDelegate?
     
-    //<NITIN>  CHECK KEYPATH
     func canOpenWhatsApp() -> Bool {
-        let phone = FireBaseHandler.getStringFor(keyPath: .whatsapp_login_msg, dbPath: .goCoreDatabase)
-        let abid = FireBaseHandler.getStringFor(keyPath: .whatsapp_login_msg, dbPath: .goCoreDatabase)
+        let phone = FireBaseHandler.getStringFor(keyPath: .whatsapp_login_phone, dbPath: .goCoreDatabase) ??  "+919213025552"
+        let abid = FireBaseHandler.getStringFor(keyPath: .whatsapp_login_abid, dbPath: .goCoreDatabase) ?? "12354"
         let urlWhats = "whatsapp://send?phone=\(phone)&abid=\(abid)&text="
         if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) {
             if let whatsappURL = URL(string: urlString) {
@@ -32,8 +31,6 @@ class WhatsAppManager {
     }
     
     func isWhatsAppLoginEnabled() -> Bool {
-        //<NITIN> remove below line
-        return true
         
         guard canOpenWhatsApp() else {
             return false
@@ -49,7 +46,7 @@ class WhatsAppManager {
     
     func getWhatsappUrl(referralCode:String?) -> URL? {
         
-        var phone = FireBaseHandler.getStringFor(keyPath: .whatsapp_login_phone, dbPath: .goCoreDatabase) ?? "+919213025552"
+        let phone = FireBaseHandler.getStringFor(keyPath: .whatsapp_login_phone, dbPath: .goCoreDatabase) ?? "+919213025552"
         var text = ""
         if referralCode == nil || referralCode!.count == 0{
             text = FireBaseHandler.getStringFor(keyPath: .whatsapp_login_text, dbPath: .goCoreDatabase) ?? "Sign me into Goibibo App"
