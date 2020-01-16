@@ -9,12 +9,7 @@
 /* Begin PBXBuildFile section */
 		6E050AB6239A86B70006E67A /* LoggedInUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E050AB5239A86B70006E67A /* LoggedInUserData.swift */; };
 		6E050AB8239A89C50006E67A /* OtpVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E050AB7239A89C50006E67A /* OtpVerificationViewController.swift */; };
-		6E0701DE2386BC5D008D79E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0701DD2386BC5D008D79E9 /* AppDelegate.swift */; };
-		6E0701E02386BC5D008D79E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0701DF2386BC5D008D79E9 /* ViewController.swift */; };
-		6E0701E32386BC5D008D79E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E0701E12386BC5D008D79E9 /* Main.storyboard */; };
-		6E0701E82386BC63008D79E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E0701E62386BC63008D79E9 /* LaunchScreen.storyboard */; };
 		6E0701F82386BC78008D79E9 /* AuthModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E0701F62386BC78008D79E9 /* AuthModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6E0701FC2386BC78008D79E9 /* AuthModule.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E0701F42386BC78008D79E9 /* AuthModule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6E0702022386BC95008D79E9 /* LoginWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0702012386BC95008D79E9 /* LoginWelcomeViewController.swift */; };
 		6E0702042386BCCE008D79E9 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0702032386BCCE008D79E9 /* AuthRouter.swift */; };
 		6E0702072386BD82008D79E9 /* View_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0702062386BD82008D79E9 /* View_Extensions.swift */; };
@@ -33,13 +28,7 @@
 		6E1C68B023C718C100AECA04 /* AuthNetworkUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1C68AF23C718C100AECA04 /* AuthNetworkUtils.swift */; };
 		6E1C68B223C718F000AECA04 /* FireBaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1C68B123C718F000AECA04 /* FireBaseHandler.swift */; };
 		6E1C68B423C7315900AECA04 /* Colors_Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1C68B323C7315900AECA04 /* Colors_Ext.swift */; };
-		6E1C68BF23C7409400AECA04 /* Quicksand-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E1C68BC23C7409300AECA04 /* Quicksand-Medium.ttf */; };
-		6E1C68C023C7409400AECA04 /* Quicksand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E1C68BD23C7409300AECA04 /* Quicksand-Regular.ttf */; };
-		6E1C68C123C7409400AECA04 /* Quicksand-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E1C68BE23C7409400AECA04 /* Quicksand-Bold.ttf */; };
 		6E1C68C423C7438200AECA04 /* UIFont_Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1C68C323C7438200AECA04 /* UIFont_Ext.swift */; };
-		6E1C68C723C74AEA00AECA04 /* SFUIText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E1C68C523C74AE900AECA04 /* SFUIText-Regular.ttf */; };
-		6E1C68C823C74AEA00AECA04 /* SFUIText-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E1C68C623C74AEA00AECA04 /* SFUIText-Medium.ttf */; };
-		6E1C68CA23C74C6800AECA04 /* SFUIText-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6E1C68C923C74C6800AECA04 /* SFUIText-Bold.otf */; };
 		6E1C68CC23C8C25800AECA04 /* ReferralCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1C68CB23C8C25800AECA04 /* ReferralCodeViewController.swift */; };
 		6E1C68CE23CC442B00AECA04 /* ReferralCodePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1C68CD23CC442B00AECA04 /* ReferralCodePresenter.swift */; };
 		6E1C68D023CC488F00AECA04 /* ReferralCodeProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1C68CF23CC488F00AECA04 /* ReferralCodeProtocols.swift */; };
@@ -64,9 +53,6 @@
 		6E4D5B4923B0955100491102 /* SignInWithPasswordProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4D5B4823B0955100491102 /* SignInWithPasswordProtocols.swift */; };
 		6E4D5B4B23B0E89E00491102 /* AuthDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4D5B4A23B0E89E00491102 /* AuthDataProvider.swift */; };
 		6E4D5B5D23B0FAFE00491102 /* GoFacebookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4D5B5C23B0FAFE00491102 /* GoFacebookManager.swift */; };
-		6E54C0C523C348A500D2133F /* NetworkLayerFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6EEA6AF9239105560030F442 /* NetworkLayerFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6E54C0C623C348AF00D2133F /* FBSDKCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B4F23B0F14000491102 /* FBSDKCoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6E54C0C723C348AF00D2133F /* FBSDKLoginKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B5023B0F14000491102 /* FBSDKLoginKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6E54C0C923C34C7900D2133F /* WhatsappHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E54C0C823C34C7900D2133F /* WhatsappHelper.swift */; };
 		6E54C0CC23C354F600D2133F /* RSA.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E54C0CA23C354F500D2133F /* RSA.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6E54C0CD23C354F600D2133F /* RSA.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E54C0CB23C354F500D2133F /* RSA.m */; };
@@ -83,14 +69,6 @@
 		6E6D5D7D23CC604900839094 /* ReferralCodeValidationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6D5D7C23CC604900839094 /* ReferralCodeValidationPresenter.swift */; };
 		6E6D5D7F23CC6EEE00839094 /* ReferralCodeValidationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6D5D7E23CC6EEE00839094 /* ReferralCodeValidationProtocols.swift */; };
 		6E6D5D8323CC8F7500839094 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E0701E42386BC63008D79E9 /* Assets.xcassets */; };
-		6E6D5D8623CD109800839094 /* SF-UI-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6E6D5D8423CD109800839094 /* SF-UI-Text-Regular.otf */; };
-		6E6D5D8723CD109800839094 /* SF-UI-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6E6D5D8523CD109800839094 /* SF-UI-Text-Semibold.otf */; };
-		6E6D5D8F23CD92A700839094 /* AuthModuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6D5D8E23CD92A700839094 /* AuthModuleTests.swift */; };
-		6E6D5D9A23CDCE2300839094 /* LoginWelcomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6D5D9923CDCE2300839094 /* LoginWelcomeTests.swift */; };
-		6E6D5D9C23CDCECE00839094 /* ReferralCodeValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6D5D9B23CDCECE00839094 /* ReferralCodeValidationTests.swift */; };
-		6E6D5D9E23CDCF0A00839094 /* BaseInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6D5D9D23CDCF0A00839094 /* BaseInteractorTests.swift */; };
-		6E6D5DA023CDEF0600839094 /* SignInWithPasswordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6D5D9F23CDEF0600839094 /* SignInWithPasswordTests.swift */; };
-		6E6D5DA223CDF26900839094 /* AuthUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6D5DA123CDF26900839094 /* AuthUtilsTests.swift */; };
 		6E6D5DA623CE02FE00839094 /* CocoaSecurity.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E6D5DA423CE02FE00839094 /* CocoaSecurity.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6E6D5DA723CE02FE00839094 /* CocoaSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6D5DA523CE02FE00839094 /* CocoaSecurity.m */; };
 		6E6D5DAB23CE031F00839094 /* Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E6D5DA923CE031F00839094 /* Base64.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -142,46 +120,11 @@
 		6EEA6B452391329B0030F442 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEA6B442391329B0030F442 /* UserDataManager.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		6E0701F92386BC78008D79E9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6E0701D22386BC5C008D79E9 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6E0701F32386BC78008D79E9;
-			remoteInfo = AuthModule;
-		};
-		6E6D5D9123CD92A700839094 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6E0701D22386BC5C008D79E9 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6E0701D92386BC5D008D79E9;
-			remoteInfo = AuthSampleApp;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		6E0702002386BC78008D79E9 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				6E54C0C623C348AF00D2133F /* FBSDKCoreKit.framework in Embed Frameworks */,
-				6E54C0C723C348AF00D2133F /* FBSDKLoginKit.framework in Embed Frameworks */,
-				6E54C0C523C348A500D2133F /* NetworkLayerFramework.framework in Embed Frameworks */,
-				6E0701FC2386BC78008D79E9 /* AuthModule.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		2E9C1403B28F3354740A8251 /* Pods-AuthSampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AuthSampleApp.release.xcconfig"; path = "Target Support Files/Pods-AuthSampleApp/Pods-AuthSampleApp.release.xcconfig"; sourceTree = "<group>"; };
 		63B1DFC2ADFF8457ABE3278A /* Pods-AuthModule.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AuthModule.release.xcconfig"; path = "Target Support Files/Pods-AuthModule/Pods-AuthModule.release.xcconfig"; sourceTree = "<group>"; };
 		6E050AB5239A86B70006E67A /* LoggedInUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInUserData.swift; sourceTree = "<group>"; };
 		6E050AB7239A89C50006E67A /* OtpVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpVerificationViewController.swift; sourceTree = "<group>"; };
-		6E0701DA2386BC5D008D79E9 /* AuthSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AuthSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E0701DD2386BC5D008D79E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6E0701DF2386BC5D008D79E9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6E0701E22386BC5D008D79E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -265,7 +208,6 @@
 		6E6D5D7E23CC6EEE00839094 /* ReferralCodeValidationProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferralCodeValidationProtocols.swift; sourceTree = "<group>"; };
 		6E6D5D8423CD109800839094 /* SF-UI-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Regular.otf"; sourceTree = "<group>"; };
 		6E6D5D8523CD109800839094 /* SF-UI-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Semibold.otf"; sourceTree = "<group>"; };
-		6E6D5D8C23CD92A600839094 /* AuthModuleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AuthModuleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E6D5D8E23CD92A700839094 /* AuthModuleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModuleTests.swift; sourceTree = "<group>"; };
 		6E6D5D9023CD92A700839094 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6E6D5D9923CDCE2300839094 /* LoginWelcomeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWelcomeTests.swift; sourceTree = "<group>"; };
@@ -327,13 +269,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		6E0701D72386BC5D008D79E9 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		6E0701F12386BC78008D79E9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -341,13 +276,6 @@
 				6E8616BF23B161760012FE33 /* NetworkLayerFramework.framework in Frameworks */,
 				6E8616BA23B161730012FE33 /* FBSDKCoreKit.framework in Frameworks */,
 				6E8616BD23B161740012FE33 /* FBSDKLoginKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6E6D5D8923CD92A600839094 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,9 +308,7 @@
 		6E0701DB2386BC5D008D79E9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6E0701DA2386BC5D008D79E9 /* AuthSampleApp.app */,
 				6E0701F42386BC78008D79E9 /* AuthModule.framework */,
-				6E6D5D8C23CD92A600839094 /* AuthModuleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -726,27 +652,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		6E0701D92386BC5D008D79E9 /* AuthSampleApp */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6E0701EC2386BC63008D79E9 /* Build configuration list for PBXNativeTarget "AuthSampleApp" */;
-			buildPhases = (
-				DC9E0A5940F82CC13EEE2950 /* [CP] Check Pods Manifest.lock */,
-				6E0701D62386BC5D008D79E9 /* Sources */,
-				6E0701D72386BC5D008D79E9 /* Frameworks */,
-				6E0701D82386BC5D008D79E9 /* Resources */,
-				6E0702002386BC78008D79E9 /* Embed Frameworks */,
-				7918DB7D00A0EB9F401DC9B3 /* [CP] Embed Pods Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6E0701FA2386BC78008D79E9 /* PBXTargetDependency */,
-			);
-			name = AuthSampleApp;
-			productName = AuthSampleApp;
-			productReference = 6E0701DA2386BC5D008D79E9 /* AuthSampleApp.app */;
-			productType = "com.apple.product-type.application";
-		};
 		6E0701F32386BC78008D79E9 /* AuthModule */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6E0701FD2386BC78008D79E9 /* Build configuration list for PBXNativeTarget "AuthModule" */;
@@ -767,24 +672,6 @@
 			productReference = 6E0701F42386BC78008D79E9 /* AuthModule.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		6E6D5D8B23CD92A600839094 /* AuthModuleTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6E6D5D9323CD92A700839094 /* Build configuration list for PBXNativeTarget "AuthModuleTests" */;
-			buildPhases = (
-				6E6D5D8823CD92A600839094 /* Sources */,
-				6E6D5D8923CD92A600839094 /* Frameworks */,
-				6E6D5D8A23CD92A600839094 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6E6D5D9223CD92A700839094 /* PBXTargetDependency */,
-			);
-			name = AuthModuleTests;
-			productName = AuthModuleTests;
-			productReference = 6E6D5D8C23CD92A600839094 /* AuthModuleTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -795,16 +682,9 @@
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Nitin Chadha";
 				TargetAttributes = {
-					6E0701D92386BC5D008D79E9 = {
-						CreatedOnToolsVersion = 10.2.1;
-					};
 					6E0701F32386BC78008D79E9 = {
 						CreatedOnToolsVersion = 10.2.1;
 						LastSwiftMigration = 1120;
-					};
-					6E6D5D8B23CD92A600839094 = {
-						CreatedOnToolsVersion = 11.2.1;
-						TestTargetID = 6E0701D92386BC5D008D79E9;
 					};
 				};
 			};
@@ -821,31 +701,12 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6E0701D92386BC5D008D79E9 /* AuthSampleApp */,
 				6E0701F32386BC78008D79E9 /* AuthModule */,
-				6E6D5D8B23CD92A600839094 /* AuthModuleTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		6E0701D82386BC5D008D79E9 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6E1C68CA23C74C6800AECA04 /* SFUIText-Bold.otf in Resources */,
-				6E0701E82386BC63008D79E9 /* LaunchScreen.storyboard in Resources */,
-				6E6D5D8623CD109800839094 /* SF-UI-Text-Regular.otf in Resources */,
-				6E1C68C823C74AEA00AECA04 /* SFUIText-Medium.ttf in Resources */,
-				6E6D5D8723CD109800839094 /* SF-UI-Text-Semibold.otf in Resources */,
-				6E1C68C123C7409400AECA04 /* Quicksand-Bold.ttf in Resources */,
-				6E1C68BF23C7409400AECA04 /* Quicksand-Medium.ttf in Resources */,
-				6E1C68C723C74AEA00AECA04 /* SFUIText-Regular.ttf in Resources */,
-				6E0701E32386BC5D008D79E9 /* Main.storyboard in Resources */,
-				6E1C68C023C7409400AECA04 /* Quicksand-Regular.ttf in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		6E0701F22386BC78008D79E9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -854,13 +715,6 @@
 				6E872FB623AB748800910302 /* MConnectPoweredByView.xib in Resources */,
 				6E6D5D8323CC8F7500839094 /* Assets.xcassets in Resources */,
 				6EE3207523C30B7D00E6B810 /* ProfileHeaderView.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6E6D5D8A23CD92A600839094 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -907,57 +761,9 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks\n\n";
 		};
-		7918DB7D00A0EB9F401DC9B3 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AuthSampleApp/Pods-AuthSampleApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AuthSampleApp/Pods-AuthSampleApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AuthSampleApp/Pods-AuthSampleApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DC9E0A5940F82CC13EEE2950 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AuthSampleApp-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		6E0701D62386BC5D008D79E9 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6E0701E02386BC5D008D79E9 /* ViewController.swift in Sources */,
-				6E0701DE2386BC5D008D79E9 /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		6E0701F02386BC78008D79E9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1063,33 +869,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6E6D5D8823CD92A600839094 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6E6D5DA023CDEF0600839094 /* SignInWithPasswordTests.swift in Sources */,
-				6E6D5D9C23CDCECE00839094 /* ReferralCodeValidationTests.swift in Sources */,
-				6E6D5D9E23CDCF0A00839094 /* BaseInteractorTests.swift in Sources */,
-				6E6D5D9A23CDCE2300839094 /* LoginWelcomeTests.swift in Sources */,
-				6E6D5D8F23CD92A700839094 /* AuthModuleTests.swift in Sources */,
-				6E6D5DA223CDF26900839094 /* AuthUtilsTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		6E0701FA2386BC78008D79E9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6E0701F32386BC78008D79E9 /* AuthModule */;
-			targetProxy = 6E0701F92386BC78008D79E9 /* PBXContainerItemProxy */;
-		};
-		6E6D5D9223CD92A700839094 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6E0701D92386BC5D008D79E9 /* AuthSampleApp */;
-			targetProxy = 6E6D5D9123CD92A700839094 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		6E0701E12386BC5D008D79E9 /* Main.storyboard */ = {
@@ -1229,46 +1009,6 @@
 			};
 			name = Release;
 		};
-		6E0701ED2386BC63008D79E9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B91CE9CDD26F913767EBC999 /* Pods-AuthSampleApp.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Q9B4DS4RM6;
-				INFOPLIST_FILE = AuthSampleApp/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.goibibo.Goibibo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Debug;
-		};
-		6E0701EE2386BC63008D79E9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2E9C1403B28F3354740A8251 /* Pods-AuthSampleApp.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Q9B4DS4RM6;
-				INFOPLIST_FILE = AuthSampleApp/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.goibibo.Goibibo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
 		6E0701FE2386BC78008D79E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FE4209F2F1770801B65CCACB /* Pods-AuthModule.debug.xcconfig */;
@@ -1344,48 +1084,6 @@
 			};
 			name = Release;
 		};
-		6E6D5D9423CD92A700839094 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Q9B4DS4RM6;
-				INFOPLIST_FILE = AuthModuleTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.goibibo.Goibibo.AuthModuleTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AuthSampleApp.app/AuthSampleApp";
-			};
-			name = Debug;
-		};
-		6E6D5D9523CD92A700839094 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Q9B4DS4RM6;
-				INFOPLIST_FILE = AuthModuleTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.goibibo.Goibibo.AuthModuleTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AuthSampleApp.app/AuthSampleApp";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1398,29 +1096,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6E0701EC2386BC63008D79E9 /* Build configuration list for PBXNativeTarget "AuthSampleApp" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6E0701ED2386BC63008D79E9 /* Debug */,
-				6E0701EE2386BC63008D79E9 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		6E0701FD2386BC78008D79E9 /* Build configuration list for PBXNativeTarget "AuthModule" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6E0701FE2386BC78008D79E9 /* Debug */,
 				6E0701FF2386BC78008D79E9 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6E6D5D9323CD92A700839094 /* Build configuration list for PBXNativeTarget "AuthModuleTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6E6D5D9423CD92A700839094 /* Debug */,
-				6E6D5D9523CD92A700839094 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
