@@ -31,10 +31,10 @@ class LoginSkipNowTableCell: UITableViewCell {
             .setColor(color: .customGray)
             .setFont(fontType: UIFont.fontsWith(fontType: .sfProRegular, size: 10.0))
         
-        let simpleText: NSString = Constants.kTnCText as NSString
+        let simpleText: NSString = String.kTnCText as NSString
         termsAndConditionLabel.text = simpleText as String
         let mutableString = NSMutableAttributedString(attributedString: termsAndConditionLabel.attributedText!)
-        mutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.customBlue, range: simpleText.range(of: Constants.kTnC))
+        mutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.customBlue, range: simpleText.range(of: .kTnC))
         termsAndConditionLabel.attributedText = mutableString
     }
     

@@ -52,7 +52,7 @@ class OnboardingWelcomeContentController: UIViewController {
         self.getStartedHeader.attributedText = NSAttributedString(string: dataSource.header)
         self.getStartedSubHeader.attributedText =  NSAttributedString(string: dataSource.subHeader)
         
-        self.nextButton.setTitle(dataSource.pageIndex == pagesCount - 1 ? Constants.kGetStarted : Constants.kNext, for: .normal)
+        self.nextButton.setTitle(dataSource.pageIndex == pagesCount - 1 ? .kGetStarted : .kNext, for: .normal)
         self.skipButton.isHidden = dataSource.pageIndex == pagesCount - 1
     }
     

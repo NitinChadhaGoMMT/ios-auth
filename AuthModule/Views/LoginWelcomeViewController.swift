@@ -166,7 +166,7 @@ extension LoginWelcomeViewController: LoginNewUserDetailsCellDelegate {
         self.presenter?.isFbSignup = false
         
         guard self.presenter?.isValidPhoneNumber(mobileNumber: mobileNumber) ?? false else {
-            AuthUtils.showAlert(on: self, message: Constants.kInvalidNumberMessage)
+            AuthUtils.showAlert(on: self, message: .kInvalidNumberMessage)
             return
         }
 

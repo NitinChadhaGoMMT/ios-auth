@@ -64,7 +64,7 @@ class SignUpPresenter: BasePresenter, SignUpViewToPresenterProtocol, SignUpInter
         guard let fullName = fullName, !fullName.isEmpty  else { return }
         
         view?.showActivityIndicator()
-        interactor?.requestToSignUp(fullName, mobileKey: mobileKey ?? Constants.kEmptyString, referalCode: referralCode ?? "", isWhatsAppFlow: isWhatsappLogin, extraKey: extraKeys)
+        interactor?.requestToSignUp(fullName, mobileKey: mobileKey ?? .kEmptyString, referalCode: referralCode ?? .kEmptyString, isWhatsAppFlow: isWhatsappLogin, extraKey: extraKeys)
     }
     
     func setReferralCode(code: String?) {
@@ -103,7 +103,7 @@ class SignUpPresenter: BasePresenter, SignUpViewToPresenterProtocol, SignUpInter
         view?.hideActivityIndicator()
         
         if let errorObject = error, errorObject.referalErrorMsg != nil {
-            AuthAlert.showIBSVAlert(withTitle:"", msg: errorObject.referalErrorMsg ?? "", confirmTitle: "Continue", cancelTitle: nil, onCancel: {
+            AuthAlert.showIBSVAlert(withTitle:"", msg: errorObject.referalErrorMsg ?? .kEmptyString, confirmTitle: "Continue", cancelTitle: nil, onCancel: {
             }, onConfirm: { [weak self] in
                 self?.referralCode = ""
                 self?.requestSignUp()

@@ -30,7 +30,7 @@ class WhatsappHelper {
         
         if UserDataManager.shared.isLoggedIn {
             
-            let phone = UserDataManager.shared.activeUser?.phone ?? Constants.kEmptyString
+            let phone = UserDataManager.shared.activeUser?.phone ?? .kEmptyString
             var message = FireBaseHandler.getStringFor(keyPath: .whatsappAlreadyLoginAlertMsg, dbPath: .goCoreDatabase) ?? "You are already logged in with <phone>. Do you want to logout?"
             let ctaText = FireBaseHandler.getStringFor(keyPath: .whatsappAlreadyLoginAlertCTA, dbPath: .goCoreDatabase) ?? "Logout"
             message = message.replacingOccurrences(of: "<phone>", with: phone)

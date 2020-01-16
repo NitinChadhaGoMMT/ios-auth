@@ -20,9 +20,9 @@ class OnboardingPresenter {
     }
     
     let dataSource = [
-        OnboardingDataModel(pageIndex: 0,header: Constants.kFirstHeader, subHeader: Constants.kFirstSubHeader, image: .onboardingPic1),
-        OnboardingDataModel(pageIndex: 1,header: Constants.kSecondHeader, subHeader: Constants.kSecondSubHeader, image: .onboardingPic2),
-        OnboardingDataModel(pageIndex: 2,header: Constants.kThreeHeader, subHeader: Constants.kThreeSubHeader, image: .onboardingPic3)
+        OnboardingDataModel(pageIndex: 0,header: .kFirstHeader, subHeader: .kFirstSubHeader, image: .onboardingPic1),
+        OnboardingDataModel(pageIndex: 1,header: .kSecondHeader, subHeader: .kSecondSubHeader, image: .onboardingPic2),
+        OnboardingDataModel(pageIndex: 2,header: .kThreeHeader, subHeader: .kThreeSubHeader, image: .onboardingPic3)
     ]
 }
 

@@ -47,7 +47,7 @@ struct AuthUtils {
     
     static func getAttributedString(for string: String?, attributes: [AnyHashable : Any]?, withDefaultString defaultString: String?) -> NSAttributedString {
         
-        guard let string = string, !string.isEmpty else { return NSAttributedString(string: Constants.kEmptyString) }
+        guard let string = string, !string.isEmpty else { return NSAttributedString(string: .kEmptyString) }
 
         var attribString = NSAttributedString(string: string, attributes: attributes as? [NSAttributedString.Key : Any])
         if string.hasPrefix("<") {
