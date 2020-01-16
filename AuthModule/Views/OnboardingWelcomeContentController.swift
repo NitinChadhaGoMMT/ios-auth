@@ -70,9 +70,7 @@ class OnboardingWelcomeContentController: UIViewController {
     
     fileprivate func invokeLogin() {
         AuthUtils.removeMobileKey()
-        if let vc = AuthRouter.shared.createModule() {
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
+        AuthRouter.invokeLoginFlow(onNavigationStack: self.navigationController)
     }
     
     func presentNextScreen(completion: @escaping (Int) -> Void) {

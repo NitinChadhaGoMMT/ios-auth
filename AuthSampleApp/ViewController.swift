@@ -15,17 +15,19 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if AuthDataProvider.isUserLoggedIn {
-            AuthRouter.shared.goToHomePage(vc: self)
-        } else if let loginController = AuthRouter.shared.initiateLoginModule() {
-            self.navigationController?.pushViewController(loginController, animated: true)
+            AuthRouter.goToHomePage(vc: self)
+        } else  {
+            AuthRouter.invokeLoginFlow(onNavigationStack: self.navigationController) { (isLoggedIn, error) in
+                print("From Main - User Logged In Successfully")
+            }
         }
     }
     
     @IBAction func navigateToAuth(_ sender: Any) {
         if AuthDataProvider.isUserLoggedIn {
-            AuthRouter.shared.goToHomePage(vc: self)
-        } else if let loginController = AuthRouter.shared.createModule() {
-            self.navigationController?.pushViewController(loginController, animated: true)
+            AuthRouter.goToHomePage(vc: self)
+        } else {
+            AuthRouter.invokeLoginFlow(onNavigationStack: self.navigationController)
         }
     }
 }

@@ -8,8 +8,6 @@
 
 import UIKit
 
-typealias LoginCompletionBlock = (Bool, NSError) -> ()
-
 class LoginWelcomeViewController: LoginBaseViewController, LoginWelcomePresenterToViewProtocol {
     
     @IBOutlet weak var topView: UIView!

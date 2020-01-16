@@ -27,7 +27,16 @@ struct URLBuilder {
         return kBaseServerURL + apiVersionV1 + "check_referral_eligibility/"
     }
  
+    static var termsAndConditionsURL: String {
+        return "https://www.goibibo.com/info/terms-and-conditions/"
+    }
     
+    static var privacyPolicyURL: String {
+        return "https://www.goibibo.com/info/privacy-policy"
+    }
+    static var userAgreementURL: String {
+        return "https://www.goibibo.com/info/user-agreement/"
+    }
 }
 
 class LoginConstants {

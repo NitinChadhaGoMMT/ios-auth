@@ -49,7 +49,7 @@ class WhatsappHelper {
     private func launchLoginWelcomeActivityIfNotLaunched(){
         if self.delegate == nil {
             //<NITIN>
-            AuthRouter.shared.createModule()
+            //AuthRouter.shared.createModule()
         }
     }
     

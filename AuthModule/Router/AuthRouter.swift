@@ -9,23 +9,65 @@
 import UIKit
 import FBSDKCoreKit
 
-public class AuthRouter {
+public typealias LoginCompletionBlock = ((Bool, Error?) -> Void)
 
-    public static let shared = AuthRouter()
+public class AuthRouter {
     
-    public var pushController: UIViewController?
+    static var shared = AuthRouter()
+
+    var pushController: UIViewController?
     
-    public var completionBlock: ((Bool, Error?) -> Void)?
+    var completionBlock: LoginCompletionBlock?
     
     var mainstoryboard: UIStoryboard {
-        return UIStoryboard(name:"Auth",bundle: AuthUtils.bundle)
+        return UIStoryboard(name:"Auth", bundle: AuthUtils.bundle)
     }
     
     private init() {
-        Settings.appID = "151974918280687"
+        Settings.appID = Keys.facebookAppId
     }
     
-    public func initiateLoginModule() -> UIViewController? {
+    public static func invokeLoginFlow(from viewController: UIViewController? = nil,
+                                onNavigationStack navigationController: UINavigationController?,
+                                completionBlock: LoginCompletionBlock? = nil) {
+        
+        shared = AuthRouter()
+        shared.completionBlock = completionBlock
+        shared.pushController = viewController
+        
+        guard  UserDataManager.shared.isLoggedIn == false else {
+            shared.finishLoginFlow(error: nil)
+            return
+        }
+        
+        if let loginWelcomeScreen = shared.navigateToLoginWelcomeController() {
+            navigationController?.pushViewController(loginWelcomeScreen, animated: true)
+        } else {
+            shared.finishLoginFlow(error: nil)
+        }
+    }
+    
+    public static func invokeLoginFlowFromBranch(from viewController: UIViewController? = nil,
+                                          onNavigationStack navigationController: UINavigationController?,
+                                          completionBlock: @escaping ((Bool, Error?) -> Void)) {
+        
+        shared = AuthRouter()
+        shared.pushController = viewController
+        shared.completionBlock = completionBlock
+        
+        guard  UserDataManager.shared.isLoggedIn == false else {
+            shared.finishLoginFlow(error: nil)
+            return
+        }
+        
+        if let loginWelcomeScreen = shared.navigateToReferralValidationController() {
+            navigationController?.pushViewController(loginWelcomeScreen, animated: true)
+        } else {
+            shared.finishLoginFlow(error: nil)
+        }
+    }
+    
+    func navigateToReferralValidationController() -> UIViewController? {
         
         if let dictionary = AuthDepedencyInjector.branchReferDictionary, let _ = dictionary.object(forKey: "refercode") as? String {
             guard let view: ReferralCodeValidationViewController = mainstoryboard.getViewController() else {
@@ -43,14 +85,15 @@ public class AuthRouter {
             return view
         } else {
             
-            guard let view: OnboardingWelcomeContainer = mainstoryboard.getViewController() else {
+            guard let view = navigateToLoginWelcomeController() else {
+            //guard let view: OnboardingWelcomeContainer = mainstoryboard.getViewController() else {
                 return nil
             }
             return view
         }
     }
     
-    public func createModule() -> UIViewController? {
+    func navigateToLoginWelcomeController() -> UIViewController? {
         
         guard let view: LoginWelcomeViewController = mainstoryboard.getViewController() else {
             return nil
@@ -78,7 +121,6 @@ public class AuthRouter {
         let interactor = ForgotPasswordInteractor()
         view.presenter = presenter
         presenter.view = view
-        presenter.router = self
         presenter.interactor = interactor
         interactor.presenter = presenter
         
@@ -102,8 +144,8 @@ public class AuthRouter {
         return view
     }
     
-    public func goToHomePage(vc: UIViewController) {
-        if let controller:TempViewController = AuthRouter.shared.mainstoryboard.getViewController() {
+    static public func goToHomePage(vc: UIViewController) {
+        if let controller:TempViewController = shared.mainstoryboard.getViewController() {
             vc.navigationController?.pushViewController(controller, animated: true)
         }
     }
@@ -120,8 +162,8 @@ public class AuthRouter {
         vc.navigationController?.popViewController(animated: true)
     }
     
-    func navigateBackToSourceController(isUserLoggedIn success:Bool, navigationController: UINavigationController?) {
-        guard let navigationController = navigationController else { return }
+    func navigateBackToSourceController() {
+        guard let navigationController = pushController?.navigationController else { return }
         
         if let pushController = pushController {
             navigationController.isNavigationBarHidden = false
@@ -130,16 +172,6 @@ public class AuthRouter {
             } else {
                 navigationController.popToRootViewController(animated: false)
             }
-            
-            if let completionBlock = completionBlock {
-                completionBlock(false, nil)
-            }
-        } else {
-            if let completionBlock = completionBlock {
-                completionBlock(false, nil)
-            }
-            
-            AuthDepedencyInjector.uiDelegate?.authLoginCompletion(isUserLoggedIn: false, error: nil)
         }
     }
     
@@ -161,7 +193,7 @@ public class AuthRouter {
             return
         }
         
-        if let controller:TempViewController = AuthRouter.shared.mainstoryboard.getViewController() {
+        if let controller:TempViewController = mainstoryboard.getViewController() {
             navigationController.pushViewController(controller, animated: true)
         }
         
@@ -192,6 +224,18 @@ public class AuthRouter {
         interactor.presenter = presenter
         
         return view
+    }
+    
+    func finishLoginFlow(error: Error?) {
+        
+        navigateBackToSourceController()
+        
+        if let completionBlock = completionBlock {
+            completionBlock(UserDataManager.shared.isLoggedIn, error)
+        }
+
+        self.completionBlock = nil
+        self.pushController = nil
     }
 }
 
@@ -252,8 +296,8 @@ extension AuthRouter: LoginWelcomePresenterToRouterProtocol {
     func navigateToTermsAndConditions() -> UIViewController? {
         
         if let view: WebViewController = mainstoryboard.getViewController() {
-            view.titleString = "Terms and Conditions"
-            view.urlString = "https://www.goibibo.com/info/terms-and-conditions/"
+            view.titleString = .kTnC
+            view.urlString = URLBuilder.termsAndConditionsURL
             return view
         }
 
@@ -263,8 +307,8 @@ extension AuthRouter: LoginWelcomePresenterToRouterProtocol {
     func navigateToPrivacyPolicy() -> UIViewController? {
         
         if let view: WebViewController = mainstoryboard.getViewController() {
-            view.titleString = "Privacy Policy"
-            view.urlString = "https://www.goibibo.com/info/privacy-policy"
+            view.titleString = .privacyPolicy
+            view.urlString = URLBuilder.privacyPolicyURL
             return view
         }
         return nil
@@ -273,8 +317,8 @@ extension AuthRouter: LoginWelcomePresenterToRouterProtocol {
     func navigateToUserAgreement() -> UIViewController? {
         
         if let view: WebViewController = mainstoryboard.getViewController() {
-            view.titleString = "User Agreement"
-            view.urlString = "https://www.goibibo.com/info/user-agreement/"
+            view.titleString = .userAgreement
+            view.urlString = URLBuilder.userAgreementURL
             return view
         }
         return nil

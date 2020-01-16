@@ -51,7 +51,7 @@ class ReferralCodeValidationPresenter: BasePresenter, ReferralCodeValidationView
     }
     
     @objc func pushLoginScreen() {
-        if let new_vc = AuthRouter.shared.createModule() {
+        if let new_vc = AuthRouter.shared.navigateToLoginWelcomeController() {
             view?.push(screen: new_vc)
         }
     }

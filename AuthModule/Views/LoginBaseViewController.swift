@@ -47,7 +47,7 @@ import UIKit
         OfflineReviewsFireBase.sharedInstance.signIn()
         RecentSearchManager.shared.performGuestUserToLoggedInUserRecentSearchMigration()*/
         //AuthAlert.show(message: "User LoggedIn Successfully")
-        AuthRouter.shared.goToHomePage(vc: self)
+        AuthRouter.goToHomePage(vc: self)
     }
     
     func signUpSuccessfully() {
@@ -57,7 +57,7 @@ import UIKit
     func userSuccessfullyLoggedInDirect() {
         
         self.logInSuccessfully()
-        AuthRouter.shared.navigateBackToSourceController(isUserLoggedIn: true, navigationController: self.navigationController)
+        AuthRouter.shared.finishLoginFlow(error: nil)
     }
     
     func logInSuccessfully(){

@@ -235,7 +235,7 @@ class MobileVerificationViewController: LoginBaseViewController, MobileVerificat
             SignInGAPManager.skipButtonTapped(with: .skipDialog , withOtherDetails: ["tap":"skip"])
             self.removeBranchReferralData()
             //<NITIN>Utils.resetSecureAccountCount()
-            AuthRouter.shared.navigateBackToSourceController(isUserLoggedIn: false, navigationController: self.navigationController)
+            AuthRouter.shared.finishLoginFlow(error: nil)
         }
         
     }

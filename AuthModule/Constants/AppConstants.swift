@@ -13,6 +13,11 @@ extension NSNotification {
 }
 
 extension String {
+    
+    
+    static let privacyPolicy = "Privacy Policy"
+    static let userAgreement = "User Agreement"
+    
     //ReferralCodeValidation
     static let kInvalidCodeMsg = "Invalid Code. Add this later on."
     static let kValidCodeMsg = "Referral Code applied!"
@@ -44,6 +49,7 @@ extension String {
 }
 
 struct Keys {
+    static let facebookAppId = "151974918280687"
     static let referCode = "refercode"
     
     //Network Keys
