@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6E0701D92386BC5D008D79E9"
-               BuildableName = "AuthSampleApp.app"
-               BlueprintName = "AuthSampleApp"
+               BlueprintIdentifier = "6E0701F32386BC78008D79E9"
+               BuildableName = "AuthModule.framework"
+               BlueprintName = "AuthModule"
                ReferencedContainer = "container:AuthModule.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,16 +28,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6E6D5D8B23CD92A600839094"
-               BuildableName = "AuthModuleTests.xctest"
-               BlueprintName = "AuthModuleTests"
-               ReferencedContainer = "container:AuthModule.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -50,16 +40,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6E0701D92386BC5D008D79E9"
-            BuildableName = "AuthSampleApp.app"
-            BlueprintName = "AuthSampleApp"
-            ReferencedContainer = "container:AuthModule.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -67,16 +47,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6E0701D92386BC5D008D79E9"
-            BuildableName = "AuthSampleApp.app"
-            BlueprintName = "AuthSampleApp"
+            BlueprintIdentifier = "6E0701F32386BC78008D79E9"
+            BuildableName = "AuthModule.framework"
+            BlueprintName = "AuthModule"
             ReferencedContainer = "container:AuthModule.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
