@@ -8,7 +8,6 @@
 
 import UIKit
 import AuthModule
-import SDWebImage
 
 class ViewController: UIViewController {
     @IBOutlet weak var navigateToAuthModule: UIButton!
@@ -43,11 +42,10 @@ class AuthModuleHelper: AuthModuleUIProtocol {
         guard let url = url else { return }
         
         imageView.image = placeholder
-        imageView.sd_setImage(with: url) { (image, error, type, url) in
-            imageView.image = image
-            if let completionBlock = completionBlock {
-                completionBlock()
-            }
+        DispatchQueue.global().async {
+            let data = try? Data(contentsOf: url)
+            imageView.image = UIImage(data: data!)
+            completionBlock?()
         }
     }
     
@@ -69,8 +67,10 @@ class AuthModuleHelper: AuthModuleUIProtocol {
         guard let url = url else { return }
         
         imageView.image = placeholder
-        imageView.sd_setImage(with: url) { (image, error, type, url) in
-            imageView.image = image
+        
+        DispatchQueue.global().async {
+            let data = try? Data(contentsOf: url)
+            imageView.image = UIImage(data: data!)
         }
     }
     

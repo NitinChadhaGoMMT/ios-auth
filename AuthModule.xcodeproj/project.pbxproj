@@ -177,8 +177,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2E9C1403B28F3354740A8251 /* Pods-AuthSampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AuthSampleApp.release.xcconfig"; path = "Target Support Files/Pods-AuthSampleApp/Pods-AuthSampleApp.release.xcconfig"; sourceTree = "<group>"; };
-		63B1DFC2ADFF8457ABE3278A /* Pods-AuthModule.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AuthModule.release.xcconfig"; path = "Target Support Files/Pods-AuthModule/Pods-AuthModule.release.xcconfig"; sourceTree = "<group>"; };
 		6E050AB5239A86B70006E67A /* LoggedInUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInUserData.swift; sourceTree = "<group>"; };
 		6E050AB7239A89C50006E67A /* OtpVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpVerificationViewController.swift; sourceTree = "<group>"; };
 		6E0701DA2386BC5D008D79E9 /* AuthSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AuthSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -320,10 +318,6 @@
 		6EEA6AF9239105560030F442 /* NetworkLayerFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkLayerFramework.framework; path = Carthage/Build/iOS/NetworkLayerFramework.framework; sourceTree = "<group>"; };
 		6EEA6B4223912D0B0030F442 /* AuthDepedencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDepedencyInjector.swift; sourceTree = "<group>"; };
 		6EEA6B442391329B0030F442 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
-		A572CD12B5FB82CFC0D03AB6 /* Pods_AuthModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AuthModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B91CE9CDD26F913767EBC999 /* Pods-AuthSampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AuthSampleApp.debug.xcconfig"; path = "Target Support Files/Pods-AuthSampleApp/Pods-AuthSampleApp.debug.xcconfig"; sourceTree = "<group>"; };
-		CA1166872461082100011025 /* Pods_AuthSampleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AuthSampleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FE4209F2F1770801B65CCACB /* Pods-AuthModule.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AuthModule.debug.xcconfig"; path = "Target Support Files/Pods-AuthModule/Pods-AuthModule.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -357,10 +351,6 @@
 		6B9944F8CCD1BEDF0F8B7769 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				FE4209F2F1770801B65CCACB /* Pods-AuthModule.debug.xcconfig */,
-				63B1DFC2ADFF8457ABE3278A /* Pods-AuthModule.release.xcconfig */,
-				B91CE9CDD26F913767EBC999 /* Pods-AuthSampleApp.debug.xcconfig */,
-				2E9C1403B28F3354740A8251 /* Pods-AuthSampleApp.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -701,8 +691,6 @@
 				6E4D5B4D23B0F14000491102 /* FBSDKPlacesKit.framework */,
 				6E4D5B4E23B0F14000491102 /* FBSDKShareKit.framework */,
 				6EEA6AF9239105560030F442 /* NetworkLayerFramework.framework */,
-				A572CD12B5FB82CFC0D03AB6 /* Pods_AuthModule.framework */,
-				CA1166872461082100011025 /* Pods_AuthSampleApp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -730,12 +718,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6E0701EC2386BC63008D79E9 /* Build configuration list for PBXNativeTarget "AuthSampleApp" */;
 			buildPhases = (
-				DC9E0A5940F82CC13EEE2950 /* [CP] Check Pods Manifest.lock */,
 				6E0701D62386BC5D008D79E9 /* Sources */,
 				6E0701D72386BC5D008D79E9 /* Frameworks */,
 				6E0701D82386BC5D008D79E9 /* Resources */,
 				6E0702002386BC78008D79E9 /* Embed Frameworks */,
-				7918DB7D00A0EB9F401DC9B3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -751,7 +737,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6E0701FD2386BC78008D79E9 /* Build configuration list for PBXNativeTarget "AuthModule" */;
 			buildPhases = (
-				49B9DDCE9EBBA5C774EB6CB1 /* [CP] Check Pods Manifest.lock */,
 				6E0701EF2386BC78008D79E9 /* Headers */,
 				6E0701F02386BC78008D79E9 /* Sources */,
 				6E0701F12386BC78008D79E9 /* Frameworks */,
@@ -867,28 +852,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		49B9DDCE9EBBA5C774EB6CB1 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AuthModule-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		6EEA6AFD239105610030F442 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -906,45 +869,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks\n\n";
-		};
-		7918DB7D00A0EB9F401DC9B3 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AuthSampleApp/Pods-AuthSampleApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AuthSampleApp/Pods-AuthSampleApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AuthSampleApp/Pods-AuthSampleApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DC9E0A5940F82CC13EEE2950 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AuthSampleApp-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1231,7 +1155,6 @@
 		};
 		6E0701ED2386BC63008D79E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B91CE9CDD26F913767EBC999 /* Pods-AuthSampleApp.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1251,7 +1174,6 @@
 		};
 		6E0701EE2386BC63008D79E9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2E9C1403B28F3354740A8251 /* Pods-AuthSampleApp.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1271,7 +1193,6 @@
 		};
 		6E0701FE2386BC78008D79E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FE4209F2F1770801B65CCACB /* Pods-AuthModule.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
@@ -1309,7 +1230,6 @@
 		};
 		6E0701FF2386BC78008D79E9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 63B1DFC2ADFF8457ABE3278A /* Pods-AuthModule.release.xcconfig */;
 			buildSettings = {
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
