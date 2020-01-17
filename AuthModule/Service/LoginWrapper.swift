@@ -127,7 +127,7 @@ class LoginWrapper {
         return dictionary
     }
     
-    @objc class func goServiceUserInfoLogin(_ sender: UIViewController?, pop: Bool, finishedVC: UIViewController?, onError: @escaping (Any?) -> Void, onFinished: @escaping (Any?) -> Void) {
+    class func goServiceUserInfoLogin(_ sender: UIViewController?, pop: Bool, finishedVC: UIViewController?, onError: @escaping (Any?) -> Void, onFinished: @escaping (Any?) -> Void) {
         
         let getDic = LoginWrapper.oAuthDictionaryForced()
         let urlPath = LoginConstants.userInfoUrl()
