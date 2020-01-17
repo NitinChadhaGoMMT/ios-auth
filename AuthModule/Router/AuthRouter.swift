@@ -267,6 +267,10 @@ public class AuthRouter {
         self.completionBlock = nil
         self.pushController = nil
     }
+    
+    public func logoutUser(completionBlock: LoginCompletionBlock?) {
+        UserDataManager.shared.logout(type: .user, completionBlock: completionBlock)
+    }
 }
 
 extension AuthRouter: LoginWelcomePresenterToRouterProtocol {

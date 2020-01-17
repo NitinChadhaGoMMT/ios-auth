@@ -18,12 +18,12 @@ public class AuthDataProvider {
         return UserDataManager.shared.activeUser?.phone
     }
     
-    public static var hasPassword: Bool {
-        return UserDataManager.shared.activeUser?.hasPassword?.boolValue ?? false
+    public static var hasPassword: Bool? {
+        return UserDataManager.shared.activeUser?.hasPassword?.boolValue
     }
     
-    public static var isVerified: Bool {
-        return UserDataManager.shared.activeUser?.isVerified?.boolValue ?? false
+    public static var isVerified: Bool? {
+        return UserDataManager.shared.activeUser?.isVerified?.boolValue
     }
     
     public static var email: String? {
@@ -66,8 +66,8 @@ public class AuthDataProvider {
         return UserDataManager.shared.isLoggedIn
     }
     
-    public static var previouslySynced: Bool {
-        return UserDataManager.shared.activeUser?.previouslySynced?.boolValue ?? false
+    public static var previouslySynced: Bool? {
+        return UserDataManager.shared.activeUser?.previouslySynced?.boolValue
     }
     
     public static var accessToken: String? {
@@ -92,6 +92,22 @@ public class AuthDataProvider {
     
     public static var companyPhone: String? {
         return UserDataManager.shared.activeUser?.companyPhone
+    }
+    
+    public static var isFacebookLinked: Bool {
+        return UserDataManager.shared.activeUser?.fbLinked?.boolValue ?? false
+    }
+    
+    public static var mobile: String? {
+        return UserDataManager.shared.activeUser?.mobile
+    }
+    
+    public static var username: String? {
+        return UserDataManager.shared.activeUser?.username
+    }
+    
+    public static var firebaseToken: String? {
+        return AuthCache.shared.getUserDefaltObject(forKey: "firebase_token") as? String
     }
     
     public static var isAccessTokenExpired: Bool {

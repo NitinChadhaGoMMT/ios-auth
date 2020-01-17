@@ -175,7 +175,7 @@ class UserDataManager {
         }
     }
     
-    func logout(type: LogoutType) {
+    func logout(type: LogoutType, completionBlock: LoginCompletionBlock? = nil) {
         print("Logout User")
         KeychainLoginHandler.shared.deleteUser()
         AuthCache.shared.setUserDefaltBool(false, forKey: "is_user_enrolled_for_act_deals")
@@ -194,8 +194,17 @@ class UserDataManager {
         AuthCache.shared.setUserDefaltObject(nil, forKey: "username")
         AuthCache.shared.removeDefaultObject(forKey: "NotificationsArray")
         AuthCache.shared.setUserDefaltObject(nil, forKey: "LoggedInUserId")
+        AuthCache.shared.setUserDefaltObject(nil, forKey: "access_token")
+        AuthCache.shared.setUserDefaltObject(nil, forKey: "refresh_token")
+        AuthCache.shared.setUserDefaltObject(nil, forKey: "firebase_token")
+        AuthCache.shared.setUserDefaltObject(nil, forKey: "ipl_firebase_token")
+        
         DBHelper.shared.saveContext()
         
+        if let completionBlock = completionBlock {
+            completionBlock(true, nil)
+        }
+
     }
     
     func updateUserTraits() {
