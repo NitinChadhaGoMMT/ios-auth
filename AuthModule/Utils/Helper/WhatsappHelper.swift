@@ -62,7 +62,8 @@ class WhatsappHelper {
         AuthService.requestToLoginWithWhatsApp(token, referralCode: referralCode, extraKey: extraKeys, success: { [weak self](data) in
             if let otpverifiedData = data as? OtpVerifiedData {
                 if self?.delegate == nil {
-                    AuthDepedencyInjector.uiDelegate?.authLoginCompletion(isUserLoggedIn: true, error: nil)
+                   //<NITIN>
+                    //AuthDepedencyInjector.uiDelegate?.authLoginCompletion(isUserLoggedIn: true, error: nil)
                 } else{
                     self?.delegate?.loginSuccessful(verifiedData: otpverifiedData, extraKeys:extraKeys)
                 }
