@@ -8,21 +8,21 @@
 
 import UIKit
 
-@objc public protocol FirebaseHandlerProtocol {
+public protocol FirebaseHandlerProtocol {
     
-    @objc static func getStringFor(keyPath: FirebaseConfigKey, dbPath:FirebaseDatabaseKey) -> String
+    static func getStringFor(keyPath: FirebaseConfigKey, dbPath:FirebaseDatabaseKey) -> String
     
-    @objc static func getIntFor(keyPath: FirebaseConfigKey, dbPath:FirebaseDatabaseKey) -> Int
+    static func getIntFor(keyPath: FirebaseConfigKey, dbPath:FirebaseDatabaseKey) -> Int
     
-    @objc static func getDoubleFor(keyPath: FirebaseConfigKey, dbPath:FirebaseDatabaseKey) -> Double
+    static func getDoubleFor(keyPath: FirebaseConfigKey, dbPath:FirebaseDatabaseKey) -> Double
     
-    @objc static func getBoolFor(keyPath: FirebaseConfigKey, dbPath:FirebaseDatabaseKey) -> Bool
+    static func getBoolFor(keyPath: FirebaseConfigKey, dbPath:FirebaseDatabaseKey) -> Bool
     
-    @objc static func getDictionaryFor(keyPath: FirebaseConfigKey, dbPath:FirebaseDatabaseKey) -> Dictionary<String, Any>
+    static func getDictionaryFor(keyPath: FirebaseConfigKey, dbPath:FirebaseDatabaseKey) -> Dictionary<String, Any>
     
-    @objc static func getArrayFor(keyPath: FirebaseConfigKey, dbPath:FirebaseDatabaseKey) -> Array<Any>
+    static func getArrayFor(keyPath: FirebaseConfigKey, dbPath:FirebaseDatabaseKey) -> Array<Any>
     
-    @objc static func addObserverForString(with completionHandler: @escaping(Dictionary<String, Any>?) -> Void)
+    static func addObserverForString(with completionHandler: @escaping(Dictionary<String, Any>?) -> Void)
 }
 
 public extension FirebaseHandlerProtocol {
@@ -52,9 +52,9 @@ public extension FirebaseHandlerProtocol {
     }
 }
 
-@objc public protocol FirebaseRemoteHelperProtocol {
+public protocol FirebaseRemoteHelperProtocol {
     
-    @objc static func getRFStringValue(forkey key:String) -> String
+    static func getRFStringValue(forkey key:String) -> String
     
     static func getRemoteFunctionBoolValueWithForkey(forKey key:String) -> Bool
 }
