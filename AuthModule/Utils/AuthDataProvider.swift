@@ -34,6 +34,34 @@ public class AuthDataProvider {
         return UserDataManager.shared.activeUser?.firstname
     }
     
+    public static var title: String? {
+        return UserDataManager.shared.activeUser?.title
+    }
+    
+    public static var referralCode: String? {
+        return UserDataManager.shared.activeUser?.referralCode
+    }
+    
+    public static var branchLink: String? {
+        return UserDataManager.shared.activeUser?.branchlink
+    }
+    
+    public static var rewardsData: Data? {
+        return UserDataManager.shared.activeUser?.rewardsData
+    }
+    
+    public static var imageURL: String? {
+        return UserDataManager.shared.activeUser?.imageURL
+    }
+    
+    public static var middleName: String? {
+        return UserDataManager.shared.activeUser?.middlename
+    }
+    
+    public static var lastName: String? {
+        return UserDataManager.shared.activeUser?.lastname
+    }
+    
     public static var isUserLoggedIn: Bool {
         return UserDataManager.shared.isLoggedIn
     }
@@ -44,6 +72,55 @@ public class AuthDataProvider {
     
     public static var accessToken: String? {
         return AuthCache.shared.getUserDefaltObject(forKey: "access_token") as? String
+    }
+    
+    public static var emailAdmin: String? {
+        return UserDataManager.shared.activeUser?.emailAdmin
+    }
+    
+    public static var emailBusiness: String? {
+        return UserDataManager.shared.activeUser?.emailBusiness
+    }
+    
+    public static var gstin: String? {
+        return UserDataManager.shared.activeUser?.gstin
+    }
+    
+    public static var companyAddress: String? {
+        return UserDataManager.shared.activeUser?.companyAddress
+    }
+    
+    public static var companyPhone: String? {
+        return UserDataManager.shared.activeUser?.companyPhone
+    }
+    
+    public static var isAccessTokenExpired: Bool {
+        if let tokenDate = AuthCache.shared.getUserDefaltObject(forKey: "token_expiry") as? NSDate {
+            let currentDate = Date()
+            if tokenDate.compare(currentDate) == .orderedAscending {
+                return true
+            }
+        }
+        return false
+    }
+    
+    public static var dob: String? {
+        return UserDataManager.shared.activeUser?.dob
+    }
+    
+    public static var getTierDict: NSDictionary? {
+        if let rewardsData = UserDataManager.shared.activeUser?.rewardsData {
+            if let dictionary = NSKeyedUnarchiver.unarchiveObject(with: rewardsData) as? NSDictionary {
+                return dictionary
+            }
+        }
+        return nil
+    }
+    
+    @discardableResult public static func refreshUserInfoIfTokenExpired() -> Bool {
+        let wasTokenExpired = isAccessTokenExpired
+        AuthService.requestLoginWithRefreshAccessToken(successBlock: nil, errorBlock: nil)
+        return wasTokenExpired
     }
     
     public static func logoutUser() {
