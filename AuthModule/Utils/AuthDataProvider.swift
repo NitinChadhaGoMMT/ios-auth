@@ -14,6 +14,10 @@ public class AuthDataProvider {
         return UserDataManager.shared.activeUser?.userid
     }
     
+    public static var phone: String? {
+        return UserDataManager.shared.activeUser?.phone
+    }
+    
     public static var hasPassword: Bool {
         return UserDataManager.shared.activeUser?.hasPassword?.boolValue ?? false
     }
@@ -32,6 +36,10 @@ public class AuthDataProvider {
     
     public static var isUserLoggedIn: Bool {
         return UserDataManager.shared.isLoggedIn
+    }
+    
+    public static var previouslySynced: Bool {
+        return UserDataManager.shared.activeUser?.previouslySynced?.boolValue ?? false
     }
     
     public static var accessToken: String? {
