@@ -136,7 +136,7 @@ class MobileVerificationViewController: LoginBaseViewController, MobileVerificat
                 self.presenter?.isverifyMethodOtp = true
                 if  otpVerifiedData.userStatusType == .loggedIn || otpVerifiedData.userStatusType == .verified{
                     SignInGAPManager.signinOrSignUpEvent(withEventType: .signIn, withMethod: .phone, withVerifyType: .mconnect, withOtherDetails: nil)
-                    self.userSuccessfullyLoggedIn()
+                    self.userSuccessfullyLoggedIn(verificationData: presenter?.userVerificationData)
                 }
                 else{
                     self.performSegue(withIdentifier: "mobileToUserSignup", sender:nil)

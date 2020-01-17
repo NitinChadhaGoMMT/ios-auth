@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol SignInWithPasswordViewToPresenterProtocol: class {
+protocol SignInWithPasswordViewToPresenterProtocol: PresenterBaseProtocol {
     
     var dataSource: [SignInCellType]! { get }
     

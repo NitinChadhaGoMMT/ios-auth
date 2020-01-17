@@ -110,7 +110,7 @@ extension SignInWithPasswordViewController: UITableViewDataSource {
     }
     
     func userLoggedInRequestSucceeded(data: OtpVerifiedData?) {
-        userSuccessfullyLoggedIn()
+        userSuccessfullyLoggedIn(verificationData: presenter?.userVerificationData)
     }
     
     func requestOtpFailed(error: ErrorData?) {

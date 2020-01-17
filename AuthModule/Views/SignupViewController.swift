@@ -43,7 +43,7 @@ class SignupViewController: LoginBaseViewController, SignUpPresenterToViewProtoc
         if AuthUtils.isEmptyString(presenter?.referralCode) {
             self.referralStatus.text = FireBaseHandler.getStringFor(keyPath: .referralHeader, dbPath: .goAuthDatabase) ?? "Use a Referral Code and earn Rs. 200 goCash+"
             self.successReferralImg.isHidden = true
-            self.referralButton.setTitle(Constants.kClickHere, for: .normal)
+            self.referralButton.setTitle(.kClickHere, for: .normal)
             self.referralButton.isUserInteractionEnabled = true
         } else {
             self.referralStatus.text =  FireBaseHandler.getStringFor(keyPath: .referralSuccessHeader, dbPath: .goAuthDatabase) ?? "Referral Code applied! You earned Rs.200 goCash+"

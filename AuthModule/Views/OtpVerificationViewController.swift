@@ -242,7 +242,7 @@ extension OtpVerificationViewController: WhatsappHelperDelegate {
         else{
             SignInGAPManager.signinOrSignUpEvent(withEventType: .signIn, withMethod: .whatsApp, withVerifyType: .whatsapp, withOtherDetails: nil)
             SignInGAPManager.logGenericEventWithoutScreen(for: "loginSuccessNew", otherParams:["medium":"whatsapp","verificationChannel":"whatsapp"])
-            userSuccessfullyLoggedIn()
+            userSuccessfullyLoggedIn(verificationData: presenter?.userVerificationData)
         }
     }
     

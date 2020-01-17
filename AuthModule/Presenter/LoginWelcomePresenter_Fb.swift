@@ -104,7 +104,7 @@ extension LoginWelcomePresenter {
                     else{
                         SignInGAPManager.signinOrSignUpEvent(withEventType: .signIn, withMethod: .facebook, withVerifyType: .facebook, withOtherDetails: nil)
                         SignInGAPManager.logGenericEventWithoutScreen(for: "loginSuccessNew", otherParams:["medium":"facebook","verificationChannel":"facebook"])
-                        self?.view?.userSuccessfullyLoggedIn()
+                        self?.view?.userSuccessfullyLoggedIn(verificationData: self?.userVerificationData)
                     }
                 }
                 else{

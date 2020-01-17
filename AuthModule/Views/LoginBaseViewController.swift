@@ -39,15 +39,14 @@ import UIKit
         }
     }
     
-    func userSuccessfullyLoggedIn(){
+    func userSuccessfullyLoggedIn(verificationData: OtpVerifiedData?) {
         UserDataManager.shared.didUserLoginInCurrentSession = true
         /*<NITIN>
         FireBaseHandler.sharedInstance.getUsersLocalNotificationData()
         UserDataManager.updateLoggedInUserGoCash()
         OfflineReviewsFireBase.sharedInstance.signIn()
         RecentSearchManager.shared.performGuestUserToLoggedInUserRecentSearchMigration()*/
-        //AuthAlert.show(message: "User LoggedIn Successfully")
-        AuthRouter.goToHomePage(vc: self)
+        AuthRouter.shared.loginSuccessNavigationHandling(navigationController: self.navigationController, isExistingUser: verificationData?.isExistingUser ?? true)
     }
     
     func signUpSuccessfully() {

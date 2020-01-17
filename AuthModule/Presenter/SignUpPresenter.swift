@@ -77,7 +77,7 @@ class SignUpPresenter: BasePresenter, SignUpViewToPresenterProtocol, SignUpInter
         view?.hideActivityIndicator()
         
         guard let otpVerifiedData = otpVerifiedData else {
-            view?.userSuccessfullyLoggedIn()
+            view?.userSuccessfullyLoggedIn(verificationData: userVerificationData)
             return
         }
         

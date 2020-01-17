@@ -81,7 +81,7 @@ class OTPVerificationPresenter: BasePresenter, OTPVerificationViewToPresenterPro
                     SignInGAPManager.logGenericEventWithoutScreen(for: "loginSuccessNew", otherParams: ["medium":"mobile","verificationChannel":"otp"])
                 }
             }
-            view?.userSuccessfullyLoggedIn()
+            view?.userSuccessfullyLoggedIn(verificationData: userVerificationData)
         } else {
             navigateToSignUpScreen(extraKeys: nil)
         }

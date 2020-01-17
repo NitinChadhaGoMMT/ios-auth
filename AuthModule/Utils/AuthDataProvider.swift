@@ -14,6 +14,10 @@ public class AuthDataProvider {
         return UserDataManager.shared.activeUser?.userid
     }
     
+    public static var hasPassword: Bool {
+        return UserDataManager.shared.activeUser?.hasPassword?.boolValue ?? false
+    }
+    
     public static var isVerified: Bool {
         return UserDataManager.shared.activeUser?.isVerified?.boolValue ?? false
     }

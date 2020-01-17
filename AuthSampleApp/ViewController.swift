@@ -17,7 +17,7 @@ class ViewController: UIViewController {
         if AuthDataProvider.isUserLoggedIn {
             AuthRouter.goToHomePage(vc: self)
         } else  {
-            AuthRouter.invokeLoginFlow(onNavigationStack: self.navigationController) { (isLoggedIn, error) in
+            AuthRouter.shared.invokeLoginFlow(onNavigationStack: self.navigationController) { (isLoggedIn, error) in
                 print("From Main - User Logged In Successfully")
             }
         }
@@ -27,13 +27,16 @@ class ViewController: UIViewController {
         if AuthDataProvider.isUserLoggedIn {
             AuthRouter.goToHomePage(vc: self)
         } else {
-            AuthRouter.invokeLoginFlow(onNavigationStack: self.navigationController)
+            AuthRouter.shared.invokeLoginFlow(onNavigationStack: self.navigationController)
         }
     }
 }
 
 class AuthModuleHelper: AuthModuleUIProtocol {
     
+    func navigateToEarn() {
+        
+    }
     
     func showToastMessage(on view: UIViewController, message: String, duration: CGFloat, position: String) {
         print("MESSAGE : \(message)")
@@ -108,6 +111,9 @@ class AuthModuleHelper: AuthModuleUIProtocol {
         }
     }
     
+    func navigateToUserConfirmationScreen(on navigationController: UINavigationController?, isExistingUser: Bool, successBlock: LoginCompletionBlock?) {
+        
+    }
 }
 
 

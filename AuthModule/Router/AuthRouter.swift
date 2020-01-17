@@ -13,7 +13,7 @@ public typealias LoginCompletionBlock = ((Bool, Error?) -> Void)
 
 public class AuthRouter {
     
-    static var shared = AuthRouter()
+    public static var shared = AuthRouter()
 
     var pushController: UIViewController?
     
@@ -27,43 +27,41 @@ public class AuthRouter {
         Settings.appID = Keys.facebookAppId
     }
     
-    public static func invokeLoginFlow(from viewController: UIViewController? = nil,
+    public func invokeLoginFlow(from viewController: UIViewController? = nil,
                                 onNavigationStack navigationController: UINavigationController?,
                                 completionBlock: LoginCompletionBlock? = nil) {
         
-        shared = AuthRouter()
-        shared.completionBlock = completionBlock
-        shared.pushController = viewController
+        self.completionBlock = completionBlock
+        self.pushController = viewController
         
         guard  UserDataManager.shared.isLoggedIn == false else {
-            shared.finishLoginFlow(error: nil)
+            finishLoginFlow(error: nil)
             return
         }
         
-        if let loginWelcomeScreen = shared.navigateToLoginWelcomeController() {
+        if let loginWelcomeScreen = navigateToLoginWelcomeController() {
             navigationController?.pushViewController(loginWelcomeScreen, animated: true)
         } else {
-            shared.finishLoginFlow(error: nil)
+            finishLoginFlow(error: nil)
         }
     }
     
-    public static func invokeLoginFlowFromBranch(from viewController: UIViewController? = nil,
+    public func invokeLoginFlowFromBranch(from viewController: UIViewController? = nil,
                                           onNavigationStack navigationController: UINavigationController?,
                                           completionBlock: @escaping ((Bool, Error?) -> Void)) {
         
-        shared = AuthRouter()
-        shared.pushController = viewController
-        shared.completionBlock = completionBlock
+        self.pushController = viewController
+        self.completionBlock = completionBlock
         
         guard  UserDataManager.shared.isLoggedIn == false else {
-            shared.finishLoginFlow(error: nil)
+            finishLoginFlow(error: nil)
             return
         }
         
-        if let loginWelcomeScreen = shared.navigateToReferralValidationController() {
+        if let loginWelcomeScreen = navigateToReferralValidationController() {
             navigationController?.pushViewController(loginWelcomeScreen, animated: true)
         } else {
-            shared.finishLoginFlow(error: nil)
+            finishLoginFlow(error: nil)
         }
     }
     
@@ -149,6 +147,10 @@ public class AuthRouter {
             vc.navigationController?.pushViewController(controller, animated: true)
         }
     }
+    
+    func navigateToUserConfirmationController(navigationController: UINavigationController?, isExistingUser:Bool) {
+        AuthDepedencyInjector.uiDelegate?.navigateToUserConfirmationScreen(on: navigationController, isExistingUser: isExistingUser, successBlock: self.completionBlock)
+    }
 
     func presentKeychainLoginViewController() -> UIViewController? {
         guard let view: KeyChainLoginViewController = mainstoryboard.getViewController() else {
@@ -198,9 +200,37 @@ public class AuthRouter {
         }
         
         if let isSyncScreenEnable = FireBaseHandler.getBoolFor(keyPath: .onboardingSyncScreenShown, dbPath: .goCoreDatabase), isSyncScreenEnable == true {
-            openConfirmationVC()
+            
         } else {
             //<NITIN>AppRouter.navigateToEarn(goDataModel: nil, animated: false, completionBlock: nil)
+        }
+    }
+    
+    func loginSuccessNavigationHandling(navigationController: UINavigationController?, isExistingUser: Bool) {
+        if let pushController = self.pushController {
+            if let navigationController = navigationController, navigationController.viewControllers.contains(pushController) {
+                navigationController.popToViewController(pushController, animated: false)
+            } else {
+                navigationController?.popToRootViewController(animated: false)
+            }
+            
+            if let completionBlock = completionBlock {
+                completionBlock(true, nil)
+            }
+        } else {
+            
+            AuthDepedencyInjector.uiDelegate?.removeBranchReferCode()
+            
+            if let completionBlock = completionBlock {
+                completionBlock(true, nil)
+            }
+            
+            let isSynchScreenEnable = FireBaseHandler.getBoolFor(keyPath: .onboardingSyncScreenShown, dbPath: .goCoreDatabase) ?? true
+            if isSynchScreenEnable {
+                navigateToUserConfirmationController(navigationController: navigationController, isExistingUser: isExistingUser)
+            } else {
+                AuthDepedencyInjector.uiDelegate?.navigateToEarn()
+            }
         }
     }
     

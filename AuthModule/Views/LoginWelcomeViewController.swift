@@ -67,7 +67,7 @@ class LoginWelcomeViewController: LoginBaseViewController, LoginWelcomePresenter
                 if otpVerifiedData.userStatusType == .loggedIn || otpVerifiedData.userStatusType == .verified {
                     SignInGAPManager.signinOrSignUpEvent(withEventType: .signIn, withMethod: .phone, withVerifyType: .mconnect, withOtherDetails: nil)
                     SignInGAPManager.logGenericEventWithoutScreen(for: "loginSuccessNew", otherParams:["medium":"mobile","verificationChannel":"mconnect"])
-                    self.userSuccessfullyLoggedIn()
+                    self.userSuccessfullyLoggedIn(verificationData: presenter?.userVerificationData)
                 } else {
                     presenter?.navigateToSignUpScreen()
                 }
@@ -152,7 +152,7 @@ extension LoginWelcomeViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     @objc func updateAfterKeychainSuccess(){
-        self.userSuccessfullyLoggedIn()
+        self.userSuccessfullyLoggedIn(verificationData: presenter?.userVerificationData)
         self.presenter?.logGAClickEvent("keychain_popup")
     }
 }
@@ -216,7 +216,7 @@ extension LoginWelcomeViewController: WhatsappHelperDelegate {
         else{
             SignInGAPManager.signinOrSignUpEvent(withEventType: .signIn, withMethod: .whatsApp, withVerifyType: .whatsapp, withOtherDetails: nil)
             SignInGAPManager.logGenericEventWithoutScreen(for: "loginSuccessNew", otherParams:["medium":"whatsapp","verificationChannel":"whatsapp"])
-            userSuccessfullyLoggedIn()
+            userSuccessfullyLoggedIn(verificationData: presenter?.userVerificationData)
         }
     }
     
