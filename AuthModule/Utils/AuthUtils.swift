@@ -122,6 +122,20 @@ struct AuthUtils {
         AuthCache.shared.setUserDefaltBool(true, forKey: "PermissionForContact")
     }
     
+    static func isBusinessProfileSelected() -> Bool {
+        return AuthCache.shared.getUserDefaltBool(forKey: "isBusinessProfile") ?? false
+        /*<NITIN>
+        + (BOOL)isBusinessProfileSelected  {
+            if ([[SharedCache sharedInstance] getUserDefaltObjectForKey:@"isBusinessProfile"] == nil) {
+                return false;
+            }
+            return [[SharedCache sharedInstance] getUserDefaltBoolForKey:@"isBusinessProfile"];
+        }
+        guard let value = AuthCache.shared.getUserDefaltObject(forKey: "isBusinessProfile") else {
+            return AuthCache.shared.getUserDefaltBool(forKey: "isBusinessProfile") ?? false
+        }*/
+    }
+    
     static func setPrivacyBookingContactEnabledSuccess(_ isEnabled: Int) {
         AuthCache.shared.setUserDefaltInteger(isEnabled, forKey: "kPrivacyBookingContactSuccess")
     }

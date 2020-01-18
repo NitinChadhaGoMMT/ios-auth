@@ -248,4 +248,15 @@ class UserDataManager {
         }
         return "-1"
     }
+    
+    func getActiveUserProfile() -> String {
+        if isLoggedIn {
+            if let activeUser = activeUser, let hasBusinessProfile = activeUser.hasBusinessProfile?.boolValue, hasBusinessProfile == true, AuthUtils.isBusinessProfileSelected() {
+                return activeUser.profileIdBusiness ?? ""
+            } else if let activeUser = activeUser, let profileIdPersonal = activeUser.profileIdPersonal {
+                return profileIdPersonal
+            }
+        }
+        return ""
+    }
 }

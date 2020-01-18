@@ -130,6 +130,10 @@ public class AuthDataProvider {
         return UserDataManager.shared.activeUser?.company
     }
     
+    public static var activeUserProfile: String {
+        return UserDataManager.shared.getActiveUserProfile()
+    }
+    
     public static var isAccessTokenExpired: Bool {
         if let tokenDate = AuthCache.shared.getUserDefaltObject(forKey: "token_expiry") as? NSDate {
             let currentDate = Date()
