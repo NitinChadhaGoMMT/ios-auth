@@ -90,28 +90,34 @@ class SignInWithPasswordPresenter: BasePresenter, SignInWithPasswordViewToPresen
     }
     
     func logInUser() {
+        view?.showActivityIndicator()
         interactor?.loginUser(forMobile: mobileNumber, password: self.password ?? "", referralCode: referralCode ?? "")
     }
     
     func requestOTP() {
+        view?.showActivityIndicator()
         interactor?.requestOTP(forMobile: mobileNumber)
     }
     
     func requestOTPSuccessResponse(resposne: MobileVerifiedData) {
+        view?.hideActivityIndicator()
         if let vc = AuthRouter.shared.navigateToOTPVerificationController(mobile: mobileNumber, data: commonData, nonce: resposne.nonce, isNewUser: false) {
             view?.push(screen: vc)
         }
     }
     
     func requestOTPFailedResponse(error: ErrorData?) {
+        view?.hideActivityIndicator()
         view?.requestOtpFailed(error: error)
     }
     
     func requestLoginSuccessResponse(resposne: OtpVerifiedData) {
+        view?.hideActivityIndicator()
         view?.userLoggedInRequestSucceeded(data: resposne)
     }
     
     func requestLoginFailedResponse(error: ErrorData?) {
+        view?.hideActivityIndicator()
         view?.userLoggedInRequestFailed(error: error)
     }
     

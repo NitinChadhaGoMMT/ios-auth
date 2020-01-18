@@ -276,6 +276,10 @@ public class AuthRouter {
         WhatsappHelper.shared.handleToken(token: token, referralCode: referralCode, extraKeys: extraKeys)
     }
     
+    public class func goServiceUserInfoLogin(_ sender: UIViewController?, pop: Bool, finishedVC: UIViewController?, onError: @escaping (Any?) -> Void, onFinished: @escaping (Any?) -> Void) {
+        LoginWrapper.goServiceUserInfoLogin(sender, pop: pop, finishedVC: finishedVC, onError: onError, onFinished: onFinished)
+    }
+    
 }
 
 extension AuthRouter: LoginWelcomePresenterToRouterProtocol {
