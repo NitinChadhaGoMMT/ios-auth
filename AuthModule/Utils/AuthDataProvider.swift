@@ -74,6 +74,10 @@ public class AuthDataProvider {
         return AuthCache.shared.getUserDefaltObject(forKey: "access_token") as? String
     }
     
+    public static var refreshToken: String? {
+        return AuthCache.shared.getUserDefaltObject(forKey: "refresh_token") as? String
+    }
+    
     public static var emailAdmin: String? {
         return UserDataManager.shared.activeUser?.emailAdmin
     }
