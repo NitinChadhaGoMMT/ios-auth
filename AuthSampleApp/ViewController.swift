@@ -33,6 +33,10 @@ class ViewController: UIViewController {
 }
 
 class AuthModuleHelper: AuthModuleUIProtocol {
+    func rewardsDataUpdated() {
+        
+    }
+    
     
     func navigateToEarn() {
         

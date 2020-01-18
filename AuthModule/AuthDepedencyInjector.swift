@@ -31,6 +31,8 @@ public protocol AuthModuleUIProtocol {
     func navigateToUserConfirmationScreen(on navigationController: UINavigationController?, isExistingUser: Bool, successBlock: LoginCompletionBlock?)
     
     func navigateToEarn()
+    
+    func rewardsDataUpdated()
 }
 
 extension AuthModuleUIProtocol {

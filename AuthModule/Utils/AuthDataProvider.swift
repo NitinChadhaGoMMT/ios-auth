@@ -166,4 +166,30 @@ public class AuthDataProvider {
     public static func logoutUser() {
         UserDataManager.shared.logout(type: .user)
     }
+    
+    public func updateActiveUserRewardsData(tierDict: NSDictionary?) {
+        DispatchQueue.main.async {
+            if let activeUser = UserDataManager.shared.activeUser,let tierDict = tierDict {
+                activeUser.rewardsData = NSKeyedArchiver.archivedData(withRootObject: tierDict)
+            }
+            DBHelper.shared.saveContext()
+            
+            AuthDepedencyInjector.uiDelegate?.rewardsDataUpdated()
+        }
+    }
+    
+    /*- (void)updateActiveUserRewardsData :(NSDictionary *)tierDict {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSManagedObjectContext *context = [AppDelegate sharedIns].managedObjectContext;
+            
+            if (tierDict && [tierDict isKindOfClass:[NSDictionary class]]) {
+                self.activeUser.rewardsData = [NSKeyedArchiver archivedDataWithRootObject:tierDict];
+            }
+            
+            [context save:nil];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"RewardsDataUpdatedNotification" object:nil];
+            
+        });
+    }*/
 }
