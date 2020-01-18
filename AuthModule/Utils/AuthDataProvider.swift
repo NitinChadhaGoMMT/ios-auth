@@ -167,7 +167,7 @@ public class AuthDataProvider {
         UserDataManager.shared.logout(type: .user)
     }
     
-    public func updateActiveUserRewardsData(tierDict: NSDictionary?) {
+    public static func updateActiveUserRewardsData(tierDict: NSDictionary?) {
         DispatchQueue.main.async {
             if let activeUser = UserDataManager.shared.activeUser,let tierDict = tierDict {
                 activeUser.rewardsData = NSKeyedArchiver.archivedData(withRootObject: tierDict)
