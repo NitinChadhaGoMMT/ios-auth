@@ -71,7 +71,6 @@ class LoginWrapper {
             AuthCache.shared.setUserDefaltObject(tokenData["firebase_token"], forKey: "firebase_token")
             AuthCache.shared.setUserDefaltObject(tokenData["ipl_firebase_token"], forKey: "ipl_firebase_token")
             AuthCache.shared.setUserDefaltObject(NSDate.init(timeInterval: (TimeInterval(tokenData["expires_in"] as! Int)), since: Date()), forKey: "token_expiry")
-            AuthCache.shared.setUserDefaltObject(tokenData["firebase_token"], forKey: "firebase_token")
         }
         
         var dict = Dictionary<String, Any>()

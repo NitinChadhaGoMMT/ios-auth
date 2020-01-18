@@ -110,6 +110,18 @@ public class AuthDataProvider {
         return AuthCache.shared.getUserDefaltObject(forKey: "firebase_token") as? String
     }
     
+    public static var currentTier: String {
+        return UserDataManager.shared.currentTier()
+    }
+    
+    public static var tierDict: NSDictionary? {
+        return UserDataManager.shared.getTierDict()
+    }
+    
+    public static var hasBusinessProfile: Bool? {
+        return UserDataManager.shared.activeUser?.hasBusinessProfile?.boolValue
+    }
+    
     public static var isAccessTokenExpired: Bool {
         if let tokenDate = AuthCache.shared.getUserDefaltObject(forKey: "token_expiry") as? NSDate {
             let currentDate = Date()

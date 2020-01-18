@@ -221,4 +221,31 @@ class UserDataManager {
         
     }
     
+    func getTierDict() -> NSDictionary? {
+        if let rewardsData = self.activeUser?.rewardsData {
+            if  let dataDict =  NSKeyedUnarchiver.unarchiveObject(with: rewardsData) as? NSDictionary {
+                return dataDict
+            }
+        }
+        return nil
+    }
+    
+    func currentTier() -> String {
+        if UserDataManager.shared.isLoggedIn == false {
+            return "Guest"
+        }
+        
+        if let dict = self.getTierDict() {
+            if let dataDictionary = dict["data"] as? NSDictionary {
+                if let value = dataDictionary["user_tier"] as? NSNumber {
+                    return value.stringValue
+                }
+            } else {
+                if let value = dict["user_tier"] as? NSNumber {
+                    return value.stringValue
+                }
+            }
+        }
+        return "-1"
+    }
 }

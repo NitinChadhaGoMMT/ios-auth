@@ -271,6 +271,11 @@ public class AuthRouter {
     public func logoutUser(completionBlock: LoginCompletionBlock?) {
         UserDataManager.shared.logout(type: .user, completionBlock: completionBlock)
     }
+    
+    public func loginViaWhatsApp(token: String?, referralCode: String?, extraKeys: String?) {
+        WhatsappHelper.shared.handleToken(token: token, referralCode: referralCode, extraKeys: extraKeys)
+    }
+    
 }
 
 extension AuthRouter: LoginWelcomePresenterToRouterProtocol {
