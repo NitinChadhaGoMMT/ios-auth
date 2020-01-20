@@ -134,6 +134,26 @@ public class AuthDataProvider {
         return UserDataManager.shared.getActiveUserProfile()
     }
     
+    public static var emailState: String? {
+        return UserDataManager.shared.activeUser?.emailState
+    }
+    
+    public static var dateFlag: Bool? {
+        return UserDataManager.shared.activeUser?.dateFlag?.boolValue
+    }
+    
+    public static var canAddPassword: Bool? {
+        return UserDataManager.shared.activeUser?.canAddPassword?.boolValue
+    }
+    
+    public static var isLoginDirectlyViaFacebook: Bool {
+        return AuthUtils.isLoginDirectlyViaFacebook()
+    }
+    
+    public static var isBusinessVerified: Bool? {
+        return UserDataManager.shared.activeUser?.isBusinessVerified?.boolValue
+    }
+    
     public static var isAccessTokenExpired: Bool {
         if let tokenDate = AuthCache.shared.getUserDefaltObject(forKey: "token_expiry") as? NSDate {
             let currentDate = Date()
@@ -157,6 +177,14 @@ public class AuthDataProvider {
         return nil
     }
     
+    static func setEmail(_ email: String?) {
+        UserDataManager.shared.activeUser?.email = email
+    }
+    
+    static func setHasPassword(_ number: NSNumber?) {
+        UserDataManager.shared.activeUser?.hasPassword = number
+    }
+    
     @discardableResult public static func refreshUserInfoIfTokenExpired() -> Bool {
         let wasTokenExpired = isAccessTokenExpired
         AuthService.requestLoginWithRefreshAccessToken(successBlock: nil, errorBlock: nil)
@@ -177,19 +205,4 @@ public class AuthDataProvider {
             AuthDepedencyInjector.uiDelegate?.rewardsDataUpdated()
         }
     }
-    
-    /*- (void)updateActiveUserRewardsData :(NSDictionary *)tierDict {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            NSManagedObjectContext *context = [AppDelegate sharedIns].managedObjectContext;
-            
-            if (tierDict && [tierDict isKindOfClass:[NSDictionary class]]) {
-                self.activeUser.rewardsData = [NSKeyedArchiver archivedDataWithRootObject:tierDict];
-            }
-            
-            [context save:nil];
-            
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"RewardsDataUpdatedNotification" object:nil];
-            
-        });
-    }*/
 }
