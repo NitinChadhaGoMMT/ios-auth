@@ -14,7 +14,6 @@
 		6E0701E32386BC5D008D79E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E0701E12386BC5D008D79E9 /* Main.storyboard */; };
 		6E0701E82386BC63008D79E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E0701E62386BC63008D79E9 /* LaunchScreen.storyboard */; };
 		6E0701F82386BC78008D79E9 /* AuthModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E0701F62386BC78008D79E9 /* AuthModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6E0701FC2386BC78008D79E9 /* AuthModule.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E0701F42386BC78008D79E9 /* AuthModule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6E0702022386BC95008D79E9 /* LoginWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0702012386BC95008D79E9 /* LoginWelcomeViewController.swift */; };
 		6E0702042386BCCE008D79E9 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0702032386BCCE008D79E9 /* AuthRouter.swift */; };
 		6E0702072386BD82008D79E9 /* View_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0702062386BD82008D79E9 /* View_Extensions.swift */; };
@@ -64,9 +63,6 @@
 		6E4D5B4923B0955100491102 /* SignInWithPasswordProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4D5B4823B0955100491102 /* SignInWithPasswordProtocols.swift */; };
 		6E4D5B4B23B0E89E00491102 /* AuthDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4D5B4A23B0E89E00491102 /* AuthDataProvider.swift */; };
 		6E4D5B5D23B0FAFE00491102 /* GoFacebookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4D5B5C23B0FAFE00491102 /* GoFacebookManager.swift */; };
-		6E54C0C523C348A500D2133F /* NetworkLayerFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6EEA6AF9239105560030F442 /* NetworkLayerFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6E54C0C623C348AF00D2133F /* FBSDKCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B4F23B0F14000491102 /* FBSDKCoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6E54C0C723C348AF00D2133F /* FBSDKLoginKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B5023B0F14000491102 /* FBSDKLoginKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6E54C0C923C34C7900D2133F /* WhatsappHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E54C0C823C34C7900D2133F /* WhatsappHelper.swift */; };
 		6E54C0CC23C354F600D2133F /* RSA.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E54C0CA23C354F500D2133F /* RSA.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6E54C0CD23C354F600D2133F /* RSA.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E54C0CB23C354F500D2133F /* RSA.m */; };
@@ -112,6 +108,19 @@
 		6E872FB823AB7AEC00910302 /* KeyChainLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E872FB723AB7AEC00910302 /* KeyChainLoginViewController.swift */; };
 		6E872FBA23AB7B2200910302 /* KeyChainLoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E872FB923AB7B2100910302 /* KeyChainLoginPresenter.swift */; };
 		6E872FBC23AB95DC00910302 /* KeychainLoginUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E872FBB23AB95DC00910302 /* KeychainLoginUserCell.swift */; };
+		6E9C551523D5CF8E00A658EA /* AuthModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E9C551223D5CED100A658EA /* AuthModule.framework */; };
+		6E9C551823D5CFA800A658EA /* NetworkLayerFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EEA6AF9239105560030F442 /* NetworkLayerFramework.framework */; };
+		6E9C551923D5CFA800A658EA /* NetworkLayerFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6EEA6AF9239105560030F442 /* NetworkLayerFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6E9C552423D5E78900A658EA /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B4C23B0F14000491102 /* CryptoSwift.framework */; };
+		6E9C552523D5E78900A658EA /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B4C23B0F14000491102 /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6E9C552623D5E78A00A658EA /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B4F23B0F14000491102 /* FBSDKCoreKit.framework */; };
+		6E9C552723D5E78A00A658EA /* FBSDKCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B4F23B0F14000491102 /* FBSDKCoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6E9C552823D5E78B00A658EA /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B5023B0F14000491102 /* FBSDKLoginKit.framework */; };
+		6E9C552923D5E78B00A658EA /* FBSDKLoginKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B5023B0F14000491102 /* FBSDKLoginKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6E9C552A23D5E78D00A658EA /* FBSDKPlacesKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B4D23B0F14000491102 /* FBSDKPlacesKit.framework */; };
+		6E9C552B23D5E78D00A658EA /* FBSDKPlacesKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B4D23B0F14000491102 /* FBSDKPlacesKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6E9C552C23D5E78E00A658EA /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B4E23B0F14000491102 /* FBSDKShareKit.framework */; };
+		6E9C552D23D5E78E00A658EA /* FBSDKShareKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B4E23B0F14000491102 /* FBSDKShareKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6EA4D22E2399010B004DFAEA /* LoginGAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA4D22D2399010B004DFAEA /* LoginGAPManager.swift */; };
 		6EA4D23023993F40004DFAEA /* SignInWithPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA4D22F23993F40004DFAEA /* SignInWithPasswordPresenter.swift */; };
 		6EA4D232239940D3004DFAEA /* SignInWithPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA4D231239940D3004DFAEA /* SignInWithPasswordViewController.swift */; };
@@ -143,13 +152,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		6E0701F92386BC78008D79E9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6E0701D22386BC5C008D79E9 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6E0701F32386BC78008D79E9;
-			remoteInfo = AuthModule;
-		};
 		6E6D5D9123CD92A700839094 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6E0701D22386BC5C008D79E9 /* Project object */;
@@ -160,16 +162,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		6E0702002386BC78008D79E9 /* Embed Frameworks */ = {
+		6E9C551723D5CF8E00A658EA /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6E54C0C623C348AF00D2133F /* FBSDKCoreKit.framework in Embed Frameworks */,
-				6E54C0C723C348AF00D2133F /* FBSDKLoginKit.framework in Embed Frameworks */,
-				6E54C0C523C348A500D2133F /* NetworkLayerFramework.framework in Embed Frameworks */,
-				6E0701FC2386BC78008D79E9 /* AuthModule.framework in Embed Frameworks */,
+				6E9C551923D5CFA800A658EA /* NetworkLayerFramework.framework in Embed Frameworks */,
+				6E9C552B23D5E78D00A658EA /* FBSDKPlacesKit.framework in Embed Frameworks */,
+				6E9C552D23D5E78E00A658EA /* FBSDKShareKit.framework in Embed Frameworks */,
+				6E9C552723D5E78A00A658EA /* FBSDKCoreKit.framework in Embed Frameworks */,
+				6E9C552923D5E78B00A658EA /* FBSDKLoginKit.framework in Embed Frameworks */,
+				6E9C552523D5E78900A658EA /* CryptoSwift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,6 +293,7 @@
 		6E872FB723AB7AEC00910302 /* KeyChainLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainLoginViewController.swift; sourceTree = "<group>"; };
 		6E872FB923AB7B2100910302 /* KeyChainLoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainLoginPresenter.swift; sourceTree = "<group>"; };
 		6E872FBB23AB95DC00910302 /* KeychainLoginUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainLoginUserCell.swift; sourceTree = "<group>"; };
+		6E9C551223D5CED100A658EA /* AuthModule.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthModule.framework; path = "../../../Volumes/Data/ios-app/code/Carthage/Build/iOS/AuthModule.framework"; sourceTree = "<group>"; };
 		6EA4D22D2399010B004DFAEA /* LoginGAPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginGAPManager.swift; sourceTree = "<group>"; };
 		6EA4D22F23993F40004DFAEA /* SignInWithPasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithPasswordPresenter.swift; sourceTree = "<group>"; };
 		6EA4D231239940D3004DFAEA /* SignInWithPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithPasswordViewController.swift; sourceTree = "<group>"; };
@@ -325,6 +330,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E9C552423D5E78900A658EA /* CryptoSwift.framework in Frameworks */,
+				6E9C551823D5CFA800A658EA /* NetworkLayerFramework.framework in Frameworks */,
+				6E9C552823D5E78B00A658EA /* FBSDKLoginKit.framework in Frameworks */,
+				6E9C552C23D5E78E00A658EA /* FBSDKShareKit.framework in Frameworks */,
+				6E9C552A23D5E78D00A658EA /* FBSDKPlacesKit.framework in Frameworks */,
+				6E9C552623D5E78A00A658EA /* FBSDKCoreKit.framework in Frameworks */,
+				6E9C551523D5CF8E00A658EA /* AuthModule.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -685,6 +697,7 @@
 		6EEA6AF8239105560030F442 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6E9C551223D5CED100A658EA /* AuthModule.framework */,
 				6E4D5B4C23B0F14000491102 /* CryptoSwift.framework */,
 				6E4D5B4F23B0F14000491102 /* FBSDKCoreKit.framework */,
 				6E4D5B5023B0F14000491102 /* FBSDKLoginKit.framework */,
@@ -721,12 +734,11 @@
 				6E0701D62386BC5D008D79E9 /* Sources */,
 				6E0701D72386BC5D008D79E9 /* Frameworks */,
 				6E0701D82386BC5D008D79E9 /* Resources */,
-				6E0702002386BC78008D79E9 /* Embed Frameworks */,
+				6E9C551723D5CF8E00A658EA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				6E0701FA2386BC78008D79E9 /* PBXTargetDependency */,
 			);
 			name = AuthSampleApp;
 			productName = AuthSampleApp;
@@ -1003,11 +1015,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		6E0701FA2386BC78008D79E9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6E0701F32386BC78008D79E9 /* AuthModule */;
-			targetProxy = 6E0701F92386BC78008D79E9 /* PBXContainerItemProxy */;
-		};
 		6E6D5D9223CD92A700839094 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 6E0701D92386BC5D008D79E9 /* AuthSampleApp */;
@@ -1156,10 +1163,13 @@
 		6E0701ED2386BC63008D79E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q9B4DS4RM6;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = AuthSampleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1175,10 +1185,13 @@
 		6E0701EE2386BC63008D79E9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q9B4DS4RM6;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = AuthSampleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
