@@ -9,9 +9,6 @@
 import UIKit
 import CoreData
 
-let kTimeLoggedInFetch = "kTimeLoggedInFetch"
-let kTimeSyncFetch = "kTimeSyncFetch"
-
 class UserDataManager {
 
     static var shared = UserDataManager()
@@ -178,7 +175,9 @@ class UserDataManager {
     func logout(type: LogoutType, completionBlock: LoginCompletionBlock? = nil) {
         print("Logout User")
         KeychainLoginHandler.shared.deleteUser()
-        AuthCache.shared.setUserDefaltBool(false, forKey: "is_user_enrolled_for_act_deals")
+        
+        AuthCache.shared.setUserDefaltBool(false, forKey: NetworkConstants.kLoginDirectlyViaFacebook)
+        
         AuthUtils.setBusinessProfileSelected(false)
         if ( self.activeUser != nil) {
             AuthService.goServiceLogout(type)
@@ -189,15 +188,15 @@ class UserDataManager {
             DBHelper.shared.managedObjectContext.delete(user)
             activeUser = nil
         }
-        AuthCache.shared.setUserDefaltInteger(0, forKey: kTimeLoggedInFetch)
-        AuthCache.shared.setUserDefaltInteger(0, forKey: kTimeSyncFetch)
+        
         AuthCache.shared.setUserDefaltObject(nil, forKey: "username")
-        AuthCache.shared.removeDefaultObject(forKey: "NotificationsArray")
         AuthCache.shared.setUserDefaltObject(nil, forKey: "LoggedInUserId")
         AuthCache.shared.setUserDefaltObject(nil, forKey: "access_token")
         AuthCache.shared.setUserDefaltObject(nil, forKey: "refresh_token")
         AuthCache.shared.setUserDefaltObject(nil, forKey: "firebase_token")
         AuthCache.shared.setUserDefaltObject(nil, forKey: "ipl_firebase_token")
+        
+        GoFacebookManager.shared.signOutFromFacebook()
         
         DBHelper.shared.saveContext()
         
