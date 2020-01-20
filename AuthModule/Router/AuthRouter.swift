@@ -163,10 +163,11 @@ public class AuthRouter {
     func signupSuccessNavigationHandling() {
         
         AuthDataProvider.isExistingUser = false
+
+        AuthDepedencyInjector.uiDelegate?.userLoggedInSuccessfully()
         
         finishLoginFlow(error: nil)
-        
-        AuthDepedencyInjector.uiDelegate?.userLoggedInSuccessfully()
+
     }
     
     func loginSuccessNavigationHandling(navigationController: UINavigationController?, isExistingUser: Bool) {
@@ -177,9 +178,9 @@ public class AuthRouter {
             AuthDepedencyInjector.uiDelegate?.removeBranchReferCode()
         }
         
-        finishLoginFlow(error: nil)
-        
         AuthDepedencyInjector.uiDelegate?.userLoggedInSuccessfully()
+        
+        finishLoginFlow(error: nil)
     }
     
     func navigateBackToSourceController() {
