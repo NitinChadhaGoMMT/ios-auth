@@ -165,6 +165,8 @@ public class AuthRouter {
         AuthDataProvider.isExistingUser = false
         
         finishLoginFlow(error: nil)
+        
+        AuthDepedencyInjector.uiDelegate?.userLoggedInSuccessfully()
     }
     
     func loginSuccessNavigationHandling(navigationController: UINavigationController?, isExistingUser: Bool) {
@@ -176,6 +178,8 @@ public class AuthRouter {
         }
         
         finishLoginFlow(error: nil)
+        
+        AuthDepedencyInjector.uiDelegate?.userLoggedInSuccessfully()
     }
     
     func navigateBackToSourceController() {

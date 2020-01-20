@@ -28,6 +28,10 @@ public protocol AuthModuleUIProtocol {
     
     func showIBSVAlert(withTitle title: String?, msg: String?, confirmTitle: String?, cancelTitle: String?, onCancel:  @escaping () -> Void, onConfirm:  @escaping () -> Void)
     
+    func userLoggedInSuccessfully()
+    
+    func userLoggedOutSuccessfully()
+    
     func rewardsDataUpdated()
 }
 
@@ -50,10 +54,6 @@ public protocol AuthModuleNetworkProtocol {
     func getAuthSecret() -> String?
     
     func getFlavourDictionary() -> [String: Any]?
-    
-    func userLoggedInSuccessfully()
-    
-    func userLoggedOutSuccessfully()
     
     func getServer_Auth() -> String?
     

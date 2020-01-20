@@ -205,6 +205,8 @@ class UserDataManager {
             completionBlock(true, nil)
         }
 
+        AuthDepedencyInjector.uiDelegate?.userLoggedOutSuccessfully()
+        
     }
     
     func updateUserTraits() {
