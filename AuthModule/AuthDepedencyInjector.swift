@@ -28,10 +28,6 @@ public protocol AuthModuleUIProtocol {
     
     func showIBSVAlert(withTitle title: String?, msg: String?, confirmTitle: String?, cancelTitle: String?, onCancel:  @escaping () -> Void, onConfirm:  @escaping () -> Void)
     
-    func navigateToUserConfirmationScreen(on navigationController: UINavigationController?, isExistingUser: Bool, successBlock: LoginCompletionBlock?)
-    
-    func navigateToEarn()
-    
     func rewardsDataUpdated()
 }
 

@@ -147,10 +147,6 @@ public class AuthRouter {
             vc.navigationController?.pushViewController(controller, animated: true)
         }
     }
-    
-    func navigateToUserConfirmationController(navigationController: UINavigationController?, isExistingUser:Bool) {
-        AuthDepedencyInjector.uiDelegate?.navigateToUserConfirmationScreen(on: navigationController, isExistingUser: isExistingUser, successBlock: self.completionBlock)
-    }
 
     func presentKeychainLoginViewController() -> UIViewController? {
         guard let view: KeyChainLoginViewController = mainstoryboard.getViewController() else {
@@ -207,6 +203,9 @@ public class AuthRouter {
     }
     
     func loginSuccessNavigationHandling(navigationController: UINavigationController?, isExistingUser: Bool) {
+        
+        AuthDataProvider.isExistingUser = isExistingUser
+        
         if let pushController = self.pushController {
             if let navigationController = navigationController, navigationController.viewControllers.contains(pushController) {
                 navigationController.popToViewController(pushController, animated: false)
@@ -214,23 +213,12 @@ public class AuthRouter {
                 navigationController?.popToRootViewController(animated: false)
             }
             
-            if let completionBlock = completionBlock {
-                completionBlock(true, nil)
-            }
         } else {
-            
             AuthDepedencyInjector.uiDelegate?.removeBranchReferCode()
-            
-            if let completionBlock = completionBlock {
-                completionBlock(true, nil)
-            }
-            
-            let isSynchScreenEnable = FireBaseHandler.getBoolFor(keyPath: .onboardingSyncScreenShown, dbPath: .goCoreDatabase) ?? true
-            if isSynchScreenEnable {
-                navigateToUserConfirmationController(navigationController: navigationController, isExistingUser: isExistingUser)
-            } else {
-                AuthDepedencyInjector.uiDelegate?.navigateToEarn()
-            }
+        }
+        
+        if let completionBlock = completionBlock {
+            completionBlock(true, nil)
         }
     }
     

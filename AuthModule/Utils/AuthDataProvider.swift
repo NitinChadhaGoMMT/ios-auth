@@ -177,13 +177,15 @@ public class AuthDataProvider {
         return nil
     }
     
-    static func setEmail(_ email: String?) {
+    public static func setEmail(_ email: String?) {
         UserDataManager.shared.activeUser?.email = email
     }
     
-    static func setHasPassword(_ number: NSNumber?) {
+    public static func setHasPassword(_ number: NSNumber?) {
         UserDataManager.shared.activeUser?.hasPassword = number
     }
+    
+    static public internal(set) var isExistingUser: Bool = false
     
     @discardableResult public static func refreshUserInfoIfTokenExpired() -> Bool {
         let wasTokenExpired = isAccessTokenExpired

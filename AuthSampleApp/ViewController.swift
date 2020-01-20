@@ -19,6 +19,7 @@ class ViewController: UIViewController {
         } else  {
             AuthRouter.shared.invokeLoginFlow(onNavigationStack: self.navigationController) { (isLoggedIn, error) in
                 print("From Main - User Logged In Successfully")
+                AuthRouter.goToHomePage(vc: self)
             }
         }
     }
@@ -27,12 +28,16 @@ class ViewController: UIViewController {
         if AuthDataProvider.isUserLoggedIn {
             AuthRouter.goToHomePage(vc: self)
         } else {
-            AuthRouter.shared.invokeLoginFlow(onNavigationStack: self.navigationController)
+            AuthRouter.shared.invokeLoginFlow(onNavigationStack: self.navigationController) { (isLoggedIn, error) in
+                print("From Main - User Logged In Successfully")
+                AuthRouter.goToHomePage(vc: self)
+            }
         }
     }
 }
 
 class AuthModuleHelper: AuthModuleUIProtocol {
+
     func rewardsDataUpdated() {
         
     }
@@ -113,10 +118,6 @@ class AuthModuleHelper: AuthModuleUIProtocol {
         if activityView != nil {
             activityView?.removeFromSuperview()
         }
-    }
-    
-    func navigateToUserConfirmationScreen(on navigationController: UINavigationController?, isExistingUser: Bool, successBlock: LoginCompletionBlock?) {
-        
     }
 }
 
