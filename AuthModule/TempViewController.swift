@@ -36,9 +36,7 @@ class TempViewController: UIViewController {
         let alertController = UIAlertController(title: "Auth", message: "User logged out successfully", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "OK", style: .default) { (abc) in
-            
-            AuthRouter.shared.finishLoginFlow(error: nil)
-            
+            self.navigationController?.popToRootViewController(animated: true)
         }
         alertController.addAction(action)
         

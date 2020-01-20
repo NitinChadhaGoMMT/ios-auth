@@ -121,7 +121,7 @@ class SignUpPresenter: BasePresenter, SignUpViewToPresenterProtocol, SignUpInter
         earnedGoCash = data?.userData?.referralBonus?.goCashEarned ?? 0
         referralCode = data?.userData?.referralBonus?.code
         AuthUtils.removeBranchReferCode()
-        AuthRouter.shared.signupSuccessNavigationHandling(navigationController: view?.baseNavigationController)
+        AuthRouter.shared.signupSuccessNavigationHandling()
     }
 }
 

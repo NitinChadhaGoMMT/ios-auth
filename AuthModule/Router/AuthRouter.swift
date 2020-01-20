@@ -160,6 +160,24 @@ public class AuthRouter {
         vc.navigationController?.popViewController(animated: true)
     }
     
+    func signupSuccessNavigationHandling() {
+        
+        AuthDataProvider.isExistingUser = false
+        
+        finishLoginFlow(error: nil)
+    }
+    
+    func loginSuccessNavigationHandling(navigationController: UINavigationController?, isExistingUser: Bool) {
+        
+        AuthDataProvider.isExistingUser = isExistingUser
+        
+        if pushController == nil {
+            AuthDepedencyInjector.uiDelegate?.removeBranchReferCode()
+        }
+        
+        finishLoginFlow(error: nil)
+    }
+    
     func navigateBackToSourceController() {
         guard let navigationController = pushController?.navigationController else { return }
         
@@ -171,60 +189,6 @@ public class AuthRouter {
                 navigationController.popToRootViewController(animated: false)
             }
         }
-    }
-    
-    func signupSuccessNavigationHandling(navigationController: UINavigationController?) {
-        
-        guard let navigationController = navigationController else { return }
-    
-        if let pushController = pushController {
-            navigationController.isNavigationBarHidden = false
-            if navigationController.viewControllers.contains(pushController) {
-                navigationController.popToViewController(pushController, animated: false)
-            } else {
-                navigationController.popToRootViewController(animated: false)
-            }
-            
-            if let loginBlock = completionBlock {
-                loginBlock(true, nil)
-            }
-            return
-        }
-        
-        if let controller:TempViewController = mainstoryboard.getViewController() {
-            navigationController.pushViewController(controller, animated: true)
-        }
-        
-        if let isSyncScreenEnable = FireBaseHandler.getBoolFor(keyPath: .onboardingSyncScreenShown, dbPath: .goCoreDatabase), isSyncScreenEnable == true {
-            
-        } else {
-            //<NITIN>AppRouter.navigateToEarn(goDataModel: nil, animated: false, completionBlock: nil)
-        }
-    }
-    
-    func loginSuccessNavigationHandling(navigationController: UINavigationController?, isExistingUser: Bool) {
-        
-        AuthDataProvider.isExistingUser = isExistingUser
-        
-        if let pushController = self.pushController {
-            if let navigationController = navigationController, navigationController.viewControllers.contains(pushController) {
-                navigationController.popToViewController(pushController, animated: false)
-            } else {
-                navigationController?.popToRootViewController(animated: false)
-            }
-            
-        } else {
-            AuthDepedencyInjector.uiDelegate?.removeBranchReferCode()
-        }
-        
-        if let completionBlock = completionBlock {
-            completionBlock(true, nil)
-        }
-    }
-    
-    
-    func openConfirmationVC() {
-        
     }
     
     func presentReferralCodeAlert(delegate: ReferralCodeProtocol) -> UIViewController? {
