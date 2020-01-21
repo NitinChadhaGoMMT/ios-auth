@@ -26,8 +26,7 @@ class WhatsAppManager {
                 }
             }
         }
-        //<NITIN>return false
-        return true
+        return false
     }
     
     func isWhatsAppLoginEnabled() -> Bool {
@@ -38,7 +37,7 @@ class WhatsAppManager {
         
         let whatsAppEnabled = FireBaseHandler.getBoolFor(keyPath: .whatsapp_login_msg, dbPath: .goCoreDatabase)
         if(whatsAppEnabled == true) {
-            return AuthDepedencyInjector.firebaseRemoteHandlerDelegate?.getRemoteFunctionBoolValueWithForkey(forKey: "remote_whatsapp_enabled") ?? false
+            return AuthDepedencyInjector.firebaseRemoteHandlerDelegate?.getRemoteFunctionBoolValueWithForkey(forKey: "remote_whatsapp_enabled") ?? true
         }
         
         return false
