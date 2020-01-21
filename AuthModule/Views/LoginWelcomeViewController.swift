@@ -23,6 +23,7 @@ class LoginWelcomeViewController: LoginBaseViewController, LoginWelcomePresenter
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        WhatsappHelper.shared.delegate = self
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
