@@ -32,6 +32,10 @@ public protocol AuthModuleUIProtocol {
     
     func userLoggedOutSuccessfully()
     
+    func userLoggedInSuccessfullyViaWhatsApp()
+    
+    func userLoginFailedViaWhatsApp(error: Error?)
+    
     func rewardsDataUpdated()
 }
 

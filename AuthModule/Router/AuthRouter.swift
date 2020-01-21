@@ -229,8 +229,8 @@ public class AuthRouter {
         UserDataManager.shared.logout(type: .user, completionBlock: completionBlock)
     }
     
-    public func loginViaWhatsApp(token: String?, referralCode: String?, extraKeys: String?) {
-        WhatsappHelper.shared.handleToken(token: token, referralCode: referralCode, extraKeys: extraKeys)
+    public func loginViaWhatsApp(token: String?, referralCode: String?, extraKeys: String?, navigationController: UINavigationController?) {
+        WhatsappHelper.shared.handleToken(token: token, referralCode: referralCode, extraKeys: extraKeys, navigationController: navigationController)
     }
     
     public func goServiceUserInfoLogin(_ sender: UIViewController?, pop: Bool, finishedVC: UIViewController?, onError: @escaping (Any?) -> Void, onFinished: @escaping (Any?) -> Void) {

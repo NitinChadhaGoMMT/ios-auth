@@ -23,7 +23,7 @@ class WhatsappHelper {
     
     private init() { }
     
-    func handleToken(token: String?, referralCode: String?, extraKeys: String?) {
+    func handleToken(token: String?, referralCode: String?, extraKeys: String?, navigationController: UINavigationController?) {
         guard let token = token else { return }
         
         self.referralCode = referralCode
@@ -38,40 +38,57 @@ class WhatsappHelper {
                 self?.delegate = nil
             }, onConfirm: { [weak self] in
                 UserDataManager.shared.logout(type: .user)
-                self?.launchLoginWelcomeActivityIfNotLaunched()
+                self?.launchLoginWelcomeActivityIfNotLaunched(navigationController: navigationController)
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + DispatchTimeInterval.milliseconds(100)) {
-                    self?.intiaiteWhatsAppLogin(token: token, referralCode: referralCode, extraKeys: extraKeys)
+                    self?.intiaiteWhatsAppLogin(token: token, referralCode: referralCode, extraKeys: extraKeys, navigationController: navigationController)
                 }
             })
+        } else{
+            self.launchLoginWelcomeActivityIfNotLaunched(navigationController: navigationController)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + DispatchTimeInterval.milliseconds(100)) {
+                self.intiaiteWhatsAppLogin(token: token, referralCode: referralCode, extraKeys: extraKeys, navigationController: navigationController)
+            }
         }
     }
     
-    private func launchLoginWelcomeActivityIfNotLaunched(){
+    private func launchLoginWelcomeActivityIfNotLaunched(navigationController: UINavigationController?){
         if self.delegate == nil {
-            //<NITIN>
-            //AuthRouter.shared.createModule()
+            AuthRouter.shared.invokeLoginFlow(onNavigationStack: navigationController)
         }
     }
     
-    private func intiaiteWhatsAppLogin(token: String, referralCode:String?, extraKeys:String?) {
+    private func intiaiteWhatsAppLogin(token: String, referralCode:String?, extraKeys:String?, navigationController: UINavigationController?) {
         
-        //<NITIN> Show Activity Indicator on root VC
+        guard let navigationController = navigationController else { return }
         
-        //var myActivity = IBSVHUDActivity.show(in: rootVc.view, activityStyle: URL_ACT_STYLE_FULL_SCREEN_BLUR, status: "Logging in with Whatsapp..", ticketType: TICKET_LOGIN)
-        //HIDE AFTER API
+        guard let view = navigationController.visibleViewController?.view else {
+            return
+        }
+        
+        ActivityIndicator.show(on: view, withMessage: "Logging in with Whatsapp..")
+        
         AuthService.requestToLoginWithWhatsApp(token, referralCode: referralCode, extraKey: extraKeys, success: { [weak self](data) in
+            ActivityIndicator.hide(on: view)
             if let otpverifiedData = data as? OtpVerifiedData {
                 if self?.delegate == nil {
-                   //<NITIN>
-                    //AuthDepedencyInjector.uiDelegate?.authLoginCompletion(isUserLoggedIn: true, error: nil)
+                    AuthDepedencyInjector.uiDelegate?.userLoggedInSuccessfullyViaWhatsApp()
                 } else{
                     self?.delegate?.loginSuccessful(verifiedData: otpverifiedData, extraKeys:extraKeys)
                 }
             } else{
-                self?.delegate?.loginFailed(error: nil)
+                if self?.delegate == nil {
+                    AuthDepedencyInjector.uiDelegate?.userLoginFailedViaWhatsApp(error: nil)
+                } else{
+                    self?.delegate?.loginFailed(error: nil)
+                }
             }
         }) { [weak self] (error) in
-            self?.delegate?.loginFailed(error: error)
+            ActivityIndicator.hide(on: view)
+            if self?.delegate == nil {
+                AuthDepedencyInjector.uiDelegate?.userLoginFailedViaWhatsApp(error: nil)
+            } else {
+                self?.delegate?.loginFailed(error: error)
+            }
         }
     }
 }
