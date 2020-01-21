@@ -61,8 +61,6 @@ public protocol AuthModuleNetworkProtocol {
     
     func getServer_Auth() -> String?
     
-    func getAmigoServer() -> String?
-    
     func getAmigoBasic() -> String?
 }
 

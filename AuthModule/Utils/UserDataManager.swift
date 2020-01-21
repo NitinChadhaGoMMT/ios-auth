@@ -154,8 +154,8 @@ class UserDataManager {
         AuthCache.shared.setUserDefaltObject(username, forKey: "username")
         AuthCache.shared.setUserDefaltBool(true, forKey: "businessProfileData")
         
-        if let firebase_token = dictionary["firebase_token"] as? String, !firebase_token.isEmpty {
-            AuthCache.shared.setUserDefaltObject(firebase_token, forKey: "firebase_token")
+        if let firebase_token = dictionary[Keys.firebaseToken] as? String, !firebase_token.isEmpty {
+            AuthCache.shared.setUserDefaltObject(firebase_token, forKey: Keys.firebaseToken)
         }
         if let ipl_firebase_token = dictionary["ipl_firebase_token"] as? String, !ipl_firebase_token.isEmpty {
             AuthCache.shared.setUserDefaltObject(ipl_firebase_token, forKey: "ipl_firebase_token")
@@ -191,9 +191,9 @@ class UserDataManager {
         
         AuthCache.shared.setUserDefaltObject(nil, forKey: "username")
         AuthCache.shared.setUserDefaltObject(nil, forKey: "LoggedInUserId")
-        AuthCache.shared.setUserDefaltObject(nil, forKey: "access_token")
-        AuthCache.shared.setUserDefaltObject(nil, forKey: "refresh_token")
-        AuthCache.shared.setUserDefaltObject(nil, forKey: "firebase_token")
+        AuthCache.shared.setUserDefaltObject(nil, forKey: Keys.accessToken)
+        AuthCache.shared.setUserDefaltObject(nil, forKey: Keys.refreshToken)
+        AuthCache.shared.setUserDefaltObject(nil, forKey: Keys.firebaseToken)
         AuthCache.shared.setUserDefaltObject(nil, forKey: "ipl_firebase_token")
         
         GoFacebookManager.shared.signOutFromFacebook()

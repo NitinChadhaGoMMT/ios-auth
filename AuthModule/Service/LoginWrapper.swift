@@ -64,11 +64,11 @@ class LoginWrapper {
         }
         
         if let tokenData = jsonData["token_details"] as? Dictionary<String, Any> {
-            AuthCache.shared.setUserDefaltObject(tokenData["access_token"], forKey: "access_token")
+            AuthCache.shared.setUserDefaltObject(tokenData[Keys.accessToken], forKey: Keys.accessToken)
             AuthCache.shared.setUserDefaltObject(tokenData["token_type"], forKey: "token_type")
             AuthCache.shared.setUserDefaltObject(tokenData["expires_in"], forKey: "expires_in")
-            AuthCache.shared.setUserDefaltObject(tokenData["refresh_token"], forKey: "refresh_token")
-            AuthCache.shared.setUserDefaltObject(tokenData["firebase_token"], forKey: "firebase_token")
+            AuthCache.shared.setUserDefaltObject(tokenData[Keys.refreshToken], forKey: Keys.refreshToken)
+            AuthCache.shared.setUserDefaltObject(tokenData[Keys.firebaseToken], forKey: Keys.firebaseToken)
             AuthCache.shared.setUserDefaltObject(tokenData["ipl_firebase_token"], forKey: "ipl_firebase_token")
             AuthCache.shared.setUserDefaltObject(NSDate.init(timeInterval: (TimeInterval(tokenData["expires_in"] as! Int)), since: Date()), forKey: "token_expiry")
         }
@@ -115,7 +115,7 @@ class LoginWrapper {
         
         var dictionary = [String: String]()
         
-        guard let bearerToken:String = AuthCache.shared.getUserDefaltObject(forKey: "access_token") as? String else {
+        guard let bearerToken:String = AuthCache.shared.getUserDefaltObject(forKey: Keys.accessToken) as? String else {
             return dictionary
         }
         
@@ -134,7 +134,7 @@ class LoginWrapper {
         
         //[urlConnect startAsyncConnection:SERVICE_LOGIN_USER_DATA server:SERVER_AUTH postDic:nil getDic:getDic logService:LOG_SERVICE_OAUTH_USER_DATA logCategory:LOG_LOGIN_USER viewController:sender activity:activity autoShowErrorAlerts:YES autoConvertJson:YES onDidntStart:nil errorBlock:nil onUrlResponseError:nil onJsonIssue:nil onSuccessFinish:^(id data) {
         
-        var bearerToken = AuthCache.shared.getUserDefaltObject(forKey: "access_token") as? String ?? ""
+        var bearerToken = AuthCache.shared.getUserDefaltObject(forKey: Keys.accessToken) as? String ?? ""
         
         Session.service.get(urlPath, header: ["oauth-goibibo": bearerToken], parameters: getDic, timeoutInterval: .default, success: { (response) in
             

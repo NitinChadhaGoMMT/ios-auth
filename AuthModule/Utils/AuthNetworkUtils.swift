@@ -10,10 +10,6 @@ import Foundation
 
 struct AuthNetworkUtils {
     
-    static func getAmigoServer() -> String {
-        return AuthDepedencyInjector.networkDelegate?.getAmigoServer() ?? NetworkConstants.amigoServer
-    }
-    
     static func getServer_Auth() -> String {
         return AuthDepedencyInjector.networkDelegate?.getServer_Auth() ?? NetworkConstants.authServer
     }
@@ -36,9 +32,5 @@ struct AuthNetworkUtils {
     
     static func getUUID() -> String {
         return AuthDepedencyInjector.networkDelegate?.getUUID() ?? UIDevice.current.identifierForVendor?.uuidString ?? ""
-    }
-    
-    static func getAmigoBasic() -> String {
-        return AuthDepedencyInjector.networkDelegate?.getAmigoBasic() ?? NetworkConstants.amigoBasic
     }
 }

@@ -84,10 +84,6 @@ class LoginConstants {
         return AuthNetworkUtils.getServer_Auth() + "/v5/api/user/"
     }
     
-    static func amigoReverseProfileUrl() -> String {
-        return AuthNetworkUtils.getAmigoServer()  + "/v1/" + "getreverseprofiles"
-    }
-    
     static func createAccountUrl() -> String {
         return AuthNetworkUtils.getServer_Auth() + "/authapi/" + apiVersionV6 + "mobile/register/"
     }

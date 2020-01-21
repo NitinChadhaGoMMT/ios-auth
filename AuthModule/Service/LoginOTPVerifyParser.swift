@@ -184,9 +184,9 @@ class LoginOTPVerifyParser: LoginParser {
         }
         
         let tokenDetails = TokenDetails()
-        tokenDetails.accessToken = tokenData["access_token"] as? String
-        tokenDetails.refreshToken = tokenData["refresh_token"] as? String
-        tokenDetails.firebaseToken = tokenData["firebase_token"] as? String
+        tokenDetails.accessToken = tokenData[Keys.accessToken] as? String
+        tokenDetails.refreshToken = tokenData[Keys.refreshToken] as? String
+        tokenDetails.firebaseToken = tokenData[Keys.firebaseToken] as? String
         tokenDetails.iplfirebaseToken = tokenData["ipl_firebase_token"] as? String
         
         return tokenDetails

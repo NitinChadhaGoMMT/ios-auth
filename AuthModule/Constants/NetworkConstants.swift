@@ -22,6 +22,4 @@ struct NetworkConstants {
     static let nonceSalt = "@2^xlpwq)*8!E5yg0q)_dfgh"
     static let authSecret = "895eea06cda4e5526980eee042d56a"
     static let authServer = "https://auth.goibibo.com"
-    static let amigoServer = "https://amigo.goibibo.com"
-    static let amigoBasic = "Basic QW1pZ29BUEk6bWtBTWhwVjI5NE1aRXNMR2Yzbkp4QkZq"
 }

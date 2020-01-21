@@ -37,7 +37,7 @@ class LoginWelcomeViewController: LoginBaseViewController, LoginWelcomePresenter
         topView
             .setBackgroundColor(color: .customBlue)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(LoginWelcomeViewController.updateAfterKeychainSuccess), name: NSNotification.chainUpdate, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginWelcomeViewController.updateAfterKeychainSuccess), name: Notification.chainUpdate, object: nil)
     }
     
     override func addMconnectView(){

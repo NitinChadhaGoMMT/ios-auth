@@ -71,11 +71,11 @@ public class AuthDataProvider {
     }
     
     public static var accessToken: String? {
-        return AuthCache.shared.getUserDefaltObject(forKey: "access_token") as? String
+        return AuthCache.shared.getUserDefaltObject(forKey: Keys.accessToken) as? String
     }
     
     public static var refreshToken: String? {
-        return AuthCache.shared.getUserDefaltObject(forKey: "refresh_token") as? String
+        return AuthCache.shared.getUserDefaltObject(forKey: Keys.refreshToken) as? String
     }
     
     public static var emailAdmin: String? {
@@ -111,7 +111,7 @@ public class AuthDataProvider {
     }
     
     public static var firebaseToken: String? {
-        return AuthCache.shared.getUserDefaltObject(forKey: "firebase_token") as? String
+        return AuthCache.shared.getUserDefaltObject(forKey: Keys.firebaseToken) as? String
     }
     
     public static var currentTier: String {

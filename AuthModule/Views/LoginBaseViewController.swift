@@ -35,7 +35,7 @@ import UIKit
         } else if  errorObject.errorMsgString != nil {
             AuthAlert.showErrorAlert(view: self, message: errorObject.errorMsgString!)
         } else {
-            AuthAlert.showErrorAlert(view: self, message: "Something wrent wrong. Please try again later.")
+            AuthAlert.showErrorAlert(view: self, message: .genericError)
         }
     }
     
@@ -51,12 +51,6 @@ import UIKit
     
     func signUpSuccessfully() {
         //<NITIN> UserTraitManager.shared.updateData(forAttributes: ["isNewUser":true])
-    }
-    
-    func userSuccessfullyLoggedInDirect() {
-        
-        self.logInSuccessfully()
-        AuthRouter.shared.finishLoginFlow(error: nil)
     }
     
     func logInSuccessfully(){

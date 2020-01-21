@@ -48,7 +48,7 @@ class KeychainLoginHandler {
             let profilePicUrl = UserDataManager.shared.activeUser?.imageURL ?? ""
             let firstName = UserDataManager.shared.activeUser?.firstname ?? ""
             let secondName = UserDataManager.shared.activeUser?.lastname ?? ""
-            let refreshToken = AuthCache.shared.getUserDefaltObject(forKey: "refresh_token") ?? ""
+            let refreshToken = AuthCache.shared.getUserDefaltObject(forKey: Keys.refreshToken) ?? ""
             let userId = UserDataManager.shared.activeUser?.userid ?? ""
             if AuthUtils.isEmptyString(refreshToken) == false{
                 let userData = ["name": firstName + " " + secondName ,"email":email,"phone":phone,"refreshToken":refreshToken,"profilePic":profilePicUrl ,"userId":userId,"timeStamp":Int(Date().timeIntervalSince1970)]
@@ -71,7 +71,7 @@ class KeychainLoginHandler {
     
     func apiError(controller: LoginBaseViewController){
         ActivityIndicator.hide(on: controller.view)
-        AuthCache.shared.setUserDefaltObject(nil, forKey: "refresh_token")
+        AuthCache.shared.setUserDefaltObject(nil, forKey: Keys.refreshToken)
         AuthAlert.showErrorAlert(view: controller, message: "Some error occured!")
         //<NITIN>
         /*IBSVBlockAlert.show(withMsg: "Some error occured!") {() in
@@ -89,7 +89,7 @@ class KeychainLoginHandler {
         
         if let refreshToken = getRefreshToken(forUserId: userid) {
             ActivityIndicator.show(on: sender.view, withMessage: "Loading...")
-            AuthCache.shared.setUserDefaltObject(refreshToken, forKey: "refresh_token")
+            AuthCache.shared.setUserDefaltObject(refreshToken, forKey: Keys.refreshToken)
             
             AuthService.requestLoginWithRefreshAccessToken(successBlock: { [weak self] in
                 ActivityIndicator.hide(on: sender.view)
@@ -98,7 +98,7 @@ class KeychainLoginHandler {
                 }) { (data) in
                     ActivityIndicator.hide(on: sender.view)
                     sender.dismiss(animated: true, completion: nil)
-                    NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: "ChainUpdate")))
+                    NotificationCenter.default.post(Notification(name: Notification.chainUpdate))
                 }
             }, errorBlock: { [weak self] in
                 self?.apiError(controller: sender)

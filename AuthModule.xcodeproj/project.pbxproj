@@ -42,8 +42,6 @@
 		6E1C68CC23C8C25800AECA04 /* ReferralCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1C68CB23C8C25800AECA04 /* ReferralCodeViewController.swift */; };
 		6E1C68CE23CC442B00AECA04 /* ReferralCodePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1C68CD23CC442B00AECA04 /* ReferralCodePresenter.swift */; };
 		6E1C68D023CC488F00AECA04 /* ReferralCodeProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1C68CF23CC488F00AECA04 /* ReferralCodeProtocols.swift */; };
-		6E38880523C13340006C63DE /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E38880423C13340006C63DE /* EditProfileViewController.swift */; };
-		6E38880723C133AD006C63DE /* EditProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E38880623C133AD006C63DE /* EditProfilePresenter.swift */; };
 		6E391B5823A0CDB1006AEC46 /* BaseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E391B5723A0CDB1006AEC46 /* BaseInteractor.swift */; };
 		6E391B5A23A0CF72006AEC46 /* MconnectDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E391B5923A0CF72006AEC46 /* MconnectDataParser.swift */; };
 		6E391B5C23A12A14006AEC46 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E391B5B23A12A14006AEC46 /* SignupViewController.swift */; };
@@ -144,8 +142,6 @@
 		6EC29E7423C31C1900C1515A /* SocialAccountLoginCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC29E7323C31C1900C1515A /* SocialAccountLoginCell.swift */; };
 		6EC29E8523C3330700C1515A /* OTPVerificationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC29E8423C3330700C1515A /* OTPVerificationProtocols.swift */; };
 		6EC29E8723C3370A00C1515A /* SignUpProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC29E8623C3370A00C1515A /* SignUpProtocols.swift */; };
-		6EE3207423C30B7D00E6B810 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE3207223C30B7D00E6B810 /* ProfileHeaderView.swift */; };
-		6EE3207523C30B7D00E6B810 /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EE3207323C30B7D00E6B810 /* ProfileHeaderView.xib */; };
 		6EEA6B4323912D0B0030F442 /* AuthDepedencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEA6B4223912D0B0030F442 /* AuthDepedencyInjector.swift */; };
 		6EEA6B452391329B0030F442 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEA6B442391329B0030F442 /* UserDataManager.swift */; };
 		6EF9788123D71DA1007097A0 /* AuthModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E0701F42386BC78008D79E9 /* AuthModule.framework */; };
@@ -230,11 +226,6 @@
 		6E1C68CB23C8C25800AECA04 /* ReferralCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferralCodeViewController.swift; sourceTree = "<group>"; };
 		6E1C68CD23CC442B00AECA04 /* ReferralCodePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferralCodePresenter.swift; sourceTree = "<group>"; };
 		6E1C68CF23CC488F00AECA04 /* ReferralCodeProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferralCodeProtocols.swift; sourceTree = "<group>"; };
-		6E359EFB23BB585000DE25DF /* UserConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfirmationViewController.swift; sourceTree = "<group>"; };
-		6E359EFD23BB58E600DE25DF /* UserConfirmationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfirmationPresenter.swift; sourceTree = "<group>"; };
-		6E38880223BDC62E006C63DE /* UserConfirmationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfirmationInteractor.swift; sourceTree = "<group>"; };
-		6E38880423C13340006C63DE /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
-		6E38880623C133AD006C63DE /* EditProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfilePresenter.swift; sourceTree = "<group>"; };
 		6E391B5723A0CDB1006AEC46 /* BaseInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInteractor.swift; sourceTree = "<group>"; };
 		6E391B5923A0CF72006AEC46 /* MconnectDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MconnectDataParser.swift; sourceTree = "<group>"; };
 		6E391B5B23A12A14006AEC46 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -326,8 +317,6 @@
 		6EC29E7323C31C1900C1515A /* SocialAccountLoginCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialAccountLoginCell.swift; sourceTree = "<group>"; };
 		6EC29E8423C3330700C1515A /* OTPVerificationProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPVerificationProtocols.swift; sourceTree = "<group>"; };
 		6EC29E8623C3370A00C1515A /* SignUpProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpProtocols.swift; sourceTree = "<group>"; };
-		6EE3207223C30B7D00E6B810 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
-		6EE3207323C30B7D00E6B810 /* ProfileHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
 		6EEA6AF9239105560030F442 /* NetworkLayerFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkLayerFramework.framework; path = Carthage/Build/iOS/NetworkLayerFramework.framework; sourceTree = "<group>"; };
 		6EEA6B4223912D0B0030F442 /* AuthDepedencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDepedencyInjector.swift; sourceTree = "<group>"; };
 		6EEA6B442391329B0030F442 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
@@ -490,8 +479,6 @@
 				6E872FAB23A91BBA00910302 /* ForgotPasswordPresenter.swift */,
 				6E872FB923AB7B2100910302 /* KeyChainLoginPresenter.swift */,
 				6E395A5A23B9C61F002D50F1 /* MobileVerificationPresenter.swift */,
-				6E359EFD23BB58E600DE25DF /* UserConfirmationPresenter.swift */,
-				6E38880623C133AD006C63DE /* EditProfilePresenter.swift */,
 				6E54C0D423C5BD2D00D2133F /* BasePresenter.swift */,
 				6E1C68CD23CC442B00AECA04 /* ReferralCodePresenter.swift */,
 				6E6D5D7C23CC604900839094 /* ReferralCodeValidationPresenter.swift */,
@@ -510,8 +497,6 @@
 				6E872FA923A9167500910302 /* ForgotPasswordViewController.swift */,
 				6E872FB723AB7AEC00910302 /* KeyChainLoginViewController.swift */,
 				6E8616C123B1D5D50012FE33 /* MobileVerificationViewController.swift */,
-				6E359EFB23BB585000DE25DF /* UserConfirmationViewController.swift */,
-				6E38880423C13340006C63DE /* EditProfileViewController.swift */,
 				6E54C0D223C4A7D200D2133F /* TermAndConditionsViewController.swift */,
 				6E54C0D823C5EB7300D2133F /* OnboardingWelcomeContainer.swift */,
 				6E54C0DA23C5EBB100D2133F /* OnboardingWelcomeContentController.swift */,
@@ -538,7 +523,6 @@
 				6E391B5F23A12B34006AEC46 /* SignupInteractor.swift */,
 				6E39436223A376FA00AA0A79 /* OTPVerificationInteractor.swift */,
 				6E872FAD23A91BCE00910302 /* ForgotPasswordInteractor.swift */,
-				6E38880223BDC62E006C63DE /* UserConfirmationInteractor.swift */,
 				6E6D5D7823CC4DC400839094 /* ReferralCodeInteractor.swift */,
 			);
 			path = Interactor;
@@ -547,8 +531,6 @@
 		6E070233238E94CD008D79E9 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				6EE3207223C30B7D00E6B810 /* ProfileHeaderView.swift */,
-				6EE3207323C30B7D00E6B810 /* ProfileHeaderView.xib */,
 				6E872FB323AB748800910302 /* MConnectPoweredByView.swift */,
 				6E872FB423AB748800910302 /* MConnectPoweredByView.xib */,
 				6E07021F238D6861008D79E9 /* LoginOrTableCell.swift */,
@@ -859,7 +841,6 @@
 				6E07020A2386BDA7008D79E9 /* Auth.storyboard in Resources */,
 				6E872FB623AB748800910302 /* MConnectPoweredByView.xib in Resources */,
 				6E6D5D8323CC8F7500839094 /* Assets.xcassets in Resources */,
-				6EE3207523C30B7D00E6B810 /* ProfileHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -939,7 +920,6 @@
 				6E07022E238E71C5008D79E9 /* AuthUtils.swift in Sources */,
 				6E1C68C423C7438200AECA04 /* UIFont_Ext.swift in Sources */,
 				6E391B6023A12B34006AEC46 /* SignupInteractor.swift in Sources */,
-				6E38880523C13340006C63DE /* EditProfileViewController.swift in Sources */,
 				6EA7802B2394F93300FA409D /* LoginConstants.swift in Sources */,
 				6E07021D238D4991008D79E9 /* FireBaseConfigKeys.swift in Sources */,
 				6E1C68B223C718F000AECA04 /* FireBaseHandler.swift in Sources */,
@@ -974,7 +954,6 @@
 				6EA4D2342399413C004DFAEA /* SignInWithPasswordInteractor.swift in Sources */,
 				6EAA395F239A526000872FD2 /* LoginPasswordTableViewCell.swift in Sources */,
 				6E39436323A376FA00AA0A79 /* OTPVerificationInteractor.swift in Sources */,
-				6EE3207423C30B7D00E6B810 /* ProfileHeaderView.swift in Sources */,
 				6E872FBC23AB95DC00910302 /* KeychainLoginUserCell.swift in Sources */,
 				6E54C0D523C5BD2D00D2133F /* BasePresenter.swift in Sources */,
 				6E4D5B5D23B0FAFE00491102 /* GoFacebookManager.swift in Sources */,
@@ -1012,7 +991,6 @@
 				6E07020C2386BF84008D79E9 /* LoginWelcomePresenter.swift in Sources */,
 				6E070217238D3FA2008D79E9 /* LoginWelcomeHeaderCell.swift in Sources */,
 				6E391B5A23A0CF72006AEC46 /* MconnectDataParser.swift in Sources */,
-				6E38880723C133AD006C63DE /* EditProfilePresenter.swift in Sources */,
 				6E4BD07E239F9C5F0022D514 /* AuthCache.swift in Sources */,
 				6E6D5D7923CC4DC400839094 /* ReferralCodeInteractor.swift in Sources */,
 				6E872FAC23A91BBA00910302 /* ForgotPasswordPresenter.swift in Sources */,

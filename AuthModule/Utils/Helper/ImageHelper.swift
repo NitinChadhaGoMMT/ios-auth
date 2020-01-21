@@ -46,9 +46,6 @@ extension UIImage {
     static let questions = ImageHelper.getImage(for: "icQna")
     static let clickIcon = ImageHelper.getImage(for: "icHand")
     
-    //EditProfileViewController
-    static let dummyProfilePic = ImageHelper.getImage(for: "dummyProfilePic")
-    
     //SignUpViewController
     static let errorIcon = ImageHelper.getImage(for: "referralCodeWarning")
     static let tickIcon = ImageHelper.getImage(for: "csCheck")

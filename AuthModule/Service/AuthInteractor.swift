@@ -163,7 +163,7 @@ class AuthService: AuthServiceProtocol {
         
         if isFBSignup == true && AuthUtils.isEmptyString(AccessToken.current?.tokenString) == false {
             parameters[NetworkConstants.kFBAccessToken] = AccessToken.current?.tokenString
-        } else if let accessToken = AuthCache.shared.getUserDefaltObject(forKey: "access_token")  as? String {
+        } else if let accessToken = AuthCache.shared.getUserDefaltObject(forKey: Keys.accessToken)  as? String {
             parameters[NetworkConstants.kAccessToken] = accessToken
         }
         
@@ -187,15 +187,15 @@ class AuthService: AuthServiceProtocol {
     
     static func requestLoginWithRefreshAccessToken(successBlock: (() -> Void)?, errorBlock: (() -> Void)?) {
         
-        guard AuthCache.shared.getUserDefaltObject(forKey: "refresh_token") != nil || UserDataManager.shared.isLoggedIn else { return }
+        guard AuthCache.shared.getUserDefaltObject(forKey: Keys.refreshToken) != nil || UserDataManager.shared.isLoggedIn else { return }
         
         if APIRetryHandler.shared.canRetryAuthApi() {
             var parameters = [String: Any]()
             parameters[NetworkConstants.kFlavourKey] = NetworkConstants.kMajorFlavour
             parameters["versioncode"] = AuthDepedencyInjector.networkDelegate?.getAppVersion()
             parameters["client_id"] = AuthNetworkUtils.getAuthKey()
-            parameters["grant_type"] = "refresh_token"
-            parameters["refresh_token"] = AuthCache.shared.getUserDefaltObject(forKey: "refresh_token")
+            parameters["grant_type"] = Keys.refreshToken
+            parameters[Keys.refreshToken] = AuthCache.shared.getUserDefaltObject(forKey: Keys.refreshToken)
             
             let authBase64Part = "\(AuthNetworkUtils.getAuthKey()):\(AuthNetworkUtils.getAuthSecret())".toBase64()
             let auth = "Basic \(authBase64Part)"
@@ -206,7 +206,7 @@ class AuthService: AuthServiceProtocol {
                     
                     if let errMain = jsonData["error"] as? String, errMain == "invalid_request" {
                         
-                        if let refresh_token = AuthCache.shared.getUserDefaltObject(forKey: "refresh_token") as? String, let parameterRefreshToken = parameters["refresh_token"] as? String, refresh_token != parameterRefreshToken {
+                        if let refresh_token = AuthCache.shared.getUserDefaltObject(forKey: Keys.refreshToken) as? String, let parameterRefreshToken = parameters[Keys.refreshToken] as? String, refresh_token != parameterRefreshToken {
                             requestLoginWithRefreshAccessToken(successBlock: successBlock, errorBlock: errorBlock)
                         } else {
                             AuthAlert.show(message: "Your login session is expired.")
@@ -215,14 +215,14 @@ class AuthService: AuthServiceProtocol {
                         
                     } else {
                         
-                        AuthCache.shared.setUserDefaltObject(jsonData["access_token"], forKey: "access_token")
+                        AuthCache.shared.setUserDefaltObject(jsonData[Keys.accessToken], forKey: Keys.accessToken)
                         AuthCache.shared.setUserDefaltObject(jsonData["token_type"], forKey: "token_type")
                         AuthCache.shared.setUserDefaltObject(jsonData["expires_in"], forKey: "expires_in")
-                        AuthCache.shared.setUserDefaltObject(jsonData["refresh_token"], forKey: "refresh_token")
-                        AuthCache.shared.setUserDefaltObject(jsonData["firebase_token"], forKey: "firebase_token")
+                        AuthCache.shared.setUserDefaltObject(jsonData[Keys.refreshToken], forKey: Keys.refreshToken)
+                        AuthCache.shared.setUserDefaltObject(jsonData[Keys.firebaseToken], forKey: Keys.firebaseToken)
                         AuthCache.shared.setUserDefaltObject(jsonData["ipl_firebase_token"], forKey: "ipl_firebase_token")
                         AuthCache.shared.setUserDefaltObject(NSDate.init(timeInterval: (TimeInterval(jsonData["expires_in"] as! Int)), since: Date()), forKey: "token_expiry")
-                        AuthCache.shared.setUserDefaltObject(jsonData["firebase_token"], forKey: "firebase_token")
+                        AuthCache.shared.setUserDefaltObject(jsonData[Keys.firebaseToken], forKey: Keys.firebaseToken)
                         UserDataManager.shared.accessTokenUpdated()
                         UserDataManager.updateLoggedInUserGoCash()
                         
@@ -234,8 +234,8 @@ class AuthService: AuthServiceProtocol {
                 
             }) { (json, error) in
                 if let error = error as NSError?, error.code == 400 {
-                    let refreshToken = AuthCache.shared.getUserDefaltObject(forKey: "refresh_token") as? String
-                    if let parameterRefreshToken = parameters["refresh_token"] as? String, !parameterRefreshToken.isEmpty ,refreshToken != parameterRefreshToken {
+                    let refreshToken = AuthCache.shared.getUserDefaltObject(forKey: Keys.refreshToken) as? String
+                    if let parameterRefreshToken = parameters[Keys.refreshToken] as? String, !parameterRefreshToken.isEmpty ,refreshToken != parameterRefreshToken {
                         
                         requestLoginWithRefreshAccessToken(successBlock: successBlock, errorBlock: errorBlock)
                     } else {
@@ -262,25 +262,7 @@ class AuthService: AuthServiceProtocol {
             }
         }
     }
-    
-    static func getReverseProfiles(_ mobile:String, success: @escaping SuccessBlock, failure: @escaping FailureBlock) {
-        
-        var urlStr = LoginConstants.amigoReverseProfileUrl()
-        urlStr = urlStr + mobile + "?count=3?flavour=ios"
-        
-        var headers = Dictionary<String, String>()
-        headers["Authorization"] = NetworkConstants.amigoBasic
-        if let token = AuthCache.shared.getUserDefaltObject(forKey: "access_token") as? String {
-            headers["oauth_token"] = token
-        }
-        
-        Session.service.get(urlStr, header: headers, success: { (json) in
-            success(LoginReverseSyncContactProfiles().parseJSON(json.dictionaryObject) as? ReverseProfileData)
-        }, failure: { (json, error) in
-            failure(getErrorDataFrom(error: error))
-        })
-    }
-    
+
     static func requestToLoginWithWhatsApp(_ whatsAppToken:String, referralCode:String?, extraKey: String?, success: @escaping SuccessBlock, failure: @escaping FailureBlock) {
         var parameters = Dictionary<String, Any>()
         parameters["whatsapp_access_token"] = whatsAppToken
@@ -308,7 +290,7 @@ class AuthService: AuthServiceProtocol {
             dict["f"] = AccessToken.current?.tokenString ?? ""
         }
         else{
-            if let accessToken = AuthCache.shared.getUserDefaltObject(forKey: "access_token")  as? String {
+            if let accessToken = AuthCache.shared.getUserDefaltObject(forKey: Keys.accessToken)  as? String {
                 dict["a"] = accessToken
             }
         }
