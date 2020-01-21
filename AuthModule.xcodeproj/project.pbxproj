@@ -148,7 +148,8 @@
 		6EE3207523C30B7D00E6B810 /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EE3207323C30B7D00E6B810 /* ProfileHeaderView.xib */; };
 		6EEA6B4323912D0B0030F442 /* AuthDepedencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEA6B4223912D0B0030F442 /* AuthDepedencyInjector.swift */; };
 		6EEA6B452391329B0030F442 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEA6B442391329B0030F442 /* UserDataManager.swift */; };
-		6EFACD0E23D717BD00A61BA0 /* AuthModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E9C551223D5CED100A658EA /* AuthModule.framework */; };
+		6EF9788123D71DA1007097A0 /* AuthModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E0701F42386BC78008D79E9 /* AuthModule.framework */; };
+		6EF9788223D71DA1007097A0 /* AuthModule.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E0701F42386BC78008D79E9 /* AuthModule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -158,6 +159,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 6E0701D92386BC5D008D79E9;
 			remoteInfo = AuthSampleApp;
+		};
+		6EFACD1723D71CFF00A61BA0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6E0701D22386BC5C008D79E9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6E0701F32386BC78008D79E9;
+			remoteInfo = AuthModule;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -173,6 +181,7 @@
 				6E9C552D23D5E78E00A658EA /* FBSDKShareKit.framework in Embed Frameworks */,
 				6E9C552723D5E78A00A658EA /* FBSDKCoreKit.framework in Embed Frameworks */,
 				6E9C552923D5E78B00A658EA /* FBSDKLoginKit.framework in Embed Frameworks */,
+				6EF9788223D71DA1007097A0 /* AuthModule.framework in Embed Frameworks */,
 				6E9C552523D5E78900A658EA /* CryptoSwift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -293,7 +302,6 @@
 		6E872FB723AB7AEC00910302 /* KeyChainLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainLoginViewController.swift; sourceTree = "<group>"; };
 		6E872FB923AB7B2100910302 /* KeyChainLoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainLoginPresenter.swift; sourceTree = "<group>"; };
 		6E872FBB23AB95DC00910302 /* KeychainLoginUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainLoginUserCell.swift; sourceTree = "<group>"; };
-		6E9C551223D5CED100A658EA /* AuthModule.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthModule.framework; path = "../../../Volumes/Data/ios-app/code/Carthage/Build/iOS/AuthModule.framework"; sourceTree = "<group>"; };
 		6EA4D22D2399010B004DFAEA /* LoginGAPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginGAPManager.swift; sourceTree = "<group>"; };
 		6EA4D22F23993F40004DFAEA /* SignInWithPasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithPasswordPresenter.swift; sourceTree = "<group>"; };
 		6EA4D231239940D3004DFAEA /* SignInWithPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithPasswordViewController.swift; sourceTree = "<group>"; };
@@ -335,7 +343,7 @@
 				6E9C552823D5E78B00A658EA /* FBSDKLoginKit.framework in Frameworks */,
 				6E9C552C23D5E78E00A658EA /* FBSDKShareKit.framework in Frameworks */,
 				6E9C552A23D5E78D00A658EA /* FBSDKPlacesKit.framework in Frameworks */,
-				6EFACD0E23D717BD00A61BA0 /* AuthModule.framework in Frameworks */,
+				6EF9788123D71DA1007097A0 /* AuthModule.framework in Frameworks */,
 				6E9C552623D5E78A00A658EA /* FBSDKCoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -697,7 +705,6 @@
 		6EEA6AF8239105560030F442 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6E9C551223D5CED100A658EA /* AuthModule.framework */,
 				6E4D5B4C23B0F14000491102 /* CryptoSwift.framework */,
 				6E4D5B4F23B0F14000491102 /* FBSDKCoreKit.framework */,
 				6E4D5B5023B0F14000491102 /* FBSDKLoginKit.framework */,
@@ -740,6 +747,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				6EFACD1823D71CFF00A61BA0 /* PBXTargetDependency */,
 			);
 			name = AuthSampleApp;
 			productName = AuthSampleApp;
@@ -891,7 +899,6 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/AuthModule.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CryptoSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/FBSDKCoreKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/FBSDKLoginKit.framework",
@@ -1042,6 +1049,11 @@
 			isa = PBXTargetDependency;
 			target = 6E0701D92386BC5D008D79E9 /* AuthSampleApp */;
 			targetProxy = 6E6D5D9123CD92A700839094 /* PBXContainerItemProxy */;
+		};
+		6EFACD1823D71CFF00A61BA0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6E0701F32386BC78008D79E9 /* AuthModule */;
+			targetProxy = 6EFACD1723D71CFF00A61BA0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
