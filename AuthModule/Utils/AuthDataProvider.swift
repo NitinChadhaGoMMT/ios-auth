@@ -90,6 +90,10 @@ public class AuthDataProvider {
         return UserDataManager.shared.activeUser?.gstin
     }
     
+    public static var address: String? {
+        return UserDataManager.shared.activeUser?.address
+    }
+    
     public static var companyAddress: String? {
         return UserDataManager.shared.activeUser?.companyAddress
     }
@@ -155,7 +159,7 @@ public class AuthDataProvider {
     }
     
     public static var isAccessTokenExpired: Bool {
-        if let tokenDate = AuthCache.shared.getUserDefaltObject(forKey: "token_expiry") as? NSDate {
+        if let tokenDate = AuthCache.shared.getUserDefaltObject(forKey: Keys.tokenExpiry) as? NSDate {
             let currentDate = Date()
             if tokenDate.compare(currentDate) == .orderedAscending {
                 return true

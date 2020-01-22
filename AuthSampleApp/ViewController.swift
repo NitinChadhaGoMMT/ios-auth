@@ -37,6 +37,14 @@ class ViewController: UIViewController {
 }
 
 class AuthModuleHelper: AuthModuleUIProtocol {
+    func accessTokenUpdated() {
+        
+    }
+    
+    func updateLoggedInUserGoCash() {
+        
+    }
+    
     func userLoggedInSuccessfullyViaWhatsApp() {
         
     }

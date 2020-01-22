@@ -52,6 +52,12 @@ struct Keys {
     static let facebookAppId = "151974918280687"
     static let referCode = "refercode"
     static let firebaseToken = "firebase_token"
+    static let iplFirebaseToken = "ipl_firebase_token"
+    static let tokenType = "token_type"
+    static let expiresIn = "expires_in"
+    static let tokenExpiry = "token_expiry"
+    static let bearerToken = "bearer_token"
+    static let error = "error"
     
     //Network Keys
     static let referralCode = "referral_code"

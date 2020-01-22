@@ -39,7 +39,7 @@ extension AuthServiceProtocol {
         }
         
         var errorObject = [String: Any]()
-        if let data = responseObject["error"] as? Dictionary<String, Any> {
+        if let data = responseObject[Keys.error] as? Dictionary<String, Any> {
             errorObject = data
         } else if let data = responseObject["errors"] as? Dictionary<String, Any> {
             errorObject = data

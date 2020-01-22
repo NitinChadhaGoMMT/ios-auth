@@ -108,8 +108,6 @@
 		6E872FBC23AB95DC00910302 /* KeychainLoginUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E872FBB23AB95DC00910302 /* KeychainLoginUserCell.swift */; };
 		6E9C551823D5CFA800A658EA /* NetworkLayerFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EEA6AF9239105560030F442 /* NetworkLayerFramework.framework */; };
 		6E9C551923D5CFA800A658EA /* NetworkLayerFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6EEA6AF9239105560030F442 /* NetworkLayerFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6E9C552423D5E78900A658EA /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B4C23B0F14000491102 /* CryptoSwift.framework */; };
-		6E9C552523D5E78900A658EA /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B4C23B0F14000491102 /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6E9C552623D5E78A00A658EA /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B4F23B0F14000491102 /* FBSDKCoreKit.framework */; };
 		6E9C552723D5E78A00A658EA /* FBSDKCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B4F23B0F14000491102 /* FBSDKCoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6E9C552823D5E78B00A658EA /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B5023B0F14000491102 /* FBSDKLoginKit.framework */; };
@@ -178,7 +176,6 @@
 				6E9C552723D5E78A00A658EA /* FBSDKCoreKit.framework in Embed Frameworks */,
 				6E9C552923D5E78B00A658EA /* FBSDKLoginKit.framework in Embed Frameworks */,
 				6EF9788223D71DA1007097A0 /* AuthModule.framework in Embed Frameworks */,
-				6E9C552523D5E78900A658EA /* CryptoSwift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,7 +324,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E9C552423D5E78900A658EA /* CryptoSwift.framework in Frameworks */,
 				6E9C551823D5CFA800A658EA /* NetworkLayerFramework.framework in Frameworks */,
 				6E9C552823D5E78B00A658EA /* FBSDKLoginKit.framework in Frameworks */,
 				6E9C552C23D5E78E00A658EA /* FBSDKShareKit.framework in Frameworks */,

@@ -37,6 +37,10 @@ public protocol AuthModuleUIProtocol {
     func userLoginFailedViaWhatsApp(error: Error?)
     
     func rewardsDataUpdated()
+    
+    func accessTokenUpdated()
+    
+    func updateLoggedInUserGoCash()
 }
 
 extension AuthModuleUIProtocol {

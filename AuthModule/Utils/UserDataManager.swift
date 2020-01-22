@@ -157,8 +157,8 @@ class UserDataManager {
         if let firebase_token = dictionary[Keys.firebaseToken] as? String, !firebase_token.isEmpty {
             AuthCache.shared.setUserDefaltObject(firebase_token, forKey: Keys.firebaseToken)
         }
-        if let ipl_firebase_token = dictionary["ipl_firebase_token"] as? String, !ipl_firebase_token.isEmpty {
-            AuthCache.shared.setUserDefaltObject(ipl_firebase_token, forKey: "ipl_firebase_token")
+        if let ipl_firebase_token = dictionary[Keys.iplFirebaseToken] as? String, !ipl_firebase_token.isEmpty {
+            AuthCache.shared.setUserDefaltObject(ipl_firebase_token, forKey: Keys.iplFirebaseToken)
         }
         
         updateUserTraits()
@@ -194,7 +194,7 @@ class UserDataManager {
         AuthCache.shared.setUserDefaltObject(nil, forKey: Keys.accessToken)
         AuthCache.shared.setUserDefaltObject(nil, forKey: Keys.refreshToken)
         AuthCache.shared.setUserDefaltObject(nil, forKey: Keys.firebaseToken)
-        AuthCache.shared.setUserDefaltObject(nil, forKey: "ipl_firebase_token")
+        AuthCache.shared.setUserDefaltObject(nil, forKey: Keys.iplFirebaseToken)
         
         GoFacebookManager.shared.signOutFromFacebook()
         
@@ -213,13 +213,11 @@ class UserDataManager {
     }
     
     func accessTokenUpdated() {
-        //<NITIN>
+        AuthDepedencyInjector.uiDelegate?.accessTokenUpdated()
     }
     
     static func updateLoggedInUserGoCash() {
-        let moc = DBHelper.shared.managedObjectContext
-        var user: User? = NSEntityDescription.insertNewObject(forEntityName: "User", into: moc) as? User
-        
+        AuthDepedencyInjector.uiDelegate?.updateLoggedInUserGoCash()
     }
     
     func getTierDict() -> NSDictionary? {

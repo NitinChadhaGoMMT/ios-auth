@@ -204,7 +204,7 @@ class AuthService: AuthServiceProtocol {
                 
                 if let jsonData = data.dictionaryObject {
                     
-                    if let errMain = jsonData["error"] as? String, errMain == "invalid_request" {
+                    if let errMain = jsonData[Keys.error] as? String, errMain == "invalid_request" {
                         
                         if let refresh_token = AuthCache.shared.getUserDefaltObject(forKey: Keys.refreshToken) as? String, let parameterRefreshToken = parameters[Keys.refreshToken] as? String, refresh_token != parameterRefreshToken {
                             requestLoginWithRefreshAccessToken(successBlock: successBlock, errorBlock: errorBlock)
@@ -216,12 +216,12 @@ class AuthService: AuthServiceProtocol {
                     } else {
                         
                         AuthCache.shared.setUserDefaltObject(jsonData[Keys.accessToken], forKey: Keys.accessToken)
-                        AuthCache.shared.setUserDefaltObject(jsonData["token_type"], forKey: "token_type")
-                        AuthCache.shared.setUserDefaltObject(jsonData["expires_in"], forKey: "expires_in")
+                        AuthCache.shared.setUserDefaltObject(jsonData[Keys.tokenType], forKey: Keys.tokenType)
+                        AuthCache.shared.setUserDefaltObject(jsonData[Keys.expiresIn], forKey: Keys.expiresIn)
                         AuthCache.shared.setUserDefaltObject(jsonData[Keys.refreshToken], forKey: Keys.refreshToken)
                         AuthCache.shared.setUserDefaltObject(jsonData[Keys.firebaseToken], forKey: Keys.firebaseToken)
-                        AuthCache.shared.setUserDefaltObject(jsonData["ipl_firebase_token"], forKey: "ipl_firebase_token")
-                        AuthCache.shared.setUserDefaltObject(NSDate.init(timeInterval: (TimeInterval(jsonData["expires_in"] as! Int)), since: Date()), forKey: "token_expiry")
+                        AuthCache.shared.setUserDefaltObject(jsonData[Keys.iplFirebaseToken], forKey: Keys.iplFirebaseToken)
+                        AuthCache.shared.setUserDefaltObject(NSDate.init(timeInterval: (TimeInterval(jsonData[Keys.expiresIn] as! Int)), since: Date()), forKey: Keys.tokenExpiry)
                         AuthCache.shared.setUserDefaltObject(jsonData[Keys.firebaseToken], forKey: Keys.firebaseToken)
                         UserDataManager.shared.accessTokenUpdated()
                         UserDataManager.updateLoggedInUserGoCash()
