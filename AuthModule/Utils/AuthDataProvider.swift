@@ -189,8 +189,14 @@ public class AuthDataProvider {
     
     @discardableResult public static func refreshUserInfoIfTokenExpired() -> Bool {
         let wasTokenExpired = isAccessTokenExpired
-        AuthService.requestLoginWithRefreshAccessToken(successBlock: nil, errorBlock: nil)
+        if wasTokenExpired {
+            AuthService.requestLoginWithRefreshAccessToken(successBlock: nil, errorBlock: nil)
+        }
         return wasTokenExpired
+    }
+    
+    public static func requestLoginWithRefreshToken(successBlock: (() -> Void)?, errorBlock: (() -> Void)?) {
+        AuthService.requestLoginWithRefreshAccessToken(successBlock: successBlock, errorBlock: errorBlock)
     }
     
     public static func logoutUser() {
