@@ -21,7 +21,7 @@
 		6E07020C2386BF84008D79E9 /* LoginWelcomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E07020B2386BF84008D79E9 /* LoginWelcomePresenter.swift */; };
 		6E07020E2386BF97008D79E9 /* LoginWelcomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E07020D2386BF97008D79E9 /* LoginWelcomeInteractor.swift */; };
 		6E0702102386C194008D79E9 /* WhatsAppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E07020F2386C194008D79E9 /* WhatsAppManager.swift */; };
-		6E0702122386C757008D79E9 /* CommonUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0702112386C756008D79E9 /* CommonUIExtensions.swift */; };
+		6E0702122386C757008D79E9 /* UIImageView_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0702112386C756008D79E9 /* UIImageView_Extensions.swift */; };
 		6E070217238D3FA2008D79E9 /* LoginWelcomeHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E070216238D3FA2008D79E9 /* LoginWelcomeHeaderCell.swift */; };
 		6E07021D238D4991008D79E9 /* FireBaseConfigKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E07021A238D48DA008D79E9 /* FireBaseConfigKeys.swift */; };
 		6E07021E238D4AF6008D79E9 /* FirebaseHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E070218238D48AC008D79E9 /* FirebaseHandlerProtocol.swift */; };
@@ -133,6 +133,15 @@
 		6EA7803A23950D1400FA409D /* LoginBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA7803923950D1400FA409D /* LoginBaseViewController.swift */; };
 		6EA7803F23951A2500FA409D /* CommonUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EA7803D23951A2500FA409D /* CommonUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6EA7804023951A2500FA409D /* CommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EA7803E23951A2500FA409D /* CommonUtils.m */; };
+		6EA8A2E423D9835800A37BEF /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA8A2E323D9835800A37BEF /* ActivityIndicator.swift */; };
+		6EA8A2E623D9838500A37BEF /* AuthAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA8A2E523D9838500A37BEF /* AuthAnimation.swift */; };
+		6EA8A2E823D9855200A37BEF /* String_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA8A2E723D9855200A37BEF /* String_Extensions.swift */; };
+		6EA8A2EA23D9859200A37BEF /* Reusable_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA8A2E923D9859200A37BEF /* Reusable_Extensions.swift */; };
+		6EA8A2EC23D985D500A37BEF /* Label_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA8A2EB23D985D500A37BEF /* Label_Extensions.swift */; };
+		6EA8A2EE23D9861100A37BEF /* UITextfield_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA8A2ED23D9861100A37BEF /* UITextfield_Extensions.swift */; };
+		6EA8A2F023D9862F00A37BEF /* Int_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA8A2EF23D9862F00A37BEF /* Int_Extensions.swift */; };
+		6EA8A2F223D9865E00A37BEF /* UIButton_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA8A2F123D9865E00A37BEF /* UIButton_Extensions.swift */; };
+		6EA8A2F423D9869400A37BEF /* Dictionary_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA8A2F323D9869400A37BEF /* Dictionary_Extensions.swift */; };
 		6EAA395D239A38CB00872FD2 /* SignInHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAA395C239A38CB00872FD2 /* SignInHeaderTableViewCell.swift */; };
 		6EAA395F239A526000872FD2 /* LoginPasswordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAA395E239A526000872FD2 /* LoginPasswordTableViewCell.swift */; };
 		6EAA3961239A5BD200872FD2 /* LoginContinueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAA3960239A5BD200872FD2 /* LoginContinueTableViewCell.swift */; };
@@ -202,7 +211,7 @@
 		6E07020B2386BF84008D79E9 /* LoginWelcomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWelcomePresenter.swift; sourceTree = "<group>"; };
 		6E07020D2386BF97008D79E9 /* LoginWelcomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWelcomeInteractor.swift; sourceTree = "<group>"; };
 		6E07020F2386C194008D79E9 /* WhatsAppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsAppManager.swift; sourceTree = "<group>"; };
-		6E0702112386C756008D79E9 /* CommonUIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUIExtensions.swift; sourceTree = "<group>"; };
+		6E0702112386C756008D79E9 /* UIImageView_Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView_Extensions.swift; sourceTree = "<group>"; };
 		6E070216238D3FA2008D79E9 /* LoginWelcomeHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWelcomeHeaderCell.swift; sourceTree = "<group>"; };
 		6E070218238D48AC008D79E9 /* FirebaseHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHandlerProtocol.swift; sourceTree = "<group>"; };
 		6E07021A238D48DA008D79E9 /* FireBaseConfigKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireBaseConfigKeys.swift; sourceTree = "<group>"; };
@@ -307,6 +316,15 @@
 		6EA7803923950D1400FA409D /* LoginBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBaseViewController.swift; sourceTree = "<group>"; };
 		6EA7803D23951A2500FA409D /* CommonUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonUtils.h; sourceTree = "<group>"; };
 		6EA7803E23951A2500FA409D /* CommonUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommonUtils.m; sourceTree = "<group>"; };
+		6EA8A2E323D9835800A37BEF /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		6EA8A2E523D9838500A37BEF /* AuthAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAnimation.swift; sourceTree = "<group>"; };
+		6EA8A2E723D9855200A37BEF /* String_Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String_Extensions.swift; sourceTree = "<group>"; };
+		6EA8A2E923D9859200A37BEF /* Reusable_Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable_Extensions.swift; sourceTree = "<group>"; };
+		6EA8A2EB23D985D500A37BEF /* Label_Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label_Extensions.swift; sourceTree = "<group>"; };
+		6EA8A2ED23D9861100A37BEF /* UITextfield_Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextfield_Extensions.swift; sourceTree = "<group>"; };
+		6EA8A2EF23D9862F00A37BEF /* Int_Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int_Extensions.swift; sourceTree = "<group>"; };
+		6EA8A2F123D9865E00A37BEF /* UIButton_Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton_Extensions.swift; sourceTree = "<group>"; };
+		6EA8A2F323D9869400A37BEF /* Dictionary_Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary_Extensions.swift; sourceTree = "<group>"; };
 		6EAA395C239A38CB00872FD2 /* SignInHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		6EAA395E239A526000872FD2 /* LoginPasswordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPasswordTableViewCell.swift; sourceTree = "<group>"; };
 		6EAA3960239A5BD200872FD2 /* LoginContinueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContinueTableViewCell.swift; sourceTree = "<group>"; };
@@ -412,8 +430,9 @@
 				6E0702082386BD9D008D79E9 /* Storyboard */,
 				6E1C68AE23C7187200AECA04 /* ThirdParty */,
 				6E0702052386BD71008D79E9 /* Utils */,
+				6EA8A2E223D9831500A37BEF /* Extensions */,
+				6EA8A2E123D9830800A37BEF /* UIComponents */,
 				6E6D5D8023CC8BC800839094 /* Resources */,
-				6E395A6023BA3C9B002D50F1 /* TempViewController.swift */,
 				6E0701F62386BC78008D79E9 /* AuthModule.h */,
 				6E0701F72386BC78008D79E9 /* Info.plist */,
 				6E44B13B23ABEB690068EC9A /* UserData.xcdatamodeld */,
@@ -426,7 +445,6 @@
 			isa = PBXGroup;
 			children = (
 				6E1C68AD23C7186400AECA04 /* Helper */,
-				6E1C68AC23C7185C00AECA04 /* Extensions */,
 				6E4BD07D239F9C5F0022D514 /* AuthCache.swift */,
 				6E07022A238E5C16008D79E9 /* AuthUtils.swift */,
 				6E1C68AF23C718C100AECA04 /* AuthNetworkUtils.swift */,
@@ -485,6 +503,7 @@
 		6E070230238E9499008D79E9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6E395A6023BA3C9B002D50F1 /* TempViewController.swift */,
 				6EA7803923950D1400FA409D /* LoginBaseViewController.swift */,
 				6E0702012386BC95008D79E9 /* LoginWelcomeViewController.swift */,
 				6EA4D231239940D3004DFAEA /* SignInWithPasswordViewController.swift */,
@@ -543,20 +562,10 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		6E1C68AC23C7185C00AECA04 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				6E0702112386C756008D79E9 /* CommonUIExtensions.swift */,
-				6E0702062386BD82008D79E9 /* View_Extensions.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		6E1C68AD23C7186400AECA04 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
 				6E07020F2386C194008D79E9 /* WhatsAppManager.swift */,
-				6E554C03239145C900E043A2 /* AuthAlert.swift */,
 				6E4D5B5C23B0FAFE00491102 /* GoFacebookManager.swift */,
 				6E54C0C823C34C7900D2133F /* WhatsappHelper.swift */,
 				6E54C0D023C45B4700D2133F /* ImageHelper.swift */,
@@ -678,6 +687,32 @@
 				6E71C280239550DF00A81BAF /* AppConstants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		6EA8A2E123D9830800A37BEF /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				6E554C03239145C900E043A2 /* AuthAlert.swift */,
+				6EA8A2E523D9838500A37BEF /* AuthAnimation.swift */,
+				6EA8A2E323D9835800A37BEF /* ActivityIndicator.swift */,
+			);
+			path = UIComponents;
+			sourceTree = "<group>";
+		};
+		6EA8A2E223D9831500A37BEF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6EA8A2E923D9859200A37BEF /* Reusable_Extensions.swift */,
+				6E0702112386C756008D79E9 /* UIImageView_Extensions.swift */,
+				6E0702062386BD82008D79E9 /* View_Extensions.swift */,
+				6EA8A2E723D9855200A37BEF /* String_Extensions.swift */,
+				6EA8A2EB23D985D500A37BEF /* Label_Extensions.swift */,
+				6EA8A2ED23D9861100A37BEF /* UITextfield_Extensions.swift */,
+				6EA8A2EF23D9862F00A37BEF /* Int_Extensions.swift */,
+				6EA8A2F123D9865E00A37BEF /* UIButton_Extensions.swift */,
+				6EA8A2F323D9869400A37BEF /* Dictionary_Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		6EEA6AF8239105560030F442 /* Frameworks */ = {
@@ -905,6 +940,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EA8A2EC23D985D500A37BEF /* Label_Extensions.swift in Sources */,
 				6EA7802E2394FD4C00FA409D /* NetworkConstants.swift in Sources */,
 				6E070224238D6CDA008D79E9 /* LoginNewUserDetailsCell.swift in Sources */,
 				6E54C0D123C45B4700D2133F /* ImageHelper.swift in Sources */,
@@ -915,8 +951,10 @@
 				6E4011EB23A3CEF5002C6BFD /* LoginWelcomeProtocols.swift in Sources */,
 				6E07022E238E71C5008D79E9 /* AuthUtils.swift in Sources */,
 				6E1C68C423C7438200AECA04 /* UIFont_Ext.swift in Sources */,
+				6EA8A2F423D9869400A37BEF /* Dictionary_Extensions.swift in Sources */,
 				6E391B6023A12B34006AEC46 /* SignupInteractor.swift in Sources */,
 				6EA7802B2394F93300FA409D /* LoginConstants.swift in Sources */,
+				6EA8A2E823D9855200A37BEF /* String_Extensions.swift in Sources */,
 				6E07021D238D4991008D79E9 /* FireBaseConfigKeys.swift in Sources */,
 				6E1C68B223C718F000AECA04 /* FireBaseHandler.swift in Sources */,
 				6E44B13F23ABEDBC0068EC9A /* DatabaseHelper.swift in Sources */,
@@ -933,8 +971,11 @@
 				6E554C04239145C900E043A2 /* AuthAlert.swift in Sources */,
 				6EA780302394FE1E00FA409D /* LoginWrapper.swift in Sources */,
 				6EA780322395051000FA409D /* KeychainWrapper.swift in Sources */,
+				6EA8A2E423D9835800A37BEF /* ActivityIndicator.swift in Sources */,
 				6EC29E7423C31C1900C1515A /* SocialAccountLoginCell.swift in Sources */,
 				6E872FAA23A9167500910302 /* ForgotPasswordViewController.swift in Sources */,
+				6EA8A2EE23D9861100A37BEF /* UITextfield_Extensions.swift in Sources */,
+				6EA8A2EA23D9859200A37BEF /* Reusable_Extensions.swift in Sources */,
 				6EA780232394F29500FA409D /* AuthInteractor.swift in Sources */,
 				6E0702022386BC95008D79E9 /* LoginWelcomeViewController.swift in Sources */,
 				6E6D5D7D23CC604900839094 /* ReferralCodeValidationPresenter.swift in Sources */,
@@ -958,6 +999,7 @@
 				6EEA6B4323912D0B0030F442 /* AuthDepedencyInjector.swift in Sources */,
 				6EA7804023951A2500FA409D /* CommonUtils.m in Sources */,
 				6E07021E238D4AF6008D79E9 /* FirebaseHandlerProtocol.swift in Sources */,
+				6EA8A2E623D9838500A37BEF /* AuthAnimation.swift in Sources */,
 				6E395A5F23BA1CF9002D50F1 /* APIRetryHandler.swift in Sources */,
 				6E0702072386BD82008D79E9 /* View_Extensions.swift in Sources */,
 				6E070229238E5786008D79E9 /* LoginSkipNowTableCell.swift in Sources */,
@@ -972,6 +1014,7 @@
 				6E44B13D23ABEB6A0068EC9A /* UserData.xcdatamodeld in Sources */,
 				6E6D5DAC23CE031F00839094 /* Base64.m in Sources */,
 				6EAA3963239A6B2700872FD2 /* LoginOTPVerifyParser.swift in Sources */,
+				6EA8A2F223D9865E00A37BEF /* UIButton_Extensions.swift in Sources */,
 				6E1C68B423C7315900AECA04 /* Colors_Ext.swift in Sources */,
 				6E54C0CD23C354F600D2133F /* RSA.m in Sources */,
 				6E395A6123BA3C9B002D50F1 /* TempViewController.swift in Sources */,
@@ -986,6 +1029,7 @@
 				6E54C0CF23C3BC8F00D2133F /* KeyChainLoginProtocols.swift in Sources */,
 				6E07020C2386BF84008D79E9 /* LoginWelcomePresenter.swift in Sources */,
 				6E070217238D3FA2008D79E9 /* LoginWelcomeHeaderCell.swift in Sources */,
+				6EA8A2F023D9862F00A37BEF /* Int_Extensions.swift in Sources */,
 				6E391B5A23A0CF72006AEC46 /* MconnectDataParser.swift in Sources */,
 				6E4BD07E239F9C5F0022D514 /* AuthCache.swift in Sources */,
 				6E6D5D7923CC4DC400839094 /* ReferralCodeInteractor.swift in Sources */,
@@ -993,7 +1037,7 @@
 				6E395A5D23B9CD84002D50F1 /* MobileVerificationProtocols.swift in Sources */,
 				6E4BD076239E5CFC0022D514 /* OTPVerificationPresenter.swift in Sources */,
 				6EA780362395054C00FA409D /* KeychainItemAccessibility.swift in Sources */,
-				6E0702122386C757008D79E9 /* CommonUIExtensions.swift in Sources */,
+				6E0702122386C757008D79E9 /* UIImageView_Extensions.swift in Sources */,
 				6E54C0D323C4A7D200D2133F /* TermAndConditionsViewController.swift in Sources */,
 				6E0702102386C194008D79E9 /* WhatsAppManager.swift in Sources */,
 				6EEA6B452391329B0030F442 /* UserDataManager.swift in Sources */,

@@ -48,6 +48,7 @@ class LoginWelcomePresenter: BasePresenter, LoginWelcomeViewToPresenterProtocol 
         if let codeDict = AuthDepedencyInjector.branchReferDictionary {
             referralFirstName = codeDict.object(forKey: "fname") as? String
             commonData.referralCode = codeDict.object(forKey: "refercode") as? String
+            showReferralStatus = true
         }
     }
     

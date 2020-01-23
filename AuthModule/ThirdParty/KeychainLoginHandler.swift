@@ -83,7 +83,7 @@ class KeychainLoginHandler {
     
      func startLogInFLow(userid:String, sender:LoginBaseViewController){
         guard AuthUtils.isMobileNetworkConnected() == true else {
-            AuthAlert.showAppGenericAlert(on: sender, message: "You appear to be offline. Please check your internet connection.")
+            AuthAlert.noInternetAlert()
             return
         }
         

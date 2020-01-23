@@ -36,10 +36,6 @@ struct AuthUtils {
         return true
     }
     
-    static func showAlert(on view:UIViewController, message: String) {
-        AuthDepedencyInjector.uiDelegate?.showAlert(on: view, message: message)
-    }
-    
     static func isEmptyString(_ string: Any?) -> Bool {
         guard let string = string as? String else { return true }
         return string.trimmingCharacters(in: .whitespaces).isEmpty

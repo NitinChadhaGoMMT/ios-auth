@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                   firebaseDelegate: nil,
                                                   firebaseRemoteDelegate: nil,
                                                   analyticsDelegate: nil)
-        //AuthDepedencyInjector.injectReferralDictionary(dictionary: ["refercode":"DHIN786", "fname":"Nitin"])
+        AuthDepedencyInjector.injectReferralDictionary(dictionary: ["refercode":"DHIN786", "fname":"Nitin"])
         return true
     }
 

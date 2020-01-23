@@ -14,6 +14,7 @@ extension Notification {
 
 extension String {
     
+    static let goibibo = "Goibibo"
     static let genericError = "Something wrent wrong. Please try again later."
     static let privacyPolicy = "Privacy Policy"
     static let userAgreement = "User Agreement"

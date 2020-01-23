@@ -19,6 +19,7 @@ class LoginWelcomeViewController: LoginBaseViewController, LoginWelcomePresenter
         super.viewDidLoad()
         presenter?.performInitialConfiguration()
         configureUserInterface()
+        validateReferralCode()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,7 +31,6 @@ class LoginWelcomeViewController: LoginBaseViewController, LoginWelcomePresenter
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         KeychainLoginHandler.shared.presentKeyChainLogin(sender: self)
-        validateReferralCode()
     }
     
     func configureUserInterface() {
@@ -41,7 +41,6 @@ class LoginWelcomeViewController: LoginBaseViewController, LoginWelcomePresenter
     }
     
     override func addMconnectView(){
-        
         if let view: MConnectPoweredByView = Bundle.loadNib() {
             view.layoutIfNeeded()
             self.myTable.layoutIfNeeded()
@@ -165,7 +164,7 @@ extension LoginWelcomeViewController: LoginNewUserDetailsCellDelegate {
         self.presenter?.isFbSignup = false
         
         guard self.presenter?.isValidPhoneNumber(mobileNumber: mobileNumber) ?? false else {
-            AuthUtils.showAlert(on: self, message: .kInvalidNumberMessage)
+            AuthAlert.showInvalidMobileAlert(view: self)
             return
         }
 

@@ -126,7 +126,7 @@ class AuthModuleHelper: AuthModuleUIProtocol {
     var activityView: UIActivityIndicatorView?
     
     func showAlert(on view: UIViewController, message: String) {
-        let alert = UIAlertController(title: "Auth Module", message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Goibibo", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         view.present(alert, animated: true, completion: nil)
     }

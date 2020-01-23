@@ -56,7 +56,7 @@ class ForgotPasswordViewController: LoginBaseViewController, ForgotPasswordPrese
         if AuthUtils.isValidPhoneNumber(emailOrMobile) {
             postDic["mobile"] = emailOrMobile
         } else {
-            AuthAlert.showErrorAlert(view: self, title: "GoIbibo", message: "Please enter valid email/mobile")
+            AuthAlert.showErrorAlert(view: self, title: .goibibo, message: "Please enter valid email/mobile")
             return
         }
         presenter?.requestToRegeneratePassword()

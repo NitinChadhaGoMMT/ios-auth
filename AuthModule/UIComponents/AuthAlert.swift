@@ -8,85 +8,15 @@
 
 import UIKit
 
-struct AuthAnimation {
-    
-    static func hideEaseInCurve(view: UIView, completion: (() -> Void)? = nil) {
-        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut, animations: {
-            view.transform = CGAffineTransform(scaleX: 0.0001, y: 0.0001)
-            view.alpha = 0.0
-        }, completion: {(_) in
-            view.isHidden = true
-            if let completion = completion {
-                completion()
-            }
-        })
-    }
-    
-    static func showEaseInCurve(view: UIView, completion: (() -> Void)? = nil)  {
-        view.isHidden = false
-        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut, animations: {
-             view.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-             view.alpha = 1.0
-        }, completion: {(_) in
-            if let completion = completion {
-                completion()
-            }
-        })
-     }
-    
-    static func easeInOutAnimation(view: UIView, show: Bool, completion: (() -> Void)? = nil) {
-        
-        if show { view.isHidden = false }
-        
-        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut, animations: {
-            view.transform = show ? CGAffineTransform(scaleX: 1.0, y: 1.0) : CGAffineTransform(scaleX: 0.0001, y: 0.0001)
-            view.alpha = show ? 1.0 : 0.0
-        }, completion: {(_) in
-            
-            if !show { view.isHidden = true }
-            
-            if let completion = completion {
-                completion()
-            }
-        })
-        
-    }
-    
-    static func flipView(view: UIView, recursive: Bool = true) {
-        UIView.transition(with: view, duration: 2.0, options: .transitionFlipFromLeft, animations: {
-        }, completion: { (finished) in
-            if finished && recursive {
-                flipView(view: view, recursive: recursive)
-            }
-        })
-    }
-}
-
-struct ActivityIndicator {
-    static func show(on view: UIView?, withMessage message: String? = nil) {
-        
-        guard let view = view else { return }
-        
-        AuthDepedencyInjector.uiDelegate?.showActivityIndicator(on: view)
-    }
-    
-    static func hide(on view: UIView?) {
-        
-        guard let view = view else { return }
-        
-        AuthDepedencyInjector.uiDelegate?.hideActivityIndicator(from: view)
-    }
-}
-
 struct AuthAlert {
     
-    static func show(withTitle: String = "Goibibo", message: String) {
+    static func show(withTitle: String = .goibibo, message: String) {
         if var topController = UIApplication.shared.keyWindow?.rootViewController {
             while let presentedViewController = topController.presentedViewController {
                 topController = presentedViewController
             }
             
-            let alertController = UIAlertController(title: "Goibibo", message: message, preferredStyle: .alert)
+            let alertController = UIAlertController(title: .goibibo, message: message, preferredStyle: .alert)
             let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
             alertController.addAction(action)
             topController.present(alertController, animated: true, completion: nil)
@@ -101,8 +31,8 @@ struct AuthAlert {
         AuthDepedencyInjector.uiDelegate?.showToastMessage(on: view, message: message)
     }
     
-    static func showAppGenericAlert(on view: UIViewController, message: String) {
-        AuthDepedencyInjector.uiDelegate?.showAlert(on: view, message: message)
+    static func noInternetAlert() {
+        showIBSVAlert(withTitle: .goibibo, msg: "You appear to be offline. Please check your internet connection.", confirmTitle: "Ok", cancelTitle: nil, onCancel: { }) { }
     }
     
     static func showErrorAlert(view: UIViewController, title: String? = "Error!", message: String) {
@@ -134,7 +64,7 @@ struct AuthAlert {
     }
     
     static func showInvalidNameErrorAlert(view: UIViewController) {
-        let alertController = UIAlertController(title: "Goibibo", message: "Please enter a valid name", preferredStyle: .alert)
+        let alertController = UIAlertController(title: .goibibo, message: "Please enter a valid name", preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
         alertController.addAction(action)
         view.present(alertController, animated: true, completion: nil)
