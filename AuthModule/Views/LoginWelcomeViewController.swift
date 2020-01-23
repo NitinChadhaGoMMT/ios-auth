@@ -19,7 +19,6 @@ class LoginWelcomeViewController: LoginBaseViewController, LoginWelcomePresenter
         super.viewDidLoad()
         presenter?.performInitialConfiguration()
         configureUserInterface()
-        validateReferralCode()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,13 +44,6 @@ class LoginWelcomeViewController: LoginBaseViewController, LoginWelcomePresenter
             view.layoutIfNeeded()
             self.myTable.layoutIfNeeded()
             self.myTable.tableFooterView = view
-        }
-    }
-    
-    func validateReferralCode() {
-        if let referralCode = presenter?.referralCode, !referralCode.isEmpty {
-            myTable.reloadData()
-            AuthAlert.showToastMessage(on: self, message: .kValidCodeMsg)
         }
     }
     
