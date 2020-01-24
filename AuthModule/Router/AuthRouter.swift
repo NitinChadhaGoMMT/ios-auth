@@ -40,7 +40,7 @@ public class AuthRouter {
         }
         
         if let loginWelcomeScreen = navigateToLoginWelcomeController() {
-            navigationController?.pushViewController(loginWelcomeScreen, animated: true)
+            navigationController?.pushViewController(loginWelcomeScreen, animated: (viewController != nil))
         } else {
             finishLoginFlow(error: nil)
         }

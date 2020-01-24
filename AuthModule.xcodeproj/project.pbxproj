@@ -66,7 +66,7 @@
 		6E54C0CD23C354F600D2133F /* RSA.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E54C0CB23C354F500D2133F /* RSA.m */; };
 		6E54C0CF23C3BC8F00D2133F /* KeyChainLoginProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E54C0CE23C3BC8F00D2133F /* KeyChainLoginProtocols.swift */; };
 		6E54C0D123C45B4700D2133F /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E54C0D023C45B4700D2133F /* ImageHelper.swift */; };
-		6E54C0D323C4A7D200D2133F /* TermAndConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E54C0D223C4A7D200D2133F /* TermAndConditionsViewController.swift */; };
+		6E54C0D323C4A7D200D2133F /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E54C0D223C4A7D200D2133F /* WebViewController.swift */; };
 		6E54C0D523C5BD2D00D2133F /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E54C0D423C5BD2D00D2133F /* BasePresenter.swift */; };
 		6E54C0D723C5CD4100D2133F /* LoginWelcomePresenter_Fb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E54C0D623C5CD4100D2133F /* LoginWelcomePresenter_Fb.swift */; };
 		6E54C0D923C5EB7300D2133F /* OnboardingWelcomeContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E54C0D823C5EB7300D2133F /* OnboardingWelcomeContainer.swift */; };
@@ -261,7 +261,7 @@
 		6E54C0CB23C354F500D2133F /* RSA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSA.m; sourceTree = "<group>"; };
 		6E54C0CE23C3BC8F00D2133F /* KeyChainLoginProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainLoginProtocols.swift; sourceTree = "<group>"; };
 		6E54C0D023C45B4700D2133F /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
-		6E54C0D223C4A7D200D2133F /* TermAndConditionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermAndConditionsViewController.swift; sourceTree = "<group>"; };
+		6E54C0D223C4A7D200D2133F /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		6E54C0D423C5BD2D00D2133F /* BasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
 		6E54C0D623C5CD4100D2133F /* LoginWelcomePresenter_Fb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWelcomePresenter_Fb.swift; sourceTree = "<group>"; };
 		6E54C0D823C5EB7300D2133F /* OnboardingWelcomeContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingWelcomeContainer.swift; sourceTree = "<group>"; };
@@ -512,7 +512,7 @@
 				6E872FA923A9167500910302 /* ForgotPasswordViewController.swift */,
 				6E872FB723AB7AEC00910302 /* KeyChainLoginViewController.swift */,
 				6E8616C123B1D5D50012FE33 /* MobileVerificationViewController.swift */,
-				6E54C0D223C4A7D200D2133F /* TermAndConditionsViewController.swift */,
+				6E54C0D223C4A7D200D2133F /* WebViewController.swift */,
 				6E54C0D823C5EB7300D2133F /* OnboardingWelcomeContainer.swift */,
 				6E54C0DA23C5EBB100D2133F /* OnboardingWelcomeContentController.swift */,
 				6E1C68CB23C8C25800AECA04 /* ReferralCodeViewController.swift */,
@@ -1038,7 +1038,7 @@
 				6E4BD076239E5CFC0022D514 /* OTPVerificationPresenter.swift in Sources */,
 				6EA780362395054C00FA409D /* KeychainItemAccessibility.swift in Sources */,
 				6E0702122386C757008D79E9 /* UIImageView_Extensions.swift in Sources */,
-				6E54C0D323C4A7D200D2133F /* TermAndConditionsViewController.swift in Sources */,
+				6E54C0D323C4A7D200D2133F /* WebViewController.swift in Sources */,
 				6E0702102386C194008D79E9 /* WhatsAppManager.swift in Sources */,
 				6EEA6B452391329B0030F442 /* UserDataManager.swift in Sources */,
 				6EA7803A23950D1400FA409D /* LoginBaseViewController.swift in Sources */,

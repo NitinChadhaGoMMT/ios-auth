@@ -33,8 +33,8 @@ struct ActivityIndicator {
         activityIndicator = nil
         activityIndicator = UIActivityIndicatorView(style: .gray)
         activityIndicator?.hidesWhenStopped = true
-        activityIndicator?.addCenterConstraints(toView: view)
         view.addSubview(activityIndicator!)
+        activityIndicator?.addCenterConstraints(toView: view)
         activityIndicator?.startAnimating()
     }
     

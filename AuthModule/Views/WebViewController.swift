@@ -24,7 +24,7 @@ class WebViewController: UIViewController {
             let request = URLRequest(url: url)
             webView.load(request)
         }
-        ActivityIndicator.show(on: self.view)
+        ActivityIndicator.showNative(on: self.view)
         self.title = titleString
     }
     
@@ -37,7 +37,6 @@ class WebViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
     }
-    
 
     private func addWKWebView() {
         webView = WKWebView(frame: customView.frame)
@@ -56,11 +55,11 @@ class WebViewController: UIViewController {
 extension WebViewController: WKNavigationDelegate, WKUIDelegate {
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        ActivityIndicator.hide(on: self.view)
+        ActivityIndicator.hideNative()
     }
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        ActivityIndicator.hide(on: self.view)
+        ActivityIndicator.hideNative()
     }
     
 }
