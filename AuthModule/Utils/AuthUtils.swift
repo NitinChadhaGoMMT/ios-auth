@@ -170,10 +170,6 @@ struct AuthUtils {
         return AuthCache.shared.getUserDefaltBool(forKey: NetworkConstants.kLoginDirectlyViaFacebook) ?? false
     }
     
-    static func showBusinessProfile() -> Bool {
-        return AuthDepedencyInjector.firebaseRemoteHandlerDelegate?.getRemoteFunctionBoolValueWithForkey(forKey: "bp_enabled") ?? false
-    }
-    
     static func removeMobileKey() {
         //<NITIN>
     }

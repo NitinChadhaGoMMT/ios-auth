@@ -23,7 +23,7 @@
 		6E0702102386C194008D79E9 /* WhatsAppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E07020F2386C194008D79E9 /* WhatsAppManager.swift */; };
 		6E0702122386C757008D79E9 /* UIImageView_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0702112386C756008D79E9 /* UIImageView_Extensions.swift */; };
 		6E070217238D3FA2008D79E9 /* LoginWelcomeHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E070216238D3FA2008D79E9 /* LoginWelcomeHeaderCell.swift */; };
-		6E07021E238D4AF6008D79E9 /* FirebaseHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E070218238D48AC008D79E9 /* FirebaseHandlerProtocol.swift */; };
+		6E07021E238D4AF6008D79E9 /* CommonAnalytisProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E070218238D48AC008D79E9 /* CommonAnalytisProtocol.swift */; };
 		6E070221238D68CD008D79E9 /* LoginOrTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E07021F238D6861008D79E9 /* LoginOrTableCell.swift */; };
 		6E070224238D6CDA008D79E9 /* LoginNewUserDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E070222238D6B92008D79E9 /* LoginNewUserDetailsCell.swift */; };
 		6E070229238E5786008D79E9 /* LoginSkipNowTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E070228238E5786008D79E9 /* LoginSkipNowTableCell.swift */; };
@@ -216,8 +216,7 @@
 		6E07020F2386C194008D79E9 /* WhatsAppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsAppManager.swift; sourceTree = "<group>"; };
 		6E0702112386C756008D79E9 /* UIImageView_Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView_Extensions.swift; sourceTree = "<group>"; };
 		6E070216238D3FA2008D79E9 /* LoginWelcomeHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWelcomeHeaderCell.swift; sourceTree = "<group>"; };
-		6E070218238D48AC008D79E9 /* FirebaseHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHandlerProtocol.swift; sourceTree = "<group>"; };
-		6E07021A238D48DA008D79E9 /* FireBaseConfigKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireBaseConfigKeys.swift; sourceTree = "<group>"; };
+		6E070218238D48AC008D79E9 /* CommonAnalytisProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAnalytisProtocol.swift; sourceTree = "<group>"; };
 		6E07021F238D6861008D79E9 /* LoginOrTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginOrTableCell.swift; sourceTree = "<group>"; };
 		6E070222238D6B92008D79E9 /* LoginNewUserDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNewUserDetailsCell.swift; sourceTree = "<group>"; };
 		6E070228238E5786008D79E9 /* LoginSkipNowTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSkipNowTableCell.swift; sourceTree = "<group>"; };
@@ -482,8 +481,7 @@
 		6E07021C238D48E7008D79E9 /* Depedency */ = {
 			isa = PBXGroup;
 			children = (
-				6E070218238D48AC008D79E9 /* FirebaseHandlerProtocol.swift */,
-				6E07021A238D48DA008D79E9 /* FireBaseConfigKeys.swift */,
+				6E070218238D48AC008D79E9 /* CommonAnalytisProtocol.swift */,
 			);
 			path = Depedency;
 			sourceTree = "<group>";
@@ -1004,7 +1002,7 @@
 				6E54C0D923C5EB7300D2133F /* OnboardingWelcomeContainer.swift in Sources */,
 				6EEA6B4323912D0B0030F442 /* AuthDepedencyInjector.swift in Sources */,
 				6EA7804023951A2500FA409D /* CommonUtils.m in Sources */,
-				6E07021E238D4AF6008D79E9 /* FirebaseHandlerProtocol.swift in Sources */,
+				6E07021E238D4AF6008D79E9 /* CommonAnalytisProtocol.swift in Sources */,
 				6EA8A2E623D9838500A37BEF /* AuthAnimation.swift in Sources */,
 				6E395A5F23BA1CF9002D50F1 /* APIRetryHandler.swift in Sources */,
 				6E0702072386BD82008D79E9 /* View_Extensions.swift in Sources */,

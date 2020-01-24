@@ -64,7 +64,7 @@ class LoginNewUserDetailsCell: UITableViewCell, UITextFieldDelegate {
         self.referralView.isHidden = true
         self.continueButtonTopConstraint.constant = 15
         
-        if AuthDepedencyInjector.firebaseRemoteHandlerDelegate?.getRemoteFunctionBoolValueWithForkey(forKey: "autoFocusMobileInput") ?? false {
+        if FireBaseHandler.getRemoteFunctionBoolValue(forKey: "autoFocusMobileInput") {
             self.mobileNumberTextField.becomeFirstResponder()
         }
         

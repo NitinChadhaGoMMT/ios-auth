@@ -56,7 +56,7 @@ class SocialAccountLoginCell: UITableViewCell {
         
         whatsAppButton.isHidden = !WhatsAppManager.shared.isWhatsAppLoginEnabled()
         
-        let showLoginSocialAccounts = AuthDepedencyInjector.firebaseRemoteHandlerDelegate?.getRemoteFunctionBoolValueWithForkey(forKey: "showLoginSocialAccounts") ?? true
+        let showLoginSocialAccounts = FireBaseHandler.getRemoteFunctionBoolValue(forKey: "showLoginSocialAccounts")
         
         if !showLoginSocialAccounts {
             self.socialAccountStackView.transform = CGAffineTransform(scaleX: 0.0001, y: 0.0001)

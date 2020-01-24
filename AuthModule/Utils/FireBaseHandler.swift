@@ -26,23 +26,18 @@ class FireBaseHandler {
     }
     
     static func getBoolFor(keyPath: FirebaseConfigKey, dbPath: FirebaseDatabaseKey = .goConfigDatabase) -> Bool? {
-        
-        if keyPath == .KeychainLogInEnabled {
-            return true
-        }
-        
         return FirebaseDelegate?.getBoolFor(keyPath: keyPath, dbPath: dbPath)
     }
     
     static func getDictionaryFor(keyPath: FirebaseConfigKey, dbPath: FirebaseDatabaseKey = .goConfigDatabase) -> Dictionary<AnyHashable, Any> {
-        return [:]
+        return FirebaseDelegate?.getDictionaryFor(keyPath: keyPath, dbPath: dbPath) ?? [:]
     }
     
     static func getArrayFor(keyPath: FirebaseConfigKey, dbPath: FirebaseDatabaseKey = .goConfigDatabase) -> [Any] {
-        return []
+        return FirebaseDelegate?.getArrayFor(keyPath: keyPath, dbPath: dbPath) ?? []
     }
     
     static func getRemoteFunctionBoolValue(forKey key: String) -> Bool {
-        return AuthDepedencyInjector.firebaseRemoteHandlerDelegate?.getRemoteFunctionBoolValueWithForkey(forKey: key) ?? true
+        return AuthDepedencyInjector.firebaseRemoteHandlerDelegate?.getRemoteFunctionBoolValue(forkey: key) ?? true
     }
 }
