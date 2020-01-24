@@ -23,7 +23,6 @@
 		6E0702102386C194008D79E9 /* WhatsAppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E07020F2386C194008D79E9 /* WhatsAppManager.swift */; };
 		6E0702122386C757008D79E9 /* UIImageView_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0702112386C756008D79E9 /* UIImageView_Extensions.swift */; };
 		6E070217238D3FA2008D79E9 /* LoginWelcomeHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E070216238D3FA2008D79E9 /* LoginWelcomeHeaderCell.swift */; };
-		6E07021D238D4991008D79E9 /* FireBaseConfigKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E07021A238D48DA008D79E9 /* FireBaseConfigKeys.swift */; };
 		6E07021E238D4AF6008D79E9 /* FirebaseHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E070218238D48AC008D79E9 /* FirebaseHandlerProtocol.swift */; };
 		6E070221238D68CD008D79E9 /* LoginOrTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E07021F238D6861008D79E9 /* LoginOrTableCell.swift */; };
 		6E070224238D6CDA008D79E9 /* LoginNewUserDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E070222238D6B92008D79E9 /* LoginNewUserDetailsCell.swift */; };
@@ -142,6 +141,9 @@
 		6EA8A2F023D9862F00A37BEF /* Int_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA8A2EF23D9862F00A37BEF /* Int_Extensions.swift */; };
 		6EA8A2F223D9865E00A37BEF /* UIButton_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA8A2F123D9865E00A37BEF /* UIButton_Extensions.swift */; };
 		6EA8A2F423D9869400A37BEF /* Dictionary_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA8A2F323D9869400A37BEF /* Dictionary_Extensions.swift */; };
+		6EA8A32D23DADF8000A37BEF /* CommonFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA8A32C23DADF8000A37BEF /* CommonFramework.framework */; platformFilter = ios; };
+		6EA8A32E23DADF9500A37BEF /* CommonFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA8A32C23DADF8000A37BEF /* CommonFramework.framework */; };
+		6EA8A32F23DADF9500A37BEF /* CommonFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA8A32C23DADF8000A37BEF /* CommonFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6EAA395D239A38CB00872FD2 /* SignInHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAA395C239A38CB00872FD2 /* SignInHeaderTableViewCell.swift */; };
 		6EAA395F239A526000872FD2 /* LoginPasswordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAA395E239A526000872FD2 /* LoginPasswordTableViewCell.swift */; };
 		6EAA3961239A5BD200872FD2 /* LoginContinueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAA3960239A5BD200872FD2 /* LoginContinueTableViewCell.swift */; };
@@ -179,6 +181,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				6EA8A32F23DADF9500A37BEF /* CommonFramework.framework in Embed Frameworks */,
 				6E9C551923D5CFA800A658EA /* NetworkLayerFramework.framework in Embed Frameworks */,
 				6E9C552B23D5E78D00A658EA /* FBSDKPlacesKit.framework in Embed Frameworks */,
 				6E9C552D23D5E78E00A658EA /* FBSDKShareKit.framework in Embed Frameworks */,
@@ -325,6 +328,7 @@
 		6EA8A2EF23D9862F00A37BEF /* Int_Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int_Extensions.swift; sourceTree = "<group>"; };
 		6EA8A2F123D9865E00A37BEF /* UIButton_Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton_Extensions.swift; sourceTree = "<group>"; };
 		6EA8A2F323D9869400A37BEF /* Dictionary_Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary_Extensions.swift; sourceTree = "<group>"; };
+		6EA8A32C23DADF8000A37BEF /* CommonFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CommonFramework.framework; path = Carthage/Build/iOS/CommonFramework.framework; sourceTree = "<group>"; };
 		6EAA395C239A38CB00872FD2 /* SignInHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		6EAA395E239A526000872FD2 /* LoginPasswordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPasswordTableViewCell.swift; sourceTree = "<group>"; };
 		6EAA3960239A5BD200872FD2 /* LoginContinueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContinueTableViewCell.swift; sourceTree = "<group>"; };
@@ -342,6 +346,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EA8A32E23DADF9500A37BEF /* CommonFramework.framework in Frameworks */,
 				6E9C551823D5CFA800A658EA /* NetworkLayerFramework.framework in Frameworks */,
 				6E9C552823D5E78B00A658EA /* FBSDKLoginKit.framework in Frameworks */,
 				6E9C552C23D5E78E00A658EA /* FBSDKShareKit.framework in Frameworks */,
@@ -356,6 +361,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E8616BF23B161760012FE33 /* NetworkLayerFramework.framework in Frameworks */,
+				6EA8A32D23DADF8000A37BEF /* CommonFramework.framework in Frameworks */,
 				6E8616BA23B161730012FE33 /* FBSDKCoreKit.framework in Frameworks */,
 				6E8616BD23B161740012FE33 /* FBSDKLoginKit.framework in Frameworks */,
 			);
@@ -718,6 +724,7 @@
 		6EEA6AF8239105560030F442 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6EA8A32C23DADF8000A37BEF /* CommonFramework.framework */,
 				6E4D5B4C23B0F14000491102 /* CryptoSwift.framework */,
 				6E4D5B4F23B0F14000491102 /* FBSDKCoreKit.framework */,
 				6E4D5B5023B0F14000491102 /* FBSDKLoginKit.framework */,
@@ -955,7 +962,6 @@
 				6E391B6023A12B34006AEC46 /* SignupInteractor.swift in Sources */,
 				6EA7802B2394F93300FA409D /* LoginConstants.swift in Sources */,
 				6EA8A2E823D9855200A37BEF /* String_Extensions.swift in Sources */,
-				6E07021D238D4991008D79E9 /* FireBaseConfigKeys.swift in Sources */,
 				6E1C68B223C718F000AECA04 /* FireBaseHandler.swift in Sources */,
 				6E44B13F23ABEDBC0068EC9A /* DatabaseHelper.swift in Sources */,
 				6E6D5DB023CE045400839094 /* NSUserDefaults+SecureAdditions.m in Sources */,

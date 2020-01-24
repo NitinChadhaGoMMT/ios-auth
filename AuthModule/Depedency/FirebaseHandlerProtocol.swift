@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CommonFramework
 
 public protocol FirebaseHandlerProtocol {
     
