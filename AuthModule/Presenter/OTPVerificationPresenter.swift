@@ -14,7 +14,6 @@ class OTPVerificationPresenter: BasePresenter, OTPVerificationViewToPresenterPro
     var mobileNumber: String
     var nonce: String?
 
-    //<NITIN>
     fileprivate var whatsAppShowCount = FireBaseHandler.getIntFor(keyPath: .wtsAppShowCount, dbPath: .goAuthDatabase) ?? 2
     
     weak var view: OTPVerificationPresenterToViewProtocol?

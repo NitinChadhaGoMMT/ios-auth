@@ -41,6 +41,7 @@
 		6E1C68CC23C8C25800AECA04 /* ReferralCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1C68CB23C8C25800AECA04 /* ReferralCodeViewController.swift */; };
 		6E1C68CE23CC442B00AECA04 /* ReferralCodePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1C68CD23CC442B00AECA04 /* ReferralCodePresenter.swift */; };
 		6E1C68D023CC488F00AECA04 /* ReferralCodeProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1C68CF23CC488F00AECA04 /* ReferralCodeProtocols.swift */; };
+		6E1F96CA23DEDB330006E45B /* OTPVerificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1F96C923DEDB330006E45B /* OTPVerificationTests.swift */; };
 		6E391B5823A0CDB1006AEC46 /* BaseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E391B5723A0CDB1006AEC46 /* BaseInteractor.swift */; };
 		6E391B5A23A0CF72006AEC46 /* MconnectDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E391B5923A0CF72006AEC46 /* MconnectDataParser.swift */; };
 		6E391B5C23A12A14006AEC46 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E391B5B23A12A14006AEC46 /* SignupViewController.swift */; };
@@ -234,6 +235,7 @@
 		6E1C68CB23C8C25800AECA04 /* ReferralCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferralCodeViewController.swift; sourceTree = "<group>"; };
 		6E1C68CD23CC442B00AECA04 /* ReferralCodePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferralCodePresenter.swift; sourceTree = "<group>"; };
 		6E1C68CF23CC488F00AECA04 /* ReferralCodeProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferralCodeProtocols.swift; sourceTree = "<group>"; };
+		6E1F96C923DEDB330006E45B /* OTPVerificationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPVerificationTests.swift; sourceTree = "<group>"; };
 		6E391B5723A0CDB1006AEC46 /* BaseInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInteractor.swift; sourceTree = "<group>"; };
 		6E391B5923A0CF72006AEC46 /* MconnectDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MconnectDataParser.swift; sourceTree = "<group>"; };
 		6E391B5B23A12A14006AEC46 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -252,7 +254,6 @@
 		6E4BD07D239F9C5F0022D514 /* AuthCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCache.swift; sourceTree = "<group>"; };
 		6E4D5B4823B0955100491102 /* SignInWithPasswordProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithPasswordProtocols.swift; sourceTree = "<group>"; };
 		6E4D5B4A23B0E89E00491102 /* AuthDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataProvider.swift; sourceTree = "<group>"; };
-		6E4D5B4C23B0F14000491102 /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = Carthage/Build/iOS/CryptoSwift.framework; sourceTree = "<group>"; };
 		6E4D5B4D23B0F14000491102 /* FBSDKPlacesKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKPlacesKit.framework; path = Carthage/Build/iOS/FBSDKPlacesKit.framework; sourceTree = "<group>"; };
 		6E4D5B4E23B0F14000491102 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = Carthage/Build/iOS/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		6E4D5B4F23B0F14000491102 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = Carthage/Build/iOS/FBSDKCoreKit.framework; sourceTree = "<group>"; };
@@ -507,7 +508,6 @@
 		6E070230238E9499008D79E9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				6E395A6023BA3C9B002D50F1 /* TempViewController.swift */,
 				6EA7803923950D1400FA409D /* LoginBaseViewController.swift */,
 				6E0702012386BC95008D79E9 /* LoginWelcomeViewController.swift */,
 				6EA4D231239940D3004DFAEA /* SignInWithPasswordViewController.swift */,
@@ -521,6 +521,7 @@
 				6E54C0DA23C5EBB100D2133F /* OnboardingWelcomeContentController.swift */,
 				6E1C68CB23C8C25800AECA04 /* ReferralCodeViewController.swift */,
 				6E6D5D7A23CC5EDC00839094 /* ReferralCodeValidationViewController.swift */,
+				6E395A6023BA3C9B002D50F1 /* TempViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -627,6 +628,7 @@
 				6E6D5D9D23CDCF0A00839094 /* BaseInteractorTests.swift */,
 				6E6D5D9F23CDEF0600839094 /* SignInWithPasswordTests.swift */,
 				6E6D5DA123CDF26900839094 /* AuthUtilsTests.swift */,
+				6E1F96C923DEDB330006E45B /* OTPVerificationTests.swift */,
 			);
 			path = AuthModuleTests;
 			sourceTree = "<group>";
@@ -723,7 +725,6 @@
 			isa = PBXGroup;
 			children = (
 				6EA8A32C23DADF8000A37BEF /* CommonFramework.framework */,
-				6E4D5B4C23B0F14000491102 /* CryptoSwift.framework */,
 				6E4D5B4F23B0F14000491102 /* FBSDKCoreKit.framework */,
 				6E4D5B5023B0F14000491102 /* FBSDKLoginKit.framework */,
 				6E4D5B4D23B0F14000491102 /* FBSDKPlacesKit.framework */,
@@ -1039,6 +1040,7 @@
 				6E6D5D9C23CDCECE00839094 /* ReferralCodeValidationTests.swift in Sources */,
 				6E6D5D9E23CDCF0A00839094 /* BaseInteractorTests.swift in Sources */,
 				6E6D5D9A23CDCE2300839094 /* LoginWelcomeTests.swift in Sources */,
+				6E1F96CA23DEDB330006E45B /* OTPVerificationTests.swift in Sources */,
 				6E6D5D8F23CD92A700839094 /* AuthModuleTests.swift in Sources */,
 				6E6D5DA223CDF26900839094 /* AuthUtilsTests.swift in Sources */,
 			);
@@ -1266,7 +1268,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.goibibo.AuthModule;
+				PRODUCT_BUNDLE_IDENTIFIER = com.goibibo.Goibibo.AuthModule;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
@@ -1303,7 +1305,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.goibibo.AuthModule;
+				PRODUCT_BUNDLE_IDENTIFIER = com.goibibo.Goibibo.AuthModule;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;

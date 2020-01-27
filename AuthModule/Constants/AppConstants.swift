@@ -24,6 +24,7 @@ extension String {
     static let kValidCodeMsg = "Referral Code applied!"
     
     static let kEmptyString = ""
+    static let kHiphen = ""
     static let kDismiss = "Dismiss"
     static let kNext = "NEXT"
     static let kClickHere = "Click here"
@@ -47,6 +48,10 @@ extension String {
     static let kMobileNumberPlaceholder = "Enter Mobile Number"
     static let kTnCText = "By Proceeding, you agree to Terms and Conditions."
     static let kTnC = "Terms and Conditions"
+    
+    //SignInViewController
+    static let kResendOTP = "Resend OTP"
+    static let kResendOTPIn = "Resend OTP in"
 }
 
 struct Keys {

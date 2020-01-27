@@ -27,8 +27,6 @@ class UserDataManager {
     
     var isUpdate = false
     
-    var didUserLoginInCurrentSession = false
-    
     func resumeApplicationState() {
         if let ibiboUserName: String = AuthCache.shared.getUserDefaltObject(forKey: "username") as? String {
             self.activeUser = DBHelper.shared.fetchUser(withPredicate: NSPredicate(format: "username = %@", ibiboUserName))

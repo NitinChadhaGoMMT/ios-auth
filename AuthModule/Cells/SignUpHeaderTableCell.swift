@@ -53,7 +53,7 @@ class SignUpTextInputViewCell: UITableViewCell {
     
     override public func awakeFromNib() {
         super.awakeFromNib()
-        inputTextFiled.showAccessoryViewWithButtonTitle("Dismiss")
+        inputTextFiled.showAccessoryViewWithButtonTitle(.kDismiss)
         inputTextFiled.delegate = self
         inputTextFiled.returnKeyType = .default
         inputTextFiled.setCornerRadius(radius: 25.0)

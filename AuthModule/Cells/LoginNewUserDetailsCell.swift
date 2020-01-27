@@ -56,7 +56,7 @@ class LoginNewUserDetailsCell: UITableViewCell, UITextFieldDelegate {
         mobileNumberTextField.placeholder = "Enter Mobile Number"
         mobileNumberTextField.delegate = self
         mobileNumberTextField.font = .title2
-        mobileNumberTextField.showAccessoryViewWithButtonTitle("Dismiss")
+        mobileNumberTextField.showAccessoryViewWithButtonTitle(.kDismiss)
         mobileNumberTextField.layer.cornerRadius = 25.0
         mobileNumberTextField.layer.masksToBounds = true
         mobileNumberTextField.leftViewMode = .always

@@ -43,7 +43,7 @@ class LoginPasswordTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     func configurePasswordTextfield() {
         passwordTextField.delegate = self
-        passwordTextField.showAccessoryViewWithButtonTitle("Dismiss")
+        passwordTextField.showAccessoryViewWithButtonTitle(.kDismiss)
         passwordTextField.returnKeyType = .default
         passwordTextField.layer.cornerRadius = 25.0
         passwordTextField.layer.masksToBounds = true

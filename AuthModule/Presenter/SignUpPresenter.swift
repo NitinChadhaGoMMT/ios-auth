@@ -114,10 +114,7 @@ class SignUpPresenter: BasePresenter, SignUpViewToPresenterProtocol, SignUpInter
     }
     
     func handleSuccessData(_ data: OtpVerifiedData?) {
-        
-        view?.logInSuccessfully()
         view?.signUpSuccessfully()
-        
         earnedGoCash = data?.userData?.referralBonus?.goCashEarned ?? 0
         referralCode = data?.userData?.referralBonus?.code
         AuthUtils.removeBranchReferCode()

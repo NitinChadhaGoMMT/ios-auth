@@ -8,7 +8,7 @@
     
 import UIKit
     
-    class LoginBaseViewController: UIViewController, LoginBaseProtocol {
+class LoginBaseViewController: UIViewController, LoginBaseProtocol {
         
     var mconnectData: MconnectData?
         
@@ -40,7 +40,6 @@ import UIKit
     }
     
     func userSuccessfullyLoggedIn(verificationData: OtpVerifiedData?) {
-        UserDataManager.shared.didUserLoginInCurrentSession = true
         /*<NITIN>
         FireBaseHandler.sharedInstance.getUsersLocalNotificationData()
         UserDataManager.updateLoggedInUserGoCash()
@@ -51,15 +50,6 @@ import UIKit
     
     func signUpSuccessfully() {
         //<NITIN> UserTraitManager.shared.updateData(forAttributes: ["isNewUser":true])
-    }
-    
-    func logInSuccessfully(){
-        //<NITIN>
-        UserDataManager.shared.didUserLoginInCurrentSession = true
-        //FireBaseHandler.sharedInstance.getUsersLocalNotificationData()
-        UserDataManager.updateLoggedInUserGoCash()
-        //OfflineReviewsFireBase.sharedInstance.signIn()
-        //RecentSearchManager.shared.performGuestUserToLoggedInUserRecentSearchMigration()
     }
     
     func setMConnectData(data: MconnectData) {

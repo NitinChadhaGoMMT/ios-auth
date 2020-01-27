@@ -45,7 +45,7 @@ class OtpVerificationViewController: LoginBaseViewController {
             self.resendButton.isUserInteractionEnabled = isResendEnabled
             self.timerLabel.isHidden = isResendEnabled
             self.resendButtonConstraint.constant = isResendEnabled ?  0 : -20
-            self.resendButton.setTitle( isResendEnabled ? "Resend OTP" : "Resend OTP in", for: .normal)
+            self.resendButton.setTitle( isResendEnabled ? .kResendOTP : .kResendOTPIn, for: .normal)
             self.resendButton.setTitleColor( isResendEnabled ? UIColor.customBlue : UIColor.gray , for: .normal)
             UIView.animate(withDuration: 0.2) {
                 self.view.layoutIfNeeded()
@@ -76,13 +76,13 @@ class OtpVerificationViewController: LoginBaseViewController {
         
         for index in 0 ..< otpTextFieldsOutletCollection.count {
             textFieldsIndexes[otpTextFieldsOutletCollection[index]] = index
-            otpTextFieldsOutletCollection[index].showAccessoryViewWithButtonTitle("Dismiss")
+            otpTextFieldsOutletCollection[index].showAccessoryViewWithButtonTitle(.kDismiss)
         }
         
         otpTextFieldsOutletCollection[0].becomeFirstResponder()
         
         
-        otpMsgLabel3.text = presenter?.mobileNumber ?? "-"
+        otpMsgLabel3.text = presenter?.mobileNumber ?? .kHiphen
         continueLabel.addTapGestureWithAction(#selector(continueTapped), target: self)
         continueLabel.makeCornerRadiusWithValue(5.0, borderColor: UIColor.clear)
         timerLabel.textColor = UIColor.gray
@@ -142,7 +142,7 @@ class OtpVerificationViewController: LoginBaseViewController {
         var otpFromTextFiled = ""
         
         for index in 0 ..< otpTextFieldsOutletCollection.count {
-            otpFromTextFiled = otpFromTextFiled + (otpTextFieldsOutletCollection[index].text ?? "")
+            otpFromTextFiled = otpFromTextFiled + (otpTextFieldsOutletCollection[index].text ?? .kEmptyString)
         }
         return otpFromTextFiled
     }

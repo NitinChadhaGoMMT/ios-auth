@@ -18,7 +18,7 @@ class TempViewController: UIViewController {
         textView.text = ""
         if UserDataManager.shared.isLoggedIn, let user = UserDataManager.shared.activeUser {
             for attribute in user.entity.attributesByName.keys {
-                textView.text = textView.text + "\(attribute) : \(user.value(forKey: attribute) ?? "-") \n"
+                textView.text = textView.text + "\(attribute) : \(user.value(forKey: attribute) ?? String.kHiphen) \n"
             }
         
             textView.text = textView.text + "\n\n\n ------------------ \n\n\n"
@@ -26,7 +26,7 @@ class TempViewController: UIViewController {
         }
         
         for key in UserDefaults.standard.dictionaryRepresentation().keys {
-            textView.text = textView.text + "\(key) : \(UserDefaults.standard.value(forKey: key) ?? "-") \n"
+            textView.text = textView.text + "\(key) : \(UserDefaults.standard.value(forKey: key) ?? String.kHiphen) \n"
         }
     }
     

@@ -53,7 +53,5 @@ protocol LoginBaseProtocol: class {
     
     func userSuccessfullyLoggedIn(verificationData: OtpVerifiedData?)
     
-    func logInSuccessfully()
-    
     func signUpSuccessfully()
 }
