@@ -9,10 +9,6 @@
 /* Begin PBXBuildFile section */
 		6E050AB6239A86B70006E67A /* LoggedInUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E050AB5239A86B70006E67A /* LoggedInUserData.swift */; };
 		6E050AB8239A89C50006E67A /* OtpVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E050AB7239A89C50006E67A /* OtpVerificationViewController.swift */; };
-		6E0701DE2386BC5D008D79E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0701DD2386BC5D008D79E9 /* AppDelegate.swift */; };
-		6E0701E02386BC5D008D79E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0701DF2386BC5D008D79E9 /* ViewController.swift */; };
-		6E0701E32386BC5D008D79E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E0701E12386BC5D008D79E9 /* Main.storyboard */; };
-		6E0701E82386BC63008D79E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E0701E62386BC63008D79E9 /* LaunchScreen.storyboard */; };
 		6E0701F82386BC78008D79E9 /* AuthModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E0701F62386BC78008D79E9 /* AuthModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6E0702022386BC95008D79E9 /* LoginWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0702012386BC95008D79E9 /* LoginWelcomeViewController.swift */; };
 		6E0702042386BCCE008D79E9 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0702032386BCCE008D79E9 /* AuthRouter.swift */; };
@@ -31,17 +27,10 @@
 		6E1C68B023C718C100AECA04 /* AuthNetworkUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1C68AF23C718C100AECA04 /* AuthNetworkUtils.swift */; };
 		6E1C68B223C718F000AECA04 /* FireBaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1C68B123C718F000AECA04 /* FireBaseHandler.swift */; };
 		6E1C68B423C7315900AECA04 /* Colors_Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1C68B323C7315900AECA04 /* Colors_Ext.swift */; };
-		6E1C68BF23C7409400AECA04 /* Quicksand-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E1C68BC23C7409300AECA04 /* Quicksand-Medium.ttf */; };
-		6E1C68C023C7409400AECA04 /* Quicksand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E1C68BD23C7409300AECA04 /* Quicksand-Regular.ttf */; };
-		6E1C68C123C7409400AECA04 /* Quicksand-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E1C68BE23C7409400AECA04 /* Quicksand-Bold.ttf */; };
 		6E1C68C423C7438200AECA04 /* UIFont_Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1C68C323C7438200AECA04 /* UIFont_Ext.swift */; };
-		6E1C68C723C74AEA00AECA04 /* SFUIText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E1C68C523C74AE900AECA04 /* SFUIText-Regular.ttf */; };
-		6E1C68C823C74AEA00AECA04 /* SFUIText-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E1C68C623C74AEA00AECA04 /* SFUIText-Medium.ttf */; };
-		6E1C68CA23C74C6800AECA04 /* SFUIText-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6E1C68C923C74C6800AECA04 /* SFUIText-Bold.otf */; };
 		6E1C68CC23C8C25800AECA04 /* ReferralCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1C68CB23C8C25800AECA04 /* ReferralCodeViewController.swift */; };
 		6E1C68CE23CC442B00AECA04 /* ReferralCodePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1C68CD23CC442B00AECA04 /* ReferralCodePresenter.swift */; };
 		6E1C68D023CC488F00AECA04 /* ReferralCodeProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1C68CF23CC488F00AECA04 /* ReferralCodeProtocols.swift */; };
-		6E1F96CA23DEDB330006E45B /* OTPVerificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1F96C923DEDB330006E45B /* OTPVerificationTests.swift */; };
 		6E391B5823A0CDB1006AEC46 /* BaseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E391B5723A0CDB1006AEC46 /* BaseInteractor.swift */; };
 		6E391B5A23A0CF72006AEC46 /* MconnectDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E391B5923A0CF72006AEC46 /* MconnectDataParser.swift */; };
 		6E391B5C23A12A14006AEC46 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E391B5B23A12A14006AEC46 /* SignupViewController.swift */; };
@@ -77,14 +66,6 @@
 		6E6D5D7D23CC604900839094 /* ReferralCodeValidationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6D5D7C23CC604900839094 /* ReferralCodeValidationPresenter.swift */; };
 		6E6D5D7F23CC6EEE00839094 /* ReferralCodeValidationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6D5D7E23CC6EEE00839094 /* ReferralCodeValidationProtocols.swift */; };
 		6E6D5D8323CC8F7500839094 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E0701E42386BC63008D79E9 /* Assets.xcassets */; };
-		6E6D5D8623CD109800839094 /* SF-UI-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6E6D5D8423CD109800839094 /* SF-UI-Text-Regular.otf */; };
-		6E6D5D8723CD109800839094 /* SF-UI-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6E6D5D8523CD109800839094 /* SF-UI-Text-Semibold.otf */; };
-		6E6D5D8F23CD92A700839094 /* AuthModuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6D5D8E23CD92A700839094 /* AuthModuleTests.swift */; };
-		6E6D5D9A23CDCE2300839094 /* LoginWelcomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6D5D9923CDCE2300839094 /* LoginWelcomeTests.swift */; };
-		6E6D5D9C23CDCECE00839094 /* ReferralCodeValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6D5D9B23CDCECE00839094 /* ReferralCodeValidationTests.swift */; };
-		6E6D5D9E23CDCF0A00839094 /* BaseInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6D5D9D23CDCF0A00839094 /* BaseInteractorTests.swift */; };
-		6E6D5DA023CDEF0600839094 /* SignInWithPasswordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6D5D9F23CDEF0600839094 /* SignInWithPasswordTests.swift */; };
-		6E6D5DA223CDF26900839094 /* AuthUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6D5DA123CDF26900839094 /* AuthUtilsTests.swift */; };
 		6E6D5DA623CE02FE00839094 /* CocoaSecurity.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E6D5DA423CE02FE00839094 /* CocoaSecurity.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6E6D5DA723CE02FE00839094 /* CocoaSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6D5DA523CE02FE00839094 /* CocoaSecurity.m */; };
 		6E6D5DAB23CE031F00839094 /* Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E6D5DA923CE031F00839094 /* Base64.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -106,16 +87,6 @@
 		6E872FB823AB7AEC00910302 /* KeyChainLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E872FB723AB7AEC00910302 /* KeyChainLoginViewController.swift */; };
 		6E872FBA23AB7B2200910302 /* KeyChainLoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E872FB923AB7B2100910302 /* KeyChainLoginPresenter.swift */; };
 		6E872FBC23AB95DC00910302 /* KeychainLoginUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E872FBB23AB95DC00910302 /* KeychainLoginUserCell.swift */; };
-		6E9C551823D5CFA800A658EA /* NetworkLayerFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EEA6AF9239105560030F442 /* NetworkLayerFramework.framework */; };
-		6E9C551923D5CFA800A658EA /* NetworkLayerFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6EEA6AF9239105560030F442 /* NetworkLayerFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6E9C552623D5E78A00A658EA /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B4F23B0F14000491102 /* FBSDKCoreKit.framework */; };
-		6E9C552723D5E78A00A658EA /* FBSDKCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B4F23B0F14000491102 /* FBSDKCoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6E9C552823D5E78B00A658EA /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B5023B0F14000491102 /* FBSDKLoginKit.framework */; };
-		6E9C552923D5E78B00A658EA /* FBSDKLoginKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B5023B0F14000491102 /* FBSDKLoginKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6E9C552A23D5E78D00A658EA /* FBSDKPlacesKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B4D23B0F14000491102 /* FBSDKPlacesKit.framework */; };
-		6E9C552B23D5E78D00A658EA /* FBSDKPlacesKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B4D23B0F14000491102 /* FBSDKPlacesKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6E9C552C23D5E78E00A658EA /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B4E23B0F14000491102 /* FBSDKShareKit.framework */; };
-		6E9C552D23D5E78E00A658EA /* FBSDKShareKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4D5B4E23B0F14000491102 /* FBSDKShareKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6EA4D22E2399010B004DFAEA /* LoginGAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA4D22D2399010B004DFAEA /* LoginGAPManager.swift */; };
 		6EA4D23023993F40004DFAEA /* SignInWithPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA4D22F23993F40004DFAEA /* SignInWithPasswordPresenter.swift */; };
 		6EA4D232239940D3004DFAEA /* SignInWithPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA4D231239940D3004DFAEA /* SignInWithPasswordViewController.swift */; };
@@ -143,8 +114,6 @@
 		6EA8A2F223D9865E00A37BEF /* UIButton_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA8A2F123D9865E00A37BEF /* UIButton_Extensions.swift */; };
 		6EA8A2F423D9869400A37BEF /* Dictionary_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA8A2F323D9869400A37BEF /* Dictionary_Extensions.swift */; };
 		6EA8A32D23DADF8000A37BEF /* CommonFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA8A32C23DADF8000A37BEF /* CommonFramework.framework */; platformFilter = ios; };
-		6EA8A32E23DADF9500A37BEF /* CommonFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA8A32C23DADF8000A37BEF /* CommonFramework.framework */; };
-		6EA8A32F23DADF9500A37BEF /* CommonFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA8A32C23DADF8000A37BEF /* CommonFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6EAA395D239A38CB00872FD2 /* SignInHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAA395C239A38CB00872FD2 /* SignInHeaderTableViewCell.swift */; };
 		6EAA395F239A526000872FD2 /* LoginPasswordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAA395E239A526000872FD2 /* LoginPasswordTableViewCell.swift */; };
 		6EAA3961239A5BD200872FD2 /* LoginContinueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAA3960239A5BD200872FD2 /* LoginContinueTableViewCell.swift */; };
@@ -154,51 +123,11 @@
 		6EC29E8723C3370A00C1515A /* SignUpProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC29E8623C3370A00C1515A /* SignUpProtocols.swift */; };
 		6EEA6B4323912D0B0030F442 /* AuthDepedencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEA6B4223912D0B0030F442 /* AuthDepedencyInjector.swift */; };
 		6EEA6B452391329B0030F442 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEA6B442391329B0030F442 /* UserDataManager.swift */; };
-		6EF9788123D71DA1007097A0 /* AuthModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E0701F42386BC78008D79E9 /* AuthModule.framework */; };
-		6EF9788223D71DA1007097A0 /* AuthModule.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E0701F42386BC78008D79E9 /* AuthModule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		6E6D5D9123CD92A700839094 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6E0701D22386BC5C008D79E9 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6E0701D92386BC5D008D79E9;
-			remoteInfo = AuthSampleApp;
-		};
-		6EFACD1723D71CFF00A61BA0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6E0701D22386BC5C008D79E9 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6E0701F32386BC78008D79E9;
-			remoteInfo = AuthModule;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		6E9C551723D5CF8E00A658EA /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				6EA8A32F23DADF9500A37BEF /* CommonFramework.framework in Embed Frameworks */,
-				6E9C551923D5CFA800A658EA /* NetworkLayerFramework.framework in Embed Frameworks */,
-				6E9C552B23D5E78D00A658EA /* FBSDKPlacesKit.framework in Embed Frameworks */,
-				6E9C552D23D5E78E00A658EA /* FBSDKShareKit.framework in Embed Frameworks */,
-				6E9C552723D5E78A00A658EA /* FBSDKCoreKit.framework in Embed Frameworks */,
-				6E9C552923D5E78B00A658EA /* FBSDKLoginKit.framework in Embed Frameworks */,
-				6EF9788223D71DA1007097A0 /* AuthModule.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		6E050AB5239A86B70006E67A /* LoggedInUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInUserData.swift; sourceTree = "<group>"; };
 		6E050AB7239A89C50006E67A /* OtpVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpVerificationViewController.swift; sourceTree = "<group>"; };
-		6E0701DA2386BC5D008D79E9 /* AuthSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AuthSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E0701DD2386BC5D008D79E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6E0701DF2386BC5D008D79E9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6E0701E22386BC5D008D79E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -276,7 +205,6 @@
 		6E6D5D7E23CC6EEE00839094 /* ReferralCodeValidationProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferralCodeValidationProtocols.swift; sourceTree = "<group>"; };
 		6E6D5D8423CD109800839094 /* SF-UI-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Regular.otf"; sourceTree = "<group>"; };
 		6E6D5D8523CD109800839094 /* SF-UI-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Semibold.otf"; sourceTree = "<group>"; };
-		6E6D5D8C23CD92A600839094 /* AuthModuleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AuthModuleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E6D5D8E23CD92A700839094 /* AuthModuleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModuleTests.swift; sourceTree = "<group>"; };
 		6E6D5D9023CD92A700839094 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6E6D5D9923CDCE2300839094 /* LoginWelcomeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWelcomeTests.swift; sourceTree = "<group>"; };
@@ -342,20 +270,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		6E0701D72386BC5D008D79E9 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6EA8A32E23DADF9500A37BEF /* CommonFramework.framework in Frameworks */,
-				6E9C551823D5CFA800A658EA /* NetworkLayerFramework.framework in Frameworks */,
-				6E9C552823D5E78B00A658EA /* FBSDKLoginKit.framework in Frameworks */,
-				6E9C552C23D5E78E00A658EA /* FBSDKShareKit.framework in Frameworks */,
-				6E9C552A23D5E78D00A658EA /* FBSDKPlacesKit.framework in Frameworks */,
-				6EF9788123D71DA1007097A0 /* AuthModule.framework in Frameworks */,
-				6E9C552623D5E78A00A658EA /* FBSDKCoreKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		6E0701F12386BC78008D79E9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -364,13 +278,6 @@
 				6EA8A32D23DADF8000A37BEF /* CommonFramework.framework in Frameworks */,
 				6E8616BA23B161730012FE33 /* FBSDKCoreKit.framework in Frameworks */,
 				6E8616BD23B161740012FE33 /* FBSDKLoginKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6E6D5D8923CD92A600839094 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,9 +306,7 @@
 		6E0701DB2386BC5D008D79E9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6E0701DA2386BC5D008D79E9 /* AuthSampleApp.app */,
 				6E0701F42386BC78008D79E9 /* AuthModule.framework */,
-				6E6D5D8C23CD92A600839094 /* AuthModuleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -753,26 +658,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		6E0701D92386BC5D008D79E9 /* AuthSampleApp */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6E0701EC2386BC63008D79E9 /* Build configuration list for PBXNativeTarget "AuthSampleApp" */;
-			buildPhases = (
-				6E0701D62386BC5D008D79E9 /* Sources */,
-				6E0701D72386BC5D008D79E9 /* Frameworks */,
-				6E0701D82386BC5D008D79E9 /* Resources */,
-				6E9C551723D5CF8E00A658EA /* Embed Frameworks */,
-				6EFACD1023D717FA00A61BA0 /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6EFACD1823D71CFF00A61BA0 /* PBXTargetDependency */,
-			);
-			name = AuthSampleApp;
-			productName = AuthSampleApp;
-			productReference = 6E0701DA2386BC5D008D79E9 /* AuthSampleApp.app */;
-			productType = "com.apple.product-type.application";
-		};
 		6E0701F32386BC78008D79E9 /* AuthModule */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6E0701FD2386BC78008D79E9 /* Build configuration list for PBXNativeTarget "AuthModule" */;
@@ -791,24 +676,6 @@
 			productReference = 6E0701F42386BC78008D79E9 /* AuthModule.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		6E6D5D8B23CD92A600839094 /* AuthModuleTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6E6D5D9323CD92A700839094 /* Build configuration list for PBXNativeTarget "AuthModuleTests" */;
-			buildPhases = (
-				6E6D5D8823CD92A600839094 /* Sources */,
-				6E6D5D8923CD92A600839094 /* Frameworks */,
-				6E6D5D8A23CD92A600839094 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6E6D5D9223CD92A700839094 /* PBXTargetDependency */,
-			);
-			name = AuthModuleTests;
-			productName = AuthModuleTests;
-			productReference = 6E6D5D8C23CD92A600839094 /* AuthModuleTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -819,16 +686,9 @@
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Nitin Chadha";
 				TargetAttributes = {
-					6E0701D92386BC5D008D79E9 = {
-						CreatedOnToolsVersion = 10.2.1;
-					};
 					6E0701F32386BC78008D79E9 = {
 						CreatedOnToolsVersion = 10.2.1;
 						LastSwiftMigration = 1120;
-					};
-					6E6D5D8B23CD92A600839094 = {
-						CreatedOnToolsVersion = 11.2.1;
-						TestTargetID = 6E0701D92386BC5D008D79E9;
 					};
 				};
 			};
@@ -845,31 +705,12 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6E0701D92386BC5D008D79E9 /* AuthSampleApp */,
 				6E0701F32386BC78008D79E9 /* AuthModule */,
-				6E6D5D8B23CD92A600839094 /* AuthModuleTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		6E0701D82386BC5D008D79E9 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6E1C68CA23C74C6800AECA04 /* SFUIText-Bold.otf in Resources */,
-				6E0701E82386BC63008D79E9 /* LaunchScreen.storyboard in Resources */,
-				6E6D5D8623CD109800839094 /* SF-UI-Text-Regular.otf in Resources */,
-				6E1C68C823C74AEA00AECA04 /* SFUIText-Medium.ttf in Resources */,
-				6E6D5D8723CD109800839094 /* SF-UI-Text-Semibold.otf in Resources */,
-				6E1C68C123C7409400AECA04 /* Quicksand-Bold.ttf in Resources */,
-				6E1C68BF23C7409400AECA04 /* Quicksand-Medium.ttf in Resources */,
-				6E1C68C723C74AEA00AECA04 /* SFUIText-Regular.ttf in Resources */,
-				6E0701E32386BC5D008D79E9 /* Main.storyboard in Resources */,
-				6E1C68C023C7409400AECA04 /* Quicksand-Regular.ttf in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		6E0701F22386BC78008D79E9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -880,48 +721,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6E6D5D8A23CD92A600839094 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		6EFACD1023D717FA00A61BA0 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/FBSDKCoreKit.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/FBSDKLoginKit.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/NetworkLayerFramework.framework",
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		6E0701D62386BC5D008D79E9 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6E0701E02386BC5D008D79E9 /* ViewController.swift in Sources */,
-				6E0701DE2386BC5D008D79E9 /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		6E0701F02386BC78008D79E9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1032,34 +834,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6E6D5D8823CD92A600839094 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6E6D5DA023CDEF0600839094 /* SignInWithPasswordTests.swift in Sources */,
-				6E6D5D9C23CDCECE00839094 /* ReferralCodeValidationTests.swift in Sources */,
-				6E6D5D9E23CDCF0A00839094 /* BaseInteractorTests.swift in Sources */,
-				6E6D5D9A23CDCE2300839094 /* LoginWelcomeTests.swift in Sources */,
-				6E1F96CA23DEDB330006E45B /* OTPVerificationTests.swift in Sources */,
-				6E6D5D8F23CD92A700839094 /* AuthModuleTests.swift in Sources */,
-				6E6D5DA223CDF26900839094 /* AuthUtilsTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		6E6D5D9223CD92A700839094 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6E0701D92386BC5D008D79E9 /* AuthSampleApp */;
-			targetProxy = 6E6D5D9123CD92A700839094 /* PBXContainerItemProxy */;
-		};
-		6EFACD1823D71CFF00A61BA0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6E0701F32386BC78008D79E9 /* AuthModule */;
-			targetProxy = 6EFACD1723D71CFF00A61BA0 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		6E0701E12386BC5D008D79E9 /* Main.storyboard */ = {
@@ -1199,50 +974,6 @@
 			};
 			name = Release;
 		};
-		6E0701ED2386BC63008D79E9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Q9B4DS4RM6;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = AuthSampleApp/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.goibibo.Goibibo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Debug;
-		};
-		6E0701EE2386BC63008D79E9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Q9B4DS4RM6;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = AuthSampleApp/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.goibibo.Goibibo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
 		6E0701FE2386BC78008D79E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1276,6 +1007,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "arm64 armv7 armv7s";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1286,11 +1018,11 @@
 			buildSettings = {
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = Q9B4DS4RM6;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1313,50 +1045,9 @@
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "arm64 armv7 armv7s";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		6E6D5D9423CD92A700839094 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Q9B4DS4RM6;
-				INFOPLIST_FILE = AuthModuleTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.goibibo.Goibibo.AuthModuleTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AuthSampleApp.app/AuthSampleApp";
-			};
-			name = Debug;
-		};
-		6E6D5D9523CD92A700839094 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Q9B4DS4RM6;
-				INFOPLIST_FILE = AuthModuleTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.goibibo.Goibibo.AuthModuleTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AuthSampleApp.app/AuthSampleApp";
 			};
 			name = Release;
 		};
@@ -1372,29 +1063,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6E0701EC2386BC63008D79E9 /* Build configuration list for PBXNativeTarget "AuthSampleApp" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6E0701ED2386BC63008D79E9 /* Debug */,
-				6E0701EE2386BC63008D79E9 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		6E0701FD2386BC78008D79E9 /* Build configuration list for PBXNativeTarget "AuthModule" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6E0701FE2386BC78008D79E9 /* Debug */,
 				6E0701FF2386BC78008D79E9 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6E6D5D9323CD92A700839094 /* Build configuration list for PBXNativeTarget "AuthModuleTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6E6D5D9423CD92A700839094 /* Debug */,
-				6E6D5D9523CD92A700839094 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
