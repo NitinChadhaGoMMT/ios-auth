@@ -10,7 +10,7 @@ import UIKit
 
 struct AuthUtils {
     
-    static let bundle: Bundle = Bundle(identifier: "com.goibibo.AuthModule")!
+    static let bundle: Bundle = Bundle(identifier: "com.goibibo.Goibibo.AuthModule")!
     
     static func isValidPhoneNumber(_ numberText: String?) -> Bool {
         
