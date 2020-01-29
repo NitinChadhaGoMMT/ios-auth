@@ -24,8 +24,10 @@ class LoginNewUserDetailsCell: UITableViewCell, UITextFieldDelegate {
     weak var delegate: LoginNewUserDetailsCellDelegate?
     @IBOutlet weak var countryFlagImageView: UIImageView!
     
-    static let height: CGFloat = 220.0
-    
+    static var height: CGFloat {
+        return AuthUtils.isBranchDictionaryPresent || !AuthUtils.isUserLoggedInBefore ? 220.0 : 180.0
+    }
+     
     var isContinueButtonEnabled: Bool = false {
         didSet {
             continueButton.isUserInteractionEnabled = isContinueButtonEnabled
@@ -50,7 +52,7 @@ class LoginNewUserDetailsCell: UITableViewCell, UITextFieldDelegate {
         self.setAccessbilityForComponents()
         continueButton.setTextColor(.white, fontType: .medium, andFontSize: 16.0)
         continueButton.setFont(font: UIFont.fontsWith(fontType: .sfProRegular, size: 15.0))
-        continueButton.setTitle("Continue", for: .normal)
+        continueButton.setTitle(.kContinue, for: .normal)
         continueButton.titleLabel?.textColor = .white
         continueButton.makeCornerRadiusWithValue(5.0, borderColor: nil)
         mobileNumberTextField.placeholder = "Enter Mobile Number"
@@ -89,6 +91,9 @@ class LoginNewUserDetailsCell: UITableViewCell, UITextFieldDelegate {
     }
     
     func configureGenericReferralView() {
+        
+        guard AuthUtils.isUserLoggedInBefore == false else { return }
+        
         self.referralView.isHidden = false
         self.refreeStatusLabelTopConstraint.constant = 10
         

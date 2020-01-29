@@ -12,6 +12,21 @@ struct AuthUtils {
     
     static let bundle: Bundle = Bundle(identifier: "com.goibibo.Goibibo.AuthModule")!
     
+    static var isUserLoggedInBefore: Bool {
+        set {
+            AuthCache.shared.setUserDefaltBool(newValue, forKey: "fresh_login")
+        }
+        get {
+            return AuthCache.shared.getUserDefaltBool(forKey: "fresh_login") ?? false
+        }
+    }
+    
+    static var isBranchDictionaryPresent: Bool {
+        get {
+            return AuthDepedencyInjector.branchReferDictionary != nil
+        }
+    }
+    
     static func isValidPhoneNumber(_ numberText: String?) -> Bool {
         
         guard let phoneNumber = numberText else {

@@ -33,7 +33,7 @@ class LoginParser: NSObject {
         let fieldErrMsg = errorObject["field_errors"] as? Dictionary<String,Any>
         if(fieldErrMsg != nil){
             errorData.fbAccessTknMsg = fieldErrMsg!["fb_access_token"] as? String
-            errorData.referalErrorMsg = fieldErrMsg!["referral_code"] as? String
+            errorData.referalErrorMsg = fieldErrMsg![Keys.referralCode] as? String
             errorData.userNameErrorMsg = fieldErrMsg!["fullname"] as? String
             errorData.errorMsgString = fieldErrMsg!["email"] as? String
             if errorData.errorMsgString == nil {

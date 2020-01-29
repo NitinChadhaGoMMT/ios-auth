@@ -50,7 +50,7 @@ class AuthService: AuthServiceProtocol {
     static func verifyReferralCode(referralCode:String, isBranchFlow:Bool, success: @escaping SuccessBlock, failure: @escaping FailureBlock) {
         
         var parameters = Dictionary<String, String>()
-        parameters["referral_code"] = referralCode
+        parameters[Keys.referralCode] = referralCode
         parameters["client_id"] = AuthNetworkUtils.getAuthKey()
         parameters["did"] = AuthNetworkUtils.getUUID()
         parameters["device_id"] = AuthNetworkUtils.getUUID()
@@ -74,7 +74,7 @@ class AuthService: AuthServiceProtocol {
             parameters["link_fb"] = "true"
         }
         if let referralCode = referral, !referralCode.isEmpty {
-            parameters["referral_code"] = referral
+            parameters[Keys.referralCode] = referral
         }
         parameters["client_id"] = AuthNetworkUtils.getAuthKey()
         parameters["did"] = AuthNetworkUtils.getUUID()
@@ -116,7 +116,7 @@ class AuthService: AuthServiceProtocol {
         parameters["mobile"] = mobileNo
         parameters["password"] = password
         if referralCode.isEmpty == false {
-            parameters["referral_code"] = referralCode
+            parameters[Keys.referralCode] = referralCode
         }
         parameters["client_id"] = AuthNetworkUtils.getAuthKey()
         parameters["did"] = AuthNetworkUtils.getUUID()
@@ -158,7 +158,7 @@ class AuthService: AuthServiceProtocol {
         parameters["did"] = AuthNetworkUtils.getUUID()
         parameters["device_id"] = AuthNetworkUtils.getUUID()
         if referralCode.isEmpty == false {
-            parameters["referral_code"] = referralCode
+            parameters[Keys.referralCode] = referralCode
         }
         
         if isFBSignup == true && AuthUtils.isEmptyString(AccessToken.current?.tokenString) == false {
@@ -271,7 +271,7 @@ class AuthService: AuthServiceProtocol {
         parameters["did"] = AuthNetworkUtils.getUUID()
         parameters["extra_keys"] = extraKey
         if let rcode =  referralCode {
-            parameters["referral_code"] = rcode
+            parameters[Keys.referralCode] = rcode
         }
         
         Session.service.post(LoginConstants.whatsappLoginURL(), data: appendDefaultParameters(params: parameters), header: nil, encoding: URLEncoding.httpBody, success: { (json) in

@@ -36,6 +36,10 @@ class WhatsAppManager {
         }
         
         let whatsAppEnabled = FireBaseHandler.getBoolFor(keyPath: .whatsapp_login_msg, dbPath: .goCoreDatabase) ?? true
+        if(whatsAppEnabled == true) {
+            return FireBaseHandler.getRemoteFunctionBoolValue(forKey: "remote_whatsapp_enabled")
+        }
+        
         return whatsAppEnabled
     }
     
@@ -52,6 +56,7 @@ class WhatsAppManager {
                 text = text.replacingOccurrences(of: "<rcode>", with: referralCode ?? "")
             }
         }
+        
         let urlWhats = "https://api.whatsapp.com/send?phone=\(phone)&text=\(text)"
         if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) {
             if let whatsappURL = URL(string: urlString) {

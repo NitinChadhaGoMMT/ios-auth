@@ -56,8 +56,8 @@ extension AuthServiceProtocol {
             errorData.errorMsgString = fieldErrMsg!["fb_access_token"] as? String
             
             if AuthUtils.isEmptyString(errorData.referalErrorMsg) {
-                errorData.fieldErrorKey = "referral_code"
-                errorData.referalErrorMsg = fieldErrMsg!["referral_code"] as? String
+                errorData.fieldErrorKey = Keys.referralCode
+                errorData.referalErrorMsg = fieldErrMsg![Keys.referralCode] as? String
             }
             if AuthUtils.isEmptyString(errorData.errorMsgString) {
                 errorData.fieldErrorKey = "fullname"

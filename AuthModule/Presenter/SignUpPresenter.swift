@@ -81,7 +81,7 @@ class SignUpPresenter: BasePresenter, SignUpViewToPresenterProtocol, SignUpInter
             return
         }
         
-        var dict: [String: Any] = ["referral_code": referralCode ?? ""]
+        var dict: [String: Any] = [Keys.referralCode: referralCode ?? .kEmptyString]
         
         if let authParams = AuthCache.shared.getUserDefaltObject(forKey: "auth_params") as? Dictionary<String, Any> {
             for key in authParams.keys {
@@ -103,9 +103,9 @@ class SignUpPresenter: BasePresenter, SignUpViewToPresenterProtocol, SignUpInter
         view?.hideActivityIndicator()
         
         if let errorObject = error, errorObject.referalErrorMsg != nil {
-            AuthAlert.showIBSVAlert(withTitle:"", msg: errorObject.referalErrorMsg ?? .kEmptyString, confirmTitle: "Continue", cancelTitle: nil, onCancel: {
+            AuthAlert.showIBSVAlert(withTitle: .kEmptyString, msg: errorObject.referalErrorMsg ?? .kEmptyString, confirmTitle: .kContinue, cancelTitle: nil, onCancel: {
             }, onConfirm: { [weak self] in
-                self?.referralCode = ""
+                self?.referralCode = .kEmptyString
                 self?.requestSignUp()
             })
         } else {

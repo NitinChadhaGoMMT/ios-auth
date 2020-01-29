@@ -22,7 +22,7 @@ class SignupInteractor: BaseInteractor, SignUpPresenterToInteractorProtocol {
         
         
         if !referalCode.isEmpty {
-            params["referral_code"] = referalCode
+            params[Keys.referralCode] = referalCode
         }
 
         if isWhatsAppFlow {

@@ -45,6 +45,7 @@ class LoginBaseViewController: UIViewController, LoginBaseProtocol {
         UserDataManager.updateLoggedInUserGoCash()
         OfflineReviewsFireBase.sharedInstance.signIn()
         RecentSearchManager.shared.performGuestUserToLoggedInUserRecentSearchMigration()*/
+        AuthUtils.isUserLoggedInBefore = true
         AuthRouter.shared.loginSuccessNavigationHandling(navigationController: self.navigationController, isExistingUser: verificationData?.isExistingUser ?? true)
     }
     

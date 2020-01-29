@@ -71,7 +71,7 @@ class OTPVerificationPresenter: BasePresenter, OTPVerificationViewToPresenterPro
         if userVerificationData?.userStatusType == .loggedIn || userVerificationData?.userStatusType == .verified {
             view?.verifyOTPRequestSuccessResponse(message: userVerificationData?.message)
             if userVerificationData?.isExistingUser == false {
-                SignInGAPManager.signinOrSignUpEvent(withEventType: .signUp, withMethod: isFbSignup ? .facebook : .phone, withVerifyType: .otp, withOtherDetails: ["referral_code": referralCode ?? ""])
+                SignInGAPManager.signinOrSignUpEvent(withEventType: .signUp, withMethod: isFbSignup ? .facebook : .phone, withVerifyType: .otp, withOtherDetails: [Keys.referralCode: referralCode ?? ""])
             } else if userVerificationData?.isExistingUser == true {
                 if isFbSignup == true {
                     SignInGAPManager.signinOrSignUpEvent(withEventType: .signIn, withMethod: .facebook, withVerifyType: .otp, withOtherDetails: nil)

@@ -28,6 +28,7 @@ extension String {
     static let kDismiss = "Dismiss"
     static let kNext = "NEXT"
     static let kClickHere = "Click here"
+    static let kContinue = "Continue"
     
     //Onboarding
     static let kGetStarted = "GET STARTED"
