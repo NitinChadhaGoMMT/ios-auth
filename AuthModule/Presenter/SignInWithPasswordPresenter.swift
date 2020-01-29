@@ -56,7 +56,6 @@ class SignInWithPasswordPresenter: BasePresenter, SignInWithPasswordViewToPresen
     }
     
     func performInitialConfiguration() {
-        view?.showActivityIndicator()
         interactor?.checkForMobileConnectAPI(completionBlock: { [weak self](responseData) in
             self?.view?.hideActivityIndicator()
             if let data = responseData {
