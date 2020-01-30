@@ -35,7 +35,7 @@ class WhatsAppManager {
             return false
         }
         
-        let whatsAppEnabled = FireBaseHandler.getBoolFor(keyPath: .whatsapp_login_msg, dbPath: .goCoreDatabase) ?? true
+        let whatsAppEnabled = FireBaseHandler.getBoolFor(keyPath: .whatsappLoginEnabled, dbPath: .goCoreDatabase) ?? true
         if(whatsAppEnabled == true) {
             return FireBaseHandler.getRemoteFunctionBoolValue(forKey: "remote_whatsapp_enabled")
         }
