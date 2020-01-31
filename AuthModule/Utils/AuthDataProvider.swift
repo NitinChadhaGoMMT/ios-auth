@@ -217,4 +217,20 @@ public class AuthDataProvider {
             AuthDepedencyInjector.uiDelegate?.rewardsDataUpdated()
         }
     }
+    
+    public static func requestLogin(refreshToken: String, completion: ((Bool) -> Void)? = nil) {
+        
+        AuthCache.shared.setUserDefaltObject(refreshToken, forKey: Keys.refreshToken)
+        
+        AuthService.requestLoginWithRefreshAccessToken(successBlock: {
+            LoginWrapper.goServiceUserInfoLogin(nil, pop: false, finishedVC: nil, onError: { (error) in
+                completion?(false)
+            }) { (data) in
+                NotificationCenter.default.post(Notification(name: Notification.chainUpdate))
+                completion?(true)
+            }
+        }) {
+            completion?(false)
+        }
+    }
 }
